@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const userSchema = new Schema(
   {
     _id: { type: String, required: true, unique: true, index: true },
-    name: { type: String, required: true },
+    fullname: { type: String, required: true },
     email: {
       type: String,
       required: true,
@@ -13,7 +13,7 @@ const userSchema = new Schema(
       index: true,
       validate: validator.isEmail
     },
-    phoneNumber: { type: String },
+    phoneNumber: { type: String, required: true },
     isAdmin: { type: Boolean, default: false }
   },
 

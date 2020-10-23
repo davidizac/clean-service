@@ -1,0 +1,149 @@
+<div class="style__Background-sc-1jxza48-0 eCYQLn">
+  <div *ngIf="order" class="style__Wrapper-sc-1jxza48-6 dIjAPF">
+    <h4 class="style__Title-sc-1jxza48-5 jdMQEB">
+      <svg width="24" height="24" viewBox="0 0 24 24">
+        <path
+          d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.25 8.891l-1.421-1.409-6.105 6.218-3.078-2.937-1.396 1.436 4.5 4.319 7.5-7.627z"
+        ></path></svg
+      >{{ getTitle() }}
+    </h4>
+    <div class="style__BlocksWrapper-sc-1jxza48-1 gfVFty">
+      <div class="style__Column-sc-1jxza48-4 cGHiqy">
+        <div class="style__Block-sc-1jxza48-2 kCQKbf">
+          <span class="summary__Label-sc-1c6q2r7-1 jxoSLr">Pickup</span
+          ><span class="summary__DateHour-sc-1c6q2r7-0 dqwa-Dd"
+            >{{ order.pickUpDate | date_format }},
+            {{ order.pickUpDate | time_format }}</span
+          ><span class="summary__Label-sc-1c6q2r7-1 jxoSLr">Dropoff</span
+          ><span class="summary__DateHour-sc-1c6q2r7-0 dqwa-Dd"
+            >{{ order.dropOffDate | date_format }},
+            {{ order.dropOffDate | time_format }}</span
+          ><span class="summary__Label-sc-1c6q2r7-1 jxoSLr">Address</span
+          ><span>{{ order.pickUpAddress }}</span>
+        </div>
+        <div class="style__Block-sc-1jxza48-2 kCQKbf">
+          <h4 class="style__BlockTitle-sc-1jxza48-3 quA-Dy">Any question ?</h4>
+          <div class="help__Line-sc-1s656il-0 fIMwzN">
+            <span class="help__Icon-sc-1s656il-2 cVswEx"
+              ><svg width="24" height="24" viewBox="0 0 24 24">
+                <g stroke="#ffffff" fill="#909090">
+                  <path
+                    d="M19 2c0-1.104-.896-2-2-2h-10c-1.104 0-2 .896-2 2v20c0 1.104.896 2 2 2h10c1.104 0 2-.896 2-2v-20zm-8.5 0h3c.276 0 .5.224.5.5s-.224.5-.5.5h-3c-.276 0-.5-.224-.5-.5s.224-.5.5-.5zm1.5 20c-.553 0-1-.448-1-1s.447-1 1-1c.552 0 .999.448.999 1s-.447 1-.999 1zm5-3h-10v-14.024h10v14.024z"
+                  ></path>
+                </g></svg></span
+            ><a href="tel:+33182834480" class="help__Link-sc-1s656il-1 ksuocA"
+              >+33 1 82 83 44 80</a
+            >
+          </div>
+          <div class="help__Line-sc-1s656il-0 fIMwzN">
+            <span class="help__Icon-sc-1s656il-2 cVswEx"
+              ><svg
+                width="24"
+                height="24"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                fill="#909090"
+              >
+                <path
+                  d="M24 21h-24v-18h24v18zm-23-16.477v15.477h22v-15.477l-10.999 10-11.001-10zm21.089-.523h-20.176l10.088 9.171 10.088-9.171z"
+                ></path></svg></span
+            ><a
+              href="mailto:info@cleanservice.fr"
+              class="help__Link-sc-1s656il-1 ksuocA"
+              >info@cleanservice.fr</a
+            >
+          </div>
+          <div class="help__Line-sc-1s656il-0 fIMwzN">
+            <span class="help__Icon-sc-1s656il-2 cVswEx"
+              ><svg
+                width="24px"
+                height="24px"
+                viewBox="0 0 24 24"
+                version="1.1"
+              >
+                <title>0-Icons/Icon/Time</title>
+                <desc>Created with Sketch.</desc>
+                <g
+                  id="0-Icons/Icon/Time"
+                  stroke="none"
+                  stroke-width="1"
+                  fill="red"
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M12,3 C14.3869484,3 16.6761336,3.94821156 18.363961,5.63603897 C20.0517884,7.32386638 21,9.61305159 21,12 C21,16.9705627 16.9705627,21 12,21 C7.02943725,21 3,16.9705627 3,12 C3,7.02943725 7.02943725,3 12,3 Z M12,4.28571429 C7.73951764,4.28571429 4.28571429,7.73951764 4.28571429,12 C4.28571429,16.2604824 7.73951764,19.7142857 12,19.7142857 C14.0459558,19.7142857 16.0081145,18.9015329 17.4548237,17.4548237 C18.9015329,16.0081145 19.7142857,14.0459558 19.7142857,12 C19.7142857,7.73951764 16.2604824,4.28571429 12,4.28571429 Z M12.6428571,6.21428571 L12.6428571,11.6914286 L15.6128571,14.07 L14.8157143,15.0728571 L11.8392857,12.6942857 C11.5347472,12.4504599 11.3573866,12.0815499 11.3571429,11.6914286 L11.3571429,11.6914286 L11.3571429,6.21428571 L12.6428571,6.21428571 Z"
+                    id="Style"
+                    fill="#909090"
+                  ></path>
+                </g></svg></span
+            ><span
+              ><span
+                >Mon-Fri: 7h-10h &amp; 18h-22h<br />Sat: 9h-14h<br />Sun:
+                18h-22h</span
+              ></span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="style__Column-sc-1jxza48-4 cGHiqy">
+        <div class="style__Block-sc-1jxza48-2 kCQKbf">
+          <h4 class="style__BlockTitle-sc-1jxza48-3 quA-Dy">Next steps</h4>
+          <div class="next-steps__Step-c9ooxr-0 haYUCy">
+            <span
+              [ngClass]="orderStatus > 0 ? 'steps-circle-active' : ''"
+              class="next-steps__StepNumber-c9ooxr-2 kOuVbC"
+              >1</span
+            ><span
+              [ngClass]="orderStatus > 0 ? 'steps-title-active' : ''"
+              class="next-steps__StepTitle-c9ooxr-3 eOMThI"
+              >Pickup</span
+            ><span class="next-steps__StepDescription-c9ooxr-1 iZCMXz"
+              >You clothes are collected and sorted.</span
+            >
+          </div>
+          <div class="next-steps__Step-c9ooxr-0 haYUCy">
+            <span
+              [ngClass]="orderStatus > 1 ? 'steps-circle-active' : ''"
+              class="next-steps__StepNumber-c9ooxr-2 kOuVbC"
+              >2</span
+            ><span
+              [ngClass]="orderStatus > 1 ? 'steps-title-active' : ''"
+              class="next-steps__StepTitle-c9ooxr-3 eOMThI"
+              >Cleaning</span
+            ><span class="next-steps__StepDescription-c9ooxr-1 iZCMXz"
+              >Your clothes are cleaned with the utmost care by our
+              experts.</span
+            >
+          </div>
+          <div class="next-steps__Step-c9ooxr-0 haYUCy">
+            <span
+              [ngClass]="orderStatus > 2 ? 'steps-circle-active' : ''"
+              class="next-steps__StepNumber-c9ooxr-2 kOuVbC"
+              >3</span
+            ><span
+              [ngClass]="orderStatus > 2 ? 'steps-title-active' : ''"
+              class="next-steps__StepTitle-c9ooxr-3 eOMThI"
+              >Dropoff</span
+            ><span class="next-steps__StepDescription-c9ooxr-1 iZCMXz"
+              >we deliver your laundry at home or at work.</span
+            >
+          </div>
+        </div>
+        <div class="style__Block-sc-1jxza48-2 kCQKbf">
+          <h4 class="style__BlockTitle-sc-1jxza48-3 quA-Dy">
+            Check your orders' statuses
+          </h4>
+          <div
+            type="PRIMARY"
+            (click)="myOrders()"
+            class="style__Container-ozduro-0 gXeKeR orders__Button-sc-1mgathq-0 YUEVt"
+          >
+            <span type="PRIMARY" class="style__Text-ozduro-5 iMBjyU"
+              >Your orders</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

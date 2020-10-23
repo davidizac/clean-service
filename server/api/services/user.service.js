@@ -11,6 +11,19 @@ class UserService {
   async setUserAsAdmin(email) {
     return UserModel.updateOne({ email }, { $set: { isAdmin: true } })
   }
+
+  async isAdmin(userId) {
+    const user = await UserModel.findById(userId)
+    return user.isAdmin
+  }
+
+  async getUser(userId) {
+    return UserModel.findById(userId)
+  }
+
+  async getAdminUsers() {
+    return UserModel.find({ isAdmin: true }).lean()
+  }
 }
 
 module.exports = new UserService()

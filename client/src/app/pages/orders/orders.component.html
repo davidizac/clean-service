@@ -1,0 +1,193 @@
+<div class="orders__Wrapper-sc-1q7rgvk-0 fBUsYB">
+  <div class="orders__TitleContainer-sc-1q7rgvk-2 kDPFjM">
+    <div class="orders__Text-sc-1q7rgvk-5 orders__Title-sc-1q7rgvk-6 cCzfwV">
+      Mes commandes
+    </div>
+  </div>
+  <div
+    style="
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 90%;
+    "
+  >
+    <div *ngIf="orders.length" class="orders__Container-sc-1q7rgvk-1 jvmkMV">
+      <ng-container *ngFor="let order of orders">
+        <ng-container *ngIf="isOrderOpened(order)">
+          <div
+            (click)="closeOrder(order)"
+            class="order-detail__Container-sc-1q4n31i-0 bjUnQX"
+          >
+            <div class="order-detail__HeaderContainer-sc-1q4n31i-1 iXKTWR">
+              <div class="order-detail__LeftContainer-sc-1q4n31i-8 bAKYGK">
+                <div class="order-detail__StatusContainer-sc-1q4n31i-3 fJrzin">
+                  <svg width="24" height="24">
+                    <path
+                      d="M12 3a9 9 0 110 18 9 9 0 010-18zm0 1.286a7.714 7.714 0 100 15.428 7.714 7.714 0 000-15.428zm.643 1.928v5.477l2.97 2.379-.797 1.003-2.977-2.379a1.286 1.286 0 01-.482-1.003V6.214h1.286z"
+                      fill="#31aded"
+                      fill-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <div
+                  class="order-detail__HeaderDescriptionContainer-sc-1q4n31i-4 hsWQmY"
+                >
+                  <div
+                    class="order-detail__ContentContainer-sc-1q4n31i-5 bJHKKb"
+                  >
+                    <span
+                      class="order-detail__Text-sc-1q4n31i-14 order-detail__NormalText-sc-1q4n31i-17 kKpHeb"
+                      >{{ order.pickUpAddress }}</span
+                    >
+                  </div>
+                  <div
+                    class="order-detail__ContentContainer-sc-1q4n31i-5 bJHKKb"
+                  >
+                    <span
+                      class="order-detail__Text-sc-1q4n31i-14 order-detail__Status-sc-1q4n31i-16 cvSZYE"
+                      >{{ getStatusMessage(order.status) }}</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="order-detail__ContentContainer-sc-1q4n31i-5 bJHKKb">
+                <span
+                  class="order-detail__Text-sc-1q4n31i-14 order-detail__BoldText-sc-1q4n31i-18 MkxYI"
+                  >{{ order.price }} &#8362;</span
+                >
+              </div>
+            </div>
+            <div class="order-detail__DetailContainer-sc-1q4n31i-2 hMbdiw">
+              <div
+                class="order-detail__InformationContainer-sc-1q4n31i-7 kypZIM"
+              >
+                <span
+                  class="order-detail__Text-sc-1q4n31i-14 order-detail__NormalText-sc-1q4n31i-17 kKpHeb"
+                  >Order number</span
+                ><span
+                  class="order-detail__Text-sc-1q4n31i-14 order-detail__BoldText-sc-1q4n31i-18 MkxYI"
+                  >{{ order.displayedId }}</span
+                >
+              </div>
+              <div
+                class="order-detail__InformationContainer-sc-1q4n31i-7 kypZIM"
+              >
+                <span
+                  class="order-detail__Text-sc-1q4n31i-14 order-detail__NormalText-sc-1q4n31i-17 kKpHeb"
+                  >Delivery address</span
+                ><span
+                  class="order-detail__Text-sc-1q4n31i-14 order-detail__BoldText-sc-1q4n31i-18 MkxYI"
+                  >{{ order.dropOffAddress }}</span
+                >
+              </div>
+              <div class="order-detail__ProductsContainer-sc-1q4n31i-9 ddhryE">
+                <div
+                  *ngFor="let product of getProductFiltered(order.products)"
+                  class="order-detail__PriceContainer-sc-1q4n31i-6 fjdOng"
+                >
+                  <div
+                    class="order-detail__ProductContainer-sc-1q4n31i-10 kFGvCd"
+                  >
+                    <span
+                      class="order-detail__Text-sc-1q4n31i-14 order-detail__Quantity-sc-1q4n31i-19 kAjRQG"
+                      >x{{ getRecurrence(order, product) }}</span
+                    ><span
+                      class="order-detail__Text-sc-1q4n31i-14 order-detail__NormalText-sc-1q4n31i-17 kKpHeb"
+                      >{{ product.name }}</span
+                    >
+                  </div>
+                  <span
+                    class="order-detail__Text-sc-1q4n31i-14 order-detail__DetailPrice-sc-1q4n31i-15 cRWKgE"
+                    >{{ product.price }} &#8362;</span
+                  >
+                </div>
+              </div>
+
+              <div class="order-detail__PriceContainer-sc-1q4n31i-6 fjdOng">
+                <span
+                  class="order-detail__Text-sc-1q4n31i-14 order-detail__NormalText-sc-1q4n31i-17 kKpHeb"
+                  >Total</span
+                ><span
+                  class="order-detail__Text-sc-1q4n31i-14 order-detail__BoldText-sc-1q4n31i-18 MkxYI"
+                  >{{ order.price }} &#8362;</span
+                >
+              </div>
+              <div class="order-detail__ButtonContainer-sc-1q4n31i-11 iHliAp">
+                <button
+                  *ngIf="isAbleToBeModified(order)"
+                  (click)="changeOrder(order)"
+                  class="order-detail__Button-sc-1q4n31i-12 lnMrrL"
+                >
+                  Modifier
+                </button>
+                <div
+                  type="PRIMARY"
+                  class="style__Container-ozduro-0 gXeKeR order-detail__BlueButton-sc-1q4n31i-13 jNtMmo"
+                >
+                  <span
+                    (click)="moreDetail(order)"
+                    type="PRIMARY"
+                    class="style__Text-ozduro-5 iMBjyU"
+                    >See more details</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!isOrderOpened(order)">
+          <div class="order-detail__Container-sc-1q4n31i-0 bjUnQX">
+            <div
+              (click)="openOrder(order)"
+              class="order-detail__HeaderContainer-sc-1q4n31i-1 iXKTWR"
+            >
+              <div class="order-detail__LeftContainer-sc-1q4n31i-8 bAKYGK">
+                <div class="order-detail__StatusContainer-sc-1q4n31i-3 fJrzin">
+                  <svg width="24" height="24">
+                    <path
+                      d="M12 3a9 9 0 110 18 9 9 0 010-18zm0 1.286a7.714 7.714 0 100 15.428 7.714 7.714 0 000-15.428zm.643 1.928v5.477l2.97 2.379-.797 1.003-2.977-2.379a1.286 1.286 0 01-.482-1.003V6.214h1.286z"
+                      fill="#31aded"
+                      fill-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <div
+                  class="order-detail__HeaderDescriptionContainer-sc-1q4n31i-4 hsWQmY"
+                >
+                  <div
+                    class="order-detail__ContentContainer-sc-1q4n31i-5 bJHKKb"
+                  >
+                    <span
+                      class="order-detail__Text-sc-1q4n31i-14 order-detail__NormalText-sc-1q4n31i-17 kKpHeb"
+                      >{{ order.pickUpAddress }}</span
+                    >
+                  </div>
+                  <div
+                    class="order-detail__ContentContainer-sc-1q4n31i-5 bJHKKb"
+                  >
+                    <span
+                      class="order-detail__Text-sc-1q4n31i-14 order-detail__Status-sc-1q4n31i-16 cvSZYE"
+                      >{{ getStatusMessage(order.status) }}</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="order-detail__ContentContainer-sc-1q4n31i-5 bJHKKb">
+                <span
+                  class="order-detail__Text-sc-1q4n31i-14 order-detail__BoldText-sc-1q4n31i-18 MkxYI"
+                  >{{ order.price }} &#8362;</span
+                >
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div *ngIf="!orders.length" class="orders__Container-sc-1q7rgvk-1 jvmkMV">
+      <div class="orders__Text-sc-1q7rgvk-5 orders__Title-sc-1q7rgvk-6 cCzfwV">
+        Vous n'avez pas de commandes, pour l'instant.
+      </div>
+    </div>
+  </div>
+</div>

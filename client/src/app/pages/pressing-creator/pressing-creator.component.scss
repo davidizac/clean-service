@@ -1,0 +1,24 @@
+.mat-form-field {
+  padding: 20px 30px;
+}
+.create-pressing {
+  width: 158px;
+  border-radius: 35px;
+  margin-top: 24px;
+  font-size: 19px;
+  padding: 11px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+mat-progress-spinner {
+  position: absolute;
+  top: 238px;
+}
+
+.add-product {
+  width: 30px;
+}

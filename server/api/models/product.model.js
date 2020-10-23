@@ -3,9 +3,9 @@ const Schema = mongoose.Schema
 
 const productSchema = new Schema(
   {
-    pressingId: { type: Schema.Types.ObjectId, ref: 'Pressing' },
-    price: { type: Number },
-    category: { type: String, enum: global.cleanService.CATEGORIES },
+    pressingId: { type: Schema.Types.ObjectId, ref: 'Pressing', required: true },
+    price: { type: Number, required: true },
+    category: { type: String, enum: global.cleanService.CATEGORIES, required: true },
     name: { type: String }
   },
 

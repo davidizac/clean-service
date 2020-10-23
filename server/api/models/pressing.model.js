@@ -7,8 +7,7 @@ const pressingSchema = new Schema(
     address: { type: String, required: true },
     latitude: { type: String, required: true },
     longitude: { type: String, required: true },
-    city: { type: String, required: true },
-    phoneNumber: { type: String }
+    phoneNumber: { type: String, required: true }
   },
 
   {

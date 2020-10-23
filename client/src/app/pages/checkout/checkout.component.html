@@ -1,0 +1,228 @@
+<div class="shopping-cart-page__Container-arjt3o-0 icHcNW">
+  <div class="shopping-cart-page__ContentContainer-arjt3o-3 fYJafp">
+    <span class="shopping-cart-page__PageTitle-arjt3o-9 hgOZjk">{{
+      getTitle()
+    }}</span>
+    <div class="shopping-cart-page__CartBlock-arjt3o-10 euStKy">
+      <div class="shopping-cart-page__FirstBlock-arjt3o-1 hJnlVQ">
+        <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV"
+          >Pickup address</span
+        >
+        <div class="address-button__Button-oifptd-0 kHzhHJ">
+          <input
+            [formControl]="pickUpAddress"
+            placeholder="Type the pickup address"
+            matInput
+            [matAutocomplete]="auto"
+            class="address"
+          />
+          <mat-autocomplete
+            (optionSelected)="onSelectionChange($event, true)"
+            autoActiveFirstOption
+            #auto="matAutocomplete"
+          >
+            <mat-option *ngFor="let option of pickUpOptions" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </div>
+
+        <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV"
+          >Address details (optional)</span
+        >
+        <div class="address-button__Button-oifptd-0 kHzhHJ">
+          <input
+            type="text"
+            placeholder="E.g Appartement 6, Etage 3, etc."
+            [formControl]="addressDetails"
+            matInput
+            class="address"
+          />
+        </div>
+        <div class="style__CheckboxWrapper-sc-1q0ajs2-14 bxrYar">
+          <div class="style__CheckboxWrapper-sc-18pyt5v-0 ijmLSl">
+            <input
+              type="checkbox"
+              id="another-address"
+              name="another-address"
+              [(ngModel)]="anotherAddress"
+              class="style__Checkbox-sc-18pyt5v-2 iKmmnO"
+            /><label
+              for="another-address"
+              class="style__CheckboxLabel-sc-18pyt5v-1 kbJGuN"
+              ><span
+                >Do you want to choose a different dropoff address ?</span
+              ></label
+            >
+          </div>
+        </div>
+        <ng-container *ngIf="anotherAddress">
+          <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV"
+            >Dropoff address</span
+          >
+          <div class="address-button__Button-oifptd-0 kHzhHJ">
+            <input
+              [formControl]="dropOffAddress"
+              placeholder="Type the dropoff address"
+              matInput
+              [matAutocomplete]="auto"
+              class="address"
+            />
+            <mat-autocomplete
+              (optionSelected)="onSelectionChange($event, false)"
+              autoActiveFirstOption
+              #auto="matAutocomplete"
+            >
+              <mat-option
+                *ngFor="let option of dropOffOptions"
+                [value]="option"
+              >
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </div>
+          <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV"
+            >Address details (optional)</span
+          >
+          <div class="address-button__Button-oifptd-0 kHzhHJ">
+            <input
+              type="text"
+              placeholder="E.g Appartement 6, Etage 3, etc."
+              [formControl]="addressDetails2"
+              matInput
+              class="address"
+            />
+          </div>
+        </ng-container>
+        <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV">Hours</span>
+        <div class="shopping-cart-page__PickupDropOffContainer-arjt3o-6 bvydiV">
+          <div class="style__TimeView-sc-10wq5t7-0 fdOevz">
+            <button
+              class="style__TimeBlock-sc-10wq5t7-1 kulOXA"
+              (click)="openPopup(true)"
+            >
+              <ng-container *ngIf="pickUpDate">
+                <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE">Pickup</span
+                ><span class="style__TimeText-sc-10wq5t7-3 iAKgzk">{{
+                  pickUpDate | time_format
+                }}</span
+                ><span class="style__DateText-sc-10wq5t7-4 flnGpb">{{
+                  pickUpDate | date_format
+                }}</span>
+              </ng-container>
+              <ng-container *ngIf="!pickUpDate">
+                <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE"
+                  >Choose pickup slots</span
+                >
+              </ng-container></button
+            ><button
+              class="style__TimeBlock-sc-10wq5t7-1 kulOXA"
+              (click)="openPopup(false)"
+            >
+              <ng-container *ngIf="dropOffDate">
+                <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE">Dropoff</span
+                ><span class="style__TimeText-sc-10wq5t7-3 iAKgzk">{{
+                  dropOffDate | time_format
+                }}</span
+                ><span class="style__DateText-sc-10wq5t7-4 flnGpb">{{
+                  dropOffDate | date_format
+                }}</span>
+              </ng-container>
+              <ng-container *ngIf="!dropOffDate">
+                <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE"
+                  >Choose dropoff slots</span
+                >
+              </ng-container>
+            </button>
+          </div>
+        </div>
+
+        <div class="style__OptionnalInfoContainer-sc-1q0ajs2-7 MVQFs">
+          <span class="style__GreyTitle-sc-1q0ajs2-4 foyaIu"
+            >Optionnal information</span
+          ><textarea
+            [(ngModel)]="comment"
+            placeholder="Avez-vous une requête particulière ?"
+            class="style__MoreInfoInput-sc-1q0ajs2-8 hxUgCd"
+          ></textarea>
+        </div>
+      </div>
+      <div class="shopping-cart-page__SecondBlock-arjt3o-2 jtUsXN">
+        <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV">Order</span>
+        <div class="products-in-cart__ProductsContainer-mbbtn6-0 hbQyQL">
+          <div
+            class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF"
+            *ngFor="let product of filteredProducts"
+          >
+            <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
+              <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe">
+                <span class="productList__Number-sc-1oz9rbz-8 jDEDaq"
+                  >x{{ getRecurrence(product) }}</span
+                >
+              </div>
+              {{ product.name }}
+            </div>
+            <div class="productList__RightContainer-sc-1oz9rbz-9 jcvsCz">
+              <button
+                class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI"
+                (click)="remove(product)"
+              >
+                <svg width="24" height="24">
+                  <path
+                    fill="#31ADED"
+                    fill-rule="evenodd"
+                    d="M19 12.5v-1.1H5v1.1h14z"
+                  ></path>
+                </svg></button
+              ><button
+                class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI"
+                (click)="add(product)"
+              >
+                <svg width="24" height="24">
+                  <path
+                    fill="#31ADED"
+                    fill-rule="evenodd"
+                    d="M19 11.374h-6.462v-6.72h-1.076v6.72H5v1.12h6.462v6.16h1.076v-6.16H19z"
+                  ></path>
+                </svg></button
+              ><span class="productList__Price-sc-1oz9rbz-4 cXZnLc"
+                >{{ product.price }} &#8362;</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="order-summary__Container-sc-2gc5ap-0 ktgkUf">
+          <div class="order-summary__SummaryLineContainer-sc-2gc5ap-1 dDUVLw">
+            <span class="order-summary__InputDark-sc-2gc5ap-3 doxodF"
+              >Shipping cost</span
+            ><span class="order-summary__H3Dark-sc-2gc5ap-4 kvqIDJ"
+              >10 &#8362;</span
+            >
+          </div>
+          <div class="order-summary__SummaryLineContainer-sc-2gc5ap-1 dDUVLw">
+            <span class="order-summary__InputDark-sc-2gc5ap-3 doxodF"
+              >Total</span
+            ><span class="order-summary__H3Dark-sc-2gc5ap-4 kvqIDJ"
+              >{{ getPrice() }} &#8362;</span
+            >
+          </div>
+          <span class="order-summary__MinimumPrice-sc-2gc5ap-2 kTfBpA"
+            >Minimum order 100&#8362;
+          </span>
+        </div>
+      </div>
+    </div>
+    <span class="errorMessage">{{ errorMessage }}</span>
+    <div class="shopping-cart-page__ButtonContainer-arjt3o-4 jNHIgL">
+      <a
+        [ngClass]="isInvalidOrder ? 'disabled' : ''"
+        (click)="createOrder()"
+        width="286px"
+        class="style__ButtonStyle-zdp3iu-0 dsVNJt"
+      >
+        {{ getMessageButton() }}
+      </a>
+    </div>
+  </div>
+</div>

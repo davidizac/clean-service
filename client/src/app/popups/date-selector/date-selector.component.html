@@ -1,0 +1,80 @@
+<div class="style__Backdrop-sc-1z1ex6-0 fOnjFl">
+  <div class="style__ModalWrapper-sc-1z1ex6-2 fBzOYk">
+    <button class="style__Close-sc-1z1ex6-1 klldbS" (click)="closeModal()">
+      <svg width="24" height="24">
+        <path
+          fill="#112631"
+          d="M20 4.894L19.106 4 12 11.113 4.894 4 4 4.894 11.113 12 4 19.106l.894.894L12 12.887 19.106 20l.894-.894L12.887 12z"
+          fill-rule="evenodd"
+        ></path>
+      </svg>
+    </button>
+    <div class="modal__ModalContentContainer-u1elfv-1 bllZgA">
+      <div class="modal__ModalTitle-u1elfv-0 hqGkov">
+        <span class="modal__InputSecondary-u1elfv-5 hjEQfh">Choose a slot</span>
+      </div>
+      <div class="modal__SelectorsContainer-u1elfv-4 fHcnff">
+        <div class="modal__SelectWrapper-u1elfv-7 dHWEBI">
+          <div class="modal__SelectContainer-u1elfv-8 dMFKmz">
+            <div class="css-2b097c-container">
+              <div class="css-26l3qy-menu">
+                <div class="css-1srn6aj">
+                  <div
+                    [ngClass]="
+                      selectedMoment === moment
+                        ? 'css-qguw4o-option'
+                        : 'css-xdsryi-option'
+                    "
+                    (click)="changedDate(moment)"
+                    id="react-select-30-option-0"
+                    tabindex="-1"
+                    *ngFor="let moment of moments"
+                  >
+                    {{ moment | date_format }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal__SelectWrapper-u1elfv-7 dHWEBI">
+          <div class="modal__SelectContainer-u1elfv-8 dMFKmz">
+            <div class="css-2b097c-container">
+              <div class="css-26l3qy-menu">
+                <div class="css-1srn6aj">
+                  <ng-container *ngFor="let range of hourRanges; let i = index">
+                    <div
+                      [ngClass]="
+                        selectedHourRange === range
+                          ? 'css-qguw4o-option'
+                          : 'css-xdsryi-option'
+                      "
+                      (click)="changedHour(range)"
+                      *ngIf="hourRanges.length >= i + 2"
+                      id="react-select-31-option-0"
+                      tabindex="-1"
+                    >
+                      {{ hourRanges[i] }} -
+                      {{ hourRanges[i + 1] }}
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal__ValidateButtonContainer-u1elfv-2 dSUxgb">
+        <div
+          class="modal__ValidateButton-u1elfv-3 joGYaT"
+          (click)="onConfirm()"
+        >
+          <span
+            class="modal__InputSecondary-u1elfv-5 modal__ValidateText-u1elfv-6 fEpNJu"
+            >Validate</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

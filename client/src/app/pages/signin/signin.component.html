@@ -1,0 +1,74 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <a
+      (click)="toggle()"
+      [ngClass]="isSignin ? 'active' : 'inactive underlineHover'"
+      >Sign In</a
+    >
+    <a
+      (click)="toggle()"
+      [ngClass]="!isSignin ? 'active' : 'inactive underlineHover'"
+      >Sign Up</a
+    >
+
+    <!-- Icon -->
+
+    <!-- Login Form -->
+    <div [ngClass]="!isSignin ? 'dontdisplay' : ''">
+      <input
+        autocomplete="off"
+        [(ngModel)]="email"
+        type="text"
+        name="email"
+        placeholder="Email"
+      />
+      <input
+        autocomplete="off"
+        [(ngModel)]="password"
+        type="password"
+        name="login"
+        placeholder="Password"
+      />
+      <button (click)="onSubmit()" type="submit">Sign In</button>
+    </div>
+    <div [ngClass]="isSignin ? 'dontdisplay' : ''">
+      <input
+        [(ngModel)]="fullname"
+        autocomplete="off"
+        type="text"
+        name="fullname"
+        placeholder="Full Name"
+      />
+      <input
+        [(ngModel)]="phoneNumber"
+        autocomplete="off"
+        type="text"
+        name="phoneNumber"
+        placeholder="Telephone"
+      />
+      <input
+        autocomplete="off"
+        [(ngModel)]="email"
+        type="text"
+        name="email"
+        placeholder="Email"
+      />
+      <input
+        autocomplete="off"
+        [(ngModel)]="password"
+        type="password"
+        name="login"
+        placeholder="Password"
+      />
+      <button (click)="onSubmit()" type="submit">Sign up</button>
+    </div>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" routerLink="forgot-password"
+        >Forgot Password?</a
+      >
+    </div>
+  </div>
+</div>

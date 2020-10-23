@@ -1,0 +1,161 @@
+import {
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  ViewChild,
+  NgZone,
+} from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { Pressing } from 'src/app/models/pressing.model';
+import { PressingService } from 'src/app/services/pressing.service';
+import * as geolib from 'geolib';
+import * as _ from 'lodash';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-pressings',
+  templateUrl: './pressings.component.html',
+  styleUrls: ['./pressings.component.scss'],
+})
+export class PressingsComponent implements OnInit {
+  pressings;
+  displayedColumns: string[] = ['name', 'address', 'phoneNumber'];
+  options = [];
+  dataSource;
+  address: FormControl;
+  latitude;
+  longitude;
+  geolib = geolib;
+  selectedPressings = [];
+  location: FormControl;
+  pageEvent: PageEvent;
+  pageSize = 10;
+  pressingDisplayed;
+  isLoading = false;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  constructor(
+    public formBuilder: FormBuilder,
+    public pressingService: PressingService,
+    private cd: ChangeDetectorRef,
+    public router: Router,
+    public ngZone: NgZone
+  ) {}
+
+  ngOnInit(): void {
+    this.isLoading = true;
+    this.location = this.formBuilder.control('');
+    this.location.valueChanges.subscribe((e) => {
+      this.triggerAutocomplete(e);
+    });
+    this.pressingService
+      .getAllPressings()
+      .subscribe((pressings: Array<Pressing>) => {
+        this.isLoading = false;
+        this.pressings = pressings.map((p) => new Pressing(p));
+        this.pressingDisplayed = _.cloneDeep(this.pressings).splice(
+          0,
+          this.pageSize
+        );
+      });
+  }
+
+  triggerAutocomplete(value: string) {
+    const filterValue = value.toLowerCase();
+
+    const displaySuggestions = function (this, options, status) {
+      this.options = options.map((p) => p.description);
+      this.options.pop();
+    };
+
+    const service = new google.maps.places.AutocompleteService();
+    service.getQueryPredictions(
+      {
+        input: filterValue,
+      },
+      displaySuggestions.bind(this)
+    );
+  }
+
+  filterPressingsAroundMe(latitude, longitude) {
+    const coordinates: any = geolib.orderByDistance(
+      { latitude: parseFloat(latitude), longitude: parseFloat(longitude) },
+      this.pressings.map((p) => {
+        return {
+          latitude: parseFloat(p.latitude),
+          longitude: parseFloat(p.longitude),
+        };
+      })
+    );
+
+    this.pressings = coordinates.map((c) => {
+      return this.pressings.find(
+        (p) => p.latitude == c.latitude && p.longitude == c.longitude
+      );
+    });
+    this.pressingDisplayed = _.cloneDeep(this.pressings).splice(
+      0,
+      this.pageSize
+    );
+    this.cd.detectChanges();
+  }
+
+  onSelectionChange(e) {
+    const address = e.option.value;
+    var geocoder = new google.maps.Geocoder();
+    const navigate = function (this, results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        this.latitude = results[0].geometry.location.lat();
+        this.longitude = results[0].geometry.location.lng();
+        this.filterPressingsAroundMe(this.latitude, this.longitude);
+      }
+    };
+    geocoder.geocode(
+      {
+        address: address,
+      },
+      navigate.bind(this)
+    );
+  }
+
+  getDistance(pressing: Pressing) {
+    return this.geolib.getDistance(
+      { latitude: this.latitude, longitude: this.longitude },
+      { latitude: pressing.latitude, longitude: pressing.longitude }
+    );
+  }
+
+  openPressing(pressing: Pressing) {
+    this.selectedPressings.push(pressing._id);
+    this.cd.detectChanges();
+  }
+
+  closePressing(pressing) {
+    this.selectedPressings.splice(
+      this.selectedPressings.findIndex((c) => c === pressing._id),
+      1
+    );
+    this.cd.detectChanges();
+  }
+
+  isPressingOpened(pressing) {
+    return this.selectedPressings.includes(pressing._id);
+  }
+
+  pageChanged(e) {
+    const offset = (e.pageIndex + 1) * this.pageSize - this.pageSize;
+    this.pressingDisplayed = _.cloneDeep(this.pressings).splice(
+      offset,
+      this.pageSize
+    );
+  }
+
+  navigateToPressing(pressingId) {
+    this.ngZone.run(() => {
+      this.router.navigate([`./pressings/${pressingId}`]);
+    });
+  }
+}
