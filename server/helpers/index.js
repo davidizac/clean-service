@@ -14,7 +14,7 @@ const logger = require('./logger')
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 const errorsHandler = require('../api/middlewares/error-handler.middleware')
 
-module.exports = async function startCleanService() {
+module.exports = async function startcleeser() {
   const app = express()
 
   const expressWinstonTranports = [
@@ -55,7 +55,7 @@ module.exports = async function startCleanService() {
   try {
     await setupDB()
   } catch (error) {
-    console.error('Error starting cleanService: error setting up the database.')
+    console.error('Error starting cleeser: error setting up the database.')
     process.exit()
   }
 

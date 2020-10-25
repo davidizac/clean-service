@@ -5,7 +5,7 @@ const productSchema = new Schema(
   {
     pressingId: { type: Schema.Types.ObjectId, ref: 'Pressing', required: true },
     price: { type: Number, required: true },
-    category: { type: String, enum: global.cleanService.CATEGORIES, required: true },
+    category: { type: String, enum: global.cleeser.CATEGORIES, required: true },
     name: { type: String }
   },
 

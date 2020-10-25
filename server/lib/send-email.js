@@ -19,7 +19,7 @@ module.exports.sendWelcomeEmail = async email => {
   await transporter.sendMail({
     from: 'davidgahnassia@gmail.com',
     to: email,
-    subject: 'Bienvenue chez CleanService',
+    subject: 'Bienvenue chez cleeser',
     html: ejs.render(template)
   })
 }

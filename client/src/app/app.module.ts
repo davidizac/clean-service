@@ -67,7 +67,7 @@ export function tokenGetter(): string {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        allowedDomains: ['localhost', 'cleanservice.com'],
+        allowedDomains: ['localhost', 'cleeser.com'],
       },
     }),
   ],
