@@ -33,4 +33,14 @@ export class PressingService {
       `${environment.serverUrl}api/pressings/${id}`
     );
   }
+
+  deletePressing(id) {
+    return this.authService.token.pipe(
+      switchMap((token) => {
+        return this.http.delete(`${environment.serverUrl}api/pressings/${id}`, {
+          headers: { authorization: token },
+        });
+      })
+    );
+  }
 }

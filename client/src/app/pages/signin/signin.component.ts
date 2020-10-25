@@ -16,6 +16,7 @@ export class SigninComponent implements OnInit {
   fullname: string;
   returnUrl: string;
   phoneNumber: string;
+  errorMessage;
 
   constructor(
     private authService: AuthService,
@@ -58,13 +59,13 @@ export class SigninComponent implements OnInit {
       },
       (errRes) => {
         const code = errRes.error.error.message;
-        let message = 'Could not sign you up, please try again.';
+        this.errorMessage = 'Could not sign you up, please try again.';
         if (code === 'EMAIL_EXISTS') {
-          message = 'This email address exists already!';
+          this.errorMessage = 'This email address exists already!';
         } else if (code === 'EMAIL_NOT_FOUND') {
-          message = 'E-Mail address could not be found.';
+          this.errorMessage = 'E-Mail address could not be found.';
         } else if (code === 'INVALID_PASSWORD') {
-          message = 'This password is not correct.';
+          this.errorMessage = 'This password is not correct.';
         }
       }
     );

@@ -35,6 +35,10 @@ class PressingService {
     // return pressings
   }
 
+  async delete(pressingId) {
+    return PressingModel.deleteOne({ _id: pressingId })
+  }
+
   async getById(id) {
     const pressing = await PressingModel.findById(id).lean()
     const products = await ProductModel.find({ pressingId: pressing._id }).lean()

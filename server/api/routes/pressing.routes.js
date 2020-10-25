@@ -17,5 +17,12 @@ router.post(
 )
 router.get('/', pressingController.getAll)
 router.get('/:id', validator.params(IdParamsValidator), pressingController.getPressing)
+router.delete(
+  '/:id',
+  authMiddleware,
+  adminMiddleware,
+  validator.params(IdParamsValidator),
+  pressingController.deletePressing
+)
 
 module.exports = router

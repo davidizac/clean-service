@@ -13,6 +13,8 @@ import { PressingService } from 'src/app/services/pressing.service';
 import * as geolib from 'geolib';
 import * as _ from 'lodash';
 import { Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-pressings',
@@ -34,7 +36,7 @@ export class PressingsComponent implements OnInit {
   pageSize = 10;
   pressingDisplayed;
   isLoading = false;
-
+  isAdmin: boolean;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
@@ -42,7 +44,8 @@ export class PressingsComponent implements OnInit {
     public pressingService: PressingService,
     private cd: ChangeDetectorRef,
     public router: Router,
-    public ngZone: NgZone
+    public ngZone: NgZone,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -53,13 +56,19 @@ export class PressingsComponent implements OnInit {
     });
     this.pressingService
       .getAllPressings()
-      .subscribe((pressings: Array<Pressing>) => {
+      .pipe(
+        switchMap((pressings: Array<Pressing>) => {
+          this.pressings = pressings.map((p) => new Pressing(p));
+          this.pressingDisplayed = _.cloneDeep(this.pressings).splice(
+            0,
+            this.pageSize
+          );
+          return this.userService.isAdmin();
+        })
+      )
+      .subscribe((isAdmin) => {
         this.isLoading = false;
-        this.pressings = pressings.map((p) => new Pressing(p));
-        this.pressingDisplayed = _.cloneDeep(this.pressings).splice(
-          0,
-          this.pageSize
-        );
+        this.isAdmin = isAdmin;
       });
   }
 
@@ -156,6 +165,14 @@ export class PressingsComponent implements OnInit {
   navigateToPressing(pressingId) {
     this.ngZone.run(() => {
       this.router.navigate([`./pressings/${pressingId}`]);
+    });
+  }
+
+  deletePressing(pressingId) {
+    this.pressingService.deletePressing(pressingId).subscribe(() => {
+      this.pressingDisplayed = this.pressingDisplayed.filter(
+        (p) => p._id !== pressingId
+      );
     });
   }
 }

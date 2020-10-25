@@ -19,6 +19,10 @@ class UserController {
     const user = await userService.getUser(req.user.user_id)
     return res.send(user)
   }
+
+  async getAll(req, res) {
+    return res.json(await userService.getAll())
+  }
 }
 
 module.exports = new UserController()

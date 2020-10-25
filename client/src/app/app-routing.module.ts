@@ -14,6 +14,7 @@ import { PressingDetailComponent } from './pages/pressing-detail/pressing-detail
 import { PressingsComponent } from './pages/pressings/pressings.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SigninComponent } from './pages/signin/signin.component';
+import { UsersComponent } from './pages/users/users.component';
 
 const routes: Routes = [
   {
@@ -74,6 +75,15 @@ const routes: Routes = [
     path: 'order-confirmation/:id',
     component: OrderConfirmationComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
   },
 ];
 

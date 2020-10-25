@@ -63,7 +63,9 @@
       />
       <button (click)="onSubmit()" type="submit">Sign up</button>
     </div>
-
+    <div class="error" *ngIf="errorMessage">
+      <span>{{ errorMessage }}</span>
+    </div>
     <!-- Remind Passowrd -->
     <div id="formFooter">
       <a class="underlineHover" routerLink="forgot-password"

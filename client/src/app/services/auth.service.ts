@@ -120,6 +120,13 @@ export class AuthService implements OnDestroy {
       .pipe(tap(this.setUserData.bind(this)));
   }
 
+  resetPassword(email) {
+    return this.http.post<AuthResponseData>(
+      `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${environment.firebaseAPIkey}`,
+      { email: email, requestType: 'PASSWORD_RESET' }
+    );
+  }
+
   logout() {
     if (this.activeLogoutTimer) {
       clearTimeout(this.activeLogoutTimer);

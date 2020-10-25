@@ -24,6 +24,10 @@ class UserService {
   async getAdminUsers() {
     return UserModel.find({ isAdmin: true }).lean()
   }
+
+  async getAll() {
+    return UserModel.find().lean()
+  }
 }
 
 module.exports = new UserService()

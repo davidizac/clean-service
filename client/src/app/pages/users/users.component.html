@@ -4,29 +4,17 @@
       <div class="kqgbTY">
         <div class="style__TitleContainer-mh2zh9-4 URAtw">
           <div class="style__Text-mh2zh9-7 style__Title-mh2zh9-8 eTAyEB">
-            Nos pressings
-          </div>
-          <div class="style__SubTitle-mh2zh9-13 cQSOcu">
-            Recevez votre linge du pressing en moins de 48 heures
+            Mes utilisateurs
           </div>
         </div>
         <div class="style__SearchInputContainer-mh2zh9-11 bJdKoS">
           <input
-            [formControl]="location"
-            placeholder="Type a location"
+            [formControl]="filter"
+            placeholder="Type a name, email or a phone number "
             matInput
-            [matAutocomplete]="auto"
             class="style__SearchInput-mh2zh9-10 jeKoNK"
           />
-          <mat-autocomplete
-            (optionSelected)="onSelectionChange($event)"
-            autoActiveFirstOption
-            #auto="matAutocomplete"
-          >
-            <mat-option *ngFor="let option of options" [value]="option">
-              {{ option }}
-            </mat-option> </mat-autocomplete
-          ><span class="style__LabelInputContainer-mh2zh9-12 gofRfd"
+          <span class="style__LabelInputContainer-mh2zh9-12 gofRfd"
             ><svg width="24" height="24">
               <path
                 fill="#252C32"
@@ -36,10 +24,10 @@
           ></span>
         </div>
         <div class="pressings-list">
-          <ng-container *ngFor="let pressing of pressingDisplayed">
-            <ng-container *ngIf="isPressingOpened(pressing)">
-              <button (click)="closePressing(pressing)" class="liFQGu">
-                {{ pressing.name }}
+          <ng-container *ngFor="let user of usersDisplayed">
+            <ng-container *ngIf="isUserOpened(user)">
+              <button (click)="closeUser(user)" class="liFQGu">
+                {{ user.fullname }}
               </button>
               <div
                 class="productList__ProductListContainer-sc-1oz9rbz-5 hiKKKS"
@@ -51,33 +39,20 @@
                     <div
                       class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe"
                     ></div>
-                    <strong>Address:</strong> {{ pressing.address }}
+                    <strong>Email:</strong> {{ user.email }}
                   </div>
-                </div>
-                <div class="wrapper-icon">
-                  <button mat-button (click)="navigateToPressing(pressing._id)">
-                    <mat-icon
-                      class="example-icon"
-                      mat-button
-                      style="color: black"
-                      >chevron_right</mat-icon
-                    >
-                  </button>
-                  <button
-                    *ngIf="isAdmin"
-                    mat-button
-                    (click)="deletePressing(pressing._id)"
-                  >
-                    <mat-icon class="example-icon" mat-button style="color: red"
-                      >delete</mat-icon
-                    >
-                  </button>
+                  <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
+                    <div
+                      class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe"
+                    ></div>
+                    <strong>Telephone:</strong> {{ user.phoneNumber }}
+                  </div>
                 </div>
               </div>
             </ng-container>
-            <ng-container *ngIf="!isPressingOpened(pressing)">
-              <button (click)="openPressing(pressing)" class="liFQGu">
-                {{ pressing.name
+            <ng-container *ngIf="!isUserOpened(user)">
+              <button (click)="openUser(user)" class="liFQGu">
+                {{ user.fullname
                 }}<svg width="24" height="24">
                   <path
                     fill="#112631"
@@ -91,7 +66,7 @@
         </div>
         <mat-paginator
           (page)="pageChanged($event)"
-          [length]="pressings?.length"
+          [length]="users?.length"
           [pageSize]="pageSize"
         >
         </mat-paginator>

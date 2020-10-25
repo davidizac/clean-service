@@ -27,6 +27,7 @@ import { BsModalRef, BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { PipeModule } from './pipes/pipe.module';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { OrderConfirmationComponent } from './pages/order-confirmation/order-confirmation.component';
+import { UsersComponent } from './pages/users/users.component';
 
 export function tokenGetter(): string {
   const localStorage = new LocalStorageService();
@@ -49,6 +50,7 @@ export function tokenGetter(): string {
     DateSelectorComponent,
     ProfileComponent,
     OrderConfirmationComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,

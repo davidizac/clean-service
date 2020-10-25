@@ -49,4 +49,14 @@ export class UserService {
       })
     );
   }
+
+  getAll() {
+    return this.authService.token.pipe(
+      switchMap((token) => {
+        return this.http.get(`${environment.serverUrl}api/users/`, {
+          headers: { authorization: token },
+        });
+      })
+    );
+  }
 }
