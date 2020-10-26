@@ -27,6 +27,7 @@ export class UserService {
   createUser(email, fullname, phoneNumber) {
     return this.authService.token.pipe(
       switchMap((token) => {
+        console.log(token);
         return this.http.post(
           `${environment.serverUrl}api/users/`,
           {
