@@ -52,11 +52,7 @@ export class AuthService implements OnDestroy {
     return this._user.asObservable().pipe(
       map((user) => {
         if (user) {
-          console.log(user.token);
-          console.log(user['_token'].startsWith('ey'));
-          return user['_token'].startsWith('ey')
-            ? user['_token']
-            : user['token'];
+          return user.token as any;
         } else {
           return null;
         }

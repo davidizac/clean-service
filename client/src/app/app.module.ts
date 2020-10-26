@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LocalStorageService } from './services/local-storage.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { SigninComponent } from './pages/signin/signin.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
@@ -28,11 +27,6 @@ import { PipeModule } from './pipes/pipe.module';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { OrderConfirmationComponent } from './pages/order-confirmation/order-confirmation.component';
 import { UsersComponent } from './pages/users/users.component';
-
-export function tokenGetter(): string {
-  const localStorage = new LocalStorageService();
-  return localStorage.getItem('authData');
-}
 
 @NgModule({
   declarations: [
@@ -63,13 +57,6 @@ export function tokenGetter(): string {
     DemoMaterialModule,
     PipeModule,
     ModalModule.forRoot(),
-
-    JwtModule.forRoot({
-      config: {
-        tokenGetter,
-        allowedDomains: ['localhost', 'cleeser.com'],
-      },
-    }),
   ],
   entryComponents: [DateSelectorComponent],
   providers: [
