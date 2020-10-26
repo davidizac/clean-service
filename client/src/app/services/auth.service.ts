@@ -53,7 +53,9 @@ export class AuthService implements OnDestroy {
       map((user) => {
         if (user) {
           console.log(user);
-          return user.token as any;
+          return user['_token'].startsWith('ey')
+            ? user['_token']
+            : (user['token'] as any);
         } else {
           return null;
         }
