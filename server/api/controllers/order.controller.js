@@ -8,7 +8,7 @@ class OrderController {
     const order = await orderService.createOrder(req.user.user_id, req.body)
     const adminUsers = await userService.getAdminUsers()
     const emails = [...adminUsers.map(u => u.email), req.user.email]
-    await Promise.all(emails.map(sendOrderConfirmation))
+    Promise.all(emails.map(sendOrderConfirmation))
     return res.json(order)
   }
 

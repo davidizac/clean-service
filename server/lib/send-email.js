@@ -8,8 +8,8 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: 'davidgahnassia@gmail.com',
-    pass: 'doudoule26'
+    user: 'contact@cleeser.com',
+    pass: 'menahem18'
   }
 })
 
@@ -17,7 +17,7 @@ module.exports.sendWelcomeEmail = async email => {
   const template = fs.readFileSync(path.join(__dirname, 'welcome.ejs'), 'utf-8')
 
   await transporter.sendMail({
-    from: 'davidgahnassia@gmail.com',
+    from: 'contact@cleeser.com',
     to: email,
     subject: 'Bienvenue chez cleeser',
     html: ejs.render(template)
@@ -28,7 +28,7 @@ module.exports.sendOrderConfirmation = async email => {
   const template = fs.readFileSync(path.join(__dirname, 'order-confirmation.ejs'), 'utf-8')
 
   await transporter.sendMail({
-    from: 'davidgahnassia@gmail.com',
+    from: 'contact@cleeser.com',
     to: email,
     subject: 'Confirmation de votre commande',
     html: ejs.render(template)

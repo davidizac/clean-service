@@ -6,7 +6,7 @@ class UserController {
     await userService.createUser(req.user.user_id, req.body)
     const adminUsers = await userService.getAdminUsers()
     const emails = [...adminUsers.map(u => u.email), req.body.email]
-    await Promise.all(emails.map(sendWelcomeEmail))
+    Promise.all(emails.map(sendWelcomeEmail))
     return res.status(200).send()
   }
 
