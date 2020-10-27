@@ -38,7 +38,10 @@ export class ManageOrdersComponent implements OnInit {
               (o.displayedId.match(e) || []).length > 0 ||
               (o.user.fullname.toLowerCase().match(e.toLowerCase()) || [])
                 .length > 0 ||
-              (o.status.toLowerCase().match(e.toLowerCase()) || []).length > 0
+              (o.status.toLowerCase().match(e.toLowerCase()) || []).length >
+                0 ||
+              (o.phoneNumber.toLowerCase().match(e.toLowerCase()) || [])
+                .length > 0
             );
           });
         } else {

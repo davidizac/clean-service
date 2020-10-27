@@ -6,12 +6,12 @@
     <div class="shopping-cart-page__CartBlock-arjt3o-10 euStKy">
       <div class="shopping-cart-page__FirstBlock-arjt3o-1 hJnlVQ">
         <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV"
-          >Pickup address</span
+          >Addresse de recuperation</span
         >
         <div class="address-button__Button-oifptd-0 kHzhHJ">
           <input
             [formControl]="pickUpAddress"
-            placeholder="Type the pickup address"
+            placeholder="Tapez l'addresse de recuperation"
             matInput
             [matAutocomplete]="auto"
             class="address"
@@ -28,7 +28,7 @@
         </div>
 
         <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV"
-          >Address details (optional)</span
+          >Details de l'addresse (optional)</span
         >
         <div class="address-button__Button-oifptd-0 kHzhHJ">
           <input
@@ -51,19 +51,20 @@
               for="another-address"
               class="style__CheckboxLabel-sc-18pyt5v-1 kbJGuN"
               ><span
-                >Do you want to choose a different dropoff address ?</span
+                >Voulez vous choisir une differente addresse de recuperation
+                ?</span
               ></label
             >
           </div>
         </div>
         <ng-container *ngIf="anotherAddress">
           <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV"
-            >Dropoff address</span
+            >Addresse de recuperation</span
           >
           <div class="address-button__Button-oifptd-0 kHzhHJ">
             <input
               [formControl]="dropOffAddress"
-              placeholder="Type the dropoff address"
+              placeholder="Tapez l'addresse de restitution"
               matInput
               [matAutocomplete]="auto"
               class="address"
@@ -82,7 +83,7 @@
             </mat-autocomplete>
           </div>
           <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV"
-            >Address details (optional)</span
+            >Details de l'addresse (optional)</span
           >
           <div class="address-button__Button-oifptd-0 kHzhHJ">
             <input
@@ -102,7 +103,8 @@
               (click)="openPopup(true)"
             >
               <ng-container *ngIf="pickUpDate">
-                <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE">Pickup</span
+                <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE"
+                  >Recuperation</span
                 ><span class="style__TimeText-sc-10wq5t7-3 iAKgzk">{{
                   pickUpDate | time_format
                 }}</span
@@ -112,7 +114,7 @@
               </ng-container>
               <ng-container *ngIf="!pickUpDate">
                 <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE"
-                  >Choose pickup slots</span
+                  >Creneau de recuperation</span
                 >
               </ng-container></button
             ><button
@@ -120,7 +122,8 @@
               (click)="openPopup(false)"
             >
               <ng-container *ngIf="dropOffDate">
-                <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE">Dropoff</span
+                <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE"
+                  >Restitution</span
                 ><span class="style__TimeText-sc-10wq5t7-3 iAKgzk">{{
                   dropOffDate | time_format
                 }}</span
@@ -130,16 +133,24 @@
               </ng-container>
               <ng-container *ngIf="!dropOffDate">
                 <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE"
-                  >Choose dropoff slots</span
+                  >Creneau de restitution</span
                 >
               </ng-container>
             </button>
           </div>
         </div>
-
         <div class="style__OptionnalInfoContainer-sc-1q0ajs2-7 MVQFs">
           <span class="style__GreyTitle-sc-1q0ajs2-4 foyaIu"
-            >Optionnal information</span
+            >Numero de telephone:</span
+          ><textarea
+            [(ngModel)]="phoneNumber"
+            placeholder="0541234567"
+            class="style__MoreInfoInput-sc-1q0ajs2-8 hxUgCd"
+          ></textarea>
+        </div>
+        <div class="style__OptionnalInfoContainer-sc-1q0ajs2-7 MVQFs">
+          <span class="style__GreyTitle-sc-1q0ajs2-4 foyaIu"
+            >Information optionelle</span
           ><textarea
             [(ngModel)]="comment"
             placeholder="Avez-vous une requête particulière ?"
@@ -148,7 +159,7 @@
         </div>
       </div>
       <div class="shopping-cart-page__SecondBlock-arjt3o-2 jtUsXN">
-        <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV">Order</span>
+        <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV">Commande</span>
         <div class="products-in-cart__ProductsContainer-mbbtn6-0 hbQyQL">
           <div
             class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF"
@@ -195,7 +206,7 @@
         <div class="order-summary__Container-sc-2gc5ap-0 ktgkUf">
           <div class="order-summary__SummaryLineContainer-sc-2gc5ap-1 dDUVLw">
             <span class="order-summary__InputDark-sc-2gc5ap-3 doxodF"
-              >Shipping cost</span
+              >Frais de livraison</span
             ><span class="order-summary__H3Dark-sc-2gc5ap-4 kvqIDJ"
               >10 &#8362;</span
             >
@@ -208,7 +219,7 @@
             >
           </div>
           <span class="order-summary__MinimumPrice-sc-2gc5ap-2 kTfBpA"
-            >Minimum order 100&#8362;
+            >Commande minimum: 100&#8362;
           </span>
         </div>
       </div>

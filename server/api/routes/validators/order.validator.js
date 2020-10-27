@@ -19,6 +19,7 @@ const createOrderValidator = Joi.object({
   pickUpDate: Joi.date().required(),
   dropOffDate: Joi.date().required(),
   price: Joi.string().required(),
+  phoneNumber: Joi.string().required(),
   comment: Joi.string()
     .allow('')
     .optional(),
@@ -54,6 +55,7 @@ const updateOrderStatusValidator = Joi.object({
   pickUpDate: Joi.date().required(),
   dropOffDate: Joi.date().required(),
   price: Joi.string().required(),
+  phoneNumber: Joi.string().required(),
   comment: Joi.string()
     .allow('')
     .optional(),

@@ -173,4 +173,9 @@ export class PressingsComponent implements OnInit {
       );
     });
   }
+
+  updatePressing(pressingId) {
+    localStorage.setItem('adminMode', 'true');
+    this.router.navigate([`/pressing-creator/${pressingId}`]);
+  }
 }

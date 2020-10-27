@@ -40,6 +40,11 @@ const routes: Routes = [
     canActivate: [AuthGuard, AdminGuard],
   },
   {
+    path: 'pressing-creator/:id',
+    component: PressingCreatorComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  {
     path: 'orders',
     component: OrdersComponent,
     canActivate: [AuthGuard],

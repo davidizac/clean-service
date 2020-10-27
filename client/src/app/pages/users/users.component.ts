@@ -21,7 +21,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UsersComponent implements OnInit {
   users;
-  displayedColumns: string[] = ['fullname', 'email', 'phoneNumber'];
+  displayedColumns: string[] = ['fullname', 'email'];
   options = [];
   dataSource;
 
@@ -51,10 +51,7 @@ export class UsersComponent implements OnInit {
           this.usersDisplayed = this.users.filter((o) => {
             return (
               (o.email.match(e) || []).length > 0 ||
-              (o.fullname.toLowerCase().match(e.toLowerCase()) || []).length >
-                0 ||
-              ((o.phoneNumber || '').toLowerCase().match(e.toLowerCase()) || [])
-                .length > 0
+              (o.fullname.toLowerCase().match(e.toLowerCase()) || []).length > 0
             );
           });
         } else {

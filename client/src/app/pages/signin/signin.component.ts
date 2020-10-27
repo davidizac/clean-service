@@ -15,7 +15,6 @@ export class SigninComponent implements OnInit {
   password: string;
   fullname: string;
   returnUrl: string;
-  phoneNumber: string;
   errorMessage;
 
   constructor(
@@ -35,23 +34,14 @@ export class SigninComponent implements OnInit {
     this.isSignin = !this.isSignin;
   }
 
-  authenticate(
-    email: string,
-    password: string,
-    fullname: string,
-    phoneNumber: string
-  ) {
+  authenticate(email: string, password: string, fullname: string) {
     let authObs;
     if (this.isSignin) {
       authObs = this.authService.login(email, password);
     } else {
       authObs = this.authService
         .signup(email, password)
-        .pipe(
-          switchMap((res) =>
-            this.userService.createUser(email, fullname, phoneNumber)
-          )
-        );
+        .pipe(switchMap((res) => this.userService.createUser(email, fullname)));
     }
     authObs.subscribe(
       (resData) => {
@@ -59,24 +49,19 @@ export class SigninComponent implements OnInit {
       },
       (errRes) => {
         const code = errRes.error.error.message;
-        this.errorMessage = 'Could not sign you up, please try again.';
+        this.errorMessage = `Impossible de s'inscrire pour le moment, ressayez plus tard.`;
         if (code === 'EMAIL_EXISTS') {
-          this.errorMessage = 'This email address exists already!';
+          this.errorMessage = 'Cette email existe deja.';
         } else if (code === 'EMAIL_NOT_FOUND') {
-          this.errorMessage = 'E-Mail address could not be found.';
+          this.errorMessage = 'Addresse email introuvable.';
         } else if (code === 'INVALID_PASSWORD') {
-          this.errorMessage = 'This password is not correct.';
+          this.errorMessage = 'Mot de passe incorrect.';
         }
       }
     );
   }
 
   onSubmit() {
-    this.authenticate(
-      this.email,
-      this.password,
-      this.fullname,
-      this.phoneNumber
-    );
+    this.authenticate(this.email, this.password, this.fullname);
   }
 }

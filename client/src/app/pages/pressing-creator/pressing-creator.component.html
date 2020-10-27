@@ -1,4 +1,4 @@
-<div class="form">
+<div class="form" *ngIf="isNew || (!isNew && pressing)">
   <h2 class="mt-3">Pressing Form</h2>
   <form class="d-flex flex-column w-50 p-3" [formGroup]="pressingForm">
     <mat-form-field class="example-full-width">
@@ -98,12 +98,12 @@
   </form>
   <button
     class="create-pressing"
-    (click)="createPressing()"
+    (click)="isNew ? createPressing() : updatePressing()"
     type="submit"
     mat-raised-button
     color="primary"
   >
-    Create Pressing
+    {{ getMessageButton() }}
   </button>
   <mat-progress-spinner
     class="example-margin"

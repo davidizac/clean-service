@@ -8,7 +8,10 @@ class PressingService {
     const products = pressingData.products
     delete pressingData.products
     const pressing = new PressingModel(pressingData)
-    products.forEach(product => (product.pressingId = pressing._id))
+    products.forEach(product => {
+      product.pressingId = pressing._id
+      delete product._id
+    })
     await pressing.save()
     await ProductModel.insertMany(products)
   }
@@ -44,6 +47,28 @@ class PressingService {
     const products = await ProductModel.find({ pressingId: pressing._id }).lean()
     pressing.products = products
     return pressing
+  }
+
+  async updatePressing(pressingId, pressing) {
+    await ProductModel.deleteMany({ pressingId })
+    const newProducts = pressing.products.filter(p => p._id.length === 0)
+    newProducts.forEach(p => delete p._id)
+    const promises = [
+      ...pressing.products
+        .filter(p => p._id)
+        .map(p => ProductModel.findOneAndUpdate({ _id: p._id }, { $set: p }, { upsert: true }))
+    ]
+    if (newProducts.length > 0) {
+      promises.push(ProductModel.insertMany(newProducts))
+    }
+    await Promise.all(promises)
+    return PressingModel.findOneAndUpdate(
+      { _id: pressingId },
+      {
+        $set: pressing
+      },
+      { returnOriginal: false }
+    ).lean()
   }
 }
 

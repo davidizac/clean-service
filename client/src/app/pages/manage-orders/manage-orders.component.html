@@ -7,7 +7,8 @@
   <div class="style__SearchInputContainer-mh2zh9-11 bJdKoS">
     <div class="filter">
       <span class="summary__Label-sc-1c6q2r7-1 jxoSLr"
-        >Entrez un nom, un numero de commande ou le status de commande.</span
+        >Entrez un nom/telephone du client ou un numero/status de
+        commande.</span
       >
       <input
         [formControl]="filter"
@@ -171,7 +172,7 @@
                   >Telephone:</span
                 ><span
                   class="order-detail__Text-sc-1q4n31i-14 order-detail__BoldText-sc-1q4n31i-18 MkxYI"
-                  >{{ order.user.phoneNumber }}</span
+                  >{{ order.phoneNumber }}</span
                 >
               </div>
               <div class="order-detail__ProductsContainer-sc-1q4n31i-9 ddhryE">

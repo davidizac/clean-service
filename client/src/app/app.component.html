@@ -29,38 +29,44 @@
       *ngIf="!adminMode"
       class="desktop-menu__DesktopMenuContainer-sc-13qn4qo-3 hGkhFL"
     >
-      <a
-        routerLink="/pressings"
-        class="desktop-menu__DesktopMenuLink-sc-13qn4qo-5 hcjVjE"
-        ><div class="desktop-menu__DesktopMenuText-sc-13qn4qo-7 lkwfuK">
-          Nos Pressings
-        </div></a
-      ><a
-        routerLink="/orders"
-        class="desktop-menu__DesktopMenuLink-sc-13qn4qo-5 hcjVjE"
-        ><div class="desktop-menu__DesktopMenuText-sc-13qn4qo-7 lkwfuK">
-          Mes commandes
-        </div></a
-      >
-      <div class="desktop-menu__SignInContainer-sc-13qn4qo-1 fXFOoG">
+      <div class="submenu">
         <a
-          *ngIf="isAuthenticated && !adminMode"
-          width="100%"
-          font-size="15px"
-          routerLink="/profile"
-          class="style__ButtonStyle-zdp3iu-0 dDpprB"
-          >{{ user?.fullname }}</a
+          routerLink="/pressings"
+          class="desktop-menu__DesktopMenuLink-sc-13qn4qo-5 hcjVjE"
+          ><div class="desktop-menu__DesktopMenuText-sc-13qn4qo-7 lkwfuK">
+            Nos Pressings
+          </div></a
+        ><a
+          routerLink="/orders"
+          class="desktop-menu__DesktopMenuLink-sc-13qn4qo-5 hcjVjE"
+          ><div class="desktop-menu__DesktopMenuText-sc-13qn4qo-7 lkwfuK">
+            Mes commandes
+          </div></a
         >
       </div>
-      <div class="desktop-menu__SignInContainer-sc-13qn4qo-1 fXFOoG">
-        <a
-          routerLink="/signin"
-          *ngIf="!isAuthenticated"
-          width="100%"
-          font-size="15px"
-          class="style__ButtonStyle-zdp3iu-0 dDpprB"
-          >Signin</a
-        >
+      <div class="submenu2 fXFOoG">
+        <div class="desktop-menu__SignInContainer-sc-13qn4qo-1 fXFOoG">
+          <a
+            *ngIf="isAuthenticated && !adminMode"
+            width="100%"
+            font-size="15px"
+            [ngClass]="!isAuthenticated ? '' : 'displaynone'"
+            routerLink="/profile"
+            class="style__ButtonStyle-zdp3iu-0 dDpprB"
+            >{{ user?.fullname }}</a
+          >
+        </div>
+        <div class="desktop-menu__SignInContainer-sc-13qn4qo-1 fXFOoG">
+          <a
+            routerLink="/signin"
+            *ngIf="!isAuthenticated"
+            [ngClass]="!isAuthenticated ? '' : 'displaynone'"
+            width="100%"
+            font-size="15px"
+            class="style__ButtonStyle-zdp3iu-0 dDpprB"
+            >Signin</a
+          >
+        </div>
       </div>
     </div>
     <div

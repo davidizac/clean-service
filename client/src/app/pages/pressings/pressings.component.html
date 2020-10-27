@@ -66,11 +66,16 @@
                   <button
                     *ngIf="isAdmin"
                     mat-button
+                    (click)="updatePressing(pressing._id)"
+                  >
+                    <mat-icon class="example-icon" mat-button>update</mat-icon>
+                  </button>
+                  <button
+                    *ngIf="isAdmin"
+                    mat-button
                     (click)="deletePressing(pressing._id)"
                   >
-                    <mat-icon class="example-icon" mat-button style="color: red"
-                      >delete</mat-icon
-                    >
+                    <mat-icon class="example-icon" mat-button>delete</mat-icon>
                   </button>
                 </div>
               </div>

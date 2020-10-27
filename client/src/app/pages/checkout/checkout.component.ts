@@ -37,6 +37,7 @@ export class CheckoutComponent implements OnInit {
   addressDetails2;
   isNew: string;
   orderId;
+  phoneNumber: string;
 
   get isInvalidOrder() {
     if (this.order)
@@ -47,7 +48,8 @@ export class CheckoutComponent implements OnInit {
         !this.pickUpDate ||
         !this.dropOffDate ||
         !this.pickUpDate ||
-        !this.dropOffDate
+        !this.dropOffDate ||
+        !this.phoneNumber
       );
   }
 
@@ -74,6 +76,7 @@ export class CheckoutComponent implements OnInit {
     this.pickUpDate = this.order.pickUpDate;
     this.dropOffDate = this.order.dropOffDate;
     this.comment = this.order.comment;
+    this.phoneNumber = this.order.phoneNumber;
     this.orderId = this.route.snapshot.queryParamMap['params'].orderId;
     this.filteredProducts = _.uniqBy(this.products, '_id');
   }
@@ -154,19 +157,19 @@ export class CheckoutComponent implements OnInit {
     }
     if (this.isInvalidOrder) {
       if (this.getPrice() < 100) {
-        this.errorMessage = 'Minimum order: 100₪';
+        this.errorMessage = 'Commande minimum 100₪';
       } else if (!this.order.pickUpAddress) {
-        this.errorMessage = 'Pickup address is required';
+        this.errorMessage = 'Addresse de recuperation obligatoire';
       } else if (!this.order.dropOffAddress) {
-        this.errorMessage = 'Dropoff address is required';
+        this.errorMessage = 'Addresse de restitution obligatoire';
       } else if (!this.pickUpDate) {
-        this.errorMessage = 'Pickup date is required';
+        this.errorMessage = 'Creneau de recuperation obligatoire';
       } else if (!this.dropOffDate) {
-        this.errorMessage = 'Dropoff date is required';
+        this.errorMessage = 'Creneau de restitution obligatoire';
       } else if (!this.pickUpDate.format()) {
-        this.errorMessage = 'Pickup date is required';
+        this.errorMessage = 'Creneau de recuperation obligatoire';
       } else if (!this.dropOffDate.format()) {
-        this.errorMessage = 'Dropoff date is required';
+        this.errorMessage = 'Creneau de restitution obligatoire';
       }
       return;
     }
@@ -176,6 +179,7 @@ export class CheckoutComponent implements OnInit {
     this.order.dropOffDate = this.dropOffDate.format();
     this.order.products = this.products.map((p) => p._id);
     this.order.comment = this.comment;
+    this.order.phoneNumber = this.phoneNumber;
     this.order.status = 'NEW';
     this.order.price = this.getPrice().toString();
     this.orderService.createOrder(this.order).subscribe((order) => {
@@ -196,19 +200,19 @@ export class CheckoutComponent implements OnInit {
   updateOrder() {
     if (this.isInvalidOrder) {
       if (this.getPrice() < 100) {
-        this.errorMessage = 'Minimum order: 100₪';
+        this.errorMessage = 'Commande minimum 100₪';
       } else if (!this.order.pickUpAddress) {
-        this.errorMessage = 'Pickup address is required';
+        this.errorMessage = 'Addresse de recuperation obligatoire';
       } else if (!this.order.dropOffAddress) {
-        this.errorMessage = 'Dropoff address is required';
+        this.errorMessage = 'Addresse de restitution obligatoire';
       } else if (!this.pickUpDate) {
-        this.errorMessage = 'Pickup date is required';
+        this.errorMessage = 'Creneau de recuperation obligatoire';
       } else if (!this.dropOffDate) {
-        this.errorMessage = 'Dropoff date is required';
+        this.errorMessage = 'Creneau de restitution obligatoire';
       } else if (!this.pickUpDate.format()) {
-        this.errorMessage = 'Pickup date is required';
+        this.errorMessage = 'Creneau de recuperation obligatoire';
       } else if (!this.dropOffDate.format()) {
-        this.errorMessage = 'Dropoff date is required';
+        this.errorMessage = 'Creneau de restitution obligatoire';
       }
       return;
     }
@@ -224,6 +228,7 @@ export class CheckoutComponent implements OnInit {
         : this.dropOffDate;
     this.order.products = this.products.map((p) => p._id);
     this.order.comment = this.comment;
+    this.order.phoneNumber = this.phoneNumber;
     this.order.status = 'NEW';
     this.order.price = this.getPrice().toString();
     this.orderService.updateOrder(this.order, this.orderId).subscribe(() => {

@@ -20,6 +20,11 @@ class PressingController {
     await pressingService.delete(req.params.id)
     return res.status(200).send()
   }
+
+  async updatePressing(req, res) {
+    const pressings = await pressingService.updatePressing(req.params.id, req.body)
+    return res.json(pressings)
+  }
 }
 
 module.exports = new PressingController()

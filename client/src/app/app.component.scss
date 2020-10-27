@@ -38,7 +38,6 @@
   -webkit-box-pack: justify;
   justify-content: space-between;
   padding-left: 220px;
-  padding-right: 15%;
   position: fixed;
   top: 0px;
   width: 100%;
@@ -90,10 +89,16 @@
 .fXFOoG {
   display: none;
   justify-content: right;
+  text-align: revert;
   margin-left: auto;
-  text-align: center;
-  min-width: 20%;
+  text-align: right;
   min-height: 40px;
+  width: 50%;
+}
+
+.displaynone {
+  display: none;
+  width: 0;
 }
 
 @media (min-width: 1200px) {
@@ -271,4 +276,9 @@ footer {
 .insta {
   display: flex;
   align-items: center;
+}
+
+.submenu {
+  display: flex;
+  width: 100%;
 }

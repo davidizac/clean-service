@@ -21,7 +21,8 @@ class UserController {
   }
 
   async getAll(req, res) {
-    return res.json(await userService.getAll())
+    const users = await userService.getAll()
+    return res.json(users)
   }
 }
 

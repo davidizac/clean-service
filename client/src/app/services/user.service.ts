@@ -24,7 +24,7 @@ export class UserService {
     );
   }
 
-  createUser(email, fullname, phoneNumber) {
+  createUser(email, fullname) {
     return this.authService.token.pipe(
       switchMap((token) => {
         return this.http.post(
@@ -32,7 +32,6 @@ export class UserService {
           {
             email,
             fullname,
-            phoneNumber,
           },
           { headers: { authorization: token } }
         );

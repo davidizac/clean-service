@@ -10,6 +10,12 @@ const createPressingValidator = Joi.object({
     .optional(),
   products: Joi.array().items(
     Joi.object({
+      _id: Joi.string()
+        .allow('')
+        .optional(),
+      pressingId: Joi.string()
+        .allow('')
+        .optional(),
       price: Joi.string(),
       category: Joi.string(),
       name: Joi.string()
@@ -17,6 +23,29 @@ const createPressingValidator = Joi.object({
   )
 })
 
+const updatePressingValidator = Joi.object({
+  _id: Joi.allow('').optional(),
+  name: Joi.string().required(),
+  address: Joi.string().required(),
+  latitude: Joi.allow('').optional(),
+  longitude: Joi.allow('').optional(),
+  phoneNumber: Joi.string()
+    .allow('')
+    .optional(),
+  products: Joi.array().items(
+    Joi.object({
+      _id: Joi.string()
+        .allow('')
+        .optional(),
+      pressingId: Joi.string()
+        .allow('')
+        .optional(),
+      price: Joi.string(),
+      category: Joi.string(),
+      name: Joi.string()
+    })
+  )
+})
 // const getAllPressingValidator = {
 //   coordinates: Joi.object({
 //     latitude: Joi.string().required(),
@@ -28,6 +57,6 @@ const createPressingValidator = Joi.object({
 // }
 
 module.exports = {
-  createPressingValidator
-  // getAllPressingValidator
+  createPressingValidator,
+  updatePressingValidator
 }

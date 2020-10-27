@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CATEGORIES } from 'src/app/constant';
-import { Pressing } from 'src/app/models/pressing.model';
+import { IProduct, Pressing } from 'src/app/models/pressing.model';
 import { PressingService } from 'src/app/services/pressing.service';
 
 function validateSize(arr: FormArray) {
@@ -23,7 +23,8 @@ export class PressingCreatorComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public pressingService: PressingService,
-    public router: Router
+    public router: Router,
+    public route: ActivatedRoute
   ) {}
   pressingForm: FormGroup;
   environment: Array<string>;
@@ -41,12 +42,23 @@ export class PressingCreatorComponent implements OnInit {
     price: '',
     category: '',
     name: '',
+    _id: '',
+    pressingId: '',
   };
+  pressing: Pressing;
+  pressingId;
+  isNew = false;
 
-  ngOnInit() {
+  async ngOnInit() {
     this.categories = CATEGORIES;
     this.models = [];
-
+    this.pressingId = '';
+    if (this.route.snapshot.params.id) {
+      this.pressing = await this.pressingService
+        .getPressing(this.route.snapshot.params.id)
+        .toPromise();
+      this.pressingId = this.pressing._id;
+    }
     this.pressingForm = this.formBuilder.group({
       name: '',
       address: '',
@@ -57,6 +69,29 @@ export class PressingCreatorComponent implements OnInit {
       ),
     });
     this.products = this.pressingForm.get('products') as FormArray;
+    if (this.pressing) {
+      this.pressing.products.forEach((p) => {
+        this.products.push(this.formBuilder.group(this.product));
+      });
+      this.products.removeAt(this.products.length - 1);
+      this.pressingForm.setValue({
+        name: this.pressing.name || '',
+        address: this.pressing.address || '',
+        phoneNumber: this.pressing.phoneNumber || '',
+        products: ((this.pressing.products.length > 0
+          ? this.pressing.products
+          : new Array(1).fill(this.product)) as Array<IProduct>).map((p) => {
+          return {
+            _id: p._id,
+            price: p.price,
+            category: p.category,
+            name: p.name,
+            pressingId: p['pressingId'],
+          };
+        }),
+      });
+    }
+    this.isNew = this.pressingForm.value.name.length === 0;
     this.pressingForm.get('address').valueChanges.subscribe((value) => {
       this._filter(value);
     });
@@ -100,6 +135,23 @@ export class PressingCreatorComponent implements OnInit {
       });
   }
 
+  updatePressing() {
+    const pressing = new Pressing(this.pressingForm.value);
+    pressing.products.forEach((p) => {
+      p.price = p.price.toString();
+      p['pressingId'] = this.pressingId;
+    });
+    pressing.latitude = this.latitude || pressing.latitude;
+    pressing.longitude = this.longitude || pressing.longitude;
+    this.isLoading = true;
+    this.pressingService
+      .updatePressing(pressing, this.pressingId)
+      .subscribe(() => {
+        this.isLoading = false;
+        this.router.navigate(['/home']);
+      });
+  }
+
   addProduct() {
     this.products.push(this.formBuilder.group(this.product));
   }
@@ -123,5 +175,13 @@ export class PressingCreatorComponent implements OnInit {
       },
       navigate.bind(this)
     );
+  }
+
+  getMessageButton() {
+    if (this.isNew) {
+      return 'Creer Pressing';
+    } else {
+      return 'Modifier Pressing';
+    }
   }
 }

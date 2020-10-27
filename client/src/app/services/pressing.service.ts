@@ -43,4 +43,18 @@ export class PressingService {
       })
     );
   }
+
+  updatePressing(pressing: Pressing, pressingId: string) {
+    return this.authService.token.pipe(
+      switchMap((token) => {
+        return this.http.put(
+          `${environment.serverUrl}api/pressings/${pressingId}`,
+          pressing,
+          {
+            headers: { authorization: token },
+          }
+        );
+      })
+    );
+  }
 }
