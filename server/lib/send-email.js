@@ -17,9 +17,9 @@ module.exports.sendWelcomeEmail = async email => {
   const template = fs.readFileSync(path.join(__dirname, 'welcome.ejs'), 'utf-8')
 
   await transporter.sendMail({
-    from: 'contact@cleeser.com',
+    from: 'Cleeser <contact@cleeser.com',
     to: email,
-    subject: 'Bienvenue chez cleeser',
+    subject: 'Bienvenue chez Cleeser !',
     html: ejs.render(template)
   })
 }
@@ -28,7 +28,7 @@ module.exports.sendOrderConfirmation = async email => {
   const template = fs.readFileSync(path.join(__dirname, 'order-confirmation.ejs'), 'utf-8')
 
   await transporter.sendMail({
-    from: 'contact@cleeser.com',
+    from: 'Cleeser <contact@cleeser.com',
     to: email,
     subject: 'Confirmation de votre commande',
     html: ejs.render(template)
