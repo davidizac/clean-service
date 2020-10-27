@@ -14,7 +14,7 @@ class UserService {
 
   async isAdmin(userId) {
     const user = await UserModel.findById(userId)
-    return user.isAdmin
+    return user?.isAdmin
   }
 
   async getUser(userId) {
