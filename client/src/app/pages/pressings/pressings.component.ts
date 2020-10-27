@@ -49,7 +49,6 @@ export class PressingsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.isLoading = true;
     this.location = this.formBuilder.control('');
     this.location.valueChanges.subscribe((e) => {
       this.triggerAutocomplete(e);
@@ -67,7 +66,6 @@ export class PressingsComponent implements OnInit {
         })
       )
       .subscribe((isAdmin) => {
-        this.isLoading = false;
         this.isAdmin = isAdmin;
       });
   }
