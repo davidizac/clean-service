@@ -7,6 +7,13 @@ body {
   display: flex;
   height: 100%;
   flex-direction: column;
+  min-height: 550px;
+}
+
+@media (max-width: 1200px) {
+  body {
+    height: calc(100% - 80px);
+  }
 }
 
 body {

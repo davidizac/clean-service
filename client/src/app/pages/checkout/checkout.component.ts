@@ -46,8 +46,8 @@ export class CheckoutComponent implements OnInit {
         this.getPrice() < 100 ||
         !this.pickUpDate ||
         !this.dropOffDate ||
-        !this.pickUpDate.format() ||
-        !this.dropOffDate.format()
+        !this.pickUpDate ||
+        !this.dropOffDate
       );
   }
 
