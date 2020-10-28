@@ -15,6 +15,7 @@ export class SigninComponent implements OnInit {
   password: string;
   fullname: string;
   returnUrl: string;
+  phoneNumber: string;
   errorMessage;
 
   constructor(
@@ -34,14 +35,23 @@ export class SigninComponent implements OnInit {
     this.isSignin = !this.isSignin;
   }
 
-  authenticate(email: string, password: string, fullname: string) {
+  authenticate(
+    email: string,
+    password: string,
+    fullname: string,
+    phoneNumber: string
+  ) {
     let authObs;
     if (this.isSignin) {
       authObs = this.authService.login(email, password);
     } else {
       authObs = this.authService
         .signup(email, password)
-        .pipe(switchMap((res) => this.userService.createUser(email, fullname)));
+        .pipe(
+          switchMap((res) =>
+            this.userService.createUser(email, fullname, phoneNumber)
+          )
+        );
     }
     authObs.subscribe(
       (resData) => {
@@ -62,6 +72,11 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authenticate(this.email, this.password, this.fullname);
+    this.authenticate(
+      this.email,
+      this.password,
+      this.fullname,
+      this.phoneNumber
+    );
   }
 }

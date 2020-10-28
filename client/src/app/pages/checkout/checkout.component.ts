@@ -7,6 +7,7 @@ import { DateSelectorComponent } from 'src/app/popups/date-selector/date-selecto
 import { Order } from 'src/app/models/order.model';
 import { OrderService } from 'src/app/services/order.service';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-checkout',
@@ -19,7 +20,8 @@ export class CheckoutComponent implements OnInit {
     public router: Router,
     private modalService: BsModalService,
     private orderService: OrderService,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public userService: UserService
   ) {}
   pickUpOptions = [];
   dropOffOptions = [];
@@ -53,7 +55,7 @@ export class CheckoutComponent implements OnInit {
       );
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.pickUpAddress = this.formBuilder.control('');
     this.addressDetails = this.formBuilder.control('');
     this.addressDetails2 = this.formBuilder.control('');
@@ -64,6 +66,7 @@ export class CheckoutComponent implements OnInit {
     this.dropOffAddress.valueChanges.subscribe((e) => {
       this.triggerAutocomplete(e, false);
     });
+
     this.isNew = this.route.snapshot.queryParamMap['params'].isNew;
     this.order = JSON.parse(this.route.snapshot.queryParamMap['params'].order);
     this.products = this.order.products as Array<IProduct>;
@@ -76,7 +79,9 @@ export class CheckoutComponent implements OnInit {
     this.pickUpDate = this.order.pickUpDate;
     this.dropOffDate = this.order.dropOffDate;
     this.comment = this.order.comment;
-    this.phoneNumber = this.order.phoneNumber;
+    this.userService.getMe().subscribe((user) => {
+      this.phoneNumber = this.order.phoneNumber || user['phoneNumber'];
+    });
     this.orderId = this.route.snapshot.queryParamMap['params'].orderId;
     this.filteredProducts = _.uniqBy(this.products, '_id');
   }
@@ -170,6 +175,8 @@ export class CheckoutComponent implements OnInit {
         this.errorMessage = 'Creneau de recuperation obligatoire';
       } else if (!this.dropOffDate.format()) {
         this.errorMessage = 'Creneau de restitution obligatoire';
+      } else if (!this.phoneNumber) {
+        this.errorMessage = 'Numero de telephone obligatoire';
       }
       return;
     }
@@ -213,6 +220,8 @@ export class CheckoutComponent implements OnInit {
         this.errorMessage = 'Creneau de recuperation obligatoire';
       } else if (!this.dropOffDate.format()) {
         this.errorMessage = 'Creneau de restitution obligatoire';
+      } else if (!this.phoneNumber) {
+        this.errorMessage = 'Numero de telephone obligatoire';
       }
       return;
     }

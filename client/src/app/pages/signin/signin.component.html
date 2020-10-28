@@ -12,12 +12,20 @@
           placeholder="Full Name"
         />
         <input
+          [(ngModel)]="phoneNumber"
+          autocomplete="off"
+          type="text"
+          name="phoneNumber"
+          placeholder="Telephone"
+        />
+        <input
           autocomplete="off"
           [(ngModel)]="email"
           type="text"
           name="email"
           placeholder="Email"
         />
+
         <input
           autocomplete="off"
           [(ngModel)]="password"

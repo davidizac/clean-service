@@ -13,6 +13,7 @@ const userSchema = new Schema(
       index: true,
       validate: validator.isEmail
     },
+    phoneNumber: { type: String, required: true },
     isAdmin: { type: Boolean, default: false }
   },
 
