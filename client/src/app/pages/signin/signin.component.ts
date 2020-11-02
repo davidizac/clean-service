@@ -45,13 +45,7 @@ export class SigninComponent implements OnInit {
     if (this.isSignin) {
       authObs = this.authService.login(email, password);
     } else {
-      authObs = this.authService
-        .signup(email, password)
-        .pipe(
-          switchMap((res) =>
-            this.userService.createUser(email, fullname, phoneNumber)
-          )
-        );
+      authObs = this.authService.signup(email, password, fullname, phoneNumber);
     }
     authObs.subscribe(
       (resData) => {

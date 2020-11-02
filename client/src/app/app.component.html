@@ -44,19 +44,8 @@
           </div></a
         >
       </div>
-      <div class="submenu2 fXFOoG">
-        <div class="desktop-menu__SignInContainer-sc-13qn4qo-1 fXFOoG">
-          <a
-            *ngIf="isAuthenticated && !adminMode"
-            width="100%"
-            font-size="15px"
-            [ngClass]="!isAuthenticated ? '' : 'displaynone'"
-            routerLink="/profile"
-            class="style__ButtonStyle-zdp3iu-0 dDpprB"
-            >{{ user?.fullname }}</a
-          >
-        </div>
-        <div class="desktop-menu__SignInContainer-sc-13qn4qo-1 fXFOoG">
+      <div class="fXFOoG">
+        <div class="desktop-menu__SignInContainer-sc-13qn4qo-1 fXFOoG submenu2">
           <a
             routerLink="/signin"
             *ngIf="!isAuthenticated"
@@ -65,6 +54,15 @@
             font-size="15px"
             class="style__ButtonStyle-zdp3iu-0 dDpprB"
             >Signin</a
+          >
+          <a
+            *ngIf="isAuthenticated && !adminMode"
+            width="100%"
+            font-size="15px"
+            [ngClass]="!isAuthenticated ? '' : 'displaynone'"
+            routerLink="/profile"
+            class="style__ButtonStyle-zdp3iu-0 dDpprB"
+            >{{ user?.fullname }}</a
           >
         </div>
       </div>
@@ -295,124 +293,124 @@
       Admin mode
     </mat-slide-toggle>
   </div>
-  <div class="main">
+  <div class="main2">
     <router-outlet></router-outlet>
   </div>
-</div>
-<footer>
-  <div class="ihYol">
-    <div class="style__cleeserLogoContainer-x1xec6-17 frUVWH">
-      <div
-        class="gatsby-image-wrapper"
-        style="position: relative; overflow: hidden"
-      >
-        <div style="width: 100%"></div>
-        <img src="../assets/images/logo.jpg" alt="" style="width: 145px" />
+  <footer>
+    <div class="ihYol">
+      <div class="style__cleeserLogoContainer-x1xec6-17 frUVWH">
+        <div
+          class="gatsby-image-wrapper"
+          style="position: relative; overflow: hidden"
+        >
+          <div style="width: 100%"></div>
+          <img src="../assets/images/logo.jpg" alt="" style="width: 145px" />
+        </div>
       </div>
-    </div>
-    <div class="style__Infos-x1xec6-16 hCQwYC">
-      <div class="style__Contacts-x1xec6-13 cTuedD">
-        <div class="style__ContactItem-x1xec6-14 hSdRpI">
-          <svg width="24" height="24" viewBox="0 0 24 24">
-            <g stroke="#ffffff" fill="#909090">
+      <div class="style__Infos-x1xec6-16 hCQwYC">
+        <div class="style__Contacts-x1xec6-13 cTuedD">
+          <div class="style__ContactItem-x1xec6-14 hSdRpI">
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <g stroke="#ffffff" fill="#909090">
+                <path
+                  d="M19 2c0-1.104-.896-2-2-2h-10c-1.104 0-2 .896-2 2v20c0 1.104.896 2 2 2h10c1.104 0 2-.896 2-2v-20zm-8.5 0h3c.276 0 .5.224.5.5s-.224.5-.5.5h-3c-.276 0-.5-.224-.5-.5s.224-.5.5-.5zm1.5 20c-.553 0-1-.448-1-1s.447-1 1-1c.552 0 .999.448.999 1s-.447 1-.999 1zm5-3h-10v-14.024h10v14.024z"
+                ></path>
+              </g></svg
+            >+33 1 82 83 44 80
+          </div>
+          <div class="style__ContactItem-x1xec6-14 hSdRpI">
+            <svg
+              width="24"
+              height="24"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              fill="#909090"
+            >
               <path
-                d="M19 2c0-1.104-.896-2-2-2h-10c-1.104 0-2 .896-2 2v20c0 1.104.896 2 2 2h10c1.104 0 2-.896 2-2v-20zm-8.5 0h3c.276 0 .5.224.5.5s-.224.5-.5.5h-3c-.276 0-.5-.224-.5-.5s.224-.5.5-.5zm1.5 20c-.553 0-1-.448-1-1s.447-1 1-1c.552 0 .999.448.999 1s-.447 1-.999 1zm5-3h-10v-14.024h10v14.024z"
+                d="M24 21h-24v-18h24v18zm-23-16.477v15.477h22v-15.477l-10.999 10-11.001-10zm21.089-.523h-20.176l10.088 9.171 10.088-9.171z"
+              ></path></svg
+            >contact@cleeser.com
+          </div>
+        </div>
+        <div class="style__Timetable-x1xec6-15 cNkTUt">
+          <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <title>0-Icons/Icon/Time</title>
+            <desc>Created with Sketch.</desc>
+            <g
+              id="0-Icons/Icon/Time"
+              stroke="none"
+              stroke-width="1"
+              fill="red"
+              fill-rule="evenodd"
+            >
+              <path
+                d="M12,3 C14.3869484,3 16.6761336,3.94821156 18.363961,5.63603897 C20.0517884,7.32386638 21,9.61305159 21,12 C21,16.9705627 16.9705627,21 12,21 C7.02943725,21 3,16.9705627 3,12 C3,7.02943725 7.02943725,3 12,3 Z M12,4.28571429 C7.73951764,4.28571429 4.28571429,7.73951764 4.28571429,12 C4.28571429,16.2604824 7.73951764,19.7142857 12,19.7142857 C14.0459558,19.7142857 16.0081145,18.9015329 17.4548237,17.4548237 C18.9015329,16.0081145 19.7142857,14.0459558 19.7142857,12 C19.7142857,7.73951764 16.2604824,4.28571429 12,4.28571429 Z M12.6428571,6.21428571 L12.6428571,11.6914286 L15.6128571,14.07 L14.8157143,15.0728571 L11.8392857,12.6942857 C11.5347472,12.4504599 11.3573866,12.0815499 11.3571429,11.6914286 L11.3571429,11.6914286 L11.3571429,6.21428571 L12.6428571,6.21428571 Z"
+                id="Style"
+                fill="#909090"
               ></path>
             </g></svg
-          >+33 1 82 83 44 80
-        </div>
-        <div class="style__ContactItem-x1xec6-14 hSdRpI">
-          <svg
-            width="24"
-            height="24"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            fill="#909090"
-          >
-            <path
-              d="M24 21h-24v-18h24v18zm-23-16.477v15.477h22v-15.477l-10.999 10-11.001-10zm21.089-.523h-20.176l10.088 9.171 10.088-9.171z"
-            ></path></svg
-          >contact@cleeser.com
+          >Lun-Ven : 7h-10h &amp; 18h-22h | Sam : 9h-14h | Dim : 18h-22h
         </div>
       </div>
-      <div class="style__Timetable-x1xec6-15 cNkTUt">
-        <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-          <title>0-Icons/Icon/Time</title>
-          <desc>Created with Sketch.</desc>
-          <g
-            id="0-Icons/Icon/Time"
-            stroke="none"
-            stroke-width="1"
-            fill="red"
-            fill-rule="evenodd"
-          >
-            <path
-              d="M12,3 C14.3869484,3 16.6761336,3.94821156 18.363961,5.63603897 C20.0517884,7.32386638 21,9.61305159 21,12 C21,16.9705627 16.9705627,21 12,21 C7.02943725,21 3,16.9705627 3,12 C3,7.02943725 7.02943725,3 12,3 Z M12,4.28571429 C7.73951764,4.28571429 4.28571429,7.73951764 4.28571429,12 C4.28571429,16.2604824 7.73951764,19.7142857 12,19.7142857 C14.0459558,19.7142857 16.0081145,18.9015329 17.4548237,17.4548237 C18.9015329,16.0081145 19.7142857,14.0459558 19.7142857,12 C19.7142857,7.73951764 16.2604824,4.28571429 12,4.28571429 Z M12.6428571,6.21428571 L12.6428571,11.6914286 L15.6128571,14.07 L14.8157143,15.0728571 L11.8392857,12.6942857 C11.5347472,12.4504599 11.3573866,12.0815499 11.3571429,11.6914286 L11.3571429,11.6914286 L11.3571429,6.21428571 L12.6428571,6.21428571 Z"
-              id="Style"
-              fill="#909090"
-            ></path>
-          </g></svg
-        >Lun-Ven : 7h-10h &amp; 18h-22h | Sam : 9h-14h | Dim : 18h-22h
-      </div>
-    </div>
-    <div class="socials__ShortSocialWrapper-oun2cu-3 iyJUft">
-      <a
-        target="_blank"
-        href="https://fr-fr.facebook.com/cleeser.comance/"
-        class="style__InformationExternalLink-x1xec6-7 iBTeni"
-        ><div class="socials__Social-oun2cu-0 eUQayd">
-          <svg
-            class="svg"
-            xmlns="http://www.w3.org/2000/svg"
-            height="800"
-            width="1200"
-            viewBox="-204.79995 -341.33325 1774.9329 2047.9995"
-          >
-            <path
-              d="M1365.333 682.667C1365.333 305.64 1059.693 0 682.667 0 305.64 0 0 305.64 0 682.667c0 340.738 249.641 623.16 576 674.373V880H402.667V682.667H576v-150.4c0-171.094 101.917-265.6 257.853-265.6 74.69 0 152.814 13.333 152.814 13.333v168h-86.083c-84.804 0-111.25 52.623-111.25 106.61v128.057h189.333L948.4 880H789.333v477.04c326.359-51.213 576-333.635 576-674.373"
-              fill="#1877f2"
-            />
-            <path
-              d="M948.4 880l30.267-197.333H789.333V554.609C789.333 500.623 815.78 448 900.584 448h86.083V280s-78.124-13.333-152.814-13.333c-155.936 0-257.853 94.506-257.853 265.6v150.4H402.667V880H576v477.04a687.805 687.805 0 00106.667 8.293c36.288 0 71.91-2.84 106.666-8.293V880H948.4"
-              fill="#fff"
-            />
-          </svg></div></a
-      ><a
-        target="_blank"
-        href="https://www.instagram.com/cleeser.comance/"
-        class="BTeni insta"
-        ><div class="socials__Social-oun2cu-0 eUQayd">
-          <svg
-            enable-background="new 0 0 24 24"
-            height="30"
-            viewBox="0 0 24 24"
-            width="30"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-          >
-            <linearGradient
-              id="SVGID_1_"
-              gradientTransform="matrix(0 -1.982 -1.844 0 -132.522 -51.077)"
-              gradientUnits="userSpaceOnUse"
-              x1="-37.106"
-              x2="-26.555"
-              y1="-72.705"
-              y2="-84.047"
+      <div class="socials__ShortSocialWrapper-oun2cu-3 iyJUft">
+        <a
+          target="_blank"
+          href="https://fr-fr.facebook.com/cleeser.comance/"
+          class="style__InformationExternalLink-x1xec6-7 iBTeni"
+          ><div class="socials__Social-oun2cu-0 eUQayd">
+            <svg
+              class="svg"
+              xmlns="http://www.w3.org/2000/svg"
+              height="800"
+              width="1200"
+              viewBox="-204.79995 -341.33325 1774.9329 2047.9995"
             >
-              <stop offset="0" stop-color="#fd5" />
-              <stop offset=".5" stop-color="#ff543e" />
-              <stop offset="1" stop-color="#c837ab" />
-            </linearGradient>
-            <path
-              d="m1.5 1.633c-1.886 1.959-1.5 4.04-1.5 10.362 0 5.25-.916 10.513 3.878 11.752 1.497.385 14.761.385 16.256-.002 1.996-.515 3.62-2.134 3.842-4.957.031-.394.031-13.185-.001-13.587-.236-3.007-2.087-4.74-4.526-5.091-.559-.081-.671-.105-3.539-.11-10.173.005-12.403-.448-14.41 1.633z"
-              fill="url(#SVGID_1_)"
-            />
-            <path
-              d="m11.998 3.139c-3.631 0-7.079-.323-8.396 3.057-.544 1.396-.465 3.209-.465 5.805 0 2.278-.073 4.419.465 5.804 1.314 3.382 4.79 3.058 8.394 3.058 3.477 0 7.062.362 8.395-3.058.545-1.41.465-3.196.465-5.804 0-3.462.191-5.697-1.488-7.375-1.7-1.7-3.999-1.487-7.374-1.487zm-.794 1.597c7.574-.012 8.538-.854 8.006 10.843-.189 4.137-3.339 3.683-7.211 3.683-7.06 0-7.263-.202-7.263-7.265 0-7.145.56-7.257 6.468-7.263zm5.524 1.471c-.587 0-1.063.476-1.063 1.063s.476 1.063 1.063 1.063 1.063-.476 1.063-1.063-.476-1.063-1.063-1.063zm-4.73 1.243c-2.513 0-4.55 2.038-4.55 4.551s2.037 4.55 4.55 4.55 4.549-2.037 4.549-4.55-2.036-4.551-4.549-4.551zm0 1.597c3.905 0 3.91 5.908 0 5.908-3.904 0-3.91-5.908 0-5.908z"
-              fill="#fff"
-            />
-          </svg></div
-      ></a>
+              <path
+                d="M1365.333 682.667C1365.333 305.64 1059.693 0 682.667 0 305.64 0 0 305.64 0 682.667c0 340.738 249.641 623.16 576 674.373V880H402.667V682.667H576v-150.4c0-171.094 101.917-265.6 257.853-265.6 74.69 0 152.814 13.333 152.814 13.333v168h-86.083c-84.804 0-111.25 52.623-111.25 106.61v128.057h189.333L948.4 880H789.333v477.04c326.359-51.213 576-333.635 576-674.373"
+                fill="#1877f2"
+              />
+              <path
+                d="M948.4 880l30.267-197.333H789.333V554.609C789.333 500.623 815.78 448 900.584 448h86.083V280s-78.124-13.333-152.814-13.333c-155.936 0-257.853 94.506-257.853 265.6v150.4H402.667V880H576v477.04a687.805 687.805 0 00106.667 8.293c36.288 0 71.91-2.84 106.666-8.293V880H948.4"
+                fill="#fff"
+              />
+            </svg></div></a
+        ><a
+          target="_blank"
+          href="https://www.instagram.com/cleeser.comance/"
+          class="BTeni insta"
+          ><div class="socials__Social-oun2cu-0 eUQayd">
+            <svg
+              enable-background="new 0 0 24 24"
+              height="30"
+              viewBox="0 0 24 24"
+              width="30"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <linearGradient
+                id="SVGID_1_"
+                gradientTransform="matrix(0 -1.982 -1.844 0 -132.522 -51.077)"
+                gradientUnits="userSpaceOnUse"
+                x1="-37.106"
+                x2="-26.555"
+                y1="-72.705"
+                y2="-84.047"
+              >
+                <stop offset="0" stop-color="#fd5" />
+                <stop offset=".5" stop-color="#ff543e" />
+                <stop offset="1" stop-color="#c837ab" />
+              </linearGradient>
+              <path
+                d="m1.5 1.633c-1.886 1.959-1.5 4.04-1.5 10.362 0 5.25-.916 10.513 3.878 11.752 1.497.385 14.761.385 16.256-.002 1.996-.515 3.62-2.134 3.842-4.957.031-.394.031-13.185-.001-13.587-.236-3.007-2.087-4.74-4.526-5.091-.559-.081-.671-.105-3.539-.11-10.173.005-12.403-.448-14.41 1.633z"
+                fill="url(#SVGID_1_)"
+              />
+              <path
+                d="m11.998 3.139c-3.631 0-7.079-.323-8.396 3.057-.544 1.396-.465 3.209-.465 5.805 0 2.278-.073 4.419.465 5.804 1.314 3.382 4.79 3.058 8.394 3.058 3.477 0 7.062.362 8.395-3.058.545-1.41.465-3.196.465-5.804 0-3.462.191-5.697-1.488-7.375-1.7-1.7-3.999-1.487-7.374-1.487zm-.794 1.597c7.574-.012 8.538-.854 8.006 10.843-.189 4.137-3.339 3.683-7.211 3.683-7.06 0-7.263-.202-7.263-7.265 0-7.145.56-7.257 6.468-7.263zm5.524 1.471c-.587 0-1.063.476-1.063 1.063s.476 1.063 1.063 1.063 1.063-.476 1.063-1.063-.476-1.063-1.063-1.063zm-4.73 1.243c-2.513 0-4.55 2.038-4.55 4.551s2.037 4.55 4.55 4.55 4.549-2.037 4.549-4.55-2.036-4.551-4.549-4.551zm0 1.597c3.905 0 3.91 5.908 0 5.908-3.904 0-3.91-5.908 0-5.908z"
+                fill="#fff"
+              />
+            </svg></div
+        ></a>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
+</div>

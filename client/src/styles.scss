@@ -10,12 +10,6 @@ body {
   min-height: 550px;
 }
 
-@media (max-width: 1200px) {
-  body {
-    height: calc(100% - 80px);
-  }
-}
-
 body {
   margin: 0;
   width: 100%;

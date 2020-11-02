@@ -46,11 +46,7 @@
                   (click)="remove(product)"
                 >
                   <svg width="24" height="24">
-                    <path
-                      fill="#31ADED"
-                      fill-rule="evenodd"
-                      d="M19 12.5v-1.1H5v1.1h14z"
-                    ></path>
+                    <path fill="#31ADED" d="M19 12.5v-1.1H5v1.1h14z"></path>
                   </svg></button
                 ><button
                   class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI"
@@ -59,7 +55,6 @@
                   <svg width="24" height="24">
                     <path
                       fill="#31ADED"
-                      fill-rule="evenodd"
                       d="M19 11.374h-6.462v-6.72h-1.076v6.72H5v1.12h6.462v6.16h1.076v-6.16H19z"
                     ></path>
                   </svg>
@@ -90,7 +85,6 @@
               }}<svg width="24" height="24">
                 <path
                   fill="#112631"
-                  fill-rule="evenodd"
                   d="M5.834 9.314l4.714 4.714.273.267c1.354 1.289 1.905 1.209 3.38-.267l4.715-4.714 1.06 1.061-4.714 4.714c-2.166 2.167-3.638 2.136-5.774 0l-4.714-4.714 1.06-1.06z"
                 ></path>
               </svg>
@@ -104,6 +98,15 @@
                   <div
                     class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe"
                   ></div>
+                  <div
+                    class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe"
+                  >
+                    <span
+                      *ngIf="getRecurrence(product) !== 0"
+                      class="productList__Number-sc-1oz9rbz-8 jDEDaq"
+                      >x{{ getRecurrence(product) }}</span
+                    >
+                  </div>
                   {{ product.name }}
                 </div>
                 <div class="productList__RightContainer-sc-1oz9rbz-9 jcvsCz">
@@ -112,11 +115,7 @@
                     (click)="remove(product)"
                   >
                     <svg width="24" height="24">
-                      <path
-                        fill="#31ADED"
-                        fill-rule="evenodd"
-                        d="M19 12.5v-1.1H5v1.1h14z"
-                      ></path>
+                      <path fill="#31ADED" d="M19 12.5v-1.1H5v1.1h14z"></path>
                     </svg>
                   </button>
                   <button
@@ -126,7 +125,6 @@
                     <svg width="24" height="24">
                       <path
                         fill="#31ADED"
-                        fill-rule="evenodd"
                         d="M19 11.374h-6.462v-6.72h-1.076v6.72H5v1.12h6.462v6.16h1.076v-6.16H19z"
                       ></path>
                     </svg>
@@ -147,7 +145,6 @@
               }}<svg width="24" height="24">
                 <path
                   fill="#112631"
-                  fill-rule="evenodd"
                   d="M9.314 18.916l4.714-4.714.267-.273c1.289-1.354 1.209-1.905-.267-3.38L9.314 5.833l1.061-1.06 4.714 4.714c2.167 2.166 2.136 3.638 0 5.774l-4.714 4.714-1.06-1.06z"
                 ></path>
               </svg>

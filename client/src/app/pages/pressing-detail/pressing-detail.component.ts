@@ -6,9 +6,7 @@ import { IProduct, Pressing } from 'src/app/models/pressing.model';
 import { PressingService } from 'src/app/services/pressing.service';
 import * as _ from 'lodash';
 import { CATEGORIES } from 'src/app/constant';
-import { tap } from 'lodash';
 import { of } from 'rxjs';
-import { Order } from 'src/app/models/order.model';
 
 @Component({
   selector: 'app-pressing-detail',

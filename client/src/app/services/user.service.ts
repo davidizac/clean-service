@@ -24,22 +24,6 @@ export class UserService {
     );
   }
 
-  createUser(email, fullname, phoneNumber) {
-    return this.authService.token.pipe(
-      switchMap((token) => {
-        return this.http.post(
-          `${environment.serverUrl}api/users/`,
-          {
-            email,
-            fullname,
-            phoneNumber,
-          },
-          { headers: { authorization: token } }
-        );
-      })
-    );
-  }
-
   getMe() {
     return this.authService.token.pipe(
       switchMap((token) => {
