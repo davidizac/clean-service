@@ -113,7 +113,7 @@ input[type="password"] {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 5px;
+  margin: 10px 5px 13px 5px;
   width: 85%;
   border: 2px solid #f6f6f6;
   -webkit-transition: all 0.3s ease-in-out;
@@ -163,6 +163,11 @@ input[type="password"]:placeholder {
 }
 
 /* Simple CSS3 Fade-in Animation */
+
+.underlineHover {
+  margin-top: 7px;
+}
+
 .underlineHover:after {
   display: block;
   left: 0;
