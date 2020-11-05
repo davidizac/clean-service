@@ -35,7 +35,6 @@ import { UsersComponent } from './pages/users/users.component';
     ForgotPasswordComponent,
     PressingsComponent,
     CheckoutComponent,
-    HomeComponent,
     OrdersComponent,
     ManageOrdersComponent,
     NotfoundComponent,
@@ -71,4 +70,4 @@ import { UsersComponent } from './pages/users/users.component';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

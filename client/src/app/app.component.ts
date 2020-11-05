@@ -5,6 +5,7 @@ import { switchMap, take, tap } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,7 +22,7 @@ export class AppComponent {
     private cd: ChangeDetectorRef,
     public userService: UserService,
     public router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.adminMode = localStorage.getItem('adminMode') === 'true';
