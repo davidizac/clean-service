@@ -13,7 +13,18 @@
 }
 
 .main {
-  margin-top: 80px;
+  padding-top: 80px;
+  height: 100%;
+}
+
+.main2 {
+  min-height: calc(100% - 80px);
+}
+
+@media (min-width: 1200px) {
+  .main2 {
+    min-height: calc(100% - 108px);
+  }
 }
 
 ::ng-deep {
@@ -88,10 +99,8 @@
 
 .fXFOoG {
   display: none;
-  justify-content: right;
   text-align: revert;
-  margin-left: auto;
-  text-align: right;
+  justify-content: center;
   min-height: 40px;
   width: 50%;
 }
@@ -121,7 +130,12 @@
   justify-content: center;
   -webkit-box-align: center;
   align-items: center;
-  padding: 4px;
+  padding: 10px 25px;
+  border-radius: 17px;
+}
+
+.submenu2 {
+  width: auto;
 }
 
 .GbnXQ {
@@ -204,8 +218,16 @@
 footer {
   flex-shrink: 0;
   width: 100%;
+  margin-bottom: 46px;
   background-color: white;
 }
+
+@media (min-width: 1200px) {
+  footer {
+    margin-bottom: 0px !important;
+  }
+}
+
 .hCQwYC {
   display: flex;
   margin-bottom: 15px;
@@ -263,6 +285,8 @@ footer {
 .slidetoggle {
   width: 0;
   justify-content: flex-end;
+  position: absolute;
+  right: 41px;
 }
 
 .svg2 path {
@@ -281,4 +305,8 @@ footer {
 .submenu {
   display: flex;
   width: 100%;
+}
+
+.fb {
+  width: 69px;
 }

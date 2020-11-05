@@ -102,13 +102,38 @@ export class AuthService implements OnDestroy {
     );
   }
 
-  signup(email: string, password: string) {
+  signup(email: string, password: string, fullname, phoneNumber) {
     return this.http
       .post<AuthResponseData>(
         `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${environment.firebaseAPIkey}`,
         { email, password, returnSecureToken: true }
       )
-      .pipe(tap(this.setUserData.bind(this)));
+      .pipe(
+        switchMap(async (res) => {
+          await this.createUser(
+            email,
+            fullname,
+            phoneNumber,
+            res.idToken
+          ).toPromise();
+          return res;
+        }),
+        tap((res) => {
+          this.setUserData.call(this, res);
+        })
+      );
+  }
+
+  createUser(email, fullname, phoneNumber, token) {
+    return this.http.post(
+      `${environment.serverUrl}api/users/`,
+      {
+        email,
+        fullname,
+        phoneNumber,
+      },
+      { headers: { authorization: token } }
+    );
   }
 
   login(email: string, password: string) {

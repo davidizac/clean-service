@@ -25,6 +25,7 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
+    this.selectedTab = 'home';
     this.adminMode = localStorage.getItem('adminMode') === 'true';
     this.authService.userIsAuthenticated
       .pipe(
@@ -50,10 +51,12 @@ export class AppComponent {
           } else {
             return of();
           }
+        }),
+        tap((user) => {
+          this.user = user;
         })
       )
-      .subscribe((user) => {
-        this.user = user;
+      .subscribe(() => {
         this.cd.detectChanges();
       });
   }
