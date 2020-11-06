@@ -1,5 +1,5 @@
 .main {
-  min-height: calc(100% - 173px);
+  min-height: 100%;
 }
 
 @media (min-width: 1200px) {
@@ -18,12 +18,12 @@
 }
 
 .main2 {
-  min-height: calc(100% - 80px);
+  min-height: 90.5%;
 }
 
 @media (min-width: 1200px) {
   .main2 {
-    min-height: calc(100% - 108px);
+    min-height: 86.5% !important;
   }
 }
 
@@ -218,7 +218,6 @@
 footer {
   flex-shrink: 0;
   width: 100%;
-  margin-bottom: 46px;
   background-color: white;
 }
 
@@ -309,4 +308,14 @@ footer {
 
 .fb {
   width: 69px;
+}
+
+.space {
+  height: 46px;
+}
+
+@media (min-width: 1200px) {
+  .space {
+    display: none;
+  }
 }
