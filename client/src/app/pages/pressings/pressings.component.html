@@ -1,113 +1,76 @@
 <main>
-  <div class="hmLLON">
-    <div class="dRZTuO">
-      <div class="kqgbTY">
-        <div class="style__TitleContainer-mh2zh9-4 URAtw">
-          <div class="style__Text-mh2zh9-7 style__Title-mh2zh9-8 eTAyEB">
-            Nos pressings
-          </div>
-          <div class="style__SubTitle-mh2zh9-13 cQSOcu">
-            Recevez votre linge du pressing en moins de 48 heures
-          </div>
-        </div>
-        <div class="style__SearchInputContainer-mh2zh9-11 bJdKoS">
-          <input
-            [formControl]="location"
-            placeholder="Type a location"
-            matInput
-            [matAutocomplete]="auto"
-            class="style__SearchInput-mh2zh9-10 jeKoNK"
-          />
-          <mat-autocomplete
-            (optionSelected)="onSelectionChange($event)"
-            autoActiveFirstOption
-            #auto="matAutocomplete"
-          >
-            <mat-option *ngFor="let option of options" [value]="option">
-              {{ option }}
-            </mat-option> </mat-autocomplete
-          ><span class="style__LabelInputContainer-mh2zh9-12 gofRfd"
-            ><svg width="24" height="24">
-              <path
-                fill="#252C32"
-                fill-rule="evenodd"
-                d="M13.007 3L21 10.993 10.993 21H5.402A2.402 2.402 0 013 18.598v-5.591L13.007 3zm0 1.77L4.25 13.526v5.072A1.157 1.157 0 005.4 19.75h5.104l8.756-8.756-6.254-6.223zm0 3.721a2.502 2.502 0 110 5.004 2.502 2.502 0 010-5.004zm0 1.251a1.25 1.25 0 100 2.502 1.25 1.25 0 000-2.502z"
-              ></path></svg
-          ></span>
-        </div>
-        <div class="pressings-list">
-          <ng-container *ngFor="let pressing of pressingDisplayed">
-            <ng-container *ngIf="isPressingOpened(pressing)">
-              <button (click)="closePressing(pressing)" class="liFQGu">
-                {{ pressing.name }}
-              </button>
-              <div
-                class="productList__ProductListContainer-sc-1oz9rbz-5 hiKKKS"
-              >
-                <div
-                  class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF"
-                >
-                  <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
-                    <div
-                      class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe"
-                    ></div>
-                    <strong>Address:</strong> {{ pressing.address }}
-                  </div>
+    <div class="hmLLON">
+        <div class="dRZTuO">
+            <div class="kqgbTY">
+                <div class="style__TitleContainer-mh2zh9-4 URAtw">
+                    <div class="style__Text-mh2zh9-7 style__Title-mh2zh9-8 eTAyEB">
+                        Nos pressings
+                    </div>
+                    <div class="style__SubTitle-mh2zh9-13 cQSOcu">
+                        Recevez votre linge du pressing en moins de 48 heures
+                    </div>
                 </div>
-                <div class="wrapper-icon">
-                  <button mat-button (click)="navigateToPressing(pressing._id)">
-                    <mat-icon
-                      class="example-icon"
-                      mat-button
-                      style="color: black"
-                      >chevron_right</mat-icon
-                    >
-                  </button>
-                  <button
-                    *ngIf="isAdmin"
-                    mat-button
-                    (click)="updatePressing(pressing._id)"
-                  >
-                    <mat-icon class="example-icon" mat-button>update</mat-icon>
-                  </button>
-                  <button
-                    *ngIf="isAdmin"
-                    mat-button
-                    (click)="deletePressing(pressing._id)"
-                  >
-                    <mat-icon class="example-icon" mat-button>delete</mat-icon>
-                  </button>
+                <div class="style__SearchInputContainer-mh2zh9-11 bJdKoS">
+                    <input [formControl]="location" placeholder="Type a location" matInput [matAutocomplete]="auto" class="style__SearchInput-mh2zh9-10 jeKoNK" />
+                    <mat-autocomplete (optionSelected)="onSelectionChange($event)" autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of options" [value]="option">
+                            {{ option }}
+                        </mat-option>
+                    </mat-autocomplete><span class="style__LabelInputContainer-mh2zh9-12 gofRfd"><svg width="24" height="24">
+                <path
+                  fill="#252C32"
+                  fill-rule="evenodd"
+                  d="M13.007 3L21 10.993 10.993 21H5.402A2.402 2.402 0 013 18.598v-5.591L13.007 3zm0 1.77L4.25 13.526v5.072A1.157 1.157 0 005.4 19.75h5.104l8.756-8.756-6.254-6.223zm0 3.721a2.502 2.502 0 110 5.004 2.502 2.502 0 010-5.004zm0 1.251a1.25 1.25 0 100 2.502 1.25 1.25 0 000-2.502z"
+                ></path></svg></span>
                 </div>
-              </div>
-            </ng-container>
-            <ng-container *ngIf="!isPressingOpened(pressing)">
-              <button (click)="openPressing(pressing)" class="liFQGu">
-                {{ pressing.name
-                }}<svg width="24" height="24">
-                  <path
-                    fill="#112631"
-                    fill-rule="evenodd"
-                    d="M9.314 18.916l4.714-4.714.267-.273c1.289-1.354 1.209-1.905-.267-3.38L9.314 5.833l1.061-1.06 4.714 4.714c2.167 2.166 2.136 3.638 0 5.774l-4.714 4.714-1.06-1.06z"
-                  ></path>
-                </svg>
-              </button>
-            </ng-container>
-          </ng-container>
+                <div class="pressings-list">
+                    <ng-container *ngFor="let pressing of pressingDisplayed">
+                        <ng-container *ngIf="isPressingOpened(pressing)">
+                            <button (click)="closePressing(pressing)" class="liFQGu">
+                  {{ pressing.name }}
+                </button>
+                            <div class="productList__ProductListContainer-sc-1oz9rbz-5 hiKKKS">
+                                <div class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF">
+                                    <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
+                                        <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe"></div>
+                                        <strong>Address:</strong> {{ pressing.address }}
+                                    </div>
+                                </div>
+                                <div class="wrapper-icon">
+                                    <button mat-button (click)="navigateToPressing(pressing._id)">
+                      <mat-icon
+                        class="example-icon"
+                        mat-button
+                        style="color: black"
+                        >chevron_right</mat-icon
+                      >
+                    </button>
+                                    <button *ngIf="isAdmin" mat-button (click)="updatePressing(pressing._id)">
+                      <mat-icon class="example-icon" mat-button>update</mat-icon>
+                    </button>
+                                    <button *ngIf="isAdmin" mat-button (click)="deletePressing(pressing._id)">
+                      <mat-icon class="example-icon" mat-button>delete</mat-icon>
+                    </button>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="!isPressingOpened(pressing)">
+                            <button (click)="openPressing(pressing)" class="liFQGu">
+                  {{ pressing.name }}<svg width="24" height="24">
+                    <path
+                      fill="#112631"
+                      fill-rule="evenodd"
+                      d="M9.314 18.916l4.714-4.714.267-.273c1.289-1.354 1.209-1.905-.267-3.38L9.314 5.833l1.061-1.06 4.714 4.714c2.167 2.166 2.136 3.638 0 5.774l-4.714 4.714-1.06-1.06z"
+                    ></path>
+                  </svg>
+                </button>
+                        </ng-container>
+                    </ng-container>
+                </div>
+                <mat-paginator (page)="pageChanged($event)" [length]="pressings?.length" [pageSize]="pageSize">
+                </mat-paginator>
+            </div>
         </div>
-        <mat-paginator
-          (page)="pageChanged($event)"
-          [length]="pressings?.length"
-          [pageSize]="pageSize"
-        >
-        </mat-paginator>
-      </div>
     </div>
-  </div>
-  <mat-progress-spinner
-    class="example-margin"
-    color="primary"
-    mode="indeterminate"
-    value="50"
-    *ngIf="isLoading"
-  ></mat-progress-spinner>
+    <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" value="50" *ngIf="isLoading"></mat-progress-spinner>
 </main>
