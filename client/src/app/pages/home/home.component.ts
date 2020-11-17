@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -9,9 +10,16 @@ import 'aos/dist/aos.css';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { AOS.init(); }
+  constructor(
+    public router: Router
+  ) { AOS.init(); }
 
   ngOnInit(): void {
+  }
+
+
+  goToPressings(){
+    this.router.navigate(["/pressings"])
   }
 
 }

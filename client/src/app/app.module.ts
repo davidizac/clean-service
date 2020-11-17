@@ -27,6 +27,7 @@ import { PipeModule } from './pipes/pipe.module';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { OrderConfirmationComponent } from './pages/order-confirmation/order-confirmation.component';
 import { UsersComponent } from './pages/users/users.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
