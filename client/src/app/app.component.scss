@@ -1,5 +1,6 @@
 .main {
   min-height: 100%;
+  height: 100%;
 }
 
 @media (min-width: 1200px) {
@@ -10,11 +11,6 @@
 
 .example-spacer {
   flex: 1 1 auto;
-}
-
-.main {
-  padding-top: 80px;
-  height: 100%;
 }
 
 .main2 {
@@ -148,10 +144,10 @@
   position: fixed;
   margin: 0px;
   width: 100%;
-  z-index: 1;
+  z-index: 100000;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 991px) {
   .GbnXQ {
     display: flex !important;
   }
@@ -205,7 +201,6 @@
   .hCQwYC {
     margin-bottom: 0 !important;
   }
-
   .cNkTUt {
     display: flex !important;
   }
@@ -215,15 +210,22 @@
   }
 }
 
-footer {
-  flex-shrink: 0;
+app-footer {
+  clear: both;
+  position: relative;
+  margin-top: -200px;
+  z-index: 1;
   width: 100%;
-  background-color: white;
 }
 
 @media (min-width: 1200px) {
-  footer {
-    margin-bottom: 0px !important;
+  app-footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    clear: none;
+    width: 100%;
+    margin-top: 0;
   }
 }
 
@@ -232,6 +234,7 @@ footer {
   margin-bottom: 15px;
   flex-direction: column;
 }
+
 .cNkTUt {
   display: none;
   -webkit-box-pack: center;
@@ -265,6 +268,7 @@ footer {
   font-size: 12px;
   text-decoration: none;
 }
+
 .fnwwqL {
   margin: 0px auto;
   padding-top: 0px;
@@ -318,4 +322,8 @@ footer {
   .space {
     display: none;
   }
+}
+
+.footer-space {
+  height: 100px;
 }

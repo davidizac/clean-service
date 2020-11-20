@@ -28,6 +28,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { OrderConfirmationComponent } from './pages/order-confirmation/order-confirmation.component';
 import { UsersComponent } from './pages/users/users.component';
 import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -45,9 +47,11 @@ import { RouterModule } from '@angular/router';
     ProfileComponent,
     OrderConfirmationComponent,
     UsersComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
