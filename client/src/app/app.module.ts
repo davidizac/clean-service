@@ -47,7 +47,7 @@ import { RouterModule } from '@angular/router';
     UsersComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
