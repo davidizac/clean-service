@@ -1,274 +1,224 @@
-<div class="desktop-menu__DesktopHeaderContainer-sc-13qn4qo-2 etqwYy">
-  <div class="desktop-menu__cleeserLogoContainer-sc-13qn4qo-0 glxzAh">
-      <a routerLink="/">
-          <div class="gatsby-image-wrapper" style="position: relative; overflow: hidden; height: 100%">
-              <div style="width: 100%; padding-bottom: 28.368794326241137%"></div>
-              <img src="../assets/images/Cleeser-removebg-preview.png" alt="" style="
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        padding: 7px 0px;
-        object-position: center center;
-        transition-delay: 500ms;
-      " /></div>
-      </a>
-  </div>
+<header class="foxapp-header d-none d-lg-block">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #31aded;" id="foxapp_menu">
+      <div class="container-fluid  navbar navbar-default navbar-fixed-top" style="height: 100px;">
 
-  <div *ngIf="!adminMode" class="desktop-menu__DesktopMenuContainer-sc-13qn4qo-3 hGkhFL">
-      <div class="submenu">
-          <a routerLink="/pressings" class="desktop-menu__DesktopMenuLink-sc-13qn4qo-5 hcjVjE">
-              <div class="desktop-menu__DesktopMenuText-sc-13qn4qo-7 lkwfuK">
-                  Nos Pressings
+          <div class="container" id="main_menu">
+
+              <div class="row justify-content-between w-100">
+
+                  <div class="col-3">
+                      <img src="assets/images/logo-blanc.png" class="mr-auto" id="logoMenuWhite" style="width: 150px" alt="">
+                      <img src="assets/images/Cleeser-removebg-preview.png" id="logoMenuBlue" class="mr-auto d-none" style="width: 150px" alt="">
+                  </div>
+                  <div class="d-flex align-items-center justify-content-end col-9">
+                      <ul class="d-flex">
+                          <li class="nav-item">
+                              <a class="nav-link anchor active">Home
+                      </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link anchor" (click)="goToLinkOfPath('pressings')">Our Pressings</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link anchor" (click)="goToLinkOfPath('orders')">My orders</a>
+                          </li>
+
+                          <li class="nav-item">
+                              <a class="nav-link anchor" href="#git_in_touch">Contact</a>
+                          </li>
+                      </ul>
+                      <a (click)="goToLinkOfPath('signin')" class="btnSignIn">Sign in</a>
+                  </div>
               </div>
-          </a>
-          <a routerLink="/orders" class="desktop-menu__DesktopMenuLink-sc-13qn4qo-5 hcjVjE">
-              <div class="desktop-menu__DesktopMenuText-sc-13qn4qo-7 lkwfuK">
-                  Mes commandes
-              </div>
-          </a>
+          </div>
       </div>
-      <div class="fXFOoG">
-          <div class="desktop-menu__SignInContainer-sc-13qn4qo-1 fXFOoG submenu2">
-              <a routerLink="/signin" *ngIf="!isAuthenticated" [ngClass]="!isAuthenticated ? '' : 'displaynone'" width="100%" font-size="15px" class="style__ButtonStyle-zdp3iu-0 dDpprB">Signin</a
-    >
-    <a
-      *ngIf="isAuthenticated && !adminMode"
-      width="100%"
-      font-size="15px"
-      [ngClass]="!isAuthenticated ? '' : 'displaynone'"
-      routerLink="/profile"
-      class="style__ButtonStyle-zdp3iu-0 dDpprB"
-      >{{ user?.fullname }}</a
-    >
-  </div>
-</div>
-</div>
-<div
-*ngIf="adminMode"
-class="desktop-menu__DesktopMenuContainer-sc-13qn4qo-3 hGkhFL"
->
-<a
-  routerLink="/manage-orders"
-  class="desktop-menu__DesktopMenuLink-sc-13qn4qo-5 hcjVjE"
-  ><div class="desktop-menu__DesktopMenuText-sc-13qn4qo-7 lkwfuK">
-    Gestion de commandes
-  </div></a
-><a
-  routerLink="/pressing-creator"
-  class="desktop-menu__DesktopMenuLink-sc-13qn4qo-5 hcjVjE"
-  ><div class="desktop-menu__DesktopMenuText-sc-13qn4qo-7 lkwfuK">
-    Creer un pressing
-  </div></a
->
-<a
-  routerLink="/users"
-  class="desktop-menu__DesktopMenuLink-sc-13qn4qo-5 hcjVjE"
-  ><div class="desktop-menu__DesktopMenuText-sc-13qn4qo-7 lkwfuK">
-    Mes utilisateurs
-  </div></a
->
-</div>
-<div
-class="desktop-menu__DesktopMenuContainer-sc-13qn4qo-3 hGkhFL slidetoggle"
->
-<mat-slide-toggle
-  *ngIf="isAuthenticated && isAdmin"
-  (change)="toggleAdminMode($event)"
-  [color]="primary"
-  [checked]="adminMode"
->
-  Admin mode
-</mat-slide-toggle>
-</div>
-</div>
+  </nav>
+</header>
 <div class="mobile-menu__MobileMenuContainer-sc-17s3h0k-0 GbnXQ">
-<a
-(click)="changedTab('home')"
-routerLink="/"
-class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
-><svg
-  width="24"
-  height="24"
-  [ngClass]="selectedTab === 'home' ? 'svg2' : ''"
->
-  <path
-    d="M13.297 3.517a1.884 1.884 0 00-2.594 0L3 11.214l.869.869 1.4-1.401v7.593c0 1.013.823 1.835 1.836 1.835h9.79a1.835 1.835 0 001.835-1.835v-7.593l1.401 1.401.869-.869-7.703-7.697zm-2.52 15.37v-4.283h2.447v4.283h-2.448zm6.73-.612a.612.612 0 01-.612.612h-2.448V13.38H9.553v5.507H7.105a.612.612 0 01-.611-.612V9.458l5.072-5.078a.612.612 0 01.868 0l5.072 5.078v8.817z"
-    fill-rule="evenodd"
-  ></path>
-</svg>
-<div
-  class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
-  [ngClass]="selectedTab === 'home' ? 'gfhcyg' : 'kxwuOc'"
->
-  Home
-</div></a
-><a
-*ngIf="!adminMode"
-(click)="changedTab('pressings')"
-routerLink="/pressings"
-class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
-><svg
-  width="24"
-  height="24"
-  [ngClass]="selectedTab === 'pressings' ? 'svg2' : ''"
->
-  <path
-    d="M13.022 1.5c.292.001.573.1.799.278l.108.095 2.192 2.155H21v16.576c0 .997-.783 1.815-1.778 1.89l-.15.006H4.928c-1.015 0-1.846-.77-1.923-1.748L3 20.604V4.028h4.88l2.191-2.155c.206-.204.475-.331.762-.364l.145-.009h2.044zm6.692 3.793H4.286v15.31c0 .318.238.58.548.626l.095.007H19.07a.64.64 0 00.636-.539l.007-.093V5.293zM12 8.35a5.65 5.65 0 110 11.3 5.65 5.65 0 010-11.3zm0 1.3a4.35 4.35 0 100 8.7 4.35 4.35 0 000-8.7zm0 .518a3.832 3.832 0 110 7.664 3.832 3.832 0 010-7.664zm0 1.3a2.532 2.532 0 100 5.064 2.532 2.532 0 000-5.064zM18 6.5v1h-2v-1h2zm-4.978-3.736h-2.044L9.692 4.028h4.616l-1.286-1.264z"
-    fill="#112631"
-    fill-rule="evenodd"
-  ></path>
-</svg>
-<div
-  class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
-  [ngClass]="selectedTab === 'pressings' ? 'gfhcyg' : 'kxwuOc'"
->
-  Nos Pressings
-</div></a
-><a
-*ngIf="!adminMode"
-routerLink="/orders"
-(click)="changedTab('order')"
-class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
-><svg
-  width="24"
-  height="24"
-  [ngClass]="selectedTab === 'order' ? 'svg2' : ''"
->
-  <path
-    d="M19.071 6.571h-3.857V5.286c0-.71-.575-1.286-1.285-1.286H10.07c-.71 0-1.285.576-1.285 1.286V6.57H4.929A1.929 1.929 0 003 8.5v11.571h18V8.5a1.929 1.929 0 00-1.929-1.929zm-9-1.285h3.858V6.57H10.07V5.286zm9.643 13.5H4.286v-7.072H5.57v2.572h3.86v-2.572h5.142v2.572h3.858v-2.572h1.285v7.072zM6.857 11.714h1.286V13H6.857v-1.286zm9 0h1.286V13h-1.286v-1.286zm2.572-1.285H4.286V8.5c0-.355.288-.643.643-.643H19.07c.355 0 .643.288.643.643v1.929H18.43z"
-    fill="#112631"
-    fill-rule="evenodd"
-  ></path>
-</svg>
-<div
-  class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
-  [ngClass]="selectedTab === 'order' ? 'gfhcyg' : 'kxwuOc'"
->
-  Mes commandes
-</div></a
-><a
-*ngIf="isAuthenticated && !adminMode"
-routerLink="/profile"
-(click)="changedTab('profile')"
-class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
-><svg
-  width="24"
-  height="24"
-  [ngClass]="selectedTab === 'profile' ? 'svg2' : ''"
->
-  <path
-    d="M17.538 12.692A3.462 3.462 0 0121 16.154V21h-1.385v-4.846c0-1.147-.93-2.077-2.077-2.077H6.462c-1.148 0-2.077.93-2.077 2.077V21H3v-4.846a3.462 3.462 0 013.462-3.462zM12 3a4.154 4.154 0 110 8.308A4.154 4.154 0 0112 3zm0 1.385a2.77 2.77 0 100 5.538 2.77 2.77 0 000-5.538z"
-    fill="#112631"
-    fill-rule="evenodd"
-  ></path>
-</svg>
-<div
-  class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
-  [ngClass]="selectedTab === 'profile' ? 'gfhcyg' : 'kxwuOc'"
->
-  Profile
-</div></a
->
-<a
-*ngIf="!isAuthenticated"
-(click)="changedTab('signin')"
-routerLink="/signin"
-class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
-><svg
-  width="24"
-  height="24"
-  [ngClass]="selectedTab === 'signin' ? 'svg2' : ''"
->
-  <path
-    d="M17.538 12.692A3.462 3.462 0 0121 16.154V21h-1.385v-4.846c0-1.147-.93-2.077-2.077-2.077H6.462c-1.148 0-2.077.93-2.077 2.077V21H3v-4.846a3.462 3.462 0 013.462-3.462zM12 3a4.154 4.154 0 110 8.308A4.154 4.154 0 0112 3zm0 1.385a2.77 2.77 0 100 5.538 2.77 2.77 0 000-5.538z"
-    fill="#112631"
-    fill-rule="evenodd"
-  ></path>
-</svg>
-<div
-  class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
-  [ngClass]="selectedTab === 'signin' ? 'gfhcyg' : 'kxwuOc'"
->
-  Signin
-</div></a
->
-<a
-*ngIf="adminMode"
-routerLink="/manage-orders"
-(click)="changedTab('manageorder')"
-class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
-><svg
-  width="24"
-  height="24"
-  [ngClass]="selectedTab === 'manageorder' ? 'svg2' : ''"
->
-  <path
-    d="M19.071 6.571h-3.857V5.286c0-.71-.575-1.286-1.285-1.286H10.07c-.71 0-1.285.576-1.285 1.286V6.57H4.929A1.929 1.929 0 003 8.5v11.571h18V8.5a1.929 1.929 0 00-1.929-1.929zm-9-1.285h3.858V6.57H10.07V5.286zm9.643 13.5H4.286v-7.072H5.57v2.572h3.86v-2.572h5.142v2.572h3.858v-2.572h1.285v7.072zM6.857 11.714h1.286V13H6.857v-1.286zm9 0h1.286V13h-1.286v-1.286zm2.572-1.285H4.286V8.5c0-.355.288-.643.643-.643H19.07c.355 0 .643.288.643.643v1.929H18.43z"
-    fill="#112631"
-    fill-rule="evenodd"
-  ></path>
-</svg>
-<div
-  class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
-  [ngClass]="selectedTab === 'manageorder' ? 'gfhcyg' : 'kxwuOc'"
->
-  Gestion de commandes
-</div></a
->
-<a
-*ngIf="adminMode"
-(click)="changedTab('pressingcreator')"
-routerLink="/pressing-creator"
-class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
-><svg
-  width="24"
-  height="24"
-  [ngClass]="selectedTab === 'pressingcreator' ? 'svg2' : ''"
->
-  <path
-    d="M13.022 1.5c.292.001.573.1.799.278l.108.095 2.192 2.155H21v16.576c0 .997-.783 1.815-1.778 1.89l-.15.006H4.928c-1.015 0-1.846-.77-1.923-1.748L3 20.604V4.028h4.88l2.191-2.155c.206-.204.475-.331.762-.364l.145-.009h2.044zm6.692 3.793H4.286v15.31c0 .318.238.58.548.626l.095.007H19.07a.64.64 0 00.636-.539l.007-.093V5.293zM12 8.35a5.65 5.65 0 110 11.3 5.65 5.65 0 010-11.3zm0 1.3a4.35 4.35 0 100 8.7 4.35 4.35 0 000-8.7zm0 .518a3.832 3.832 0 110 7.664 3.832 3.832 0 010-7.664zm0 1.3a2.532 2.532 0 100 5.064 2.532 2.532 0 000-5.064zM18 6.5v1h-2v-1h2zm-4.978-3.736h-2.044L9.692 4.028h4.616l-1.286-1.264z"
-    fill="#112631"
-    fill-rule="evenodd"
-  ></path>
-</svg>
-<div class="mobile-menu__MobileMenuText-sc-17s3h0k-2">
-  Creer un pressing
-</div></a
->
-<a
-*ngIf="adminMode"
-(click)="changedTab('users')"
-routerLink="/users"
-class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
-><svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  [ngClass]="selectedTab === 'users' ? 'svg2' : ''"
-  stroke-linecap="round"
-  stroke-linejoin="round"
-  class="users"
->
-  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-  <circle cx="9" cy="7" r="4"></circle>
-  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-</svg>
-<div class="mobile-menu__MobileMenuText-sc-17s3h0k-2">
-  Mes utilisateurs
-</div></a
->
-<mat-slide-toggle
-*ngIf="isAuthenticated && isAdmin"
-(change)="toggleAdminMode($event)"
-[color]="primary"
-[checked]="adminMode"
->
-Admin mode
-</mat-slide-toggle>
+  <a
+    (click)="changedTab('home')"
+    routerLink="/"
+    class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
+    ><svg
+      width="24"
+      height="24"
+      [ngClass]="selectedTab === 'home' ? 'svg2' : ''"
+    >
+      <path
+        d="M13.297 3.517a1.884 1.884 0 00-2.594 0L3 11.214l.869.869 1.4-1.401v7.593c0 1.013.823 1.835 1.836 1.835h9.79a1.835 1.835 0 001.835-1.835v-7.593l1.401 1.401.869-.869-7.703-7.697zm-2.52 15.37v-4.283h2.447v4.283h-2.448zm6.73-.612a.612.612 0 01-.612.612h-2.448V13.38H9.553v5.507H7.105a.612.612 0 01-.611-.612V9.458l5.072-5.078a.612.612 0 01.868 0l5.072 5.078v8.817z"
+        fill-rule="evenodd"
+      ></path>
+    </svg>
+    <div
+      class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
+      [ngClass]="selectedTab === 'home' ? 'gfhcyg' : 'kxwuOc'"
+    >
+      Home
+    </div></a
+  ><a
+    *ngIf="!adminMode"
+    (click)="changedTab('pressings')"
+    routerLink="/pressings"
+    class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
+    ><svg
+      width="24"
+      height="24"
+      [ngClass]="selectedTab === 'pressings' ? 'svg2' : ''"
+    >
+      <path
+        d="M13.022 1.5c.292.001.573.1.799.278l.108.095 2.192 2.155H21v16.576c0 .997-.783 1.815-1.778 1.89l-.15.006H4.928c-1.015 0-1.846-.77-1.923-1.748L3 20.604V4.028h4.88l2.191-2.155c.206-.204.475-.331.762-.364l.145-.009h2.044zm6.692 3.793H4.286v15.31c0 .318.238.58.548.626l.095.007H19.07a.64.64 0 00.636-.539l.007-.093V5.293zM12 8.35a5.65 5.65 0 110 11.3 5.65 5.65 0 010-11.3zm0 1.3a4.35 4.35 0 100 8.7 4.35 4.35 0 000-8.7zm0 .518a3.832 3.832 0 110 7.664 3.832 3.832 0 010-7.664zm0 1.3a2.532 2.532 0 100 5.064 2.532 2.532 0 000-5.064zM18 6.5v1h-2v-1h2zm-4.978-3.736h-2.044L9.692 4.028h4.616l-1.286-1.264z"
+        fill="#112631"
+        fill-rule="evenodd"
+      ></path>
+    </svg>
+    <div
+      class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
+      [ngClass]="selectedTab === 'pressings' ? 'gfhcyg' : 'kxwuOc'"
+    >
+      Nos Pressings
+    </div></a
+  ><a
+    *ngIf="!adminMode"
+    routerLink="/orders"
+    (click)="changedTab('order')"
+    class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
+    ><svg
+      width="24"
+      height="24"
+      [ngClass]="selectedTab === 'order' ? 'svg2' : ''"
+    >
+      <path
+        d="M19.071 6.571h-3.857V5.286c0-.71-.575-1.286-1.285-1.286H10.07c-.71 0-1.285.576-1.285 1.286V6.57H4.929A1.929 1.929 0 003 8.5v11.571h18V8.5a1.929 1.929 0 00-1.929-1.929zm-9-1.285h3.858V6.57H10.07V5.286zm9.643 13.5H4.286v-7.072H5.57v2.572h3.86v-2.572h5.142v2.572h3.858v-2.572h1.285v7.072zM6.857 11.714h1.286V13H6.857v-1.286zm9 0h1.286V13h-1.286v-1.286zm2.572-1.285H4.286V8.5c0-.355.288-.643.643-.643H19.07c.355 0 .643.288.643.643v1.929H18.43z"
+        fill="#112631"
+        fill-rule="evenodd"
+      ></path>
+    </svg>
+    <div
+      class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
+      [ngClass]="selectedTab === 'order' ? 'gfhcyg' : 'kxwuOc'"
+    >
+      Mes commandes
+    </div></a
+  ><a
+    *ngIf="isAuthenticated && !adminMode"
+    routerLink="/profile"
+    (click)="changedTab('profile')"
+    class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
+    ><svg
+      width="24"
+      height="24"
+      [ngClass]="selectedTab === 'profile' ? 'svg2' : ''"
+    >
+      <path
+        d="M17.538 12.692A3.462 3.462 0 0121 16.154V21h-1.385v-4.846c0-1.147-.93-2.077-2.077-2.077H6.462c-1.148 0-2.077.93-2.077 2.077V21H3v-4.846a3.462 3.462 0 013.462-3.462zM12 3a4.154 4.154 0 110 8.308A4.154 4.154 0 0112 3zm0 1.385a2.77 2.77 0 100 5.538 2.77 2.77 0 000-5.538z"
+        fill="#112631"
+        fill-rule="evenodd"
+      ></path>
+    </svg>
+    <div
+      class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
+      [ngClass]="selectedTab === 'profile' ? 'gfhcyg' : 'kxwuOc'"
+    >
+      Profile
+    </div></a
+  >
+  <a
+    *ngIf="!isAuthenticated"
+    (click)="changedTab('signin')"
+    routerLink="/signin"
+    class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
+    ><svg
+      width="24"
+      height="24"
+      [ngClass]="selectedTab === 'signin' ? 'svg2' : ''"
+    >
+      <path
+        d="M17.538 12.692A3.462 3.462 0 0121 16.154V21h-1.385v-4.846c0-1.147-.93-2.077-2.077-2.077H6.462c-1.148 0-2.077.93-2.077 2.077V21H3v-4.846a3.462 3.462 0 013.462-3.462zM12 3a4.154 4.154 0 110 8.308A4.154 4.154 0 0112 3zm0 1.385a2.77 2.77 0 100 5.538 2.77 2.77 0 000-5.538z"
+        fill="#112631"
+        fill-rule="evenodd"
+      ></path>
+    </svg>
+    <div
+      class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
+      [ngClass]="selectedTab === 'signin' ? 'gfhcyg' : 'kxwuOc'"
+    >
+      Signin
+    </div></a
+  >
+  <a
+    *ngIf="adminMode"
+    routerLink="/manage-orders"
+    (click)="changedTab('manageorder')"
+    class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
+    ><svg
+      width="24"
+      height="24"
+      [ngClass]="selectedTab === 'manageorder' ? 'svg2' : ''"
+    >
+      <path
+        d="M19.071 6.571h-3.857V5.286c0-.71-.575-1.286-1.285-1.286H10.07c-.71 0-1.285.576-1.285 1.286V6.57H4.929A1.929 1.929 0 003 8.5v11.571h18V8.5a1.929 1.929 0 00-1.929-1.929zm-9-1.285h3.858V6.57H10.07V5.286zm9.643 13.5H4.286v-7.072H5.57v2.572h3.86v-2.572h5.142v2.572h3.858v-2.572h1.285v7.072zM6.857 11.714h1.286V13H6.857v-1.286zm9 0h1.286V13h-1.286v-1.286zm2.572-1.285H4.286V8.5c0-.355.288-.643.643-.643H19.07c.355 0 .643.288.643.643v1.929H18.43z"
+        fill="#112631"
+        fill-rule="evenodd"
+      ></path>
+    </svg>
+    <div
+      class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
+      [ngClass]="selectedTab === 'manageorder' ? 'gfhcyg' : 'kxwuOc'"
+    >
+      Gestion de commandes
+    </div></a
+  >
+  <a
+    *ngIf="adminMode"
+    (click)="changedTab('pressingcreator')"
+    routerLink="/pressing-creator"
+    class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
+    ><svg
+      width="24"
+      height="24"
+      [ngClass]="selectedTab === 'pressingcreator' ? 'svg2' : ''"
+    >
+      <path
+        d="M13.022 1.5c.292.001.573.1.799.278l.108.095 2.192 2.155H21v16.576c0 .997-.783 1.815-1.778 1.89l-.15.006H4.928c-1.015 0-1.846-.77-1.923-1.748L3 20.604V4.028h4.88l2.191-2.155c.206-.204.475-.331.762-.364l.145-.009h2.044zm6.692 3.793H4.286v15.31c0 .318.238.58.548.626l.095.007H19.07a.64.64 0 00.636-.539l.007-.093V5.293zM12 8.35a5.65 5.65 0 110 11.3 5.65 5.65 0 010-11.3zm0 1.3a4.35 4.35 0 100 8.7 4.35 4.35 0 000-8.7zm0 .518a3.832 3.832 0 110 7.664 3.832 3.832 0 010-7.664zm0 1.3a2.532 2.532 0 100 5.064 2.532 2.532 0 000-5.064zM18 6.5v1h-2v-1h2zm-4.978-3.736h-2.044L9.692 4.028h4.616l-1.286-1.264z"
+        fill="#112631"
+        fill-rule="evenodd"
+      ></path>
+    </svg>
+    <div class="mobile-menu__MobileMenuText-sc-17s3h0k-2">
+      Creer un pressing
+    </div></a
+  >
+  <a
+    *ngIf="adminMode"
+    (click)="changedTab('users')"
+    routerLink="/users"
+    class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      [ngClass]="selectedTab === 'users' ? 'svg2' : ''"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="users"
+    >
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+      <circle cx="9" cy="7" r="4"></circle>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+    </svg>
+    <div class="mobile-menu__MobileMenuText-sc-17s3h0k-2">
+      Mes utilisateurs
+    </div></a
+  >
+  <mat-slide-toggle
+    *ngIf="isAuthenticated && isAdmin"
+    (change)="toggleAdminMode($event)"
+    [color]="primary"
+    [checked]="adminMode"
+  >
+    Admin mode
+  </mat-slide-toggle>
 </div>
