@@ -27,7 +27,8 @@
                               <a class="nav-link anchor" href="#git_in_touch">Contact</a>
                           </li>
                       </ul>
-                      <a (click)="goToLinkOfPath('signin')" class="btnSignIn">Sign in</a>
+                      <a *ngIf="!isAuthenticated" (click)="goToLinkOfPath('signin')" class="btnSignIn">Sign in</a>
+                      <a *ngIf="isAuthenticated" (click)="goToLinkOfPath('profil')" class="btnSignIn">{{user?.fullname}}</a>
                   </div>
               </div>
           </div>
@@ -213,12 +214,12 @@
       Mes utilisateurs
     </div></a
   >
-  <mat-slide-toggle
+</div>
+<mat-slide-toggle
     *ngIf="isAuthenticated && isAdmin"
     (change)="toggleAdminMode($event)"
     [color]="primary"
     [checked]="adminMode"
   >
-    Admin mode
-  </mat-slide-toggle>
-</div>
+  Admin mode
+</mat-slide-toggle>
