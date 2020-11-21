@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   @Input('adminMode') adminMode : any
   @Input('isAuthenticated') isAuthenticated : any
   @Input('user') user : any
+  @Input('isAdmin') isAdmin : any
 
   selectedTab = 'home'
   
@@ -34,7 +35,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
 
     this.adminMode = localStorage.getItem('adminMode') === 'true';
-
+    console.log(this.isAuthenticated)
     //  $(window).on('scroll', function() {
     //  console.log("broker");
 
