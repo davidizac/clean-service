@@ -91,9 +91,6 @@
                 <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
                   <div
                     class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe"
-                  ></div>
-                  <div
-                    class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe"
                   >
                     <span
                       *ngIf="getRecurrence(product) !== 0"
@@ -116,10 +113,11 @@
                   >
                     <img src="../../../assets/images/plus.png" />
                   </button>
-                  <span class="productList__Price-sc-1oz9rbz-4 cXZnLc"
-                    >{{ product.price }} &#8362;</span
-                  >
+                  
                 </div>
+                <div><span class="productList__Price-sc-1oz9rbz-4 cXZnLc"
+                  >{{ product.price }} &#8362;</span
+                ></div>
               </div>
             </div>
           </ng-container>

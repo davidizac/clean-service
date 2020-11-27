@@ -1,4 +1,4 @@
-<div class="style__Backdrop-sc-1z1ex6-0 fOnjFl">
+<div *ngIf="selectedMoment" class="style__Backdrop-sc-1z1ex6-0 fOnjFl">
   <div class="style__ModalWrapper-sc-1z1ex6-2 fBzOYk">
     <button class="style__Close-sc-1z1ex6-1 klldbS" (click)="closeModal()">
       <svg width="24" height="24">
@@ -22,6 +22,7 @@
               <div class="css-26l3qy-menu">
                 <div class="css-1srn6aj">
                   <div
+                    *ngFor="let moment of moments"
                     [ngClass]="
                       selectedMoment === moment
                         ? 'css-qguw4o-option'
@@ -30,7 +31,6 @@
                     (click)="changedDate(moment)"
                     id="react-select-30-option-0"
                     tabindex="-1"
-                    *ngFor="let moment of moments"
                   >
                     {{ moment | date_format }}
                   </div>

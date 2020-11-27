@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import * as Moment from 'moment';
@@ -23,7 +23,7 @@ export class DateSelectorComponent implements OnInit {
   isPickup;
   endDate;
   startDate;
-  constructor(public bsModalRef: BsModalRef) {}
+  constructor(public bsModalRef: BsModalRef, public cd:ChangeDetectorRef) {}
 
   ngOnInit() {
     moment.locale('fr');
@@ -57,12 +57,10 @@ export class DateSelectorComponent implements OnInit {
       }
     }
     const range = moment.range(this.startDate, this.endDate);
-    const range2 = moment.range(moment().hours(17), moment().hours(22));
     this.moments = Array.from(
       range.by('day', { excludeEnd: true, step: 1 })
-    ).filter((m) => m.day() !== 6);
-    const hours = Array.from(range2.by('hour', { excludeEnd: false, step: 1 }));
-    this.hourRanges = hours.map((m) => m.format('HH') + ':00');
+    )
+    this.changedDate(this.moments[0])
   }
 
   closeModal() {
@@ -78,19 +76,28 @@ export class DateSelectorComponent implements OnInit {
 
   changedDate(moment2) {
     this.selectedMoment = moment2;
-    if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD')) {
-      const range2 = moment.range(moment(), moment().hours(22));
+    if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && !moment().add(2,'hours').isAfter(moment().hours(21))) {
+      const range2 = moment.range(moment().add(2,'hours'), moment().hours(22));
       const hours = Array.from(
         range2.by('hour', { excludeEnd: false, step: 1 })
       );
       this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
     }
-    if (moment2.day() === 5) {
-      const range2 = moment.range(moment().hours(10), moment().hours(13));
-      const hours = Array.from(
-        range2.by('hour', { excludeEnd: false, step: 1 })
-      );
-      this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
+    else if (moment2.day() === 5) {
+      if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && !moment().add(2,'hours').isAfter(moment().hours(12))) {
+        const range2 = moment.range(moment().add(2,'hours'), moment().hours(22));
+        const hours = Array.from(
+          range2.by('hour', { excludeEnd: false, step: 1 })
+        );
+        this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
+      }
+      else{
+        const range2 = moment.range(moment().hours(10), moment().hours(13));
+        const hours = Array.from(
+          range2.by('hour', { excludeEnd: false, step: 1 })
+        );
+        this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
+      }
     } else {
       const range2 = moment.range(moment().hours(17), moment().hours(22));
       const hours = Array.from(
@@ -98,6 +105,7 @@ export class DateSelectorComponent implements OnInit {
       );
       this.hourRanges = hours.map((m) => m.format('HH') + ':00');
     }
+    this.cd.detectChanges()
   }
 
   changedHour(hourRange) {

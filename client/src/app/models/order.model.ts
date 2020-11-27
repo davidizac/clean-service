@@ -15,6 +15,7 @@ export class Order {
   displayedId: string;
   price: string;
   phoneNumber: string;
+  pressing:any
 
   constructor(orderData = {} as Order) {
     const {
@@ -32,6 +33,7 @@ export class Order {
       price,
       addressDetails2,
       phoneNumber,
+      pressing
     } = orderData;
     this._id = _id;
     this.products = products;
@@ -47,5 +49,6 @@ export class Order {
     this.price = price;
     this.addressDetails2 = addressDetails2;
     this.phoneNumber = phoneNumber;
+    this.pressing = pressing
   }
 }

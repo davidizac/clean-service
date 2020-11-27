@@ -64,6 +64,9 @@ const updateOrderStatusValidator = Joi.object({
     .optional(),
   addressDetails2: Joi.string()
     .allow('')
+    .optional(),
+  pressing: Joi.string()
+    .allow('')
     .optional()
 })
 

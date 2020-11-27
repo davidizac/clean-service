@@ -28,7 +28,7 @@
                           </li>
                       </ul>
                       <a *ngIf="!isAuthenticated" (click)="goToLinkOfPath('signin')" class="btnSignIn">Sign in</a>
-                      <a *ngIf="isAuthenticated" (click)="goToLinkOfPath('profil')" class="btnSignIn">{{user?.fullname}}</a>
+                      <a *ngIf="isAuthenticated" (click)="goToLinkOfPath('profile')" class="btnSignIn">{{user?.fullname}}</a>
                   </div>
               </div>
           </div>
