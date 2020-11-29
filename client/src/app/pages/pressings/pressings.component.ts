@@ -12,9 +12,10 @@ import { Pressing } from 'src/app/models/pressing.model';
 import { PressingService } from 'src/app/services/pressing.service';
 import * as geolib from 'geolib';
 import * as _ from 'lodash';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { UserService } from 'src/app/services/user.service';
+import { MyEvent } from 'src/app/services/myevents.service';
 
 @Component({
   selector: 'app-pressings',
@@ -37,6 +38,7 @@ export class PressingsComponent implements OnInit {
   pressingDisplayed;
   isLoading = false;
   isAdmin: boolean;
+  lang:string
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
@@ -45,10 +47,16 @@ export class PressingsComponent implements OnInit {
     private cd: ChangeDetectorRef,
     public router: Router,
     public ngZone: NgZone,
-    private userService: UserService
+    private userService: UserService,
+    public route:ActivatedRoute,
+    private myEvent:MyEvent
   ) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe(value => {
+      this.lang = value['lang']
+      this.myEvent.setLanguageData(this.lang);
+    })
     this.location = this.formBuilder.control('');
     this.location.valueChanges.subscribe((e) => {
       this.triggerAutocomplete(e);

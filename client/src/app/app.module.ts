@@ -45,7 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent,
+    SigninComponent, 
     ForgotPasswordComponent,
     PressingsComponent,
     CheckoutComponent,

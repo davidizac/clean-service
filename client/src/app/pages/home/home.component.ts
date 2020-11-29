@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { MyEvent } from 'src/app/services/myevents.service';
 
 declare let $: any;
 @Component({
@@ -12,30 +13,20 @@ declare let $: any;
 
 // 
 export class HomeComponent implements OnInit {
+  lang:string
 
   constructor(
-    public router: Router
+    public router: Router,
+    public route: ActivatedRoute,
+    private myEvent: MyEvent
   ) { AOS.init(); }
 
 
   ngOnInit() {
-
-    //  $(window).on('scroll', function() {
-    //  console.log("broker");
-
-    // });
-
-    // $(window).on('scroll', function() {
-    //   //alert('out reached');
-    //     if($(window).scrollTop() + $('.navbar-collapse').height() - 1726 >= $('.navbar-collapse')[0].scrollHeight) {
-    //       console.log("from broker");
-
-    //         $('.navbar-collapse').css({'position':'fixe', 'top':'0'});
-    //     } else{
-    //       $('.navbar-collapse').css({'position':'sticky', 'top':'327'});
-    //     }
-    // });
-
+    this.route.params.subscribe(value => {
+      this.lang = value['lang']
+      this.myEvent.setLanguageData(this.lang);
+    })
     var navbar = $('.navbar');
     var navLink = $('.nav-link')
     var imgLogoWhite = $('#logoMenuWhite')

@@ -7,6 +7,7 @@ import { PressingService } from 'src/app/services/pressing.service';
 import * as _ from 'lodash';
 import { CATEGORIES } from 'src/app/constant';
 import { of } from 'rxjs';
+import { MyEvent } from 'src/app/services/myevents.service';
 
 @Component({
   selector: 'app-pressing-detail',
@@ -23,10 +24,12 @@ export class PressingDetailComponent implements OnInit {
   isLoading = false;
   isNew;
   orderId = '';
+  lang:string
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    public pressingService: PressingService
+    public pressingService: PressingService,
+    private myEvent:MyEvent
   ) {}
   @ViewChild(MatAccordion) accordion: MatAccordion;
 
@@ -35,6 +38,10 @@ export class PressingDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(value => {
+      this.lang = value['lang']
+      this.myEvent.setLanguageData(this.lang);
+    })
     this.isLoading = true;
     this.route.params
       .pipe(

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
+import { MyEvent } from 'src/app/services/myevents.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -17,15 +18,21 @@ export class SigninComponent implements OnInit {
   returnUrl: string;
   phoneNumber: string;
   errorMessage;
+  lang:string
 
   constructor(
     private authService: AuthService,
     public router: Router,
     public userService: UserService,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    private myEvent:MyEvent
   ) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe(value => {
+      this.lang = value['lang']
+      this.myEvent.setLanguageData(this.lang);
+    })
     this.route.queryParams.subscribe((queryParam) => {
       this.returnUrl = queryParam.returnUrl || '/';
     });

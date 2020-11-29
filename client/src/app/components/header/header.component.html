@@ -1,7 +1,7 @@
 <mat-slide-toggle
     class="adminToggle"
     (change)="toggleAdminMode($event)"
-    [color]="primary"
+    *ngIf="isAuthenticated && isAdmin"
     [checked]="adminMode"
   >
   Admin mode

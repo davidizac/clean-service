@@ -17,79 +17,77 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { UsersComponent } from './pages/users/users.component';
 
 const routes: Routes = [
+  { path: "", pathMatch: "full", redirectTo: "fr" },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-  {
-    path: 'home',
-    component: HomeComponent,
-  },
-  {
-    path: 'pressings',
-    component: PressingsComponent,
-  },
-  {
-    path: 'pressings/:id',
-    component: PressingDetailComponent,
-  },
-  {
-    path: 'pressing-creator',
-    component: PressingCreatorComponent,
-    canActivate: [AuthGuard, AdminGuard],
-  },
-  {
-    path: 'pressing-creator/:id',
-    component: PressingCreatorComponent,
-    canActivate: [AuthGuard, AdminGuard],
-  },
-  {
-    path: 'orders',
-    component: OrdersComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'manage-orders',
-    component: ManageOrdersComponent,
-    canActivate: [AuthGuard, AdminGuard],
-  },
-  {
-    path: 'signin',
-    component: SigninComponent,
-  },
-  {
-    path: 'checkout',
-    component: CheckoutComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: '404',
-    component: NotfoundComponent,
-  },
-  {
-    path: 'forgot-password',
-    component: ForgotPasswordComponent,
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'order-confirmation/:id',
-    component: OrderConfirmationComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'users',
-    component: UsersComponent,
-    canActivate: [AuthGuard, AdminGuard],
-  },
-  {
-    path: 'forgot-password',
-    component: ForgotPasswordComponent,
-  },
+    path:"fr",
+    children:[
+
+      {
+        path: 'home',
+        component: HomeComponent,
+      },
+      {
+        path: 'fr/pressings',
+        component: PressingsComponent,
+      },
+      {
+        path: 'pressings/:id',
+        component: PressingDetailComponent,
+      },
+      {
+        path: 'pressing-creator',
+        component: PressingCreatorComponent,
+        canActivate: [AuthGuard, AdminGuard],
+      },
+      {
+        path: 'pressing-creator/:id',
+        component: PressingCreatorComponent,
+        canActivate: [AuthGuard, AdminGuard],
+      },
+      {
+        path: 'orders',
+        component: OrdersComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'manage-orders',
+        component: ManageOrdersComponent,
+        canActivate: [AuthGuard, AdminGuard],
+      },
+      {
+        path: 'signin',
+        component: SigninComponent,
+      },
+      {
+        path: 'checkout',
+        component: CheckoutComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: '404',
+        component: NotfoundComponent,
+      },
+      {
+        path: 'forgot-password',
+        component: ForgotPasswordComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'order-confirmation/:id',
+        component: OrderConfirmationComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+        canActivate: [AuthGuard, AdminGuard],
+      }
+    ]
+  }
 ];
 
 @NgModule({
