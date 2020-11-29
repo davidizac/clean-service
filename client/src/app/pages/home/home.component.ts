@@ -45,21 +45,6 @@ export class HomeComponent implements OnInit {
         })
       )
 
-    //  $(window).on('scroll', function() {
-    //  console.log("broker");
-
-    // });
-
-    // $(window).on('scroll', function() {
-    //   //alert('out reached');
-    //     if($(window).scrollTop() + $('.navbar-collapse').height() - 1726 >= $('.navbar-collapse')[0].scrollHeight) {
-    //       console.log("from broker");
-
-    //         $('.navbar-collapse').css({'position':'fixe', 'top':'0'});
-    //     } else{
-    //       $('.navbar-collapse').css({'position':'sticky', 'top':'327'});
-    //     }
-    // });
 
     var navbar = $('.navbar');
     var navLink = $('.nav-link')
