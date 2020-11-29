@@ -1,1173 +1,240 @@
-
-
-    <section id="slide" class="slide background-withcolor">
-        <div class="content-bottom">
-            <div class="container">
-                <div class="row align-items-center" style="padding-top: 100px;">
-                    <div class="col-md-7 aos-init aos-animate" data-aos="fade-right">
-
-
-                        <p style="font-size: 50px; line-height: 61px;">Le pressing de votre choix a porter de main.</p>
-                        <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary btn-white shadow btn-theme d-none d-lg-block ml-3"><span style="font-weight: bold;">Nos Pressings</span></a>
-                    </div>
-                    <div class="col-md-5 aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">
-
-                        <div style="position: relative; width: 205px;" class="mx-auto">
-                            <img src="assets/images/Cleeser_copie_3-removebg-preview.png" class="img-fluid d-block mx-auto" style="max-width: 560px;" alt="">
-                            <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary btn-primaryMobile btn-white shadow btn-theme d-block d-lg-none"><span style="font-weight: bold;">Nos Pressings</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Header -->
-
-
-
-
-
-    <!-- Start Boxes -->
-    <section id="boxes" class="boxes padding-100">
+<section id="slide" class="slide background-withcolor">
+    <div class="content-bottom">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-12" style="height: 343px;">
-                    <div class="box aos-init" data-aos="fade-up" style="height: 100%;">
-                        <div class="icon">
-                            <img src="assets/images/like.png" alt="" style="width: 68px;">
-                        </div>
-                        <div class="space-20"></div>
-                        <h4>Efficacité</h4>
-                        <div class="space-15"></div>
-                        <p>Nous mettons tout en oeuvre pour satisfaire au maximum notre clientele</p>
-                    </div>
+            <div class="row align-items-center" style="padding-top: 100px;">
+                <div class="col-md-7 aos-init aos-animate" data-aos="fade-right">
+
+
+                    <p style="font-size: 50px; line-height: 61px;">Le pressing de votre choix a porter de main.</p>
+                    <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary btn-white shadow btn-theme d-none d-md-block ml-3"><span style="font-weight: bold;">Nos Pressings</span></a>
                 </div>
-                <div class="col-md-4 col-12" style="height: 343px;">
-                    <div class="box aos-init" data-aos="fade-up" data-aos-delay="200" style="height: 100%;">
-                        <div class="icon">
-                            <!-- <span class="lnr lnr-rocket"></span> -->
-                            <img src="assets/images/timer.png" alt="" style="width: 68px;">
-                        </div>
-                        <div class="space-20"></div>
-                        <h4>Gain de Temps</h4>
-                        <div class="space-15"></div>
-                        <p>Fini les deplacements au pressing, gagnez du temps avec Cleeser</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-12" style="height: 343px;">
-                    <div class="box aos-init" data-aos="fade-up" data-aos-delay="400" style="height: 100%;">
-                        <div class="icon">
-                            <img src="assets/images/website.png" alt="" style="width: 68px;">
-                        </div>
-                        <div class="space-20"></div>
-                        <h4>Libre Choix</h4>
-                        <div class="space-15"></div>
-                        <p>Le choix des pressings et leurs tarifs s'offrent à vous <br> Comparer, Selectionner, Valider !</p>
+                <div class="col-md-5 aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">
+
+                    <div style="position: relative; width: 267px;" class="mx-auto">
+                        <img src="assets/images/logoPhoneHome.png" class="img-fluid d-block mx-auto" style="max-width: 560px;" alt="">
+                        <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary btn-primaryMobile btn-white shadow btn-theme d-block d-md-none"><span style="font-weight: bold;">Nos Pressings</span></a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- End Boxes -->
+    </div>
+</section>
+<!-- End Header -->
 
-    <!-- Start Why Us -->
-    <section id="about" class="why-us padding-100 background-fullwidth background-fixed " style="background-image: url(assets/img/gray-bg.jpg);">
-        <div class="container">
-            <h3 class="text-center" style="margin-bottom: 85px;">
-                Comment ça marche ?
-            </h3>
-            <div class="row align-items-center">
-                <div class="col-md-6 aos-init" data-aos="fade-zoom-in" data-aos-delay="200">
 
-                    <p style="font-weight: bold;font-size: 20px; color: #303952;"><span style="color: #00cdcd; font-size: 27px;">4</span> étapes seulement:
-                    </p>
-                    <div class="space-50"></div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12 aos-init" data-aos="zoom-in" data-aos-delay="400">
-                            <div class="why-us-icon">
-                                <span class="lnr lnr-map-marker"></span>
-                                <p style="font-size: 19px; font-weight: 600;">Choix du pressing</p>
-                                <p>sélectionner le pressing parmi nos différents partenaires.
-                                </p>
-                            </div>
-                            <div class="space-25"></div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12 aos-init" data-aos="zoom-in" data-aos-delay="600">
-                            <div class="why-us-icon">
-                                <span class="lnr lnr-smartphone"></span>
-                                <p style="font-size: 19px; font-weight: 600;">Commander via Cleeser.com</p>
-                                <p>renseigner l’heur et la date.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="space-25"></div>
+
+
+
+<!-- Start Boxes -->
+<section id="boxes" class="boxes padding-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-12" style="max-height: 463px;">
+                <div class="box aos-init" data-aos="fade-up" style="height: 100%;">
+                    <div class="icon">
+                        <img src="assets/images/like.png" alt="" style="width: 68px;">
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12 aos-init" data-aos="zoom-in" data-aos-delay="800">
-                            <div class="why-us-icon">
-
-                                <span class="lnr lnr-car"></span>
-                                <p style="font-size: 19px; font-weight: 600;">Recuperation des vêtements</p>
-                                <p>le livreur vient directement chez vous récupérer vos vêtements.
-                                </p>
-                            </div>
-                            <div class="space-25"></div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12 aos-init" data-aos="zoom-in" data-aos-delay="1000">
-                            <div class="why-us-icon">
-                                <span class="lnr lnr-shirt"></span>
-                                <p style="font-size: 19px; font-weight: 600;">Livraison des vêtements</p>
-                                <p>Vos vêtements lavés et repassés sont livrer a votre domicile.
-                                </p>
-                            </div>
-                            <div class="space-25"></div>
-                        </div>
-                    </div>
+                    <div class="space-20"></div>
+                    <h4>Efficacité</h4>
+                    <div class="space-15"></div>
+                    <p>Nous mettons tout en oeuvre pour satisfaire au maximum notre clientele</p>
                 </div>
-                <div class="col-md-6 text-center aos-init d-none d-md-block" data-aos="fade-right">
-                    <img src="assets/images/imageCamion.png" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-4 col-12" style="max-height: 463px;">
+                <div class="box aos-init" data-aos="fade-up" data-aos-delay="200" style="height: 100%;">
+                    <div class="icon">
+                        <!-- <span class="lnr lnr-rocket"></span> -->
+                        <img src="assets/images/timer.png" alt="" style="width: 68px;">
+                    </div>
+                    <div class="space-20"></div>
+                    <h4>Gain de Temps</h4>
+                    <div class="space-15"></div>
+                    <p>Fini les deplacements au pressing, gagnez du temps avec Cleeser</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-12" style="max-height: 463px;">
+                <div class="box aos-init" data-aos="fade-up" data-aos-delay="400" style="height: 100%;">
+                    <div class="icon">
+                        <img src="assets/images/website.png" alt="" style="width: 68px;">
+                    </div>
+                    <div class="space-20"></div>
+                    <h4>Libre Choix</h4>
+                    <div class="space-15"></div>
+                    <p>Le choix des pressings et leurs tarifs s'offrent à vous <br> Comparer, Selectionner, Valider !</p>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- End Why Us -->
+    </div>
+</section>
+<!-- End Boxes -->
 
-    <!-- Start Main Features -->
-    <!-- <section id="main_features" class="main-features padding-100">
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in">
-                    <h3>Main
-                        <span>Features</span>
-                    </h3>
-                    <div class="space-25"></div>
-                    <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incidit labore lorem ipsum amet madolor sit amet.</p>
-                    <div class="space-25"></div>
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-3 text-lg-right left-side">
-                    <div class="one-feature one aos-init" data-aos="fade-right" data-aos-delay="1000">
-                        <h5>Lorem ipsum</h5>
-                        <span class="lnr lnr-rocket"></span>
-                        <p>Our system is a comprehensive system of applied creativity.</p>
-                    </div>
-                    <div class="one-feature aos-init" data-aos="fade-right" data-aos-delay="1400">
-                        <h5>Lorem ipsum</h5>
-                        <span class="lnr lnr-cog"></span>
-                        <p>For more than 5 years, we’ve been passionate about achieving better.</p>
-                    </div>
-                    <div class="one-feature aos-init" data-aos="fade-right" data-aos-delay="1800">
-                        <h5>Lorem ipsum</h5>
-                        <span class="lnr lnr-cloud"></span>
-                        <p>Our system is a comprehensive system of applied creativity.</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-center">
-                    <div class="features-circle">
-                        <div class="circle-svg aos-init" data-aos="zoom-in" data-aos-delay="400">
-                            <svg version="1.1" id="features_circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="543px" height="542.953px" viewBox="0 0 543 542.953" enable-background="new 0 0 543 542.953" xml:space="preserve">
-                                <g>
-                                    <circle fill="none" stroke="#" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="11.9474,11.9474" cx="271.5" cy="271.516" r="270"></circle>
-                                    <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="50s" repeatCount="indefinite"></animateTransform>
-                                </g>
-                            </svg>
-                        </div>
-                        <img data-aos="fade-up" data-aos-delay="200" src="assets/img/mobile-3.png" class="img-fluid aos-init" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-3 right-side">
-                    <div class="one-feature aos-init" data-aos="fade-left" data-aos-delay="1000">
-                        <h5>Lorem ipsum</h5>
-                        <span class="lnr lnr-construction"></span>
-                        <p>Our system is a comprehensive system of applied creativity.</p>
-                    </div>
-                    <div class="one-feature aos-init" data-aos="fade-left" data-aos-delay="1400">
-                        <h5>Lorem ipsum</h5>
-                        <span class="lnr lnr-gift"></span>
-                        <p>For more than 5 years, we’ve been passionate about achieving better.</p>
-                    </div>
-                    <div class="one-feature aos-init" data-aos="fade-left" data-aos-delay="1800">
-                        <h5>Lorem ipsum</h5>
-                        <span class="lnr lnr-database"></span>
-                        <p>For more than 5 years, we’ve been passionate about achieving better.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- End Main Features -->
+<!-- Start Why Us -->
+<section id="about" class="why-us padding-100 background-fullwidth background-fixed " style="background-image: url(assets/img/gray-bg.jpg);">
+    <div class="container">
+        <h3 class="text-center" style="margin-bottom: 85px;">
+            Comment ça marche ?
+        </h3>
+        <div class="row align-items-center">
+            <div class="col-md-6 aos-init" data-aos="fade-zoom-in" data-aos-delay="200">
 
-    <!-- Start Other Features -->
-    <section id="other_features" class="other-features padding-100 pt-5 background-withcolor">
-        <div class="container-fluid">
-
-            <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in">
-                <h3>Nos <span class="white"> Différents </span> Partenaires</h3>
-                <div class="space-25"></div>
-                <p style="font-size:26px">Ils nous ont fait confiance, à vous de choisir !</p>
-                <div class="space-50"></div>
-            </div>
-
-
-
-
-
-
-            <div class="other-features-slider aos-init slick-initialized slick-slider container" data-aos="fade-up">
-
-
-                <div class="row mb-5 justify-content-center" data-aos="fade-up">
-                    <div class="item text-center slick-center backgroundImg col-12 col-md-5 col-xl row align-items-center mx-2 " data-slick-index="0" aria-hidden="true" tabindex="0" style="height: 255px;">
-
-                        <div class="mx-auto col-12">
-                            <h4 style="font-size: 25px;">Pressing Kanfei Nesharim</h4>
-                            <p style="font-weight: bold;">38 kanfei nesharim</p>
-                            <p style="font-weight: bold;">Guivat Shaoul</p>
-
-                        </div>
-                        <div class="col col-md-12 align-self-end">
-                            <a class="mx-auto align-self-end btn btn-primary shadow d-block btn-colord btn-theme" style="height:45px ; padding: 12px 35px !important"><span>Selectionner</span></a>
-                        </div>
-                    </div>
-
-                    <div class="item text-center slick-center backgroundImg  col-12 col-md-5 col-xl  row align-items-center mx-2" data-slick-index="0" aria-hidden="true" tabindex="0" style="height: 255px;">
-                        <div class="mx-auto col-12">
-                            <h4 style="font-size: 25px;">Pressing Bait vagan</h4>
-                            <p style="font-weight: bold;">38 Bait vegan</p>
-                            <p style="font-weight: bold;">Bait Vagan</p>
-                        </div>
-                        <div class="col col-md-12 align-self-end">
-                            <a class="mx-auto align-self-end btn btn-primary shadow d-block btn-colord btn-theme" style="height:45px ; padding: 12px 35px !important"><span>Selectionner</span></a>
-                        </div>
-                    </div>
-                    <div class="item text-center slick-center backgroundImg  col-12 col-md-5 col-xl  row align-items-center mx-2" data-slick-index="0" aria-hidden="true" tabindex="0" style="height: 255px;">
-                        <div class="mx-auto col-12">
-                            <h4 style="font-size: 25px;">Pressing Ouziel</h4>
-                            <p style="font-weight: bold;">38 Rehov Ouziel</p>
-                            <p style="font-weight: bold;">Bait Vagan</p>
-
-                        </div>
-                        <div class="col col-md-12 align-self-end">
-                            <a href="#" class="mx-auto align-self-end btn btn-primary shadow d-block btn-colord btn-theme" style="height:45px ; padding: 12px 35px !important"><span>Selectionner</span></a>
-                        </div>
-                    </div>
-                    <div class="item text-center slick-center backgroundImg col-12 col-md-5 col-xl  row align-items-center mx-2" data-slick-index="0" aria-hidden="true" tabindex="0" style="height: 255px;">
-                        <div class="mx-auto col-12">
-                            <h4 style="font-size: 25px;">Pressing Ramat Sharet</h4>
-                            <p style="font-weight: bold;">38 Kadish Luz</p>
-                            <p style="font-weight: bold;">Ramat Sharet</p>
-
-                        </div>
-                        <div class="col col-md-12 align-self-end">
-                            <a href="#" class="mx-auto align-self-end btn btn-primary col col-md-12 shadow d-block btn-colord btn-theme" style="height:45px ; padding: 12px 35px !important"><span>Selectionner</span></a>
-                        </div>
-                    </div>
-
-                    <!-- <div class="backgroundImg row mr-5">
-                                    <div class="m-auto">
-                                        <h5 class="" style="font-size:25px">Hangev</h5>
-                                        <p class="adress" style="font-size:20px">5 rehov kanfe nesharim</p>
-                                    </div>
-                                </div> -->
-                    <!-- <div class="item text-center slick-slide" data-slick-index="1" aria-hidden="true" tabindex="0" style="width: 257px;">
-                                    <span class="lnr lnr-cog"></span>
-                                    <h4>Easy Login</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et atque eos amet vel voluptatibus incidunt.
-                                    </p>
-                                </div>
-                                <div class="item text-center slick-slide" data-slick-index="2" aria-hidden="true" tabindex="0" style="width: 257px;">
-                                    <span class="lnr lnr-cloud"></span>
-                                    <h4>Fast Install</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et atque eos amet vel voluptatibus incidunt.
-                                    </p>
-                                </div>
-                                <div class="item text-center slick-slide" data-slick-index="3" aria-hidden="true" tabindex="-1" style="width: 257px;">
-                                    <span class="lnr lnr-construction"></span>
-                                    <h4>Data Protect</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et atque eos amet vel voluptatibus incidunt.
-                                    </p>
-                                </div>
-                                <div class="item text-center slick-slide" data-slick-index="4" aria-hidden="true" tabindex="-1" style="width: 257px;">
-                                    <span class="lnr lnr-gift"></span>
-                                    <h4>High Resolution</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et atque eos amet vel voluptatibus incidunt.
-                                    </p>
-                                </div>
-                                <div class="item text-center slick-slide" data-slick-index="5" aria-hidden="true" tabindex="-1" style="width: 257px;">
-                                    <span class="lnr lnr-database"></span>
-                                    <h4>Clean Code</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et atque eos amet vel voluptatibus incidunt.
-                                    </p>
-                                </div>
-                                <div class="item text-center slick-slide" data-slick-index="6" aria-hidden="true" tabindex="-1" style="width: 257px;">
-                                    <span class="lnr lnr-gift"></span>
-                                    <h4>Quick Support</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et atque eos amet vel voluptatibus incidunt.
-                                    </p>
-                                </div> -->
-                </div>
-
-                <div (click)="goToLinkOfPath('pressings')" class="mx-auto mb-5 text-center row align-items-center justify-content-center btnGoToAllPressings">
-
-                    Voir Plus...
-
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-    <!-- End Other Features  -->
-
-    <!-- Start Watch Video -->
-    <!-- <section id="watch_video" class="watch-video padding-100">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in">
-                    <h3>Watch
-                        <span> Video</span>
-                    </h3>
-                    <div class="space-25"></div>
-                    <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incidit labore lorem ipsum amet madolor sit amet.</p>
-                    <div class="space-50"></div>
-                </div>
-                <div class="col-md-6 offset-md-3 aos-init" data-aos="fade-up">
-                    <div class="video" style="background-image: url('assets/img/people.jpg')">
-                        <img src="assets/img/mobile-4-4.png" class="img-fluid d-block mx-auto" alt="">
-                        <a href="http://www.youtube.com/watch?v=XSGBVzeBUbk" data-lity=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- End Watch Video  -->
-
-    <!-- Start Screenshots -->
-    <!-- <section id="screenshots" class="screenshots padding-100 background-fullwidth background-fixed" style="background-image: url(assets/img/gray-bg.jpg);">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in">
-                    <h3>Awesome
-                        <span> Screenshots</span>
-                    </h3>
-                    <div class="space-25"></div>
-                    <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incidit labore lorem ipsum amet madolor sit amet.</p>
-                    <div class="space-50"></div>
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-12">
-                    <div class="screenshots-slider aos-init slick-initialized slick-slider" data-aos="fade-up">
-
-
-                        <div class="slick-list draggable" style="padding: 0px 150px;">
-                            <div class="slick-track" style="opacity: 1; width: 2616px; transform: translate3d(327px, 0px, 0px);">
-                                <div class="item text-center slick-slide slick-current slick-center" data-slick-index="0" aria-hidden="true" tabindex="0" style="width: 257px;">
-                                    <img src="assets/img/mobile-5.png" class="img-fluid d-block mx-auto" alt="">
-                                </div>
-                                <div class="item text-center slick-slide" data-slick-index="1" aria-hidden="true" tabindex="0" style="width: 257px;">
-                                    <img src="assets/img/mobile-5.png" class="img-fluid d-block mx-auto" alt="">
-                                </div>
-                                <div class="item text-center slick-slide" data-slick-index="2" aria-hidden="true" tabindex="0" style="width: 257px;">
-                                    <img src="assets/img/mobile-5.png" class="img-fluid d-block mx-auto" alt="">
-                                </div>
-                                <div class="item text-center slick-slide" data-slick-index="3" aria-hidden="true" tabindex="-1" style="width: 257px;">
-                                    <img src="assets/img/mobile-5.png" class="img-fluid d-block mx-auto" alt="">
-                                </div>
-                                <div class="item text-center slick-slide" data-slick-index="4" aria-hidden="true" tabindex="-1" style="width: 257px;">
-                                    <img src="assets/img/mobile-5.png" class="img-fluid d-block mx-auto" alt="">
-                                </div>
-                                <div class="item text-center slick-slide" data-slick-index="5" aria-hidden="true" tabindex="-1" style="width: 257px;">
-                                    <img src="assets/img/mobile-5.png" class="img-fluid d-block mx-auto" alt="">
-                                </div>
-                                <div class="item text-center slick-slide" data-slick-index="6" aria-hidden="true" tabindex="-1" style="width: 257px;">
-                                    <img src="assets/img/mobile-5.png" class="img-fluid d-block mx-auto" alt="">
-                                </div>
-                                <div class="item text-center slick-slide" data-slick-index="7" aria-hidden="true" tabindex="-1" style="width: 257px;">
-                                    <img src="assets/img/mobile-5.png" class="img-fluid d-block mx-auto" alt="">
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-
-
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- End Screenshots -->
-
-    <!-- Start Clients Testimonial -->
-
-
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in" style="margin-bottom: 65px;">
-                    <h3>Qui Sommes Nous ?</h3>
-                </div>
-            </div>
-
-            <div>
-                <p class="text-center" style="font-size: 23px;line-height: 1.7;margin-bottom: 0px; font-style: italic; color: #303952;">
-                    Qui n’a jamais laisser traîner un costume, une robe de soirée, un manteau ou même des rideaux durant des mois chez soi pour les amener au pressing mais toujours reporter ca à plus tard par manque de temps ou par flemme ? Effectivement, on est tous d’accord.
-                    C’est pour cela que nous avons développer cette plateforme qui assure la livraison pour vous, grâce notre service et nos différent partenariat avec les pressings. De ce fait en quelque clique sans bouger de chez vous vos vêtements
-                    sont récupérés lavés repassés et livrés. Vous l’avez compris notre but et de vous facilité la vie. Prenez les choses en main et faite nous confiance en faisant appel à Clean Service. <br> A très vite ! <br> L’équipe
-                    clean service
+                <p style="font-weight: bold;font-size: 20px; color: #303952;"><span style="color: #00cdcd; font-size: 27px;">4</span> étapes seulement:
                 </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonial" class="clients-testimonial padding-100" style="margin-bottom: 0;">
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in" style="margin-bottom: 65px;">
-                    <h3>Clients
-                        <span> Testimonial</span>
-                    </h3>
-
-                </div>
-
-                <div class="testimonial-slider aos-init slick-initialized row justify-content-center" data-aos="fade-up">
-
-
-                    <div class="item slick-slide slick-active col-12 col-md" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
-                        <div class="client-testimonial">
-                            <p>
-                                Completely build backend ROI whereas cross-media metrics. Collaboratively deploy customer directed web-readiness via global testing procedures. Appropriately reinvent distributed innovation.
-                            </p>
-                        </div>
-                        <div class="client-info d-flex align-items-center">
-
-                            <h3>Rachel Touitou</h3>
-
-                        </div>
-                    </div>
-                    <div class="item slick-slide slick-active col-12 col-md" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
-                        <div class="client-testimonial">
-                            <p>
-                                If you can design one thing you can design everything with Front. Collaboratively repurpose performance based e-commerce without cost. It's beautiful and the coding is done quickly and seamlessly.
-                            </p>
-                        </div>
-                        <div class="client-info d-flex align-items-center">
-
-                            <h3>Omer Levy</h3>
-
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </div>
-    </section>
-    <!-- End Clients Testimonial  -->
-
-    <!-- Start Fun Facts -->
-    <!-- <section id="facts" class="fun-facts padding-100 background-withcolor">
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in">
-                    <h3>Fun
-                        <span class="white"> Facts</span>
-                    </h3>
-                    <div class="space-25"></div>
-                    <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incidit labore lorem ipsum amet madolor sit amet.</p>
-                    <div class="space-50"></div>
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="fact-box text-center aos-init" data-aos="fade-up" data-aos-delay="400">
-                        <span class="lnr lnr-coffee-cup"></span>
-                        <h5>245</h5>
-                        <h6>Coffee Cups</h6>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="fact-box text-center aos-init" data-aos="fade-up" data-aos-delay="800">
-                        <span class="lnr lnr-code"></span>
-                        <h5>3000</h5>
-                        <h6>Line Code</h6>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="fact-box text-center aos-init" data-aos="fade-up" data-aos-delay="1200">
-                        <span class="lnr lnr-download"></span>
-                        <h5>763</h5>
-                        <h6>Download</h6>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="fact-box text-center aos-init" data-aos="fade-up" data-aos-delay="1600">
-                        <span class="lnr lnr-heart"></span>
-                        <h5>360</h5>
-                        <h6>Shere</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- End Fun Facts  -->
-
-    <!-- Start App Price -->
-    <!-- <section id="prices" class="prices padding-100">
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in">
-                    <h3>App
-                        <span> Price</span>
-                    </h3>
-                    <div class="space-25"></div>
-                    <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incidit labore lorem ipsum amet madolor sit amet.</p>
-                    <div class="space-50"></div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-12">
-                    <div class="price-table text-center aos-init" data-aos="fade-right" data-aos-delay="400">
-                        <div class="top background-fullwidth" style="background-image: url(assets/img/gray-bg.jpg);">
-                            <h4>Personal</h4>
-                            <h3>
-                                <span>$</span>30
-                            </h3>
-                            <h5>Per year</h5>
-                        </div>
-                        <div class="bottom">
-                            <ul>
-                                <li>100 MB Disk Space</li>
-                                <li>2 Subdomains</li>
-                                <li>5 Email Accounts</li>
-                                <li>Webmail Support</li>
-                                <li>Customer Support 24/7</li>
-                            </ul>
-                            <div class="space-50"></div>
-                            <a href="#" class="btn btn-primary btn-white btn-theme"><span>choose plan</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-12">
-                    <div class="price-table text-center aos-init" data-aos="fade-up" data-aos-delay="800">
-                        <div class="top background-fullwidth" style="background-image: url(assets/img/gray-bg.jpg);">
-                            <span class="offer">offer</span>
-                            <h4>Business</h4>
-                            <h3>
-                                <span>$</span>50
-                            </h3>
-                            <h5>Per year</h5>
-                        </div>
-                        <div class="bottom">
-                            <ul>
-                                <li>100 MB Disk Space</li>
-                                <li>2 Subdomains</li>
-                                <li>5 Email Accounts</li>
-                                <li>Webmail Support</li>
-                                <li>Customer Support 24/7</li>
-                            </ul>
-                            <div class="space-50"></div>
-                            <a href="#" class="btn btn-primary btn-white btn-theme"><span>choose plan</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-12">
-                    <div class="price-table text-center aos-init" data-aos="fade-left" data-aos-delay="1200">
-                        <div class="top background-fullwidth" style="background-image: url(assets/img/gray-bg.jpg);">
-                            <h4>Enterprise</h4>
-                            <h3>
-                                <span>$</span>80
-                            </h3>
-                            <h5>Per year</h5>
-                        </div>
-                        <div class="bottom">
-                            <ul>
-                                <li>100 MB Disk Space</li>
-                                <li>2 Subdomains</li>
-                                <li>5 Email Accounts</li>
-                                <li>Webmail Support</li>
-                                <li>Customer Support 24/7</li>
-                            </ul>
-                            <div class="space-50"></div>
-                            <a href="#" class="btn btn-primary btn-white btn-theme"><span>choose plan</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- End App Price  -->
-
-    <!-- Start Our Team -->
-    <!-- <section id="team" class="our-team padding-100 background-fullwidth background-fixed" style="background-image: url(assets/img/gray-bg.jpg);">
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in">
-                    <h3>Our
-                        <span> Team</span>
-                    </h3>
-                    <div class="space-25"></div>
-                    <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incidit labore lorem ipsum amet madolor sit amet.</p>
-                    <div class="space-50"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="team-slider aos-init slick-initialized slick-slider slick-dotted" data-aos="fade-up">
-                        <div class="slick-list draggable">
-                            <div class="slick-track" style="opacity: 1; width: 1668px; transform: translate3d(0px, 0px, 0px);">
-                                <div class="item person text-center slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide30" aria-describedby="slick-slide-control30" style="width: 248px;">
-                                    <img src="assets/img/team-1.jpg" class="img-fluid d-block mx-auto" alt="">
-                                    <div class="space-20"></div>
-                                    <h3>Emilia Noah</h3>
-                                    <div class="space-20"></div>
-                                    <h5>Front-End Developer</h5>
-                                    <div class="space-20"></div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio provident dolores.
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="item person text-center slick-slide slick-active" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide31" aria-describedby="slick-slide-control31" style="width: 248px;">
-                                    <img src="assets/img/team-2.jpg" class="img-fluid d-block mx-auto" alt="">
-                                    <div class="space-20"></div>
-                                    <h3>Harry Henry</h3>
-                                    <div class="space-20"></div>
-                                    <h5>Front-End Developer</h5>
-                                    <div class="space-20"></div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio provident dolores.
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="item person text-center slick-slide slick-active" data-slick-index="2" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide32" aria-describedby="slick-slide-control32" style="width: 248px;">
-                                    <img src="assets/img/team-3.jpg" class="img-fluid d-block mx-auto" alt="">
-                                    <div class="space-20"></div>
-                                    <h3>Poppy Reuben</h3>
-                                    <div class="space-20"></div>
-                                    <h5>Front-End Developer</h5>
-                                    <div class="space-20"></div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio provident dolores.
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="item person text-center slick-slide slick-active" data-slick-index="3" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide33" aria-describedby="slick-slide-control33" style="width: 248px;">
-                                    <img src="assets/img/team-4.jpg" class="img-fluid d-block mx-auto" alt="">
-                                    <div class="space-20"></div>
-                                    <h3>Alexander Thomas</h3>
-                                    <div class="space-20"></div>
-                                    <h5>Front-End Developer</h5>
-                                    <div class="space-20"></div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio provident dolores.
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="0">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="item person text-center slick-slide" data-slick-index="4" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide34" aria-describedby="slick-slide-control34" style="width: 248px;">
-                                    <img src="assets/img/team-1.jpg" class="img-fluid d-block mx-auto" alt="">
-                                    <div class="space-20"></div>
-                                    <h3>Emilia Noah</h3>
-                                    <div class="space-20"></div>
-                                    <h5>Front-End Developer</h5>
-                                    <div class="space-20"></div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio provident dolores.
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <a href="#" tabindex="-1">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="-1">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="-1">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="-1">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="item person text-center slick-slide" data-slick-index="5" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide35" aria-describedby="slick-slide-control35" style="width: 248px;">
-                                    <img src="assets/img/team-2.jpg" class="img-fluid d-block mx-auto" alt="">
-                                    <div class="space-20"></div>
-                                    <h3>Harry Henry</h3>
-                                    <div class="space-20"></div>
-                                    <h5>Front-End Developer</h5>
-                                    <div class="space-20"></div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio provident dolores.
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <a href="#" tabindex="-1">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="-1">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="-1">
-                                                <i class="fab fa-linkedin-in"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" tabindex="-1">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-
-                        <ul class="slick-dots" style="" role="tablist">
-                            <li class="slick-active" role="presentation"><button type="button" role="tab" id="slick-slide-control30" aria-controls="slick-slide30" aria-label="1 of 2" tabindex="0" aria-selected="true">1</button></li>
-                            <li role="presentation"><button type="button" role="tab" id="slick-slide-control31" aria-controls="slick-slide31" aria-label="2 of 2" tabindex="-1">2</button></li>
-                            <li role="presentation"><button type="button" role="tab" id="slick-slide-control32" aria-controls="slick-slide32" aria-label="3 of 2" tabindex="-1">3</button></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- End Our Team -->
-
-    <!-- Start FAQ -->
-    <!-- <section id="faq" class="faq padding-100">
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in">
-                    <h3>Common
-                        <span> FAQ</span>
-                    </h3>
-                    <div class="space-25"></div>
-                    <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incidit labore lorem ipsum amet madolor sit amet.</p>
-                    <div class="space-50"></div>
-                </div>
-            </div>
-            <div class="row align-items-center">
-                
-                <div class="col-md-8 col-12 aos-init" data-aos="fade-right">
-                    <div class="accordion" id="faqAccordion">
-                        <div class="card shadow">
-                            <div class="card-header" id="heading_1">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" aria-controls="collapse_1">
-                                        What Is fox
-                                    </button>
-                                </h5>
-                            </div>
-
-                            <div id="collapse_1" class="collapse show" aria-labelledby="heading_1" data-parent="#faqAccordion">
-                                <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum tenetur dicta commodi, totam atque fugit ut magnam laboriosam dignissimos dolorum minus quia sed distinctio in mollitia laborum sint delectus accusamus!
-                                    <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum tenetur dicta commodi, totam atque fugit ut magnam.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card shadow">
-                            <div class="card-header" id="heading_2">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse_2" aria-expanded="false" aria-controls="collapse_2">
-                                        How To Use The App
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapse_2" class="collapse" aria-labelledby="heading_2" data-parent="#faqAccordion">
-                                <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum tenetur dicta commodi, totam atque fugit ut magnam laboriosam dignissimos dolorum minus quia sed distinctio in mollitia laborum sint delectus accusamus!
-                                    <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum tenetur dicta commodi, totam atque fugit ut magnam.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card shadow">
-                            <div class="card-header" id="heading_3">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse_3" aria-expanded="false" aria-controls="collapse_3">
-                                        How To Connect With The Support
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapse_3" class="collapse" aria-labelledby="heading_3" data-parent="#faqAccordion">
-                                <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum tenetur dicta commodi, totam atque fugit ut magnam laboriosam dignissimos dolorum minus quia sed distinctio in mollitia laborum sint delectus accusamus!
-                                    <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum tenetur dicta commodi, totam atque fugit ut magnam.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-12 aos-init" data-aos="fade-left" data-aos-delay="400">
-                    <img src="assets/img/mobile-1.png" class="img-fluid b-block mx-auto" alt="">
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- End FAQ  -->
-
-    <!-- Start Fun Facts -->
-    <!-- <section id="logos" class="logos background-withcolor">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="logos-slider slick-initialized slick-slider"><button class="slick-prev slick-arrow slick-disabled" aria-label="Previous" type="button" aria-disabled="true" style="">Previous</button>
-                        <div class="slick-list draggable">
-                            <div class="slick-track" style="opacity: 1; width: 1665px; transform: translate3d(0px, 0px, 0px);">
-                                <div class="item slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 125px;">
-                                    <img src="assets/img/logo-1.png" class="img-fluid mx-auto b-block" alt="">
-                                </div>
-                                <div class="item slick-slide slick-active" data-slick-index="1" aria-hidden="false" tabindex="0" style="width: 125px;">
-                                    <img src="assets/img/logo-2.png" class="img-fluid mx-auto b-block" alt="">
-                                </div>
-                                <div class="item slick-slide slick-active" data-slick-index="2" aria-hidden="false" tabindex="0" style="width: 125px;">
-                                    <img src="assets/img/logo-3.png" class="img-fluid mx-auto b-block" alt="">
-                                </div>
-                                <div class="item slick-slide slick-active" data-slick-index="3" aria-hidden="false" tabindex="0" style="width: 125px;">
-                                    <img src="assets/img/logo-4.png" class="img-fluid mx-auto b-block" alt="">
-                                </div>
-                                <div class="item slick-slide slick-active" data-slick-index="4" aria-hidden="false" tabindex="0" style="width: 125px;">
-                                    <img src="assets/img/logo-5.png" class="img-fluid mx-auto b-block" alt="">
-                                </div>
-                                <div class="item slick-slide slick-active" data-slick-index="5" aria-hidden="false" tabindex="0" style="width: 125px;">
-                                    <img src="assets/img/logo-6.png" class="img-fluid mx-auto b-block" alt="">
-                                </div>
-                                <div class="item slick-slide" data-slick-index="6" aria-hidden="true" tabindex="-1" style="width: 125px;">
-                                    <img src="assets/img/logo-1.png" class="img-fluid mx-auto b-block" alt="">
-                                </div>
-                                <div class="item slick-slide" data-slick-index="7" aria-hidden="true" tabindex="-1" style="width: 125px;">
-                                    <img src="assets/img/logo-2.png" class="img-fluid mx-auto b-block" alt="">
-                                </div>
-                                <div class="item slick-slide" data-slick-index="8" aria-hidden="true" tabindex="-1" style="width: 125px;">
-                                    <img src="assets/img/logo-3.png" class="img-fluid mx-auto b-block" alt="">
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-
-
-
-
-
-                        <button class="slick-next slick-arrow" aria-label="Next" type="button" style="" aria-disabled="false">Next</button></div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- End Fun Facts  -->
-
-    <!-- Start Recent News -->
-    <!-- <section id="recent_news" class="recent-news padding-100">
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in">
-                    <h3>Recent
-                        <span> News</span>
-                    </h3>
-                    <div class="space-25"></div>
-                    <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incidit labore lorem ipsum amet madolor sit amet.</p>
-                    <div class="space-50"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="recent-news-slider aos-init slick-initialized slick-slider slick-dotted" data-aos="fade-up">
-                        <div class="slick-list draggable">
-                            <div class="slick-track" style="opacity: 1; width: 3330px; transform: translate3d(0px, 0px, 0px);">
-                                <div class="item slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide50" aria-describedby="slick-slide-control50" style="width: 1110px;">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-6 col-12">
-                                            <img src="assets/img/news-1.jpg" class="img-fluid" alt="">
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <h3>fox Discover The World</h3>
-                                            <div class="space-15"></div>
-                                            <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incidit labore lorem Lorem ipsum madolor sit amet, consectetur adipisicing elit.
-                                            </p>
-                                            <div class="space-15"></div>
-                                            <ul class="news-meta">
-                                                <li>
-                                                    <span class="lnr lnr-user"></span> By Admin</li>
-                                                <li>
-                                                    <span class="lnr lnr-clock"></span> Feb 26, 2018</li>
-                                            </ul>
-                                            <div class="space-15"></div>
-                                            <a href="news-single.html" class="btn btn-primary shadow btn-colord btn-theme" tabindex="0"><span>Read
-                                            More</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item slick-slide" data-slick-index="1" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide51" aria-describedby="slick-slide-control51" style="width: 1110px;">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-6 col-12">
-                                            <img src="assets/img/news-1.jpg" class="img-fluid" alt="">
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <h3>Inspired Design Decisions</h3>
-                                            <div class="space-15"></div>
-                                            <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incidit labore lorem Lorem ipsum madolor sit amet, consectetur adipisicing elit.
-                                            </p>
-                                            <div class="space-15"></div>
-                                            <ul class="news-meta">
-                                                <li>
-                                                    <span class="lnr lnr-user"></span> By Admin</li>
-                                                <li>
-                                                    <span class="lnr lnr-clock"></span> Feb 26, 2018</li>
-                                            </ul>
-                                            <div class="space-15"></div>
-                                            <a href="news-single.html" class="btn btn-primary shadow btn-colord btn-theme" tabindex="-1"><span>Read
-                                            More</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item slick-slide" data-slick-index="2" aria-hidden="true" tabindex="-1" role="tabpanel" id="slick-slide52" aria-describedby="slick-slide-control52" style="width: 1110px;">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-6 col-12">
-                                            <img src="assets/img/news-1.jpg" class="img-fluid" alt="">
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <h3>Exploring The Latest Web Design Trends.</h3>
-                                            <div class="space-15"></div>
-                                            <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incidit labore lorem Lorem ipsum madolor sit amet, consectetur adipisicing elit.
-                                            </p>
-                                            <div class="space-15"></div>
-                                            <ul class="news-meta">
-                                                <li>
-                                                    <span class="lnr lnr-user"></span> By Admin</li>
-                                                <li>
-                                                    <span class="lnr lnr-clock"></span> Feb 26, 2018</li>
-                                            </ul>
-                                            <div class="space-15"></div>
-                                            <a href="news-single.html" class="btn btn-primary shadow btn-colord btn-theme" tabindex="-1"><span>Read
-                                            More</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <ul class="slick-dots" style="" role="tablist">
-                            <li class="slick-active" role="presentation"><button type="button" role="tab" id="slick-slide-control50" aria-controls="slick-slide50" aria-label="1 of 3" tabindex="0" aria-selected="true">1</button></li>
-                            <li role="presentation"><button type="button" role="tab" id="slick-slide-control51" aria-controls="slick-slide51" aria-label="2 of 3" tabindex="-1">2</button></li>
-                            <li role="presentation"><button type="button" role="tab" id="slick-slide-control52" aria-controls="slick-slide52" aria-label="3 of 3" tabindex="-1">3</button></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section> -->
-    <!-- End Recent News  -->
-
-    <!-- Start Download App -->
-    <!-- <section id="download_app" class="download-app padding-100 pb-0 background-fullwidth background-fixed" style="background-image: url(assets/img/gray-bg.jpg);">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-12 aos-init" data-aos="fade-right">
-                    <h2>Download our free trial App</h2>
-                    <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incidit labore lorem
-                    </p>
-                    <a href="#" class="btn btn-primary shadow btn-colord btn-theme" tabindex="0">
-                        <i class="fab fa-apple"></i>
-                        <span>Git it on
-                            <br>APP STORE</span>
-                    </a>
-                    <a href="#" class="btn btn-primary shadow  btn-colord btn-theme" tabindex="0">
-                        <i class="fab fa-google-play"></i>
-                        <span>Git it on
-                            <br>GOOGLE PLAY</span>
-                    </a>
-                </div>
-                <div class="col-lg-6 col-12 aos-init" data-aos="fade-left" data-aos-delay="400">
-                    <img src="assets/img/mobile-6.png" class="img-fluid d-block mx-auto" alt="">
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- End Download App -->
-
-    <!-- Start  Git in touch -->
-    <!-- <section id="git_in_touch" class="git-in-touch padding-100">
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in">
-                    <h3>Git
-                        <span> in </span>touch
-                    </h3>
-                    <div class="space-25"></div>
-                    <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incidit labore lorem ipsum amet madolor sit amet.</p>
-                    <div class="space-50"></div>
-                </div>
-            </div>
-            <form data-aos="fade-up" class="aos-init">
+                <div class="space-50"></div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Enter Your Name">
-                            <span class="focus-border"></span>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12 aos-init" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="why-us-icon">
+                            <span class="lnr lnr-map-marker"></span>
+                            <p style="font-size: 19px; font-weight: 600;">Choix du pressing</p>
+                            <p>sélectionner le pressing parmi nos différents partenaires.
+                            </p>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Enter Your Email">
-                            <span class="focus-border"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Enter Your Subject">
-                            <span class="focus-border"></span>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group">
-                            <textarea class="form-control" rows="4" placeholder="Enter Your Message"></textarea>
-                            <span class="focus-border"></span>
-                        </div>
-                    </div>
-                    <div class="col-12">
                         <div class="space-25"></div>
-                        <button type="submit" class="btn btn-primary shadow btn-colord btn-theme"><span>Send
-                                Message</span></button>
                     </div>
-                </div>
-            </form>
-            <div class="space-50"></div>
-            <div class="row contact-info">
-                <div class="col-md-4 col-12 text-center">
-                    <div class="info-box aos-init" data-aos="fade-right" data-aos-delay="400">
-                        <span class="lnr lnr-map-marker"></span>
-                        <h5>28 Green Tower, Street Name New York City, USA</h5>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12 aos-init" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="why-us-icon">
+                            <span class="lnr lnr-smartphone"></span>
+                            <p style="font-size: 19px; font-weight: 600;">Commander via Cleeser.com</p>
+                            <p>renseigner l’heur et la date.
+                            </p>
+                        </div>
                     </div>
+                    <div class="space-25"></div>
                 </div>
-                <div class="col-md-4 col-12 text-center">
-                    <div class="info-box aos-init" data-aos="fade-up" data-aos-delay="800">
-                        <span class="lnr lnr-phone"></span>
-                        <h5>+2 012 345 6789</h5>
-                        <h5>+2 02 345 6789</h5>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12 aos-init" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="why-us-icon">
+
+                            <span class="lnr lnr-car"></span>
+                            <p style="font-size: 19px; font-weight: 600;">Recuperation des vêtements</p>
+                            <p>le livreur vient directement chez vous récupérer vos vêtements.
+                            </p>
+                        </div>
+                        <div class="space-25"></div>
                     </div>
-                </div>
-                <div class="col-md-4 col-12 text-center">
-                    <div class="info-box aos-init" data-aos="fade-left" data-aos-delay="1200">
-                        <span class="lnr lnr-envelope"></span>
-                        <a href="mailto:info@yourcompany.com">info@yourcompany.com</a>
-                        <a href="mailto:sales@yourcompany.com">sales@yourcompany.com</a>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12 aos-init" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="why-us-icon">
+                            <span class="lnr lnr-shirt"></span>
+                            <p style="font-size: 19px; font-weight: 600;">Livraison des vêtements</p>
+                            <p>Vos vêtements lavés et repassés sont livrer a votre domicile.
+                            </p>
+                        </div>
+                        <div class="space-25"></div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-6 text-center aos-init d-none d-md-block" data-aos="fade-right">
+                <img src="assets/images/imageCamion.png" class="img-fluid" alt="">
+            </div>
         </div>
-    </section> -->
-    <!-- End  Git in touch  -->
+    </div>
+</section>
 
-    <!-- Start  Map -->
-    <!-- <section class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55251.37709962986!2d31.22344494535329!3d30.059483810352845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60b21beeb%3A0x79dfb296e8423bba!2sCairo%2C+Cairo+Governorate!5e0!3m2!1sen!2seg!4v1540147674461"
-            style="border:0" allowfullscreen=""></iframe>
-    </section> -->
-    <!-- End  Map  -->
+<section id="other_features" class="other-features padding-100 pt-5 pb-4 background-withcolor">
+    <div class="container-fluid">
+
+        <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in">
+            <h3>Nos <span class="white"> Différents </span> Partenaires</h3>
+            <div class="space-25"></div>
+            <p style="font-size:26px">Ils nous ont fait confiance, à vous de choisir !</p>
+            <div class="space-50"></div>
+        </div>
 
 
+
+
+
+
+        <div class="other-features-slider aos-init slick-initialized slick-slider container" data-aos="fade-up">
+
+
+            <div class="row mb-5 justify-content-center" data-aos="fade-up">
+                <div *ngFor="let pressing of fourPressingDisplayed" class="item text-center slick-center backgroundImg col-12 col-md-5 col-xl row align-items-center mx-2 mb-3 heightResponsive" data-slick-index="0" aria-hidden="true" tabindex="0" style="height: 255px;">
+
+                    <div class="mx-auto col-12">
+                        <h4 style="font-size: 25px;">{{pressing.name}}</h4>
+                        <p style="font-weight: bold; font-size: 16px;">{{pressing.address}}</p>
+
+                    </div>
+                    <div class="col col-md-12 align-self-end">
+                        <a (click)="navigateToPressing(pressing._id)" class="mx-auto align-self-end btn btn-primary shadow d-block btn-colord btn-theme" style="height:45px ; padding: 12px 35px !important"><span>Selectionner</span></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div (click)="goToLinkOfPath('pressings')" class="mx-auto mb-5 text-center row align-items-center justify-content-center btnGoToAllPressings">
+
+                Voir Plus...
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in" style="margin-bottom: 65px;">
+                <h3>Qui Sommes Nous ?</h3>
+            </div>
+        </div>
+
+        <div>
+            <p class="text-center" style="font-size: 23px;line-height: 1.7;margin-bottom: 0px; font-style: italic; color: #303952;">
+                Qui n’a jamais laisser traîner un costume, une robe de soirée, un manteau ou même des rideaux durant des mois chez soi pour les amener au pressing mais toujours reporter ca à plus tard par manque de temps ou par flemme ? Effectivement, on est tous d’accord.
+                C’est pour cela que nous avons développer cette plateforme qui assure la livraison pour vous, grâce notre service et nos différent partenariat avec les pressings. De ce fait en quelque clique sans bouger de chez vous vos vêtements sont
+                récupérés lavés repassés et livrés. Vous l’avez compris notre but et de vous facilité la vie. Prenez les choses en main et faite nous confiance en faisant appel à Clean Service. <br> A très vite ! <br> L’équipe clean service
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="testimonial" class="clients-testimonial padding-100" style="margin-bottom: 0;">
+    <div class="container">
+        <div class="row">
+            <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in" style="margin-bottom: 65px;">
+                <h3>Clients
+                    <span> Testimonial</span>
+                </h3>
+
+            </div>
+
+            <div class="testimonial-slider aos-init slick-initialized d-md-flex justify-content-center" data-aos="fade-up">
+
+
+                <div class="item slick-slide slick-active col-12 col-md" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
+                    <div class="client-testimonial">
+                        <p>
+                            J’ai testé les services de l’équipe Cleeser et j’ai adoré c’est un vrai gagne temps ! Depuis le temps que je devais le faire. ! Ils sont rapide efficace et surtout de confiance. <br> Merci.
+
+                        </p>
+                    </div>
+                    <div class="client-info d-flex align-items-center">
+
+                        <h3>Rachel Touitou</h3>
+
+                    </div>
+                </div>
+                <div class="item slick-slide slick-active col-12 col-md" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
+                    <div class="client-testimonial">
+                        <p>
+                            Service très professionnel, de confiance, j'ai pu meme choisir mon pressing habituel. Gagne temps de folie Service au top que je recommande a 100%. <br> Merci a l'équipe Cleeser.
+                        </p>
+                    </div>
+                    <div class="client-info d-flex align-items-center">
+
+                        <h3>Omer Levy</h3>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</section>
