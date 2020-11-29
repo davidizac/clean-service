@@ -131,7 +131,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   openPopup(isPickup) {
-    const config: ModalOptions = {
+    const config = {
       initialState: {
         isPickup: isPickup,
         pickUpDate: this.pickUpDate,

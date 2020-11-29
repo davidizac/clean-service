@@ -13,7 +13,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { ManageOrdersComponent } from './pages/manage-orders/manage-orders.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { AuthService } from './services/auth.service';
 import { PressingCreatorComponent } from './pages/pressing-creator/pressing-creator.component';
@@ -27,10 +27,21 @@ import { PipeModule } from './pipes/pipe.module';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { OrderConfirmationComponent } from './pages/order-confirmation/order-confirmation.component';
 import { UsersComponent } from './pages/users/users.component';
-import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslatePipe,
+} from "@ngx-translate/core";
 
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { APP_CONFIG, BaseAppConfig } from './app.config';
+import { SelectLanguagesComponent } from './components/select-languages/select-languages.component';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +59,8 @@ import { FooterComponent } from './components/footer/footer.component';
     OrderConfirmationComponent,
     UsersComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SelectLanguagesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -61,6 +73,14 @@ import { FooterComponent } from './components/footer/footer.component';
     DemoMaterialModule,
     PipeModule,
     ModalModule.forRoot(),
+    TranslateModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   entryComponents: [DateSelectorComponent],
   providers: [
@@ -72,6 +92,7 @@ import { FooterComponent } from './components/footer/footer.component';
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'fill' },
     },
+    { provide: APP_CONFIG, useValue: BaseAppConfig },
   ],
   bootstrap: [AppComponent],
 })
