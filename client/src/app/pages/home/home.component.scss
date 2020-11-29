@@ -1,14 +1,4 @@
 .backgroundImg {
-    background-image: url('../../../assets/images/Cleeser-removebg-preview.png');
-    background-repeat: no-repeat;
-    opacity: .5;
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    margin-bottom: 21px;
-}
-
-.backgroundImg {
     height: 200px;
     width: 300px;
     border-radius: 50px;
@@ -509,9 +499,9 @@ a:hover {
 .btn-primaryMobile {
     padding: 15px 16px !important;
     position: absolute !important;
-    top: 265px;
+    bottom: 100px;
     width: 143px !important;
-    left: 32px;
+    left: 60px;
 }
 
 .btn-colord {
@@ -723,7 +713,7 @@ section {
     right: 0;
     left: 0;
     height: 0;
-    border-right: 100vw solid #fff;
+    border-right: 100vw solid whitesmoke;
     border-top: 200px solid transparent;
     width: 0;
     z-index: 0;
@@ -738,6 +728,10 @@ section {
     font-size: 18px;
     cursor: pointer;
     font-weight: bold;
+}
+
+.btnGoToAllPressings:hover {
+    background-color: #F2CE5F
 }
 
 .slide .content-bottom {
@@ -908,7 +902,6 @@ section {
 
 .clients-testimonial .testimonial-slider .item {
     outline: none;
-    margin: 0 15px;
 }
 
 .clients-testimonial .testimonial-slider .item .client-testimonial {
@@ -1200,6 +1193,12 @@ footer .copyright a:hover {
 .navbar-default .navbar-brand,
 .navbar-default .navbar-nav>li>a {
     color: #183532;
+}
+
+@media screen and (max-width:1199px) {
+    .heightResponsive {
+        height: 212px !important
+    }
 }
 
 .navbar-scroll {

@@ -7,49 +7,45 @@
   Admin mode
 </mat-slide-toggle>
 <header class="foxapp-header d-none d-lg-block">
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #31aded;" id="foxapp_menu">
-      <div class="container-fluid  navbar navbar-default navbar-fixed-top" style="height: 100px;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #31aded;" id="foxapp_menu">
+        <div class="container-fluid  navbar navbar-default navbar-fixed-top" style="height: 100px;">
 
-          <div class="container" id="main_menu">
+            <div class="container" id="main_menu">
 
-              <div class="row justify-content-between w-100">
+                <div class="row justify-content-between w-100">
 
                   <div class="col-3">
-                      <img src="assets/images/logo-blanc.png" class="mr-auto" id="logoMenuWhite" style="width: 150px" alt="">
-                      <img src="assets/images/Cleeser-removebg-preview.png" id="logoMenuBlue" class="mr-auto d-none" style="width: 150px" alt="">
+                    <img src="assets/images/logo-blanc.png" class="mr-auto" id="logoMenuWhite" style="width: 150px" alt="">
+                    <img src="assets/images/logoBlue.png" id="logoMenuBlue" class="mr-auto d-none" style="width: 150px" alt="">
                   </div>
                   <div class="d-flex align-items-center justify-content-end col-9">
                       <ul *ngIf="!adminMode" class="d-flex">
                           <li class="nav-item">
-                              <a class="nav-link anchor active">Home</a>
+                              <a class="nav-link anchor" routerLinkActive="active"> Home</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link anchor" (click)="goToLinkOfPath('pressings')"> {{ 'our_pressings' | translate }}</a>
+                              <a class="nav-link anchor" routerLink='pressings' routerLinkActive="active"> {{ 'our_pressings' | translate }}</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link anchor" (click)="goToLinkOfPath('orders')">My orders</a>
-                          </li>
-
-                          <li class="nav-item">
-                              <a class="nav-link anchor" href="#git_in_touch">Contact</a>
+                              <a class="nav-link anchor" routerLink='orders' routerLinkActive="active" >My orders</a>
                           </li>
                       </ul>
                       <ul *ngIf="adminMode" class="d-flex">
                         <li class="nav-item">
-                            <a class="nav-link anchor active">Home</a>
+                            <a class="nav-link anchor" routerLinkActive="active">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link anchor" (click)="goToLinkOfPath('manage-orders')"> Gestion de commande</a>
+                            <a class="nav-link anchor" routerLink='manage-orders' routerLinkActive="active" > Gestion de commande</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link anchor" (click)="goToLinkOfPath('pressing-creator')">Creer un pressing</a>
+                          <a class="nav-link anchor" routerLink='pressing-creator' routerLinkActive="active" >Creer un pressing</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link anchor" (click)="goToLinkOfPath('users')">Mes utilisateurs</a>
+                            <a class="nav-link anchor" routerLink='users' routerLinkActive="active" >Mes utilisateurs</a>
                         </li>
                     </ul>
-                      <a *ngIf="!isAuthenticated" (click)="goToLinkOfPath('signin')" class="btnSignIn">Sign in</a>
-                      <a *ngIf="isAuthenticated" (click)="goToLinkOfPath('profile')" class="btnSignIn">{{user?.fullname}}</a>
+                      <a *ngIf="!isAuthenticated" routerLink='signin' routerLinkActive="active" class="btnSignIn">Sign in</a>
+                      <a *ngIf="isAuthenticated" routerLink='profile' routerLinkActive="active" class="btnSignIn">{{user?.fullname}}</a>
                   </div>
               </div>
           </div>
@@ -57,11 +53,7 @@
   </nav>
 </header>
 <div class="mobile-menu__MobileMenuContainer-sc-17s3h0k-0 GbnXQ">
-  <a
-    (click)="changedTab('home')"
-    routerLink="/"
-    class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
-    ><svg
+    <a (click)="changedTab('home')" routerLink="/" class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"><svg
       width="24"
       height="24"
       [ngClass]="selectedTab === 'home' ? 'svg2' : ''"
@@ -97,7 +89,7 @@
       class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
       [ngClass]="selectedTab === 'pressings' ? 'gfhcyg' : 'kxwuOc'"
     >
-      Nos Pressings
+      Pressings
     </div></a
   ><a
     *ngIf="!adminMode"
@@ -119,7 +111,7 @@
       class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
       [ngClass]="selectedTab === 'order' ? 'gfhcyg' : 'kxwuOc'"
     >
-      Mes commandes
+    Commandes
     </div></a
   ><a
     *ngIf="isAuthenticated && !adminMode"

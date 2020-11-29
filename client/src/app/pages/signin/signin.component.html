@@ -1,76 +1,49 @@
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <ng-container *ngIf="!isSignin" class="active">
-      <a>Signup</a>
+<div class="container" style="max-width:1300px">
+    <div class="row justify-content-center align-items-center" style="min-height: 67vh;">
 
-      <div>
-        <input
-          [(ngModel)]="fullname"
-          autocomplete="off"
-          type="text"
-          name="fullname"
-          placeholder="Full Name"
-        />
-        <input
-          [(ngModel)]="phoneNumber"
-          autocomplete="off"
-          type="text"
-          name="phoneNumber"
-          placeholder="Telephone"
-        />
-        <input
-          autocomplete="off"
-          [(ngModel)]="email"
-          type="text"
-          name="email"
-          placeholder="Email"
-        />
+        <div class="col-4 col-lg-3 d-none d-md-block">
+            <img src="../../../assets/images/phoneSignIn.png" alt="">
+        </div>
 
-        <input
-          autocomplete="off"
-          [(ngModel)]="password"
-          type="password"
-          name="login"
-          placeholder="Password"
-        />
-        <button (click)="onSubmit()" type="submit">S'inscrire</button>
-      </div>
-      <div class="error" *ngIf="errorMessage">
-        <span>{{ errorMessage }}</span>
-      </div>
-      <div id="formFooter">
-        <a class="underlineHover" (click)="toggle()">Deja inscrit ?</a>
-      </div>
-    </ng-container>
-    <ng-container *ngIf="isSignin">
-      <a (click)="toggle()" class="active">Se connecter</a>
 
-      <div>
-        <input
-          autocomplete="off"
-          [(ngModel)]="email"
-          type="text"
-          name="email"
-          placeholder="Email"
-        />
-        <input
-          autocomplete="off"
-          [(ngModel)]="password"
-          type="password"
-          name="login"
-          placeholder="Password"
-        />
-        <button (click)="onSubmit()" type="submit">Log In</button>
-      </div>
-      <div class="error" *ngIf="errorMessage">
-        <span>{{ errorMessage }}</span>
-      </div>
-      <div id="formFooter">
-        <a class="underlineHover" routerLink="/forgot-password"
-          >Mot de passe oublie ?</a
+        <div class="wrapper fadeInDown col-12 col-md-6 col-lg-5">
+            <div id="formContent">
+                <ng-container *ngIf="!isSignin" class="active">
+                    <a>Signup</a>
+
+                    <div>
+                        <input [(ngModel)]="fullname" autocomplete="off" type="text" name="fullname" placeholder="Full Name" />
+                        <input [(ngModel)]="phoneNumber" autocomplete="off" type="text" name="phoneNumber" placeholder="Telephone" />
+                        <input autocomplete="off" [(ngModel)]="email" type="text" name="email" placeholder="Email" />
+
+                        <input autocomplete="off" [(ngModel)]="password" type="password" name="login" placeholder="Password" />
+                        <button (click)="onSubmit()" type="submit">S'inscrire</button>
+                    </div>
+                    <div class="error" *ngIf="errorMessage">
+                        <span>{{ errorMessage }}</span>
+                    </div>
+                    <div id="formFooter">
+                        <a class="underlineHover" style="cursor: pointer;" (click)="toggle()">Deja inscrit ?</a>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="isSignin">
+                    <a (click)="toggle()" class="active">Se connecter</a>
+
+                    <div>
+                        <input autocomplete="off" [(ngModel)]="email" type="text" name="email" placeholder="Email" />
+                        <input autocomplete="off" [(ngModel)]="password" type="password" name="login" placeholder="Password" />
+                        <button (click)="onSubmit()" type="submit">Log In</button>
+                    </div>
+                    <div class="error" *ngIf="errorMessage">
+                        <span>{{ errorMessage }}</span>
+                    </div>
+                    <div id="formFooter">
+                        <a class="underlineHover" routerLink="/forgot-password">Mot de passe oublie ?</a
         >
-        <a class="underlineHover" (click)="toggle()">Pas encore inscrit ?</a>
-      </div>
-    </ng-container>
-  </div>
+        <a class="underlineHover" style="cursor: pointer;" (click)="toggle()">Pas encore inscrit ?</a>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
 </div>
