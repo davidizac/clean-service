@@ -1,3 +1,11 @@
+<mat-slide-toggle
+    class="adminToggle"
+    (change)="toggleAdminMode($event)"
+    [color]="primary"
+    [checked]="adminMode"
+  >
+  Admin mode
+</mat-slide-toggle>
 <header class="foxapp-header d-none d-lg-block">
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #31aded;" id="foxapp_menu">
       <div class="container-fluid  navbar navbar-default navbar-fixed-top" style="height: 100px;">
@@ -11,10 +19,9 @@
                       <img src="assets/images/Cleeser-removebg-preview.png" id="logoMenuBlue" class="mr-auto d-none" style="width: 150px" alt="">
                   </div>
                   <div class="d-flex align-items-center justify-content-end col-9">
-                      <ul class="d-flex">
+                      <ul *ngIf="!adminMode" class="d-flex">
                           <li class="nav-item">
-                              <a class="nav-link anchor active">Home
-                      </a>
+                              <a class="nav-link anchor active">Home</a>
                           </li>
                           <li class="nav-item">
                               <a class="nav-link anchor" (click)="goToLinkOfPath('pressings')"> {{ 'our_pressings' | translate }}</a>
@@ -27,6 +34,20 @@
                               <a class="nav-link anchor" href="#git_in_touch">Contact</a>
                           </li>
                       </ul>
+                      <ul *ngIf="adminMode" class="d-flex">
+                        <li class="nav-item">
+                            <a class="nav-link anchor active">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link anchor" (click)="goToLinkOfPath('manage-orders')"> Gestion de commande</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link anchor" (click)="goToLinkOfPath('pressing-creator')">Creer un pressing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link anchor" (click)="goToLinkOfPath('users')">Mes utilisateurs</a>
+                        </li>
+                    </ul>
                       <a *ngIf="!isAuthenticated" (click)="goToLinkOfPath('signin')" class="btnSignIn">Sign in</a>
                       <a *ngIf="isAuthenticated" (click)="goToLinkOfPath('profile')" class="btnSignIn">{{user?.fullname}}</a>
                   </div>
@@ -215,11 +236,3 @@
     </div></a
   >
 </div>
-<mat-slide-toggle
-    *ngIf="isAuthenticated && isAdmin"
-    (change)="toggleAdminMode($event)"
-    [color]="primary"
-    [checked]="adminMode"
-  >
-  Admin mode
-</mat-slide-toggle>

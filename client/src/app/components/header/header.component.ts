@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -10,9 +10,9 @@ declare let $: any;
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnChanges {
 
-  @Input('adminMode') adminMode : any
+  adminMode : any
   @Input('isAuthenticated') isAuthenticated : any
   @Input('user') user : any
   @Input('isAdmin') isAdmin : any
@@ -30,27 +30,14 @@ export class HeaderComponent implements OnInit {
 
   changedTab(tab) {
     this.selectedTab = tab;
+    console.log(this.selectedTab)
   }
 
-  ngOnInit() {
+  ngOnChanges() {
 
     this.adminMode = localStorage.getItem('adminMode') === 'true';
     console.log(this.isAuthenticated)
-    //  $(window).on('scroll', function() {
-    //  console.log("broker");
-
-    // });
-
-    // $(window).on('scroll', function() {
-    //   //alert('out reached');
-    //     if($(window).scrollTop() + $('.navbar-collapse').height() - 1726 >= $('.navbar-collapse')[0].scrollHeight) {
-    //       console.log("from broker");
-
-    //         $('.navbar-collapse').css({'position':'fixe', 'top':'0'});
-    //     } else{
-    //       $('.navbar-collapse').css({'position':'sticky', 'top':'327'});
-    //     }
-    // });
+    console.log(this.isAdmin, this.isAuthenticated)
 
     var navbar = $('.navbar');
     var navLink = $('.nav-link')
