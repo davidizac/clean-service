@@ -26,14 +26,14 @@
 
 
 
-                <section class="container d-none d-md-block">
+                <section class="container d-none d-lg-block">
 
 
-                    <div class="row mb-5 justify-content-center ">
-                        <div *ngFor="let pressing of pressingDisplayed" class="item text-center slick-center col-10 col-lg-5 justify-content-between row align-items-center mx-2 mb-3 bg-white py-3" data-slick-index="0" aria-hidden="true" tabindex="0" style="border-radius: 20px;">
-                            <div class="mx-5">
-                                <p style="font-size: 19px; font-weight: bold;">{{ pressing.name }}</p>
-                                <p style="font-weight: bold; font-size: 16px;">{{ pressing.address }}</p>
+                    <div class="row mb-5 justify-content-between ">
+                        <div *ngFor="let pressing of pressingDisplayed" class="item text-center slick-center col-10 col-md-8 col-lg-5 justify-content-between row align-items-center mx-2 mb-3 bg-white py-3" data-slick-index="0" aria-hidden="true" tabindex="0" style="border-radius: 20px;">
+                            <div class="ml-3">
+                                <p style="font-size: 19px; font-weight: bold;">{{pressing.name}} </p>
+                                <p style="font-weight: bold; font-size: 16px;">{{pressing.address}}</p>
                             </div>
                             <div class="col-5 col-lg-6">
                                 <a class="mx-auto align-self-end btn btn-primary shadow d-block btn-colord btn-theme" (click)="navigateToPressing(pressing._id)" style="height:45px ; padding: 12px 0 !important; border-radius:20px"><span>Selectionner</span></a>
@@ -53,7 +53,7 @@
 
 
 
-                <div class="pressings-list d-block d-md-none">
+                <div class="pressings-list d-block d-lg-none">
                     <ng-container *ngFor="let pressing of pressingDisplayed">
                         <ng-container *ngIf="isPressingOpened(pressing)">
                             <button (click)="closePressing(pressing)" class="liFQGu">
@@ -104,3 +104,5 @@
     </div>
     <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" value="50" *ngIf="isLoading"></mat-progress-spinner>
 </main>
+
+<app-footer></app-footer>
