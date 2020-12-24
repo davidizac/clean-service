@@ -1,7 +1,9 @@
 import { ChangeDetectorRef, Component, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import {DropdownModule} from 'primeng/dropdown';
 
 declare let $: any;
 
@@ -18,9 +20,16 @@ export class HeaderComponent implements OnChanges {
   @Input('isAdmin') isAdmin : any
 
   selectedTab = 'home'
+  selectedLang = 'FR'
+  langs
   
 
-  constructor(public cd: ChangeDetectorRef, public router: Router) {AOS.init(); }
+  constructor(public cd: ChangeDetectorRef, public router: Router, private localize:LocalizeRouterService) {AOS.init();
+    this.langs = [
+      {name: 'Francais', code: 'FR'},
+      {name: 'Anglais', code: 'EN'},
+      {name: 'Israelien', code: 'IL'},
+    ]; }
 
   toggleAdminMode(e) {
     this.adminMode = e.checked;
@@ -28,13 +37,21 @@ export class HeaderComponent implements OnChanges {
     this.cd.detectChanges();
   }
 
+  chooseLang(lang){
+    this.localize.changeLanguage(lang);
+  }
+
   changedTab(tab) {
     this.selectedTab = tab;
     console.log(this.selectedTab)
   }
 
-  ngOnChanges() {
+  getImageLocation(country){
+    return `../../../assets/images/${country}.png`
+  }
 
+  ngOnChanges() {
+   
     this.adminMode = localStorage.getItem('adminMode') === 'true';
     console.log(this.isAuthenticated)
     console.log(this.isAdmin, this.isAuthenticated)
@@ -70,7 +87,8 @@ export class HeaderComponent implements OnChanges {
 
 
   goToLinkOfPath(path) {
-    this.router.navigate([`/${path}`])
+    const route = this.localize.translateRoute(`/${path}`);
+    this.router.navigate([route])
   }
 
 

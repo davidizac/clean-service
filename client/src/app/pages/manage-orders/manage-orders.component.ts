@@ -6,6 +6,7 @@ import { OrderService } from 'src/app/services/order.service';
 import * as moment from 'moment';
 import * as _ from 'lodash';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-manage-orders',
@@ -24,7 +25,8 @@ export class ManageOrdersComponent implements OnInit {
   constructor(
     public orderService: OrderService,
     public router: Router,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    private localize: LocalizeRouterService
   ) {}
 
   ngOnInit(): void {
@@ -128,7 +130,8 @@ export class ManageOrdersComponent implements OnInit {
   }
 
   moreDetail(order: Order) {
-    this.router.navigate([`./order-confirmation/${order._id}`]);
+    const route = this.localize.translateRoute(`/order-confirmation/${order._id}`);
+    this.router.navigate([route]);
   }
 
   getProductFiltered(products) {
@@ -137,7 +140,8 @@ export class ManageOrdersComponent implements OnInit {
 
   changeOrder(order: Order) {
     var pressingId = order.products[0]['pressingId'];
-    return this.router.navigate([`./pressings/${pressingId}`], {
+    const route = this.localize.translateRoute(`/pressings/${pressingId}`);
+    return this.router.navigate([route], {
       queryParams: {
         order: JSON.stringify(order),
         isNew: false,

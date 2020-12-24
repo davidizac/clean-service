@@ -7,6 +7,7 @@ import { UserService } from './services/user.service';
 import { APP_CONFIG, AppConfig } from "./app.config";
 import { MyEvent } from './services/myevents.service';
 import { TranslateService } from "@ngx-translate/core";
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 
 @Component({
@@ -29,15 +30,19 @@ export class AppComponent {
     public router: Router,
     private myEvent: MyEvent,
     private translate: TranslateService,
+    private localize: LocalizeRouterService
   ) { 
     this.myEvent.getLanguageObservable().subscribe((value) => {
-      this.router.navigate(["/home"]);
+      // this.localize.changeLanguage(this.localize.parser.currentLang === 'fr' ? 'en' : 'fr');
+      // this.router.navigate(["/en/home"]);
       this.globalize(value);
     });
   }
 
   ngOnInit() {
-    this.myEvent.setLanguageData('fr')
+    this.myEvent.setLanguageData('en')
+    this.localize.changeLanguage('en');
+    console.log(this.localize.parser.currentLang)
     this.selectedTab = 'home';
     this.adminMode = localStorage.getItem('adminMode') === 'true';
     this.authService.userIsAuthenticated

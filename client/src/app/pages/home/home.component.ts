@@ -1,5 +1,6 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import * as _ from 'lodash';
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
     public pressingService: PressingService,
     private userService: UserService,
     public ngZone: NgZone,
+    private localize: LocalizeRouterService
   ) { AOS.init(); }
 
 
@@ -79,13 +81,15 @@ export class HomeComponent implements OnInit {
 
   navigateToPressing(pressingId) {
     this.ngZone.run(() => {
-      this.router.navigate([`./pressings/${pressingId}`]);
+      const route = this.localize.translateRoute(`/pressings/${pressingId}`);
+      this.router.navigate([route]);
     });
   }
 
 
   goToLinkOfPath(path) {
-    this.router.navigate([`/${path}`])
+    const route = this.localize.translateRoute(`/${path}`);
+    this.router.navigate([route])
   }
 
 }

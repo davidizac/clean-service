@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { Observable } from 'rxjs';
 import { CATEGORIES } from 'src/app/constant';
 import { IProduct, Pressing } from 'src/app/models/pressing.model';
@@ -24,7 +25,8 @@ export class PressingCreatorComponent implements OnInit {
     private formBuilder: FormBuilder,
     public pressingService: PressingService,
     public router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    private localize: LocalizeRouterService
   ) {}
   pressingForm: FormGroup;
   environment: Array<string>;
@@ -131,7 +133,8 @@ export class PressingCreatorComponent implements OnInit {
       )
       .subscribe(() => {
         this.isLoading = false;
-        this.router.navigate(['/home']);
+        const route = this.localize.translateRoute(`/home`);
+        this.router.navigate([route]);
       });
   }
 
@@ -148,7 +151,8 @@ export class PressingCreatorComponent implements OnInit {
       .updatePressing(pressing, this.pressingId)
       .subscribe(() => {
         this.isLoading = false;
-        this.router.navigate(['/home']);
+        const route = this.localize.translateRoute(`/home`);
+        this.router.navigate([route]);
       });
   }
 

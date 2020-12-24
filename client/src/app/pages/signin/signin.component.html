@@ -38,7 +38,7 @@
                         <span>{{ errorMessage }}</span>
                     </div>
                     <div id="formFooter">
-                        <a class="underlineHover" routerLink="/forgot-password">Mot de passe oublie ?</a
+                        <a class="underlineHover" [routerLink]="['/forgot-password'] | localize ">Mot de passe oublie ?</a
         >
         <a class="underlineHover" style="cursor: pointer;" (click)="toggle()">Pas encore inscrit ?</a>
                     </div>

@@ -15,6 +15,7 @@ import * as _ from 'lodash';
 import { Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { UserService } from 'src/app/services/user.service';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-pressings',
@@ -45,7 +46,8 @@ export class PressingsComponent implements OnInit {
     private cd: ChangeDetectorRef,
     public router: Router,
     public ngZone: NgZone,
-    private userService: UserService
+    private userService: UserService,
+    private localize: LocalizeRouterService
   ) {}
 
   ngOnInit(): void {
@@ -162,7 +164,8 @@ export class PressingsComponent implements OnInit {
 
   navigateToPressing(pressingId) {
     this.ngZone.run(() => {
-      this.router.navigate([`./pressings/${pressingId}`]);
+      const route = this.localize.translateRoute(`/pressings/${pressingId}`);
+      this.router.navigate([route]);
     });
   }
 
@@ -176,6 +179,7 @@ export class PressingsComponent implements OnInit {
 
   updatePressing(pressingId) {
     localStorage.setItem('adminMode', 'true');
-    this.router.navigate([`/pressing-creator/${pressingId}`]);
+    const route = this.localize.translateRoute(`/pressing-creator/${pressingId}`);
+    this.router.navigate([route]);
   }
 }

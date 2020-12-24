@@ -15,6 +15,15 @@ import { PressingsComponent } from './pages/pressings/pressings.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { UsersComponent } from './pages/users/users.component';
+import { LocalizeRouterModule, LocalizeParser, LocalizeRouterSettings } from '@gilsdav/ngx-translate-router';
+import { TranslateService } from '@ngx-translate/core';
+import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { LocalizeRouterHttpLoader } from '@gilsdav/ngx-translate-router-http-loader';
+
+export function HttpLoaderFactory(translate: TranslateService, location: Location, settings: LocalizeRouterSettings, http: HttpClient) {
+  return new LocalizeRouterHttpLoader(translate, location, { ...settings, alwaysSetPrefix: true }, http);
+}
 
 const routes: Routes = [
   {
@@ -93,9 +102,19 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled'
-})],
-  exports: [RouterModule],
+  imports: [
+    RouterModule.forRoot(routes),
+    LocalizeRouterModule.forRoot(routes, {
+      parser: {
+        provide: LocalizeParser,
+        useFactory: HttpLoaderFactory,
+        deps: [TranslateService, Location, LocalizeRouterSettings, HttpClient]
+      },
+      defaultLangFunction: () => {
+        return 'fr';
+      }
+    })
+  ],
+  exports: [RouterModule, LocalizeRouterModule],
 })
 export class AppRoutingModule {}
