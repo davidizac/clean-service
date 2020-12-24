@@ -1,12 +1,11 @@
 <div class="shopping-cart-page__Container-arjt3o-0 icHcNW">
-  <div class="shopping-cart-page__ContentContainer-arjt3o-3 fYJafp">
-    <span class="shopping-cart-page__PageTitle-arjt3o-9 hgOZjk">{{
+    <div class="shopping-cart-page__ContentContainer-arjt3o-3 fYJafp">
+        <span class="shopping-cart-page__PageTitle-arjt3o-9 hgOZjk">{{
       getTitle()
     }}</span>
-    <div class="shopping-cart-page__CartBlock-arjt3o-10 euStKy">
-      <div class="shopping-cart-page__FirstBlock-arjt3o-1 hJnlVQ">
-        <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV"
-          >Addresse de recuperation</span
+        <div class="shopping-cart-page__CartBlock-arjt3o-10 euStKy">
+            <div class="shopping-cart-page__FirstBlock-arjt3o-1 hJnlVQ">
+                <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV">Addresse de recuperation</span
         >
         <div class="address-button__Button-oifptd-0 kHzhHJ">
           <input
@@ -96,12 +95,9 @@
           </div>
         </ng-container>
         <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV">Hours</span>
-        <div class="shopping-cart-page__PickupDropOffContainer-arjt3o-6 bvydiV">
-          <div class="style__TimeView-sc-10wq5t7-0 fdOevz">
-            <button
-              class="style__TimeBlock-sc-10wq5t7-1 kulOXA"
-              (click)="openPopup(true)"
-            >
+                <div class="shopping-cart-page__PickupDropOffContainer-arjt3o-6 bvydiV">
+                    <div class="style__TimeView-sc-10wq5t7-0 fdOevz">
+                        <button class="style__TimeBlock-sc-10wq5t7-1 kulOXA" (click)="openPopup(true)">
               <ng-container *ngIf="pickUpDate">
                 <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE"
                   >Recuperation</span
@@ -127,9 +123,7 @@
                 ><span class="style__TimeText-sc-10wq5t7-3 iAKgzk">{{
                   dropOffDate | time_format
                 }}</span
-                ><span class="style__DateText-sc-10wq5t7-4 flnGpb">{{
-                  dropOffDate | date_format
-                }}</span>
+                ><span class="style__DateText-sc-10wq5t7-4 flnGpb">{{dropOffDate | date_format}}</span>
               </ng-container>
               <ng-container *ngIf="!dropOffDate">
                 <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE"
@@ -137,11 +131,10 @@
                 >
               </ng-container>
             </button>
-          </div>
-        </div>
-        <div class="style__OptionnalInfoContainer-sc-1q0ajs2-7 MVQFs">
-          <span class="style__GreyTitle-sc-1q0ajs2-4 foyaIu"
-            >Numero de telephone:</span
+                    </div>
+                </div>
+                <div class="style__OptionnalInfoContainer-sc-1q0ajs2-7 MVQFs">
+                    <span class="style__GreyTitle-sc-1q0ajs2-4 foyaIu">Numero de telephone:</span
           ><textarea
             [(ngModel)]="phoneNumber"
             placeholder="0541234567"
@@ -160,15 +153,11 @@
       </div>
       <div class="shopping-cart-page__SecondBlock-arjt3o-2 jtUsXN">
         <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV">Commande</span>
-        <div class="products-in-cart__ProductsContainer-mbbtn6-0 hbQyQL">
-          <div
-            class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF"
-            *ngFor="let product of filteredProducts"
-          >
-            <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
-              <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe">
-                <span class="productList__Number-sc-1oz9rbz-8 jDEDaq"
-                  >x{{ getRecurrence(product) }}</span
+                    <div class="products-in-cart__ProductsContainer-mbbtn6-0 hbQyQL">
+                        <div class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF" *ngFor="let product of filteredProducts">
+                            <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
+                                <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe">
+                                    <span class="productList__Number-sc-1oz9rbz-8 jDEDaq">x{{ getRecurrence(product) }}</span
                 >
               </div>
               {{ product.name }}
@@ -209,19 +198,14 @@
           <span class="order-summary__MinimumPrice-sc-2gc5ap-2 kTfBpA"
             >Commande minimum: 100&#8362;
           </span>
-        </div>
-      </div>
-    </div>
-    <span class="errorMessage">{{ errorMessage }}</span>
-    <div class="shopping-cart-page__ButtonContainer-arjt3o-4 jNHIgL">
-      <a
-        [ngClass]="isInvalidOrder ? 'disabled' : ''"
-        (click)="createOrder()"
-        width="286px"
-        class="style__ButtonStyle-zdp3iu-0 dsVNJt"
-      >
+                                </div>
+                            </div>
+                        </div>
+                        <span class="errorMessage">{{ errorMessage }}</span>
+                        <div class="shopping-cart-page__ButtonContainer-arjt3o-4 jNHIgL">
+                            <a [ngClass]="isInvalidOrder ? 'disabled' : ''" (click)="createOrder()" width="286px" class="style__ButtonStyle-zdp3iu-0 dsVNJt">
         {{ getMessageButton() }}
       </a>
-    </div>
-  </div>
-</div>
+                        </div>
+                    </div>
+                </div>

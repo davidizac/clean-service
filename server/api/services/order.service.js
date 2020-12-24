@@ -1,4 +1,5 @@
 const OrderModel = require('../models/order.model')
+const { getPressingByProduct } = require('./pressing.service')
 
 class OrderService {
   async createOrder(userId, orderData) {
@@ -10,11 +11,20 @@ class OrderService {
   }
 
   async getAll() {
-    return OrderModel.find()
+    const orders = await OrderModel.find()
       .sort({ createdAt: -1 })
       .populate({ path: 'products' })
       .populate({ path: 'user' })
       .lean()
+    for (const order of orders) {
+      if (order.products[0]) {
+        const pressing = await getPressingByProduct(order.products[0])
+        order.pressing = pressing.name
+      } else {
+        order.pressing = ''
+      }
+    }
+    return orders
   }
 
   async getMyOrders(user) {

@@ -1,68 +1,56 @@
 <div class="home__Wrapper-sc-1t4sgmb-0 kyedtg">
-  <div class="home__TitleContainer-sc-1t4sgmb-2 dFauvp">
-    <div class="home__Text-sc-1t4sgmb-5 home__Title-sc-1t4sgmb-6 gMsGXm">
-      Mon profile
-    </div>
-  </div>
-  <div *ngIf="user" class="home__Container-sc-1t4sgmb-1 ilNVDC">
-    <div class="home__ProfileContainer-sc-1t4sgmb-8 gmrnvg">
-      <div class="home__InfoContainer-sc-1t4sgmb-9 grNzKa">
-        <div
-          class="home__Content-sc-1t4sgmb-10 home__Label-sc-1t4sgmb-11 iWWdKg"
-        >
-          Prenom
-        </div>
-        <div class="home__Content-sc-1t4sgmb-10 bIXMrm">{{ firstName }}</div>
-      </div>
-      <div class="home__InfoContainer-sc-1t4sgmb-9 grNzKa">
-        <div
-          class="home__Content-sc-1t4sgmb-10 home__Label-sc-1t4sgmb-11 iWWdKg"
-        >
-          Nom
-        </div>
-        <div class="home__Content-sc-1t4sgmb-10 bIXMrm">{{ lastName }}</div>
-      </div>
-      <div class="home__InfoContainer-sc-1t4sgmb-9 grNzKa">
-        <div
-          class="home__Content-sc-1t4sgmb-10 home__Label-sc-1t4sgmb-11 iWWdKg"
-        >
-          Telephone
-        </div>
-        <div class="home__Content-sc-1t4sgmb-10 bIXMrm">
-          {{ user.phoneNumber }}
-        </div>
-      </div>
-      <div class="home__InfoContainer-sc-1t4sgmb-9 grNzKa">
-        <div
-          class="home__Content-sc-1t4sgmb-10 home__Label-sc-1t4sgmb-11 iWWdKg"
-        >
-          Email
-        </div>
-        <div class="home__Content-sc-1t4sgmb-10 bIXMrm">
-          {{ user.email }}
-        </div>
-      </div>
-    </div>
-    <div class="home__ProfileContainer-sc-1t4sgmb-8 gmrnvg">
-      <div class="home__TitlePartContainer-sc-1t4sgmb-12 gugkyB">
+    <div class="home__TitleContainer-sc-1t4sgmb-2 dFauvp">
         <div class="home__Text-sc-1t4sgmb-5 home__Title-sc-1t4sgmb-6 gMsGXm">
-          Mes commandes
+            Mon profile
         </div>
-      </div>
-
-      <div class="home__TitlePartContainer-sc-1t4sgmb-12 gugkyB">
-        <div class="home__Text-sc-1t4sgmb-5 cnNoeY">
-          Pour voir vos commandes,
-          <a style="text-decoration: none" href="/orders">cliquez ici</a>
-        </div>
-      </div>
     </div>
+    <div *ngIf="user" class="home__Container-sc-1t4sgmb-1 ilNVDC">
+        <div class="home__ProfileContainer-sc-1t4sgmb-8 gmrnvg">
+            <div class="home__InfoContainer-sc-1t4sgmb-9 grNzKa">
+                <div class="home__Content-sc-1t4sgmb-10 home__Label-sc-1t4sgmb-11 iWWdKg">
+                    Prenom
+                </div>
+                <div class="home__Content-sc-1t4sgmb-10 bIXMrm">{{ firstName }}</div>
+            </div>
+            <div class="home__InfoContainer-sc-1t4sgmb-9 grNzKa">
+                <div class="home__Content-sc-1t4sgmb-10 home__Label-sc-1t4sgmb-11 iWWdKg">
+                    Nom
+                </div>
+                <div class="home__Content-sc-1t4sgmb-10 bIXMrm">{{ lastName }}</div>
+            </div>
+            <div class="home__InfoContainer-sc-1t4sgmb-9 grNzKa">
+                <div class="home__Content-sc-1t4sgmb-10 home__Label-sc-1t4sgmb-11 iWWdKg">
+                    Telephone
+                </div>
+                <div class="home__Content-sc-1t4sgmb-10 bIXMrm">
+                    {{ user.phoneNumber }}
+                </div>
+            </div>
+            <div class="home__InfoContainer-sc-1t4sgmb-9 grNzKa">
+                <div class="home__Content-sc-1t4sgmb-10 home__Label-sc-1t4sgmb-11 iWWdKg">
+                    Email
+                </div>
+                <div class="home__Content-sc-1t4sgmb-10 bIXMrm">
+                    {{ user.email }}
+                </div>
+            </div>
+        </div>
+        <div class="home__ProfileContainer-sc-1t4sgmb-8 gmrnvg">
+            <div class="home__TitlePartContainer-sc-1t4sgmb-12 gugkyB">
+                <div class="home__Text-sc-1t4sgmb-5 home__Title-sc-1t4sgmb-6 gMsGXm">
+                    Mes commandes
+                </div>
+            </div>
 
-    <button
-      (click)="logout()"
-      style="text-decoration: none; background-color: #f5f5f5"
-      class="home__Button-sc-1t4sgmb-7 hQCdQz"
-    >
+            <div class="home__TitlePartContainer-sc-1t4sgmb-12 gugkyB">
+                <div class="home__Text-sc-1t4sgmb-5 cnNoeY">
+                    Pour voir vos commandes,
+                    <a style="text-decoration: none" href="/orders">cliquez ici</a>
+                </div>
+            </div>
+        </div>
+
+        <button (click)="logout()" style="text-decoration: none; background-color: #f5f5f5" class="home__Button-sc-1t4sgmb-7 hQCdQz">
       <div class="home__LinkContainer-sc-1t4sgmb-3 WmdJm">
         <div class="home__SvgContainer-sc-1t4sgmb-4 fMibFh">
           <svg class="icon" width="24" height="24" viewBox="0 0 1024 1024">
@@ -75,5 +63,5 @@
         <div class="home__Text-sc-1t4sgmb-5 cnNoeY">Deconnexion</div>
       </div>
     </button>
-  </div>
+    </div>
 </div>

@@ -1,7 +1,9 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import {DropdownModule} from 'primeng/dropdown';
 
 declare let $: any;
 
@@ -10,17 +12,24 @@ declare let $: any;
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnChanges {
 
-  @Input('adminMode') adminMode : any
+  adminMode : any
   @Input('isAuthenticated') isAuthenticated : any
   @Input('user') user : any
   @Input('isAdmin') isAdmin : any
 
   selectedTab = 'home'
+  selectedLang = 'FR'
+  langs
   
 
-  constructor(public cd: ChangeDetectorRef, public router: Router) {AOS.init(); }
+  constructor(public cd: ChangeDetectorRef, public router: Router, private localize:LocalizeRouterService) {AOS.init();
+    this.langs = [
+      {name: 'Francais', code: 'FR'},
+      {name: 'Anglais', code: 'EN'},
+      {name: 'Israelien', code: 'IL'},
+    ]; }
 
   toggleAdminMode(e) {
     this.adminMode = e.checked;
@@ -28,29 +37,24 @@ export class HeaderComponent implements OnInit {
     this.cd.detectChanges();
   }
 
-  changedTab(tab) {
-    this.selectedTab = tab;
+  chooseLang(lang){
+    this.localize.changeLanguage(lang);
   }
 
-  ngOnInit() {
+  changedTab(tab) {
+    this.selectedTab = tab;
+    console.log(this.selectedTab)
+  }
 
+  getImageLocation(country){
+    return `../../../assets/images/${country}.png`
+  }
+
+  ngOnChanges() {
+   
     this.adminMode = localStorage.getItem('adminMode') === 'true';
     console.log(this.isAuthenticated)
-    //  $(window).on('scroll', function() {
-    //  console.log("broker");
-
-    // });
-
-    // $(window).on('scroll', function() {
-    //   //alert('out reached');
-    //     if($(window).scrollTop() + $('.navbar-collapse').height() - 1726 >= $('.navbar-collapse')[0].scrollHeight) {
-    //       console.log("from broker");
-
-    //         $('.navbar-collapse').css({'position':'fixe', 'top':'0'});
-    //     } else{
-    //       $('.navbar-collapse').css({'position':'sticky', 'top':'327'});
-    //     }
-    // });
+    console.log(this.isAdmin, this.isAuthenticated)
 
     var navbar = $('.navbar');
     var navLink = $('.nav-link')
@@ -83,7 +87,8 @@ export class HeaderComponent implements OnInit {
 
 
   goToLinkOfPath(path) {
-    this.router.navigate([`/${path}`])
+    const route = this.localize.translateRoute(`/${path}`);
+    this.router.navigate([route])
   }
 
 

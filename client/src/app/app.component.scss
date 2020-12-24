@@ -14,7 +14,8 @@
 }
 
 .main2 {
-  min-height: 90.5%;
+  min-height: 70%;
+  margin-bottom: 123px;
 }
 
 @media (min-width: 1200px) {
@@ -210,25 +211,6 @@
   }
 }
 
-app-footer {
-  clear: both;
-  position: relative;
-  margin-top: -200px;
-  z-index: 1;
-  width: 100%;
-}
-
-@media (min-width: 1200px) {
-  app-footer {
-    position: fixed;
-    bottom: 0;
-    z-index: 1;
-    clear: none;
-    width: 100%;
-    margin-top: 0;
-  }
-}
-
 .hCQwYC {
   display: flex;
   margin-bottom: 15px;
@@ -292,10 +274,6 @@ app-footer {
   right: 41px;
 }
 
-.svg2 path {
-  fill: #31aded;
-}
-
 .users {
   width: 23px;
 }
@@ -315,7 +293,7 @@ app-footer {
 }
 
 .space {
-  height: 46px;
+  height: 80px;
 }
 
 @media (min-width: 1200px) {

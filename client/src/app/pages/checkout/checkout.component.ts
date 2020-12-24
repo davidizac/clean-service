@@ -8,6 +8,7 @@ import { Order } from 'src/app/models/order.model';
 import { OrderService } from 'src/app/services/order.service';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-checkout',
@@ -21,7 +22,8 @@ export class CheckoutComponent implements OnInit {
     private modalService: BsModalService,
     private orderService: OrderService,
     public formBuilder: FormBuilder,
-    public userService: UserService
+    public userService: UserService,
+    private localize: LocalizeRouterService
   ) {}
   pickUpOptions = [];
   dropOffOptions = [];
@@ -131,7 +133,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   openPopup(isPickup) {
-    const config: ModalOptions = {
+    const config = {
       initialState: {
         isPickup: isPickup,
         pickUpDate: this.pickUpDate,
@@ -190,7 +192,8 @@ export class CheckoutComponent implements OnInit {
     this.order.status = 'NEW';
     this.order.price = this.getPrice().toString();
     this.orderService.createOrder(this.order).subscribe((order) => {
-      this.router.navigate([`./order-confirmation/${order._id}`], {
+      const route = this.localize.translateRoute(`/order-confirmation/${order._id}`);
+      this.router.navigate([route], {
         queryParams: { isNew: true },
       });
     });
@@ -241,7 +244,8 @@ export class CheckoutComponent implements OnInit {
     this.order.status = 'NEW';
     this.order.price = this.getPrice().toString();
     this.orderService.updateOrder(this.order, this.orderId).subscribe(() => {
-      this.router.navigate([`./order-confirmation/${this.orderId}`], {
+      const route = this.localize.translateRoute(`/order-confirmation/${this.orderId}`);
+      this.router.navigate([route], {
         queryParams: { isNew: this.isNew },
       });
     });

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ORDER_STATUS } from 'src/app/constant';
@@ -19,7 +20,8 @@ export class OrderConfirmationComponent implements OnInit {
   constructor(
     public router: Router,
     public route: ActivatedRoute,
-    public orderService: OrderService
+    public orderService: OrderService,
+    private localize: LocalizeRouterService
   ) {}
 
   ngOnInit(): void {
@@ -31,7 +33,8 @@ export class OrderConfirmationComponent implements OnInit {
         }),
         switchMap((order: any) => {
           if (!order) {
-            this.router.navigate(['./404']);
+            const route = this.localize.translateRoute(`/404`);
+            this.router.navigate([route]);
           }
           if (
             this.route.snapshot.queryParamMap['params'] &&
@@ -49,7 +52,8 @@ export class OrderConfirmationComponent implements OnInit {
   }
 
   myOrders() {
-    this.router.navigate(['./orders']);
+    const route = this.localize.translateRoute(`/orders`);
+    this.router.navigate([route]);
   }
 
   getTitle() {

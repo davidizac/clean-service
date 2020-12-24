@@ -70,6 +70,11 @@ class PressingService {
       { returnOriginal: false }
     ).lean()
   }
+
+  async getPressingByProduct(productId) {
+    const { pressingId } = await ProductModel.findById(productId).lean()
+    return PressingModel.findById(pressingId).lean()
+  }
 }
 
 module.exports = new PressingService()

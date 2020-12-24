@@ -7,6 +7,7 @@ import { PressingService } from 'src/app/services/pressing.service';
 import * as _ from 'lodash';
 import { CATEGORIES } from 'src/app/constant';
 import { of } from 'rxjs';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-pressing-detail',
@@ -26,7 +27,8 @@ export class PressingDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    public pressingService: PressingService
+    public pressingService: PressingService,
+    private localize: LocalizeRouterService
   ) {}
   @ViewChild(MatAccordion) accordion: MatAccordion;
 
@@ -66,7 +68,8 @@ export class PressingDetailComponent implements OnInit {
   }
 
   createCheckout() {
-    this.router.navigate(['/checkout'], {
+    const route = this.localize.translateRoute(`/checkout`);
+    this.router.navigate([route], {
       queryParams: {
         order: JSON.stringify(this.order),
         isNew: this.isNew,

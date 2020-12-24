@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import * as _ from 'lodash';
+import { switchMap } from 'rxjs/operators';
+import { Pressing } from 'src/app/models/pressing.model';
+import { PressingService } from 'src/app/services/pressing.service';
+import { UserService } from 'src/app/services/user.service';
 
 declare let $: any;
 @Component({
@@ -12,34 +18,40 @@ declare let $: any;
 
 // 
 export class HomeComponent implements OnInit {
+  pressings;
+  fourPressingDisplayed
 
   constructor(
-    public router: Router
+    public router: Router,
+    public pressingService: PressingService,
+    private userService: UserService,
+    public ngZone: NgZone,
+    private localize: LocalizeRouterService
   ) { AOS.init(); }
 
 
   ngOnInit() {
 
-    //  $(window).on('scroll', function() {
-    //  console.log("broker");
 
-    // });
+    this.pressingService
+      .getAllPressings()
+      .pipe(
+        switchMap((pressings: Array<Pressing>) => {
+          this.pressings = pressings.map((p) => new Pressing(p));
+          this.fourPressingDisplayed = _.cloneDeep(this.pressings).splice(
+            0,
+            this.pageSize
+          );
+          this.fourPressingDisplayed = this.fourPressingDisplayed.slice(0,4)
+          return this.fourPressingDisplayed
+        })
+      )
 
-    // $(window).on('scroll', function() {
-    //   //alert('out reached');
-    //     if($(window).scrollTop() + $('.navbar-collapse').height() - 1726 >= $('.navbar-collapse')[0].scrollHeight) {
-    //       console.log("from broker");
-
-    //         $('.navbar-collapse').css({'position':'fixe', 'top':'0'});
-    //     } else{
-    //       $('.navbar-collapse').css({'position':'sticky', 'top':'327'});
-    //     }
-    // });
 
     var navbar = $('.navbar');
     var navLink = $('.nav-link')
     var imgLogoWhite = $('#logoMenuWhite')
-    var imgLogoBlue= $('#logoMenuBlue')
+    var imgLogoBlue = $('#logoMenuBlue')
     var btnSignIn = $('.btnSignIn')
 
 
@@ -52,7 +64,7 @@ export class HomeComponent implements OnInit {
         imgLogoBlue.removeClass('d-block');
         btnSignIn.removeClass('btnSignInScroll')
 
-      } else  {
+      } else {
         navbar.addClass('navbar-scroll');
         navLink.addClass('nav-link-scroll');
         imgLogoWhite.addClass('d-none');
@@ -62,12 +74,22 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+  pageSize(arg0: number, pageSize: any): any {
+    throw new Error('Method not implemented.');
+  }
 
 
+  navigateToPressing(pressingId) {
+    this.ngZone.run(() => {
+      const route = this.localize.translateRoute(`/pressings/${pressingId}`);
+      this.router.navigate([route]);
+    });
+  }
 
 
   goToLinkOfPath(path) {
-    this.router.navigate([`/${path}`])
+    const route = this.localize.translateRoute(`/${path}`);
+    this.router.navigate([route])
   }
 
 }
