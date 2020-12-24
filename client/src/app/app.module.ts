@@ -53,6 +53,7 @@ export function createTranslateLoader(http: HttpClient) {
     OrdersComponent,
     ManageOrdersComponent,
     NotfoundComponent,
+    HomeComponent,
     PressingCreatorComponent,
     PressingDetailComponent,
     DateSelectorComponent,

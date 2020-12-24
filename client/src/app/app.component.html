@@ -1,8 +1,6 @@
-<div [dir]="rtlSide" class="main">
+<div [dir]="rtlSide" class="main" style="position: relative;">
     <app-header [user]='user' [isAuthenticated]='isAuthenticated' [isAdmin]='isAdmin'></app-header>
     <div class="main2">
         <router-outlet></router-outlet>
     </div>
-    <app-footer></app-footer>
-    <div class="space d-block d-lg-none"></div>
 </div>
