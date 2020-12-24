@@ -32,7 +32,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SelectLanguagesComponent } from './components/select-languages/select-languages.component';
 import { AuthService } from './services/auth.service';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { APP_CONFIG, BaseAppConfig } from './app.config';
@@ -75,6 +75,7 @@ export function createTranslateLoader(http: HttpClient) {
     NgbModule,
     PipeModule,
     AppRoutingModule,
+    ModalModule.forRoot(),
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,

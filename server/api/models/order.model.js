@@ -14,7 +14,7 @@ const orderSchema = new Schema(
     addressDetails: { type: String, default: '' },
     addressDetails2: { type: String, default: '' },
     displayedId: { type: String, required: true },
-    comment: { type: String, default: true },
+    comment: { type: String, default: '' },
     phoneNumber: { type: String, required: true }
   },
 
