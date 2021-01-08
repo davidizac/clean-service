@@ -40,8 +40,8 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.myEvent.setLanguageData('en')
-    this.localize.changeLanguage('en');
+    this.myEvent.setLanguageData('fr')
+    this.localize.changeLanguage('fr');
     console.log(this.localize.parser.currentLang)
     this.selectedTab = 'home';
     this.adminMode = localStorage.getItem('adminMode') === 'true';
