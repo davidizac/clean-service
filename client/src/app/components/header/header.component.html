@@ -43,9 +43,6 @@
                         <li class="nav-item">
                             <a class="nav-link anchor" [routerLink]="['/users'] | localize" routerLinkActive="active" >Mes utilisateurs</a>
                         </li>
-                        <li class="nav-item">
-                          <a class="nav-link anchor" [routerLink]="['/home'] | localize" routerLinkActive="active"> Home</a>
-                      </li>
                     </ul>
                       <a *ngIf="!isAuthenticated" [routerLink]="['/signin'] | localize" routerLinkActive="active" class="btnSignIn">Sign in</a>
                       <a *ngIf="isAuthenticated" [routerLink]="['/profile'] | localize" routerLinkActive="active" class="btnSignIn">{{user?.fullname}}</a>
@@ -304,7 +301,7 @@
     ><svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      fill="31aded"
+      fill="#31aded"
       stroke="currentColor"
       stroke-width="2"
       *ngIf="selectedTab === 'users'"
@@ -323,7 +320,7 @@
       fill="none"
       stroke="currentColor"
       stroke-width="2"
-      *ngIf="selectedTab === 'users'"
+      *ngIf="selectedTab !== 'users'"
       stroke-linecap="round"
       stroke-linejoin="round"
       class="users"
