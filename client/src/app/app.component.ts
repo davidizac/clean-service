@@ -35,13 +35,13 @@ export class AppComponent {
     this.myEvent.getLanguageObservable().subscribe((value) => {
       // this.localize.changeLanguage(this.localize.parser.currentLang === 'fr' ? 'en' : 'fr');
       // this.router.navigate(["/en/home"]);
-      this.globalize(value);
+      this.setDirectionAccordingly(value);
     });
   }
 
   ngOnInit() {
-    this.myEvent.setLanguageData('fr')
-    this.localize.changeLanguage('fr');
+    this.myEvent.setLanguageData('en')
+    this.localize.changeLanguage('en');
     console.log(this.localize.parser.currentLang)
     this.selectedTab = 'home';
     this.adminMode = localStorage.getItem('adminMode') === 'true';
@@ -90,7 +90,7 @@ export class AppComponent {
   }
 
   globalize(languagePriority) {
-    this.translate.setDefaultLang("en");
+    this.translate.setDefaultLang("fr");
     let defaultLangCode = this.config.availableLanguages[0].code;
     this.translate.use(
       languagePriority && languagePriority.length
@@ -106,7 +106,7 @@ export class AppComponent {
 
   setDirectionAccordingly(lang: string) {
     switch (lang) {
-      case "ar": {
+      case "il": {
         this.rtlSide = "rtl";
         break;
       }

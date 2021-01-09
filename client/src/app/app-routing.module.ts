@@ -111,7 +111,7 @@ const routes: Routes = [
         deps: [TranslateService, Location, LocalizeRouterSettings, HttpClient]
       },
       defaultLangFunction: () => {
-        return 'fr';
+        return 'en';
       }
     })
   ],

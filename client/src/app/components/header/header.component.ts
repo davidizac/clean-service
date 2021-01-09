@@ -4,6 +4,7 @@ import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import {DropdownModule} from 'primeng/dropdown';
+import { MyEvent } from 'src/app/services/myevents.service';
 
 declare let $: any;
 
@@ -24,7 +25,7 @@ export class HeaderComponent implements OnChanges {
   langs
   
 
-  constructor(public cd: ChangeDetectorRef, public router: Router, private localize:LocalizeRouterService) {AOS.init();
+  constructor(public cd: ChangeDetectorRef, public router: Router, private localize:LocalizeRouterService, private myEvent: MyEvent) {AOS.init();
     this.langs = [
       {name: 'Francais', code: 'FR'},
       {name: 'Anglais', code: 'EN'},
@@ -39,6 +40,7 @@ export class HeaderComponent implements OnChanges {
 
   chooseLang(lang){
     this.localize.changeLanguage(lang);
+    this.myEvent.setLanguageData(lang);
   }
 
   changedTab(tab) {
