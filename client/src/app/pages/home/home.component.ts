@@ -19,7 +19,7 @@ declare let $: any;
 // 
 export class HomeComponent implements OnInit {
   pressings;
-  fourPressingDisplayed
+  fourPressingDisplayed = []
 
   constructor(
     public router: Router,
@@ -35,17 +35,9 @@ export class HomeComponent implements OnInit {
 
     this.pressingService
       .getAllPressings()
-      .pipe(
-        switchMap((pressings: Array<Pressing>) => {
-          this.pressings = pressings.map((p) => new Pressing(p));
-          this.fourPressingDisplayed = _.cloneDeep(this.pressings).splice(
-            0,
-            this.pageSize
-          );
-          this.fourPressingDisplayed = this.fourPressingDisplayed.slice(0,4)
-          return this.fourPressingDisplayed
-        })
-      ).subscribe()
+      .subscribe((pressings: Array<Pressing>) => {
+        this.fourPressingDisplayed.push(...pressings.slice(0,4))
+      })
 
 
     var navbar = $('.navbar');
