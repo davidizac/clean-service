@@ -109,12 +109,10 @@ const routes: Routes = [
         provide: LocalizeParser,
         useFactory: HttpLoaderFactory,
         deps: [TranslateService, Location, LocalizeRouterSettings, HttpClient]
-      },
-      defaultLangFunction: () => {
-        return 'en';
       }
     })
   ],
   exports: [RouterModule, LocalizeRouterModule],
 })
 export class AppRoutingModule {}
+ 

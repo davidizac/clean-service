@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { from, of } from 'rxjs';
-import { switchMap, take, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { APP_CONFIG, AppConfig } from "./app.config";
@@ -40,9 +40,8 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.myEvent.setLanguageData('en')
-    this.localize.changeLanguage('en');
-    console.log(this.localize.parser.currentLang)
+    this.myEvent.setLanguageData(this.localize.parser.currentLang || 'en')
+    this.localize.changeLanguage(this.localize.parser.currentLang || 'en');
     this.selectedTab = 'home';
     this.adminMode = localStorage.getItem('adminMode') === 'true';
     this.authService.userIsAuthenticated
