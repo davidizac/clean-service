@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
           this.fourPressingDisplayed = this.fourPressingDisplayed.slice(0,4)
           return this.fourPressingDisplayed
         })
-      )
+      ).subscribe()
 
 
     var navbar = $('.navbar');
