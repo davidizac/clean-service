@@ -6,6 +6,8 @@ import 'aos/dist/aos.css';
 import * as _ from 'lodash';
 import { switchMap } from 'rxjs/operators';
 import { Pressing } from 'src/app/models/pressing.model';
+import { GlobalService } from 'src/app/services/global.service';
+import { MyEvent } from 'src/app/services/myevents.service';
 import { PressingService } from 'src/app/services/pressing.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -20,14 +22,24 @@ declare let $: any;
 export class HomeComponent implements OnInit {
   pressings;
   fourPressingDisplayed = []
+  langs
 
   constructor(
     public router: Router,
     public pressingService: PressingService,
     private userService: UserService,
     public ngZone: NgZone,
-    private localize: LocalizeRouterService
-  ) { AOS.init(); }
+    private localize: LocalizeRouterService,
+    public globalService: GlobalService,
+    private myEvent: MyEvent
+  ) { AOS.init();
+    this.langs = [
+      {name: 'Francais', code: 'FR'},
+      {name: 'Anglais', code: 'EN'},
+      {name: 'Israelien', code: 'IL'},
+    ]; 
+
+   }
 
 
   ngOnInit() {
@@ -82,6 +94,11 @@ export class HomeComponent implements OnInit {
   goToLinkOfPath(path) {
     const route = this.localize.translateRoute(`/${path}`);
     this.router.navigate([route])
+  }
+
+  chooseLang(lang){
+    this.localize.changeLanguage(lang);
+    this.myEvent.setLanguageData(lang);
   }
 
 }

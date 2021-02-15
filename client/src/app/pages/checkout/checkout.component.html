@@ -1,16 +1,16 @@
 <div class="shopping-cart-page__Container-arjt3o-0 icHcNW">
     <div class="shopping-cart-page__ContentContainer-arjt3o-3 fYJafp">
         <span class="shopping-cart-page__PageTitle-arjt3o-9 hgOZjk">{{
-      getTitle()
+      getTitle() | translate
     }}</span>
         <div class="shopping-cart-page__CartBlock-arjt3o-10 euStKy">
             <div class="shopping-cart-page__FirstBlock-arjt3o-1 hJnlVQ">
-                <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV">Addresse de recuperation</span
+                <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV">{{'Addresse de recuperation' | translate}}</span
         >
         <div class="address-button__Button-oifptd-0 kHzhHJ">
           <input
             [formControl]="pickUpAddress"
-            placeholder="Tapez l'addresse de recuperation"
+            placeholder="{{'Tapez laddresse de recuperation' | translate}}"
             matInput
             [matAutocomplete]="auto"
             class="address"
@@ -27,12 +27,12 @@
         </div>
 
         <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV"
-          >Details de l'addresse (optional)</span
+          >{{"Details de laddresse (optional)" | translate}}</span
         >
         <div class="address-button__Button-oifptd-0 kHzhHJ">
           <input
             type="text"
-            placeholder="E.g Appartement 6, Etage 3, etc."
+            placeholder="{{'E.g Appartement 6, Etage 3, etc.' | translate}}"
             [formControl]="addressDetails"
             matInput
             class="address"
@@ -50,20 +50,19 @@
               for="another-address"
               class="style__CheckboxLabel-sc-18pyt5v-1 kbJGuN"
               ><span
-                >Voulez vous choisir une differente addresse de recuperation
-                ?</span
+                >{{'Voulez vous choisir une differente addresse de recuperation?' | translate}}</span
               ></label
             >
           </div>
         </div>
         <ng-container *ngIf="anotherAddress">
           <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV"
-            >Addresse de restitution</span
+            >{{'Addresse de restitution' | translate}}</span
           >
           <div class="address-button__Button-oifptd-0 kHzhHJ">
             <input
               [formControl]="dropOffAddress"
-              placeholder="Tapez l'addresse de restitution"
+              placeholder="{{'Tapez laddresse de restitution' | translate}}"
               matInput
               [matAutocomplete]="auto"
               class="address"
@@ -82,7 +81,7 @@
             </mat-autocomplete>
           </div>
           <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV"
-            >Details de l'addresse (optional)</span
+            >{{'Details de laddresse (optional)' | translate}}</span
           >
           <div class="address-button__Button-oifptd-0 kHzhHJ">
             <input
@@ -100,7 +99,7 @@
                         <button class="style__TimeBlock-sc-10wq5t7-1 kulOXA" (click)="openPopup(true)">
               <ng-container *ngIf="pickUpDate">
                 <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE"
-                  >Recuperation</span
+                  >{{'Recuperation' | translate}}</span
                 ><span class="style__TimeText-sc-10wq5t7-3 iAKgzk">{{
                   pickUpDate | time_format
                 }}</span
@@ -110,7 +109,7 @@
               </ng-container>
               <ng-container *ngIf="!pickUpDate">
                 <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE"
-                  >Creneau de recuperation</span
+                  >{{'Creneau de recuperation' | translate}}</span
                 >
               </ng-container></button
             ><button
@@ -119,7 +118,7 @@
             >
               <ng-container *ngIf="dropOffDate">
                 <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE"
-                  >Restitution</span
+                  >{{'Restitution' | translate}}</span
                 ><span class="style__TimeText-sc-10wq5t7-3 iAKgzk">{{
                   dropOffDate | time_format
                 }}</span
@@ -127,14 +126,14 @@
               </ng-container>
               <ng-container *ngIf="!dropOffDate">
                 <span class="style__TimeTitle-sc-10wq5t7-2 iWIluE"
-                  >Creneau de restitution</span
+                  >{{'Creneau de restitution' | translate}}</span
                 >
               </ng-container>
             </button>
                     </div>
                 </div>
                 <div class="style__OptionnalInfoContainer-sc-1q0ajs2-7 MVQFs">
-                    <span class="style__GreyTitle-sc-1q0ajs2-4 foyaIu">Numero de telephone:</span
+                    <span class="style__GreyTitle-sc-1q0ajs2-4 foyaIu">{{'Numero de telephone:' | translate}}</span
           ><textarea
             [(ngModel)]="phoneNumber"
             placeholder="0541234567"
@@ -143,16 +142,16 @@
         </div>
         <div class="style__OptionnalInfoContainer-sc-1q0ajs2-7 MVQFs">
           <span class="style__GreyTitle-sc-1q0ajs2-4 foyaIu"
-            >Information optionelle</span
+            >{{'Information optionelle' | translate}}</span
           ><textarea
             [(ngModel)]="comment"
-            placeholder="Avez-vous une requête particulière ?"
+            placeholder="{{'Avez-vous une requête particulière ?' | translate}}"
             class="style__MoreInfoInput-sc-1q0ajs2-8 hxUgCd"
           ></textarea>
         </div>
       </div>
       <div class="shopping-cart-page__SecondBlock-arjt3o-2 jtUsXN">
-        <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV">Commande</span>
+        <span class="shopping-cart-page__Title-arjt3o-7 bqDjKV">{{'Commande' | translate}}</span>
                     <div class="products-in-cart__ProductsContainer-mbbtn6-0 hbQyQL">
                         <div class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF" *ngFor="let product of filteredProducts">
                             <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
@@ -183,28 +182,28 @@
         <div class="order-summary__Container-sc-2gc5ap-0 ktgkUf">
           <div class="order-summary__SummaryLineContainer-sc-2gc5ap-1 dDUVLw">
             <span class="order-summary__InputDark-sc-2gc5ap-3 doxodF"
-              >Frais de livraison</span
+              >{{'Frais de livraison' | translate}}</span
             ><span class="order-summary__H3Dark-sc-2gc5ap-4 kvqIDJ"
               >10 &#8362;</span
             >
           </div>
           <div class="order-summary__SummaryLineContainer-sc-2gc5ap-1 dDUVLw">
             <span class="order-summary__InputDark-sc-2gc5ap-3 doxodF"
-              >Total</span
+              >{{'Total' | translate}}</span
             ><span class="order-summary__H3Dark-sc-2gc5ap-4 kvqIDJ"
               >{{ getPrice() }} &#8362;</span
             >
           </div>
           <span class="order-summary__MinimumPrice-sc-2gc5ap-2 kTfBpA"
-            >Commande minimum: 100&#8362;
+            >{{'Commande minimum: 100' | translate}}&#8362;
           </span>
                                 </div>
                             </div>
                         </div>
-                        <span class="errorMessage">{{ errorMessage }}</span>
+                        <span class="errorMessage">{{ errorMessage | translate }}</span>
                         <div class="shopping-cart-page__ButtonContainer-arjt3o-4 jNHIgL">
                             <a [ngClass]="isInvalidOrder ? 'disabled' : ''" (click)="createOrder()" width="286px" class="style__ButtonStyle-zdp3iu-0 dsVNJt">
-        {{ getMessageButton() }}
+        {{ getMessageButton() | translate }}
       </a>
                         </div>
                     </div>

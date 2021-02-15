@@ -8,6 +8,7 @@ import { APP_CONFIG, AppConfig } from "./app.config";
 import { MyEvent } from './services/myevents.service';
 import { TranslateService } from "@ngx-translate/core";
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { GlobalService } from './services/global.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  rtlSide = "left";
+  
   isAdmin: boolean;
   isAuthenticated: boolean;
   adminMode;
@@ -30,13 +31,10 @@ export class AppComponent {
     public router: Router,
     private myEvent: MyEvent,
     private translate: TranslateService,
-    private localize: LocalizeRouterService
-  ) { 
-    this.myEvent.getLanguageObservable().subscribe((value) => {
-      // this.localize.changeLanguage(this.localize.parser.currentLang === 'fr' ? 'en' : 'fr');
-      // this.router.navigate(["/en/home"]);
-      this.setDirectionAccordingly(value);
-    });
+    private localize: LocalizeRouterService,
+    public globalService: GlobalService
+  ) {
+    this.globalService.languageObservable()
   }
 
   ngOnInit() {
@@ -96,23 +94,10 @@ export class AppComponent {
         ? languagePriority
         : defaultLangCode
     );
-    this.setDirectionAccordingly(
+    this.globalService.setDirectionAccordingly(
       languagePriority && languagePriority.length
         ? languagePriority
         : defaultLangCode
     );
-  }
-
-  setDirectionAccordingly(lang: string) {
-    switch (lang) {
-      case "il": {
-        this.rtlSide = "rtl";
-        break;
-      }
-      default: {
-        this.rtlSide = "ltr";
-        break;
-      }
-    }
   }
 }

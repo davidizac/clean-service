@@ -4,14 +4,14 @@
             <div class="kqgbTY">
                 <div class="style__TitleContainer-mh2zh9-4 URAtw">
                     <div class="style__Text-mh2zh9-7 style__Title-mh2zh9-8 eTAyEB">
-                        Nos pressings
+                        {{'Nos pressings' | translate}}
                     </div>
                     <div class="style__SubTitle-mh2zh9-13 cQSOcu">
-                        Recevez votre linge du pressing en moins de 48 heures
+                        {{'Recevez votre linge du pressing en moins de 48 heures' | translate}}
                     </div>
                 </div>
                 <div class="style__SearchInputContainer-mh2zh9-11 bJdKoS mb-5">
-                    <input [formControl]="location" placeholder="Type a location" matInput [matAutocomplete]="auto" class="style__SearchInput-mh2zh9-10 jeKoNK" />
+                    <input [formControl]="location" placeholder="{{'Taper votre localisation' | translate}}" matInput [matAutocomplete]="auto" class="style__SearchInput-mh2zh9-10 jeKoNK" />
                     <mat-autocomplete (optionSelected)="onSelectionChange($event)" autoActiveFirstOption #auto="matAutocomplete">
                         <mat-option *ngFor="let option of options" [value]="option">
                             {{ option }}
@@ -104,4 +104,3 @@
     </div>
     <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" value="50" *ngIf="isLoading"></mat-progress-spinner>
 </main>
-

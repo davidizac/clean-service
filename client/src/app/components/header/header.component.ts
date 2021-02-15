@@ -60,6 +60,7 @@ export class HeaderComponent implements OnChanges {
 
     var navbar = $('.navbar');
     var navLink = $('.nav-link')
+    var btnLang = $('.btnLang')
     var imgLogoWhite = $('#logoMenuWhite')
     var imgLogoBlue= $('#logoMenuBlue')
     var btnSignIn = $('.btnSignIn')
@@ -69,6 +70,7 @@ export class HeaderComponent implements OnChanges {
       if ($(window).scrollTop() <= 400) {
         navbar.removeClass('navbar-scroll');
         navLink.removeClass('nav-link-scroll');
+        btnLang.removeClass('btnLang-scroll');
         imgLogoWhite.removeClass('d-none');
         imgLogoBlue.addClass('d-none')
         imgLogoBlue.removeClass('d-block');
@@ -77,6 +79,7 @@ export class HeaderComponent implements OnChanges {
       } else  {
         navbar.addClass('navbar-scroll');
         navLink.addClass('nav-link-scroll');
+        btnLang.addClass('btnLang-scroll');
         imgLogoWhite.addClass('d-none');
         imgLogoBlue.removeClass('d-none')
         imgLogoBlue.addClass('d-block')

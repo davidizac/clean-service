@@ -1,11 +1,10 @@
 <div class="hmLLON">
-  <div class="dRZTuO">
-    <div class="kqgbTY">
-      <div *ngIf="products" class="style__Container-mh2zh9-3 cBXiBZ">
-        <div class="cart-widget__CartWidgetContainer-sc-1r5elwy-1 luaXC">
-          <div class="cart-widget__ProductText-sc-1r5elwy-3 NaHOq">
-            Total<span class="cart-widget__TaxText-sc-1r5elwy-5 gzSXgN"
-              >(Tax included)</span
+    <div class="dRZTuO">
+        <div class="kqgbTY">
+            <div *ngIf="products" class="style__Container-mh2zh9-3 cBXiBZ">
+                <div class="cart-widget__CartWidgetContainer-sc-1r5elwy-1 luaXC">
+                    <div class="cart-widget__ProductText-sc-1r5elwy-3 NaHOq">
+                        {{'Total' | translate}}<span class="cart-widget__TaxText-sc-1r5elwy-5 gzSXgN">{{'taxe inclus'}}</span
             >
           </div>
           <div class="cart-widget__Price-sc-1r5elwy-2 kZbDjO">
@@ -13,16 +12,16 @@
           </div>
           <div class="cart-widget__LegalText-sc-1r5elwy-4 jKEdLc">
             <span
-              >*Nous vous rappelons que le comptage final de votre linge
-              s'effectuera dans notre pressing. Le prix total peut varier en
-              conséquence.<br />Minimum de la commande 15 &#8362;.</span
+              >{{'*Nous vous rappelons que le comptage final de votre linge
+              seffectuera dans notre pressing. Le prix total peut varier en
+              conséquence.' | translate}}<br />Minimum de la commande 15 &#8362;.</span
             >
           </div>
           <button
             (click)="createCheckout()"
             class="cart-widget__OrderButton-sc-1r5elwy-6 iXPbgv"
           >
-            {{ getMessageButton() }}
+            {{ getMessageButton() | translate }}
           </button>
         </div>
         <div class="cart-widget__ProductsContainer-sc-1r5elwy-0 gZpWwS">
@@ -61,7 +60,7 @@
         </div>
         <div class="style__CategoryTitleContainer-mh2zh9-5 lpvapn">
           <div class="style__Text-mh2zh9-7 style__Title-mh2zh9-8 eTAyEB">
-            Dry cleaning - High quality
+            {{'Nettoyage à sec - Haute qualité' | translate}}
           </div>
           <div class="style__CategorySubTitle-mh2zh9-14 cYGEJF">
             Stain removal and an ironing by hand or robot, in addition to

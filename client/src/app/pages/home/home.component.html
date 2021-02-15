@@ -1,18 +1,34 @@
-<section id="slide" class="slide background-withcolor">
+<div class="nav-item dropdown d-block d-lg-none" style="position: absolute; z-index: 10;right: 27px;top: 22px; direction: ltr;">
+    <div ngbDropdown class="d-inline-block">
+        <button class="btn dropdown-font btnLang" id="dropdownBasic1" style="box-shadow: none; color: white;" ngbDropdownToggle>{{ 'Lang' | translate }}</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button (click)="chooseLang('fr')" ngbDropdownItem>
+              <div class="row align-items-center"><img src="../../../assets/images/FR.png" alt="" style="width: 25px; margin-right: 10px;"> Francais </div>
+            </button>
+            <button (click)="chooseLang('en')" ngbDropdownItem>
+              <div class="row align-items-center"><img src="../../../assets/images/EN.png" alt="" style="width: 25px; margin-right: 10px;"> English</div>
+            </button>
+            <button (click)="chooseLang('il')" ngbDropdownItem>
+              <div class="row align-items-center"><img src="../../../assets/images/IL.png" alt="" style="width: 25px; margin-right: 10px;"> עברית</div>
+            </button>
+        </div>
+    </div>
+</div>
+<section id="slide" class="slide background-withcolor" [ngClass]="globalService.rtlSide == 'rtl' ? 'slideRtl' : ''">
     <div class="content-bottom">
         <div class="container">
             <div class="row align-items-center" style="padding-top: 100px;">
                 <div class="col-md-7 aos-init aos-animate" data-aos="fade-right">
 
 
-                    <p style="font-size: 50px; line-height: 61px;">{{ 'lepressingdevotrechoix' | translate }}</p>
-                    <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary btn-white shadow btn-theme d-none d-md-block ml-3"><span style="font-weight: bold;">Nos Pressings</span></a>
+                    <p style="font-size: 50px; line-height: 61px;">{{ 'Le pressing de votre choix à porter de main.' | translate }}</p>
+                    <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary btn-white shadow btn-theme d-none d-md-block ml-3"><span style="font-weight: bold;">{{'Nos Pressings' | translate}}</span></a>
                 </div>
                 <div class="col-md-5 aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">
 
                     <div style="position: relative; width: 267px;" class="mx-auto">
                         <img src="assets/images/logoPhoneHome.png" class="img-fluid d-block mx-auto" style="max-width: 560px;" alt="">
-                        <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary btn-primaryMobile btn-white shadow btn-theme d-block d-md-none"><span style="font-weight: bold;">Nos Pressings</span></a>
+                        <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary btn-primaryMobile btn-white shadow btn-theme d-block d-md-none"><span style="font-weight: bold;">{{'Nos Pressings' | translate}}</span></a>
                     </div>
                 </div>
             </div>
@@ -35,7 +51,7 @@
                         <img src="assets/images/like.png" alt="" style="width: 68px;">
                     </div>
                     <div class="space-20"></div>
-                    <h4>Efficacité</h4>
+                    <h4>{{'Efficacité' | translate}}</h4>
                     <div class="space-15"></div>
                     <p>{{ "Nous mettons tout en oeuvre pour satisfaire au maximum notre clientele" | translate }}</p>
                 </div>
@@ -47,9 +63,9 @@
                         <img src="assets/images/timer.png" alt="" style="width: 68px;">
                     </div>
                     <div class="space-20"></div>
-                    <h4>Gain de Temps</h4>
+                    <h4>{{'Gain de Temps' | translate}}</h4>
                     <div class="space-15"></div>
-                    <p>Fini les deplacements au pressing, gagnez du temps avec Cleeser</p>
+                    <p>{{'Fini les deplacements au pressing, gagnez du temps avec Cleeser' | translate}}</p>
                 </div>
             </div>
             <div class="col-lg-4 col-12" style="max-height: 463px;">
@@ -58,9 +74,9 @@
                         <img src="assets/images/website.png" alt="" style="width: 68px;">
                     </div>
                     <div class="space-20"></div>
-                    <h4>Libre Choix</h4>
+                    <h4>{{'Libre Choix' | translate}}</h4>
                     <div class="space-15"></div>
-                    <p>Le choix des pressings et leurs tarifs s'offrent à vous <br> Comparer, Selectionner, Valider !</p>
+                    <p>{{'Le choix des pressings et leurs tarifs soffrent à vous' | translate}} <br> {{'Comparer, Selectionner, Valider !' | translate}}</p>
                 </div>
             </div>
         </div>
@@ -72,20 +88,20 @@
 <section id="about" class="why-us padding-100 background-fullwidth background-fixed " style="background-image: url(assets/img/gray-bg.jpg);">
     <div class="container">
         <h3 class="text-center" style="margin-bottom: 85px;">
-            Comment ça marche ?
+            {{'Comment ça marche ?' | translate}}
         </h3>
-        <div class="row align-items-center">
+        <div class="row align-items-center" style="direction: ltr;">
             <div class="col-md-6 aos-init" data-aos="fade-zoom-in" data-aos-delay="200">
 
-                <p style="font-weight: bold;font-size: 20px; color: #303952;"><span style="color: #00cdcd; font-size: 27px;">4</span> étapes seulement:
+                <p style="font-weight: bold;font-size: 20px; color: #303952;"><span style="color: #00cdcd; font-size: 27px;">4</span> {{'étapes seulement' | translate}}:
                 </p>
                 <div class="space-50"></div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-12 aos-init" data-aos="zoom-in" data-aos-delay="200">
                         <div class="why-us-icon">
                             <span class="lnr lnr-map-marker"></span>
-                            <p style="font-size: 19px; font-weight: 600;">Choix du pressing</p>
-                            <p>sélectionner le pressing parmi nos différents partenaires.
+                            <p style="font-size: 19px; font-weight: 600;">{{'Choix du pressing' | translate}}</p>
+                            <p>{{'sélectionner le pressing parmi nos différents partenaires.' | translate}}
                             </p>
                         </div>
                         <div class="space-25"></div>
@@ -93,8 +109,8 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-12 aos-init" data-aos="zoom-in" data-aos-delay="400">
                         <div class="why-us-icon">
                             <span class="lnr lnr-smartphone"></span>
-                            <p style="font-size: 19px; font-weight: 600;">Commander via Cleeser.com</p>
-                            <p>renseigner l’heur et la date.</p>
+                            <p style="font-size: 19px; font-weight: 600;">{{'Commander via cleeser.com' | translate}}</p>
+                            <p>{{'renseigner l’heur et la date.' | translate}}</p>
                         </div>
                     </div>
                     <div class="space-25"></div>
@@ -104,8 +120,8 @@
                         <div class="why-us-icon">
 
                             <span class="lnr lnr-car"></span>
-                            <p style="font-size: 19px; font-weight: 600;">Recuperation des vêtements</p>
-                            <p>le livreur vient directement chez vous récupérer vos vêtements.
+                            <p style="font-size: 19px; font-weight: 600;">{{'Recuperation des vêtements' | translate}}</p>
+                            <p>{{'le livreur vient directement chez vous récupérer vos vêtements.' | translate}}
                             </p>
                         </div>
                         <div class="space-25"></div>
@@ -113,8 +129,8 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-12 aos-init" data-aos="zoom-in" data-aos-delay="400">
                         <div class="why-us-icon">
                             <span class="lnr lnr-shirt"></span>
-                            <p style="font-size: 19px; font-weight: 600;">Livraison des vêtements</p>
-                            <p>Vos vêtements lavés et repassés sont livrer a votre domicile.</p>
+                            <p style="font-size: 19px; font-weight: 600;">{{'Livraison des vêtements' | translate}}</p>
+                            <p>{{'Vos vêtements lavés et repassés sont livrer a votre domicile.' | translate}}</p>
                         </div>
                         <div class="space-25"></div>
                     </div>
@@ -131,9 +147,9 @@
     <div class="container-fluid">
 
         <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in">
-            <h3>Nos <span class="white"> Différents </span> Partenaires</h3>
+            <h3>{{'Nos' | translate}} <span class="white"> {{'Différents' | translate}} </span> {{'Partenaires' | translate}}</h3>
             <div class="space-25"></div>
-            <p style="font-size:26px">Ils nous ont fait confiance, à vous de choisir !</p>
+            <p style="font-size:26px">{{'Ils nous ont fait confiance, à vous de choisir !' | translate}}</p>
             <div class="space-50"></div>
         </div>
 
@@ -150,7 +166,7 @@
 
                     </div>
                     <div class="col col-md-12 align-self-end">
-                        <a (click)="navigateToPressing(pressing._id)" class="mx-auto align-self-end btn btn-primary shadow d-block btn-colord btn-theme" style="height:45px ; padding: 12px 35px !important"><span>Selectionner</span></a>
+                        <a (click)="navigateToPressing(pressing._id)" class="mx-auto align-self-end btn btn-primary shadow d-block btn-colord btn-theme" style="height:45px ; padding: 12px 35px !important"><span>{{'Selectionner' | translate}}</span></a>
                     </div>
                 </div>
 
@@ -158,7 +174,7 @@
 
             <div (click)="goToLinkOfPath('pressings')" class="mx-auto mb-5 text-center row align-items-center justify-content-center btnGoToAllPressings">
 
-                Voir Plus...
+                {{'Voir Plus...' | translate}}
 
             </div>
 
@@ -172,62 +188,78 @@
     <div class="container">
         <div class="row">
             <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in" style="margin-bottom: 65px;">
-                <h3>Qui Sommes Nous ?</h3>
+                <h3>{{'Qui Sommes Nous ?' | translate}}</h3>
             </div>
         </div>
 
         <div>
             <p class="text-center" style="font-size: 23px;line-height: 1.7;margin-bottom: 0px; font-style: italic; color: #303952;">
-                Qui n’a jamais laisser traîner un costume, une robe de soirée, un manteau ou même des rideaux durant des mois chez soi pour les amener au pressing mais toujours reporter ca à plus tard par manque de temps ou par flemme ? Effectivement, on est tous d’accord.
-                C’est pour cela que nous avons développer cette plateforme qui assure la livraison pour vous, grâce notre service et nos différent partenariat avec les pressings. De ce fait en quelque clique sans bouger de chez vous vos vêtements sont
-                récupérés lavés repassés et livrés. Vous l’avez compris notre but et de vous facilité la vie. Prenez les choses en main et faite nous confiance en faisant appel à Cleeser. <br> A très vite ! <br> L’équipe clean service
+                {{'Qui n’a jamais laisser traîner un costume, une robe de soirée, un manteau ou même des rideaux durant des mois chez soi pour les amener au pressing mais toujours reporter ca à plus tard par manque de temps ou par flemme ? Effectivement, on est tous
+                d’accord. C’est pour cela que nous avons développer cette plateforme qui assure la livraison pour vous, grâce notre service et nos différent partenariat avec les pressings. De ce fait en quelque clique sans bouger de chez vous vos vêtements
+                sont récupérés lavés repassés et livrés. Vous l’avez compris notre but et de vous facilité la vie.' | translate}} {{'Prenez les choses en main et faite nous confiance en faisant appel à Cleeser.' | translate}} <br> {{'A
+                très vite !' | translate}}
+                <br> {{'L’équipe Cleeser' | translate}}
             </p>
         </div>
     </div>
 </section>
 
-<section id="testimonial" class="clients-testimonial padding-100" style="margin-bottom: 0;">
+<section id="testimonial" class="padding-100" style="margin-bottom: 105px;">
     <div class="container">
-        <div class="row">
+        <div class="row" style="direction: ltr;">
             <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in" style="margin-bottom: 65px;">
-                <h3>Clients
-                    <span> Testimonial</span>
+                <h3>{{'Clients' | translate}}
+                    <span> {{'Testimonial' | translate}}</span>
                 </h3>
 
             </div>
 
-            <div class="testimonial-slider aos-init slick-initialized d-md-flex justify-content-center" data-aos="fade-up">
+            <div class="d-md-flex justify-content-between" data-aos="fade-up">
 
 
-                <div class="item slick-slide slick-active col-12 col-md" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
-                    <div class="client-testimonial" style="max-height: 234px;">
-                        <p>
-                            J’ai testé les services de l’équipe Cleeser et j’ai adoré c’est un vrai gagne temps ! Depuis le temps que je devais le faire. ! Ils sont rapide efficace et surtout de confiance. <br> Merci.
+                <div class="testimonialContainer col-12 col-md " data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
 
-                        </p>
-                    </div>
-                    <div class="client-info d-flex align-items-center">
+                    <p style="margin: 0;" [ngClass]="globalService.rtlSide == 'ltr' ? 'text-left' : 'text-right'">
+                        {{'J’ai testé les services de l’équipe Cleeser et j’ai adoré c’est un vrai gagne temps ! Depuis le temps que je devais le faire. ! Ils sont rapide efficace et surtout de confiance.' | translate}} <br> {{'Merci.' | translate}}
 
-                        <h3>Rachel Touitou</h3>
+                    </p>
 
-                    </div>
-                </div>
-                <div class="item slick-slide slick-active col-12 col-md" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
-                    <div class="client-testimonial" style="max-height: 234px;">
-                        <p>
-                            Service très professionnel, de confiance, j'ai pu meme choisir mon pressing habituel. Gagne temps de folie Service au top que je recommande a 100%. <br> Merci a l'équipe Cleeser.
-                        </p>
-                    </div>
-                    <div class="client-info d-flex align-items-center">
+                    <div class="client-info align-items-center d-flex d-md-none" style="position: absolute; bottom: -70px;">
 
-                        <h3>Omer Levy</h3>
+                        <h3>{{'Rachel Cohen' | translate}}</h3>
 
                     </div>
                 </div>
+                <div class="testimonialContainer col-12 col-md offset-md-1" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
 
+                    <p style="margin: 0;" [ngClass]="globalService.rtlSide == 'ltr' ? 'text-left' : 'text-right'">
+                        {{'Service très professionnel, de confiance, jai pu meme choisir mon pressing habituel. Gagne temps de folie Service au top que je recommande a 100%.' | translate}} <br> {{'Merci a léquipe Cleeser.' | translate}}
+                    </p>
+
+                    <div class="client-info align-items-center d-flex d-md-none" style="position: absolute; bottom: -70px;">
+
+                        <h3>{{'Omer Levy' | translate}}</h3>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="d-md-flex d-none col-12" style="margin-top: -40px;">
+                <div class="client-info col-md align-items-center">
+
+                    <h3>{{'Rachel Cohen' | translate}}</h3>
+
+                </div>
+                <div class="client-info col-md offset-md-1 align-items-center">
+
+                    <h3>{{'Omer Levy' | translate}}</h3>
+
+                </div>
             </div>
 
         </div>
 
     </div>
 </section>
+<app-footer></app-footer>

@@ -1,10 +1,5 @@
-<mat-slide-toggle
-    class="adminToggle"
-    (change)="toggleAdminMode($event)"
-    *ngIf="isAuthenticated && isAdmin"
-    [checked]="adminMode"
-  >
-  Admin mode
+<mat-slide-toggle class="adminToggle" (change)="toggleAdminMode($event)" *ngIf="isAuthenticated && isAdmin" [checked]="adminMode">
+    Admin mode
 </mat-slide-toggle>
 <header class="foxapp-header header-desktop">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #31aded;" id="foxapp_menu">
@@ -12,94 +7,84 @@
 
             <div class="container" id="main_menu">
 
-                <div class="row justify-content-between w-100">
+                <div class="row justify-content-between w-100 align-items-center" style="height: 110px; direction: ltr;">
 
-                  <div class="col-3 logo" [routerLink]="['/home'] | localize" >
-                    <img src="assets/images/logo-blanc.png" class="mr-auto" id="logoMenuWhite" style="width: 150px" alt="">
-                    <img src="assets/images/logoBlue.png" id="logoMenuBlue" class="mr-auto d-none" style="width: 150px" alt="">
-                  </div>
-                  <div class="d-flex align-items-center justify-content-end col-9">
-                      <ul *ngIf="!adminMode" class="d-flex">
-                          <li class="nav-item">
-                              <a class="nav-link anchor" [routerLink]="['/home'] | localize" routerLinkActive="active"> Home</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link anchor" [routerLink]="['/pressings'] | localize" routerLinkActive="active"> {{ 'our_pressings' | translate }}</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link anchor" [routerLink]="['/orders'] | localize" routerLinkActive="active" >My orders</a>
-                          </li>
-                      </ul>
-                      <ul *ngIf="adminMode" class="d-flex">
-                        <li class="nav-item">
-                            <a class="nav-link anchor" [routerLink]="['/home'] | localize" routerLinkActive="active">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link anchor" [routerLink]="['/manage-orders'] | localize" routerLinkActive="active" > Gestion de commande</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link anchor" [routerLink]="['/pressing-creator'] | localize" routerLinkActive="active" >Creer un pressing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link anchor" [routerLink]="['/users'] | localize" routerLinkActive="active" >Mes utilisateurs</a>
-                        </li>
-                    </ul>
-                      <a *ngIf="!isAuthenticated" [routerLink]="['/signin'] | localize" routerLinkActive="active" class="btnSignIn">Sign in</a>
-                      <a *ngIf="isAuthenticated" [routerLink]="['/profile'] | localize" routerLinkActive="active" class="btnSignIn">{{user?.fullname}}</a>
+                    <div class="col-3 logo" [routerLink]="['/home'] | localize">
+                        <img src="assets/images/logo-blanc.png" class="mr-auto" id="logoMenuWhite" style="width: 150px" alt="">
+                        <img src="assets/images/logoBlue.png" id="logoMenuBlue" class="mr-auto d-none" style="width: 150px" alt="">
+                    </div>
+                    <div class="d-flex align-items-center justify-content-end col-lg-7 col-xl-8 ">
+                        <ul *ngIf="!adminMode" class="d-flex">
+                            <li class="nav-item">
+                                <a class="nav-link anchor" [routerLink]="['/home'] | localize" routerLinkActive="active"> {{'Accueil' | translate}}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link anchor" [routerLink]="['/pressings'] | localize" routerLinkActive="active"> {{ 'Nos pressings' | translate }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link anchor" [routerLink]="['/orders'] | localize" routerLinkActive="active">{{'Mes commandes' | translate}}</a>
+                            </li>
+                        </ul>
+                        <ul *ngIf="adminMode" class="d-flex">
+                            <li class="nav-item">
+                                <a class="nav-link anchor" [routerLink]="['/home'] | localize" routerLinkActive="active">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link anchor" [routerLink]="['/manage-orders'] | localize" routerLinkActive="active"> Gestion de commande</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link anchor" [routerLink]="['/pressing-creator'] | localize" routerLinkActive="active">Creer un pressing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link anchor" [routerLink]="['/users'] | localize" routerLinkActive="active">Mes utilisateurs</a>
+                            </li>
+                        </ul>
+                        <a *ngIf="!isAuthenticated" [routerLink]="['/signin'] | localize" routerLinkActive="active" class="btnSignIn">{{'Se connecter' | translate}}</a>
+                        <a *ngIf="isAuthenticated" [routerLink]="['/profile'] | localize" routerLinkActive="active" class="btnSignIn">{{user?.fullname}}</a>
 
-                  </div>
-                  
-              </div>
-          </div>
-          <div class="nav-item dropdown">
-            <div ngbDropdown class="d-inline-block">
-              <button class="btn dropdown-font" id="dropdownBasic1" ngbDropdownToggle>{{ 'LANG' | translate }}</button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button (click)="chooseLang('fr')" ngbDropdownItem>Francais</button>
-                <button (click)="chooseLang('en')" ngbDropdownItem>English</button>
-                <button (click)="chooseLang('il')" ngbDropdownItem>עברית</button>
-              </div>
+                    </div>
+                    <div class="col-2 col-xl-1 nav-item dropdown">
+                        <div ngbDropdown class="d-inline-block">
+                            <button class="btn dropdown-font btnLang" id="dropdownBasic1" style="box-shadow: none;" ngbDropdownToggle>{{ 'Language' | translate }}</button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <button (click)="chooseLang('fr')" ngbDropdownItem>
+                                  <div class="row align-items-center"><img src="../../../assets/images/FR.png" alt="" style="width: 25px; margin-right: 10px;"> Francais </div>
+                                </button>
+                                <button (click)="chooseLang('en')" ngbDropdownItem>
+                                  <div class="row align-items-center"><img src="../../../assets/images/EN.png" alt="" style="width: 25px; margin-right: 10px;"> English</div>
+                                </button>
+                                <button (click)="chooseLang('il')" ngbDropdownItem>
+                                  <div class="row align-items-center"><img src="../../../assets/images/IL.png" alt="" style="width: 25px; margin-right: 10px;"> עברית</div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
-          </div>
-      </div>
-  </nav>
+        </div>
+    </nav>
 </header>
 <div class="mobile-menu__MobileMenuContainer-sc-17s3h0k-0 GbnXQ">
     <a (click)="changedTab('home')" routerLink="/" class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS">
-      <svg
-      width="24"
-      height="24"
-      *ngIf="selectedTab === 'home'"
-    >
+        <svg width="24" height="24" *ngIf="selectedTab === 'home'">
       <path
         fill="#31aded"
         d="M13.297 3.517a1.884 1.884 0 00-2.594 0L3 11.214l.869.869 1.4-1.401v7.593c0 1.013.823 1.835 1.836 1.835h9.79a1.835 1.835 0 001.835-1.835v-7.593l1.401 1.401.869-.869-7.703-7.697zm-2.52 15.37v-4.283h2.447v4.283h-2.448zm6.73-.612a.612.612 0 01-.612.612h-2.448V13.38H9.553v5.507H7.105a.612.612 0 01-.611-.612V9.458l5.072-5.078a.612.612 0 01.868 0l5.072 5.078v8.817z"
         fill-rule="evenodd"
       ></path>
     </svg>
-    <svg
-      width="24"
-      height="24"
-      *ngIf="selectedTab !== 'home'"
-    >
+        <svg width="24" height="24" *ngIf="selectedTab !== 'home'">
       <path
         d="M13.297 3.517a1.884 1.884 0 00-2.594 0L3 11.214l.869.869 1.4-1.401v7.593c0 1.013.823 1.835 1.836 1.835h9.79a1.835 1.835 0 001.835-1.835v-7.593l1.401 1.401.869-.869-7.703-7.697zm-2.52 15.37v-4.283h2.447v4.283h-2.448zm6.73-.612a.612.612 0 01-.612.612h-2.448V13.38H9.553v5.507H7.105a.612.612 0 01-.611-.612V9.458l5.072-5.078a.612.612 0 01.868 0l5.072 5.078v8.817z"
         fill-rule="evenodd"
       ></path>
     </svg>
-    <div
-      class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
-      [ngClass]="selectedTab === 'home' ? 'gfhcyg' : 'kxwuOc'"
-    >
-      Home
-    </div></a
-  ><a
-    *ngIf="!adminMode"
-    (click)="changedTab('pressings')"
-    [routerLink]="['/pressings' | localize ]"
-    class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"
-    ><svg
+        <div class="mobile-menu__MobileMenuText-sc-17s3h0k-2" [ngClass]="selectedTab === 'home' ? 'gfhcyg' : 'kxwuOc'">
+            Home
+        </div>
+    </a><a *ngIf="!adminMode" (click)="changedTab('pressings')" [routerLink]="['/pressings' | localize ]" class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"><svg
       width="24"
       height="24"
       *ngIf="selectedTab === 'pressings'"
