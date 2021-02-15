@@ -36,6 +36,8 @@ import { BsModalRef, BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { APP_CONFIG, BaseAppConfig } from './app.config';
+import { MatPaginatorIntlCro } from './custom-class/mat-paginator';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -89,6 +91,7 @@ export function createTranslateLoader(http: HttpClient) {
     AuthService,
     BsModalService,
     BsModalRef,
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
