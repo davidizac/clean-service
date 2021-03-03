@@ -1,8 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import * as _ from 'lodash';
+import { switchMap } from 'rxjs/operators';
+import { Pressing } from 'src/app/models/pressing.model';
+import { GlobalService } from 'src/app/services/global.service';
 import { MyEvent } from 'src/app/services/myevents.service';
+import { PressingService } from 'src/app/services/pressing.service';
+import { UserService } from 'src/app/services/user.service';
 
 declare let $: any;
 @Component({
@@ -13,24 +20,42 @@ declare let $: any;
 
 // 
 export class HomeComponent implements OnInit {
-  lang:string
+  pressings;
+  fourPressingDisplayed = []
+  langs
 
   constructor(
     public router: Router,
-    public route: ActivatedRoute,
+    public pressingService: PressingService,
+    private userService: UserService,
+    public ngZone: NgZone,
+    private localize: LocalizeRouterService,
+    public globalService: GlobalService,
     private myEvent: MyEvent
-  ) { AOS.init(); }
+  ) { AOS.init();
+    this.langs = [
+      {name: 'Francais', code: 'FR'},
+      {name: 'Anglais', code: 'EN'},
+      {name: 'Israelien', code: 'IL'},
+    ]; 
+
+   }
 
 
   ngOnInit() {
-    this.route.params.subscribe(value => {
-      this.lang = value['lang']
-      this.myEvent.setLanguageData(this.lang);
-    })
+
+
+    this.pressingService
+      .getAllPressings()
+      .subscribe((pressings: Array<Pressing>) => {
+        this.fourPressingDisplayed.push(...pressings.slice(0,4))
+      })
+
+
     var navbar = $('.navbar');
     var navLink = $('.nav-link')
     var imgLogoWhite = $('#logoMenuWhite')
-    var imgLogoBlue= $('#logoMenuBlue')
+    var imgLogoBlue = $('#logoMenuBlue')
     var btnSignIn = $('.btnSignIn')
 
 
@@ -43,7 +68,7 @@ export class HomeComponent implements OnInit {
         imgLogoBlue.removeClass('d-block');
         btnSignIn.removeClass('btnSignInScroll')
 
-      } else  {
+      } else {
         navbar.addClass('navbar-scroll');
         navLink.addClass('nav-link-scroll');
         imgLogoWhite.addClass('d-none');
@@ -53,12 +78,27 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+  pageSize(arg0: number, pageSize: any): any {
+    throw new Error('Method not implemented.');
+  }
 
 
+  navigateToPressing(pressingId) {
+    this.ngZone.run(() => {
+      const route = this.localize.translateRoute(`/pressings/${pressingId}`);
+      this.router.navigate([route]);
+    });
+  }
 
 
   goToLinkOfPath(path) {
-    this.router.navigate([`/${path}`])
+    const route = this.localize.translateRoute(`/${path}`);
+    this.router.navigate([route])
+  }
+
+  chooseLang(lang){
+    this.localize.changeLanguage(lang);
+    this.myEvent.setLanguageData(lang);
   }
 
 }

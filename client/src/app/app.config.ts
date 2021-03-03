@@ -14,6 +14,10 @@ export const BaseAppConfig: AppConfig = {
 	}, {
 		code: 'fr',
 		name: 'French'
+	},
+	{
+		code: 'il',
+		name: 'עברית'
   }
 ],
 	showBuyPromt: false

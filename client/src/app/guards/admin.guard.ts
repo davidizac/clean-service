@@ -8,6 +8,7 @@ import {
   RouterStateSnapshot,
   CanActivate,
 } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { Observable, of } from 'rxjs';
 import { take, tap, switchMap } from 'rxjs/operators';
 
@@ -21,7 +22,8 @@ export class AdminGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private localize: LocalizeRouterService
   ) {}
 
   canActivate(
@@ -38,11 +40,13 @@ export class AdminGuard implements CanActivate {
       }),
       tap((isAdmin) => {
         if (!isAdmin) {
-          this.router.navigate(['./signin']);
+          const route = this.localize.translateRoute('/signin');
+          this.router.navigate([route]);
           return false;
         }
         if (isAdmin && localStorage.getItem('adminMode') === 'false') {
-          this.router.navigate(['./home']);
+          const route = this.localize.translateRoute('/home');
+          this.router.navigate([route]);
           return false;
         }
         return true;

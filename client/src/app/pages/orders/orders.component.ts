@@ -6,6 +6,7 @@ import { OrderService } from 'src/app/services/order.service';
 import * as moment from 'moment';
 import * as _ from 'lodash';
 import { MyEvent } from 'src/app/services/myevents.service';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-orders',
@@ -19,7 +20,7 @@ export class OrdersComponent implements OnInit {
   statusMessage = '';
   lang:string
 
-  constructor(public orderService: OrderService, public router: Router, private route:ActivatedRoute, private myEvent:MyEvent) {}
+  constructor(public orderService: OrderService, public router: Router, private route:ActivatedRoute, private myEvent:MyEvent, private localize: LocalizeRouterService) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(value => {
@@ -76,7 +77,8 @@ export class OrdersComponent implements OnInit {
   }
 
   moreDetail(order: Order) {
-    this.router.navigate([`./order-confirmation/${order._id}`]);
+    const route = this.localize.translateRoute(`/order-confirmation/${order._id}`);
+    this.router.navigate([route]);
   }
 
   getProductFiltered(products) {
@@ -85,7 +87,8 @@ export class OrdersComponent implements OnInit {
 
   changeOrder(order: Order) {
     var pressingId = order.products[0]['pressingId'];
-    return this.router.navigate([`./pressings/${pressingId}`], {
+    const route = this.localize.translateRoute(`/pressings/${pressingId}`);
+    return this.router.navigate([route], {
       queryParams: {
         order: JSON.stringify(order),
         isNew: false,

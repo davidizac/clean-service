@@ -15,85 +15,96 @@ import { PressingsComponent } from './pages/pressings/pressings.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { UsersComponent } from './pages/users/users.component';
+import { LocalizeRouterModule, LocalizeParser, LocalizeRouterSettings } from '@gilsdav/ngx-translate-router';
+import { TranslateService } from '@ngx-translate/core';
+import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { LocalizeRouterHttpLoader } from '@gilsdav/ngx-translate-router-http-loader';
+
+export function HttpLoaderFactory(translate: TranslateService, location: Location, settings: LocalizeRouterSettings, http: HttpClient) {
+  return new LocalizeRouterHttpLoader(translate, location, { ...settings, alwaysSetPrefix: true }, http);
+}
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "fr" },
   {
-    path:"fr",
-    children:[
-
-      {
-        path: 'home',
-        component: HomeComponent,
-      },
-      {
-        path: 'fr/pressings',
-        component: PressingsComponent,
-      },
-      {
-        path: 'pressings/:id',
-        component: PressingDetailComponent,
-      },
-      {
-        path: 'pressing-creator',
-        component: PressingCreatorComponent,
-        canActivate: [AuthGuard, AdminGuard],
-      },
-      {
-        path: 'pressing-creator/:id',
-        component: PressingCreatorComponent,
-        canActivate: [AuthGuard, AdminGuard],
-      },
-      {
-        path: 'orders',
-        component: OrdersComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'manage-orders',
-        component: ManageOrdersComponent,
-        canActivate: [AuthGuard, AdminGuard],
-      },
-      {
-        path: 'signin',
-        component: SigninComponent,
-      },
-      {
-        path: 'checkout',
-        component: CheckoutComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: '404',
-        component: NotfoundComponent,
-      },
-      {
-        path: 'forgot-password',
-        component: ForgotPasswordComponent,
-      },
-      {
-        path: 'profile',
-        component: ProfileComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'order-confirmation/:id',
-        component: OrderConfirmationComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'users',
-        component: UsersComponent,
-        canActivate: [AuthGuard, AdminGuard],
-      }
-    ]
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'pressings',
+    component: PressingsComponent,
+  },
+  {
+    path: 'pressings/:id',
+    component: PressingDetailComponent,
+  },
+  {
+    path: 'pressing-creator',
+    component: PressingCreatorComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  {
+    path: 'pressing-creator/:id',
+    component: PressingCreatorComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'manage-orders',
+    component: ManageOrdersComponent,
+    canActivate: [AuthGuard, AdminGuard],
+  },
+  {
+    path: 'signin',
+    component: SigninComponent,
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: '404',
+    component: NotfoundComponent,
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'order-confirmation/:id',
+    component: OrderConfirmationComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    canActivate: [AuthGuard, AdminGuard],
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled'
-})],
-  exports: [RouterModule],
+  imports: [
+    RouterModule.forRoot(routes),
+    LocalizeRouterModule.forRoot(routes, {
+      parser: {
+        provide: LocalizeParser,
+        useFactory: HttpLoaderFactory,
+        deps: [TranslateService, Location, LocalizeRouterSettings, HttpClient]
+      }
+    })
+  ],
+  exports: [RouterModule, LocalizeRouterModule],
 })
 export class AppRoutingModule {}
+ 

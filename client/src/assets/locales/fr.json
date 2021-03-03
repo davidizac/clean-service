@@ -1,0 +1,10 @@
+{
+  "TITLE": "coucou",
+  "ROUTES.home": "acceuil",
+  "ROUTES.test": "testounet",
+  "ROUTES.bob": "bobie",
+  "ROUTES.map": "carte",
+  "ROUTES.matcher": "monmatcher",
+  "CHANGE_LANGUAGE": "Changer de langue",
+  "GO_HOME": "Retourner à l'accueil"
+}

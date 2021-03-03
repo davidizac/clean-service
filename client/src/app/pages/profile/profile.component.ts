@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { AuthService } from 'src/app/services/auth.service';
 import { MyEvent } from 'src/app/services/myevents.service';
 import { UserService } from 'src/app/services/user.service';
@@ -19,7 +20,8 @@ export class ProfileComponent implements OnInit {
     public authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private myEvent:MyEvent
+    private myEvent:MyEvent,
+    private localize: LocalizeRouterService
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +42,7 @@ export class ProfileComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['./home']);
+    const route = this.localize.translateRoute(`/home`);
+    this.router.navigate([route]);
   }
 }

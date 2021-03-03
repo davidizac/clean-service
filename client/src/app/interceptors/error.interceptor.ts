@@ -5,23 +5,27 @@ import { catchError } from 'rxjs/operators';
 
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router,private localize: LocalizeRouterService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(catchError((err: HttpErrorResponse) => {
      if (err.status === 400) {
-       this.router.navigate(['/bad-request'], { skipLocationChange: true });
+      const route = this.localize.translateRoute('/bad-request');
+       this.router.navigate([route], { skipLocationChange: true });
      } else if (err.status === 401) {
         // auto logout if 401 response returned from api
         this.authService.logout();
       } else if (err.status === 403) {
-        this.router.navigate(['/signin']);
+        const route = this.localize.translateRoute('/signin');
+        this.router.navigate([route]);
       } else if (err.status === 404) {
-        this.router.navigate(['/404'], { skipLocationChange: true });
+        const route = this.localize.translateRoute('/404');
+        this.router.navigate([route], { skipLocationChange: true });
       }
       return throwError(err);
     }));

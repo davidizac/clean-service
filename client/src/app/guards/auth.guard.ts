@@ -5,6 +5,7 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
 } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { Observable, of } from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
 
@@ -14,7 +15,7 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,private localize: LocalizeRouterService) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -30,7 +31,8 @@ export class AuthGuard implements CanActivate {
       }),
       tap((isAuthenticated) => {
         if (!isAuthenticated) {
-          this.router.navigate(['./signin'], {
+          const route = this.localize.translateRoute('/signin');
+          this.router.navigate([route], {
             queryParams: { returnUrl: state.url },
           });
           return false;
