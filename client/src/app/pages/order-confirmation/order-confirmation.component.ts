@@ -5,6 +5,7 @@ import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ORDER_STATUS } from 'src/app/constant';
 import { Order } from 'src/app/models/order.model';
+import { MyEvent } from 'src/app/services/myevents.service';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -16,15 +17,21 @@ export class OrderConfirmationComponent implements OnInit {
   isLoading = false;
   order: Order;
   isNew;
+  lang:string
 
   constructor(
     public router: Router,
     public route: ActivatedRoute,
     public orderService: OrderService,
+    private myEvent:MyEvent,
     private localize: LocalizeRouterService
   ) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe(value => {
+      this.lang = value['lang']
+      this.myEvent.setLanguageData(this.lang);
+    })
     this.isLoading = true;
     this.route.params
       .pipe(

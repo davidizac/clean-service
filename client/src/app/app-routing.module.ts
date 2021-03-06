@@ -26,11 +26,7 @@ export function HttpLoaderFactory(translate: TranslateService, location: Locatio
 }
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
+  { path: "", pathMatch: "full", redirectTo: "fr" },
   {
     path: 'home',
     component: HomeComponent,
@@ -94,11 +90,7 @@ const routes: Routes = [
     path: 'users',
     component: UsersComponent,
     canActivate: [AuthGuard, AdminGuard],
-  },
-  {
-    path: 'forgot-password',
-    component: ForgotPasswordComponent,
-  },
+  }
 ];
 
 @NgModule({

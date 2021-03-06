@@ -35,6 +35,12 @@ export class AppComponent {
     public globalService: GlobalService
   ) {
     this.globalService.languageObservable()
+    this.myEvent.getLanguageObservable().subscribe((value) => {
+      // this.localize.changeLanguage(this.localize.parser.currentLang === 'fr' ? 'en' : 'fr');
+      // this.router.navigate(["/en/home"]);
+      this.globalService.setDirectionAccordingly(value);
+    });
+
   }
 
   ngOnInit() {

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from 'src/app/models/order.model';
 import { IProduct } from 'src/app/models/pressing.model';
 import { OrderService } from 'src/app/services/order.service';
 import * as moment from 'moment';
 import * as _ from 'lodash';
+import { MyEvent } from 'src/app/services/myevents.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
@@ -17,10 +18,15 @@ export class OrdersComponent implements OnInit {
   isLoading = false;
   orders: Array<Order> = [];
   statusMessage = '';
+  lang:string
 
-  constructor(public orderService: OrderService, public router: Router,private localize: LocalizeRouterService) {}
+  constructor(public orderService: OrderService, public router: Router, private route:ActivatedRoute, private myEvent:MyEvent, private localize: LocalizeRouterService) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe(value => {
+      this.lang = value['lang']
+      this.myEvent.setLanguageData(this.lang);
+    })
     this.isLoading = true;
 
     this.orderService.getMyOrders().subscribe((orders: Array<Order>) => {
