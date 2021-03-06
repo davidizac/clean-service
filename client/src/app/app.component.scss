@@ -25,6 +25,12 @@
     }
 }
 
+app-header {
+    position: absolute;
+    width: 100%;
+    z-index: 100000;
+}
+
 ::ng-deep {
     mat-slide-toggle {
         label {
@@ -38,6 +44,10 @@
             }
         }
     }
+}
+
+body {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .etqwYy {

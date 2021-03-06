@@ -1,51 +1,52 @@
-<div class="container" style="max-width:1300px">
-    <div class="row justify-content-center align-items-center" style="min-height: 70vh; direction: ltr;">
+<body style="padding-top: 110px;">
+    <div class="container" style="max-width:1300px; height: 100%;">
+        <div class="row justify-content-center align-items-center h-100 m-auto" style=" direction: ltr;">
 
-        <div class="col-4 col-lg-3 d-none d-md-block">
-            <img src="../../../assets/images/phoneSignIn.png" style="width: 230px;" alt="">
-        </div>
+            <div class="col-4 col-lg-3 d-none d-md-block">
+                <img src="../../../assets/images/phoneSignIn.png" style="width: 230px;" alt="">
+            </div>
 
 
-        <div class="wrapper fadeInDown col-12 col-md-6 col-lg-5">
-            <div id="formContent">
-                <ng-container *ngIf="!isSignin" class="active">
-                    <a>{{'S’inscrire' | translate}}</a>
+            <div class="wrapper fadeInDown col-12 col-md-6 col-lg-5">
+                <div id="formContent">
+                    <ng-container *ngIf="!isSignin" class="active">
+                        <a>{{'S’inscrire' | translate}}</a>
 
-                    <div>
-                        <input [(ngModel)]="fullname" autocomplete="off" type="text" name="fullname" placeholder="{{'Nom Complet' | translate}}" />
-                        <input [(ngModel)]="phoneNumber" autocomplete="off" type="text" name="phoneNumber" placeholder="{{'Telephone' | translate}}" />
-                        <input autocomplete="off" [(ngModel)]="email" type="text" name="email" placeholder="{{'Email' | translate}}" />
+                        <div>
+                            <input [(ngModel)]="fullname" autocomplete="off" type="text" name="fullname" placeholder="{{'Nom Complet' | translate}}" />
+                            <input [(ngModel)]="phoneNumber" autocomplete="off" type="text" name="phoneNumber" placeholder="{{'Telephone' | translate}}" />
+                            <input autocomplete="off" [(ngModel)]="email" type="text" name="email" placeholder="{{'Email' | translate}}" />
 
-                        <input autocomplete="off" [(ngModel)]="password" type="password" name="login" placeholder="{{'Mot de passe' | translate}}" />
-                        <button (click)="onSubmit()" type="submit">{{'S’inscrire' | translate}}</button>
-                    </div>
-                    <div class="error" *ngIf="errorMessage">
-                        <span>{{ errorMessage | translate }}</span>
-                    </div>
-                    <div id="formFooter">
-                        <a class="underlineHover" style="cursor: pointer;" (click)="toggle()">{{'Deja inscrit ?' | translate}}</a>
-                    </div>
-                </ng-container>
-                <ng-container *ngIf="isSignin">
-                    <a (click)="toggle()" class="active">{{'Se connecter' | translate}}</a>
+                            <input autocomplete="off" [(ngModel)]="password" type="password" name="login" placeholder="{{'Mot de passe' | translate}}" />
+                            <button (click)="onSubmit()" type="submit">{{'S’inscrire' | translate}}</button>
+                        </div>
+                        <div class="error" *ngIf="errorMessage">
+                            <span>{{ errorMessage | translate }}</span>
+                        </div>
+                        <div id="formFooter">
+                            <a class="underlineHover" style="cursor: pointer;" (click)="toggle()">{{'Deja inscrit ?' | translate}}</a>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="isSignin">
+                        <a (click)="toggle()" class="active">{{'Se connecter' | translate}}</a>
 
-                    <div>
-                        <input autocomplete="off" [(ngModel)]="email" type="text" name="email" placeholder="{{'Email' | translate}}" />
-                        <input autocomplete="off" [(ngModel)]="password" type="password" name="login" placeholder="{{'Mot de passe' | translate}}" />
-                        <button (click)="onSubmit()" type="submit">{{'Se connecter' | translate}}</button>
-                    </div>
-                    <div class="error" *ngIf="errorMessage">
-                        <span>{{ errorMessage | translate}}</span>
-                    </div>
-                    <div id="formFooter">
-                        <a class="underlineHover" [routerLink]="['/forgot-password'] | localize ">{{'Mot de passe oublié ?' | translate}}</a
+                        <div>
+                            <input autocomplete="off" [(ngModel)]="email" type="text" name="email" placeholder="{{'Email' | translate}}" />
+                            <input autocomplete="off" [(ngModel)]="password" type="password" name="login" placeholder="{{'Mot de passe' | translate}}" />
+                            <button (click)="onSubmit()" type="submit">{{'Se connecter' | translate}}</button>
+                        </div>
+                        <div class="error" *ngIf="errorMessage">
+                            <span>{{ errorMessage | translate}}</span>
+                        </div>
+                        <div id="formFooter">
+                            <a class="underlineHover" [routerLink]="['/forgot-password'] | localize ">{{'Mot de passe oublié ?' | translate}}</a
         >
         <a class="underlineHover" style="cursor: pointer;" (click)="toggle()">{{'Pas encore inscrit ?' | translate}}</a>
-                    </div>
-                </ng-container>
+                        </div>
+                    </ng-container>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<app-footer></app-footer>
+    <app-footer></app-footer>
+</body>

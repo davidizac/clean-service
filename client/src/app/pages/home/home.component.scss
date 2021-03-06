@@ -719,6 +719,18 @@ section {
     z-index: 0;
 }
 
+@media(min-width:992px) {
+    .paddingResponsive {
+        padding-top: 200px;
+    }
+}
+
+@media(max-width:991px) {
+    .paddingResponsive {
+        padding-top: 150px;
+    }
+}
+
 .slideRtl:after {
     transform: scaleX(-1);
 }
