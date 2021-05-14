@@ -14,19 +14,16 @@
 }
 
 .main2 {
-    min-height: 70%;
     margin-bottom: 123px;
 }
 
 @media (min-width: 1200px) {
     .main2 {
-        min-height: 74.5vh !important;
         margin-bottom: 0;
     }
 }
 
 app-header {
-    position: absolute;
     width: 100%;
     z-index: 100000;
 }

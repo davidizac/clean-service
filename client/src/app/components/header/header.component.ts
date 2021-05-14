@@ -45,6 +45,11 @@ export class HeaderComponent implements OnChanges {
 
   changedTab(tab) {
     this.selectedTab = tab;
+    if(tab === 'signin'){
+      document.getElementById('header').classList.add('undisplay')
+    }else{
+      document.getElementById('header').classList.remove('undisplay')
+    }
     console.log(this.selectedTab)
   }
 
@@ -53,7 +58,7 @@ export class HeaderComponent implements OnChanges {
   }
 
   ngOnChanges() {
-   
+    
     this.adminMode = localStorage.getItem('adminMode') === 'true';
     console.log(this.isAuthenticated)
     console.log(this.isAdmin, this.isAuthenticated)

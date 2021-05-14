@@ -16,28 +16,25 @@
                         <mat-option *ngFor="let option of options" [value]="option">
                             {{ option }}
                         </mat-option>
-                    </mat-autocomplete><span class="style__LabelInputContainer-mh2zh9-12 gofRfd"><svg width="24" height="24">
-                <path
-                  fill="#252C32"
-                  fill-rule="evenodd"
-                  d="M13.007 3L21 10.993 10.993 21H5.402A2.402 2.402 0 013 18.598v-5.591L13.007 3zm0 1.77L4.25 13.526v5.072A1.157 1.157 0 005.4 19.75h5.104l8.756-8.756-6.254-6.223zm0 3.721a2.502 2.502 0 110 5.004 2.502 2.502 0 010-5.004zm0 1.251a1.25 1.25 0 100 2.502 1.25 1.25 0 000-2.502z"
-                ></path></svg></span>
+                    </mat-autocomplete>
+                    <span class="style__LabelInputContainer-mh2zh9-12" [ngClass]="globalService.rtlSide == 'ltr' ? 'gofRfdLTR' : 'gofRfdRTL'">
+                        <svg width="24" height="24">
+                            <path fill="#252C32" fill-rule="evenodd" d="M13.007 3L21 10.993 10.993 21H5.402A2.402 2.402 0 013 18.598v-5.591L13.007 3zm0 1.77L4.25 13.526v5.072A1.157 1.157 0 005.4 19.75h5.104l8.756-8.756-6.254-6.223zm0 3.721a2.502 2.502 0 110 5.004 2.502 2.502 0 010-5.004zm0 1.251a1.25 1.25 0 100 2.502 1.25 1.25 0 000-2.502z"></path>
+                        </svg>
+                    </span>
                 </div>
 
 
 
                 <section class="container d-none d-lg-block">
-
-
                     <div class="row mb-5 justify-content-between ">
-                        <div *ngFor="let pressing of pressingDisplayed" class="item text-center slick-center col-10 col-md-8 col-lg-5 justify-content-between row align-items-center mx-2 mb-3 bg-white py-3" data-slick-index="0" aria-hidden="true" tabindex="0" style="border-radius: 20px;">
-                            <div class="ml-3">
-                                <p style="font-size: 19px; font-weight: bold;">{{pressing.name}} </p>
+                        <div *ngFor="let pressing of pressingDisplayed" class="item text-center slick-center col-10 col-md-8 col-lg-7 justify-content-between row align-items-center mx-auto mb-3 bg-white py-3" data-slick-index="0" aria-hidden="true" tabindex="0" style="border-radius: 6px;">
+                            <div class="col-12" style="text-align: start;">
+                                <p style="font-size: 21px; font-weight: bold;">{{pressing.name}} </p>
                                 <p style="font-weight: bold; font-size: 16px;">{{pressing.address}}</p>
                             </div>
-                            <div class="col-5 col-lg-6">
-                                <a class="mx-auto align-self-end btn btn-primary shadow d-block btn-colord btn-theme" (click)="navigateToPressing(pressing._id)" style="height:45px ; padding: 12px 0 !important; border-radius:20px"><span>Selectionner</span></a>
-
+                            <div [ngClass]="globalService.rtlSide == 'ltr' ? 'btnRight' : 'btnLeft'">
+                                <a class="align-self-end btn shadow d-block btn-colord btn-theme btnSelect" (click)="navigateToPressing(pressing._id)"><span>{{'Selectionner' | translate}}</span></a>
                                 <div *ngIf="isAdmin">
                                     <button mat-button (click)="updatePressing(pressing._id)">
                                         <mat-icon class="example-icon" mat-button>update</mat-icon>
@@ -56,9 +53,7 @@
                 <div class="pressings-list d-block d-lg-none">
                     <ng-container *ngFor="let pressing of pressingDisplayed">
                         <ng-container *ngIf="isPressingOpened(pressing)">
-                            <button (click)="closePressing(pressing)" class="liFQGu">
-                  {{ pressing.name }}
-                </button>
+                            <button (click)="closePressing(pressing)" class="liFQGu">{{ pressing.name }}</button>
                             <div class="productList__ProductListContainer-sc-1oz9rbz-5 hiKKKS">
                                 <div class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF">
                                     <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
@@ -103,4 +98,7 @@
         </div>
     </div>
     <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" value="50" *ngIf="isLoading"></mat-progress-spinner>
+    <footer>
+        <app-footer></app-footer>
+    </footer>
 </main>

@@ -17,6 +17,7 @@ import { switchMap } from 'rxjs/operators';
 import { UserService } from 'src/app/services/user.service';
 import { MyEvent } from 'src/app/services/myevents.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-pressings',
@@ -39,7 +40,7 @@ export class PressingsComponent implements OnInit {
   pressingDisplayed;
   isLoading = false;
   isAdmin: boolean;
-  lang:string
+  lang: string
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
@@ -48,17 +49,20 @@ export class PressingsComponent implements OnInit {
     private cd: ChangeDetectorRef,
     public router: Router,
     public ngZone: NgZone,
+    public globalService: GlobalService,
     private userService: UserService,
-    public route:ActivatedRoute,
-    private myEvent:MyEvent,
+    public route: ActivatedRoute,
+    private myEvent: MyEvent,
     private localize: LocalizeRouterService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(value => {
-      this.lang = value['lang']
-      this.myEvent.setLanguageData(this.lang);
-    })
+
+    // this.route.params.subscribe(value => {
+    //   this.lang = value['lang']
+    //   this.myEvent.setLanguageData(this.lang);
+    // })
+    this.myEvent.setLanguageData(this.localize.parser.currentLang);
     this.location = this.formBuilder.control('');
     this.location.valueChanges.subscribe((e) => {
       this.triggerAutocomplete(e);
@@ -76,6 +80,8 @@ export class PressingsComponent implements OnInit {
         })
       )
       .subscribe((isAdmin) => {
+        console.log('isAdmin', isAdmin);
+
         this.isAdmin = isAdmin;
       });
   }

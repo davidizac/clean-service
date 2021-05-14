@@ -1,9 +1,9 @@
 <mat-slide-toggle class="adminToggle" (change)="toggleAdminMode($event)" *ngIf="isAuthenticated && isAdmin" [checked]="adminMode">
     Admin mode
 </mat-slide-toggle>
-<header class="foxapp-header header-desktop">
+<header class="foxapp-header header-desktop" id="header">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #31aded;" id="foxapp_menu">
-        <div class="container-fluid  navbar navbar-default navbar-fixed-top" style="height: 100px;">
+        <div class="container-fluid  navbar navbar-default navbar-fixed-top">
 
             <div class="container" id="main_menu">
 
@@ -39,7 +39,7 @@
                                 <a class="nav-link anchor" [routerLink]="['/users'] | localize" routerLinkActive="active">Mes utilisateurs</a>
                             </li>
                         </ul>
-                        <a *ngIf="!isAuthenticated" [routerLink]="['/signin'] | localize" routerLinkActive="active" class="btnSignIn">{{'Se connecter' | translate}}</a>
+                        <a *ngIf="!isAuthenticated" [routerLink]="['/signin'] | localize" routerLinkActive="active" class="btnSignIn" (click)="changedTab('signin')">{{'Se connecter' | translate}}</a>
                         <a *ngIf="isAuthenticated" [routerLink]="['/profile'] | localize" routerLinkActive="active" class="btnSignIn">{{user?.fullname}}</a>
 
                     </div>
@@ -82,7 +82,7 @@
       ></path>
     </svg>
         <div class="mobile-menu__MobileMenuText-sc-17s3h0k-2" [ngClass]="selectedTab === 'home' ? 'gfhcyg' : 'kxwuOc'">
-            Home
+            {{'Accueil' | translate}}
         </div>
     </a><a *ngIf="!adminMode" (click)="changedTab('pressings')" [routerLink]="['/pressings' | localize ]" class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS"><svg
       width="24"
@@ -110,7 +110,7 @@
       class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
       [ngClass]="selectedTab === 'pressings' ? 'gfhcyg' : 'kxwuOc'"
     >
-      Pressings
+      {{'Pressings' | translate}}
     </div></a
   ><a
     *ngIf="!adminMode"
@@ -143,7 +143,7 @@
       class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
       [ngClass]="selectedTab === 'order' ? 'gfhcyg' : 'kxwuOc'"
     >
-    Commandes
+    {{'Commandes' | translate}}
     </div></a
   ><a
     *ngIf="isAuthenticated && !adminMode"
@@ -176,7 +176,7 @@
       class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
       [ngClass]="selectedTab === 'profile' ? 'gfhcyg' : 'kxwuOc'"
     >
-      Profile
+      {{'Profile' | translate}}
     </div></a
   >
   <a
@@ -210,7 +210,7 @@
       class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
       [ngClass]="selectedTab === 'signin' ? 'gfhcyg' : 'kxwuOc'"
     >
-      Signin
+      {{'Signin' | translate}}
     </div></a
   >
   <a
@@ -244,7 +244,7 @@
       class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
       [ngClass]="selectedTab === 'manageorder' ? 'gfhcyg' : 'kxwuOc'"
     >
-      Gestion de commandes
+      {{'Gestion de commandes' | translate}}
     </div></a
   >
   <a

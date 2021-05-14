@@ -17,7 +17,7 @@ import { GlobalService } from './services/global.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  
+
   isAdmin: boolean;
   isAuthenticated: boolean;
   adminMode;
@@ -34,16 +34,29 @@ export class AppComponent {
     private localize: LocalizeRouterService,
     public globalService: GlobalService
   ) {
+    var pathName
+    router.events.subscribe(() => {
+      pathName = window.location.pathname.split('/')
+      if (pathName[pathName.length - 1] == 'signin') {
+        document.getElementById('header').classList.add('undisplay')
+      } else {
+        document.getElementById('header').classList.remove('undisplay')
+      }
+    })
     this.globalService.languageObservable()
     this.myEvent.getLanguageObservable().subscribe((value) => {
+      
+      
       // this.localize.changeLanguage(this.localize.parser.currentLang === 'fr' ? 'en' : 'fr');
       // this.router.navigate(["/en/home"]);
       this.globalService.setDirectionAccordingly(value);
+      console.log(window.location.pathname);
     });
 
   }
 
   ngOnInit() {
+
     this.myEvent.setLanguageData(this.localize.parser.currentLang || 'en')
     this.localize.changeLanguage(this.localize.parser.currentLang || 'en');
     this.selectedTab = 'home';
@@ -89,6 +102,7 @@ export class AppComponent {
   }
 
   changedTab(tab) {
+
     this.selectedTab = tab;
   }
 

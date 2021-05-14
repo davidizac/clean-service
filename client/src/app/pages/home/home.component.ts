@@ -48,6 +48,8 @@ export class HomeComponent implements OnInit {
     this.pressingService
       .getAllPressings()
       .subscribe((pressings: Array<Pressing>) => {
+        console.log(pressings);
+        
         this.fourPressingDisplayed.push(...pressings.slice(0,4))
       })
 

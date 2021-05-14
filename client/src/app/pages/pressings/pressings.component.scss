@@ -76,9 +76,14 @@
     background-color: white;
 }
 
-.gofRfd {
+.gofRfdLTR {
     display: flex;
     margin-left: -30px;
+}
+
+.gofRfdRTL {
+    display: flex;
+    margin-right: -30px;
 }
 
 .eTAyEB {
@@ -293,14 +298,46 @@ mat-progress-spinner {
     position: relative;
 }
 
-.btn-theme {
+.btn-theme:hover {
     background: #31aded;
 }
 
-.btn-theme {
-    background-color: #31aded;
+.btnSelect {
+    height: 45px;
+    padding: 12px 19px !important;
+    border-radius: 6px;
+    background: white;
+    color: #31aded;
+    border: 1px solid #31aded;
 }
 
-.btn-theme:hover {
-    background: #F2CE5F;
+.btnRight {
+    position: absolute;
+    right: 6px
+}
+
+.btnLeft {
+    position: absolute;
+    left: 6px
+}
+
+main {
+    position: relative;
+    height: calc(100vh - 110px);
+}
+
+.hmLLON {
+    padding-top: 25px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Footer height */
+}
+
+.item:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: box-shadow 0.4s ease-in-out;
 }

@@ -21,7 +21,7 @@
                 <div class="col-md-7 aos-init aos-animate" data-aos="fade-right">
 
 
-                    <p style="font-size: 50px; line-height: 61px;">{{ 'Le pressing de votre choix à porter de main.' | translate }}</p>
+                    <p style="font-size: 50px; line-height: 61px;" [ngClass]="globalService.rtlSide == 'ltr' ? 'text-left' : 'text-right'">{{ 'Le pressing de votre choix à porter de main.' | translate }}</p>
                     <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary btn-white shadow btn-theme d-none d-md-block ml-3"><span style="font-weight: bold;">{{'Nos Pressings' | translate}}</span></a>
                 </div>
                 <div class="col-md-5 aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">
@@ -85,13 +85,13 @@
 <!-- End Boxes -->
 
 <!-- Start Why Us -->
-<section id="about" class="why-us padding-100 background-fullwidth background-fixed " style="background-image: url(assets/img/gray-bg.jpg);">
+<section id="about" class="why-us padding-100 background-fullwidth background-fixed ">
     <div class="container">
         <h3 class="text-center" style="margin-bottom: 85px;">
             {{'Comment ça marche ?' | translate}}
         </h3>
-        <div class="row align-items-center" style="direction: ltr;">
-            <div class="col-md-6 aos-init" data-aos="fade-zoom-in" data-aos-delay="200">
+        <div class="row align-items-center">
+            <div class="col-md-6 aos-init" [ngClass]="globalService.rtlSide == 'ltr' ? 'text-left' : 'text-right'" data-aos="fade-zoom-in" data-aos-delay="200">
 
                 <p style="font-weight: bold;font-size: 20px; color: #303952;"><span style="color: #00cdcd; font-size: 27px;">4</span> {{'étapes seulement' | translate}}:
                 </p>
@@ -174,7 +174,7 @@
 
             <div (click)="goToLinkOfPath('pressings')" class="mx-auto mb-5 text-center row align-items-center justify-content-center btnGoToAllPressings">
 
-                {{'Voir Plus...' | translate}}
+                {{'Voir Plus…' | translate}}
 
             </div>
 
@@ -214,10 +214,10 @@
 
             </div>
 
-            <div class="d-md-flex justify-content-between" data-aos="fade-up">
+            <div class="d-md-flex justify-content-center" data-aos="fade-up">
 
 
-                <div class="testimonialContainer col-12 col-md " data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
+                <div class="testimonialContainer col-12 col-md-5 mx-4" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
 
                     <p style="margin: 0;" [ngClass]="globalService.rtlSide == 'ltr' ? 'text-left' : 'text-right'">
                         {{'J’ai testé les services de l’équipe Cleeser et j’ai adoré c’est un vrai gagne temps ! Depuis le temps que je devais le faire. ! Ils sont rapide efficace et surtout de confiance.' | translate}} <br> {{'Merci.' | translate}}
@@ -230,7 +230,7 @@
 
                     </div>
                 </div>
-                <div class="testimonialContainer col-12 col-md offset-md-1" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
+                <div class="testimonialContainer col-12 col-md-5 mx-4" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
 
                     <p style="margin: 0;" [ngClass]="globalService.rtlSide == 'ltr' ? 'text-left' : 'text-right'">
                         {{'Service très professionnel, de confiance, jai pu meme choisir mon pressing habituel. Gagne temps de folie Service au top que je recommande a 100%.' | translate}} <br> {{'Merci a léquipe Cleeser.' | translate}}
@@ -245,13 +245,13 @@
 
             </div>
 
-            <div class="d-md-flex d-none col-12" style="margin-top: -40px;">
-                <div class="client-info col-md align-items-center">
+            <div class="d-md-flex justify-content-center d-none col-12" style="margin-top: -40px;">
+                <div class="client-info col-md-5 mx-4 align-items-center">
 
                     <h3>{{'Rachel Cohen' | translate}}</h3>
 
                 </div>
-                <div class="client-info col-md offset-md-1 align-items-center">
+                <div class="client-info col-md-5 mx-4 align-items-center">
 
                     <h3>{{'Omer Levy' | translate}}</h3>
 
@@ -262,3 +262,4 @@
 
     </div>
 </section>
+<app-footer></app-footer>

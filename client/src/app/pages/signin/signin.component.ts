@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { MyEvent } from 'src/app/services/myevents.service';
@@ -18,21 +19,24 @@ export class SigninComponent implements OnInit {
   returnUrl: string;
   phoneNumber: string;
   errorMessage;
-  lang:string
+  lang: string
 
   constructor(
     private authService: AuthService,
     public router: Router,
     public userService: UserService,
     public route: ActivatedRoute,
-    private myEvent:MyEvent
-  ) {}
+    private localize: LocalizeRouterService,
+    private myEvent: MyEvent
+  ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(value => {
-      this.lang = value['lang']
-      this.myEvent.setLanguageData(this.lang);
-    })
+    // this.route.params.subscribe(value => {
+    //   this.lang = value['lang']
+    //   this.myEvent.setLanguageData(this.lang);
+    // })
+    this.myEvent.setLanguageData(this.localize.parser.currentLang);
+
     this.route.queryParams.subscribe((queryParam) => {
       this.returnUrl = queryParam.returnUrl || '/';
     });
@@ -56,7 +60,12 @@ export class SigninComponent implements OnInit {
     }
     authObs.subscribe(
       (resData) => {
-        this.router.navigateByUrl(this.returnUrl);
+        if (this.returnUrl == '/') {
+          const route = this.localize.translateRoute('/home');
+          this.router.navigate([route]);
+        } else {
+          this.router.navigateByUrl(this.returnUrl);
+        }
       },
       (errRes) => {
         const code = errRes.error.error.message;
@@ -70,6 +79,12 @@ export class SigninComponent implements OnInit {
         }
       }
     );
+  }
+
+  keyFunc(ev) {
+    if (ev.key === 'Enter') {
+      this.onSubmit()
+    }
   }
 
   onSubmit() {

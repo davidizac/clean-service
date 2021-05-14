@@ -22,6 +22,8 @@ export class GlobalService {
   }
 
   setDirectionAccordingly(lang: string) {
+    console.log('globallll', lang);
+    
     switch (lang) {
       case "il": {
         this.rtlSide = "rtl";
