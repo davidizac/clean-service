@@ -1,5 +1,6 @@
 .eCYQLn {
     background-color: rgb(245, 245, 245);
+    padding-bottom: 80px;
 }
 
 @media (min-width: 768px) {
@@ -14,6 +15,12 @@
     max-width: 65%;
     margin: 25px auto;
     padding: 10px;
+}
+
+@media (max-width: 991px) {
+    .dIjAPF {
+        max-width: 87%;
+    }
 }
 
 .jdMQEB {

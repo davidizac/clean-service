@@ -34,6 +34,11 @@ export class HeaderComponent implements OnChanges {
     ];
     var pathName = window.location.pathname.split('/')
     this.selectedTab = pathName[pathName.length - 1]
+
+    this.myEvent.getLanguageObservable().subscribe((value) => {
+      var pathName = window.location.pathname.split('/')[2]      
+      this.changedTab(pathName)
+    });
   }
 
   toggleAdminMode(e) {
@@ -48,6 +53,7 @@ export class HeaderComponent implements OnChanges {
   }
 
   changedTab(tab) {
+
     this.selectedTab = tab;
     if (tab === 'signin') {
       document.getElementById('header').classList.add('undisplay')
