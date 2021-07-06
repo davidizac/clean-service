@@ -6,14 +6,16 @@ import { MyEvent } from './myevents.service';
 })
 export class GlobalService {
   rtlSide = "ltr";
+  langGlobal: string;
+
 
   constructor(
     private myEvent: MyEvent,
   ) {
-    
+
   }
 
-  languageObservable(){
+  languageObservable() {
     this.myEvent.getLanguageObservable().subscribe((value) => {
       // this.localize.changeLanguage(this.localize.parser.currentLang === 'fr' ? 'en' : 'fr');
       // this.router.navigate(["/en/home"]);
@@ -22,17 +24,12 @@ export class GlobalService {
   }
 
   setDirectionAccordingly(lang: string) {
-    console.log('globallll', lang);
-    
-    switch (lang) {
-      case "il": {
-        this.rtlSide = "rtl";
-        break;
-      }
-      default: {
-        this.rtlSide = "ltr";
-        break;
-      }
+    this.langGlobal = lang
+    if (lang == 'il') {
+      this.rtlSide = "rtl";
+    }
+    else if (lang == 'fr' || lang == 'en') {
+      this.rtlSide = "ltr";
     }
   }
 }

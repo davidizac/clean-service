@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { MyEvent } from 'src/app/services/myevents.service';
@@ -22,14 +23,17 @@ export class ForgotPasswordComponent {
     public router: Router,
     public userService: UserService,
     public route: ActivatedRoute,
-    private myEvent:MyEvent
+    private myEvent:MyEvent,
+    public localize: LocalizeRouterService
   ) {}
 
   ngOnInit(){
-    this.route.params.subscribe(value => {
-      this.lang = value['lang']
-      this.myEvent.setLanguageData(this.lang);
-    })
+    // this.route.params.subscribe(value => {
+    //   this.lang = value['lang']
+    //   this.myEvent.setLanguageData(this.lang);
+    // })
+
+    this.myEvent.setLanguageData(this.localize.parser.currentLang);
   }
 
   onSubmit() {

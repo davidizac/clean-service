@@ -1,4 +1,5 @@
-<div class="orders__Wrapper-sc-1q7rgvk-0 fBUsYB">
+<div class="orders__Wrapper-sc-1q7rgvk-0 fBUsYB" style="position: relative;
+min-height: calc(100vh - 110px); padding-bottom: 100px;">
     <div class="orders__TitleContainer-sc-1q7rgvk-2 kDPFjM">
         <div class="orders__Text-sc-1q7rgvk-5 orders__Title-sc-1q7rgvk-6 cCzfwV">
             {{'Mes commandes' | translate}}
@@ -35,7 +36,7 @@
                   >
                     <span
                       class="order-detail__Text-sc-1q4n31i-14 order-detail__Status-sc-1q4n31i-16 cvSZYE"
-                      >{{ getStatusMessage(order.status) }}</span
+                      >{{ getStatusMessage(order.status) | translate}}</span
                     >
                   </div>
                 </div>
@@ -53,7 +54,7 @@
               >
                 <span
                   class="order-detail__Text-sc-1q4n31i-14 order-detail__NormalText-sc-1q4n31i-17 kKpHeb"
-                  >Order number</span
+                  >{{'Numéro de commande' | translate}}</span
                 ><span
                   class="order-detail__Text-sc-1q4n31i-14 order-detail__BoldText-sc-1q4n31i-18 MkxYI"
                   >{{ order.displayedId }}</span
@@ -64,7 +65,7 @@
               >
                 <span
                   class="order-detail__Text-sc-1q4n31i-14 order-detail__NormalText-sc-1q4n31i-17 kKpHeb"
-                  >Delivery address</span
+                  >{{'Adresse de livraison' | translate}}</span
                 ><span
                   class="order-detail__Text-sc-1q4n31i-14 order-detail__BoldText-sc-1q4n31i-18 MkxYI"
                   >{{ order.dropOffAddress }}</span
@@ -96,7 +97,7 @@
               <div class="order-detail__PriceContainer-sc-1q4n31i-6 fjdOng">
                 <span
                   class="order-detail__Text-sc-1q4n31i-14 order-detail__NormalText-sc-1q4n31i-17 kKpHeb"
-                  >Total</span
+                  >{{'Total' | translate}}</span
                 ><span
                   class="order-detail__Text-sc-1q4n31i-14 order-detail__BoldText-sc-1q4n31i-18 MkxYI"
                   >{{ order.price }} &#8362;</span
@@ -108,7 +109,7 @@
                   (click)="changeOrder(order)"
                   class="order-detail__Button-sc-1q4n31i-12 lnMrrL"
                 >
-                  Modifier
+                  {{'Modifier' |translate}}
                 </button>
                 <div
                   type="PRIMARY"
@@ -118,7 +119,7 @@
                     (click)="moreDetail(order)"
                     type="PRIMARY"
                     class="style__Text-ozduro-5 iMBjyU"
-                    >See more details</span
+                    >{{'Voir plus de details' | translate}}</span
                   >
                 </div>
               </div>
@@ -157,7 +158,7 @@
                   >
                     <span
                       class="order-detail__Text-sc-1q4n31i-14 order-detail__Status-sc-1q4n31i-16 cvSZYE"
-                      >{{ getStatusMessage(order.status) }}</span
+                      >{{ getStatusMessage(order.status) | translate }}</span
                     >
                   </div>
                 </div>
@@ -179,4 +180,7 @@
       </div>
     </div>
   </div>
+  <footer >
+    <app-footer></app-footer>
+</footer>
 </div>

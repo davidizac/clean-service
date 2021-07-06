@@ -3,7 +3,6 @@
     background-color: rgb(245, 245, 245);
     display: flex;
     -webkit-box-pack: center;
-    justify-content: center;
     flex-direction: column;
     -webkit-box-align: center;
     align-items: center;
@@ -35,10 +34,10 @@
 }
 
 .ilNVDC {
-    width: 90%;
+    width: 98%;
     display: flex;
     justify-content: space-around;
-    padding: 25px 0px 50px;
+    padding: 14px 0px 50px;
     flex-flow: column wrap;
     -webkit-box-align: center;
     align-items: center;
@@ -57,9 +56,23 @@
     }
 }
 
+@media (min-width: 992px) {
+    .main_height {
+        position: relative;
+        min-height: calc(100vh - 160px);
+    }
+}
+
+@media (max-width: 991px) {
+    .main_height {
+        position: relative;
+        min-height: calc(100vh - 79px);
+    }
+}
+
 .gmrnvg {
-    margin-bottom: 20px;
-    width: 90%;
+    margin-bottom: 1%;
+    width: 98%;
     background-color: rgb(255, 255, 255);
     padding: 20px 30px;
     border-radius: 10px;
@@ -86,6 +99,7 @@
     padding: 20px;
     box-shadow: grey 0px 0px 2px;
     margin-bottom: 30px;
+    direction: ltr;
 }
 
 @media (min-width: 440px) {
@@ -108,8 +122,6 @@
 
 .grNzKa {
     display: flex;
-    width: 100%;
-    flex-direction: column;
     margin-bottom: 20px;
     -webkit-box-align: center;
     align-items: center;
@@ -124,18 +136,18 @@
 
 .iWWdKg {
     font-family: Lato, sans-serif;
-    width: 50%;
     font-size: 15px;
     font-weight: bold;
+    text-align: start;
 }
 
 .bIXMrm {
     font-family: Lato, sans-serif;
-    width: 50%;
     font-size: 15px;
+    text-align: end;
 }
 
-app-footer {
+footer {
     position: absolute;
     bottom: 0;
     width: 100%;

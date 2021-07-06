@@ -36,3 +36,7 @@ app-root {
 .undisplay {
     display: none !important;
 }
+
+.mat-paginator-range-label {
+    direction: ltr !important;
+}

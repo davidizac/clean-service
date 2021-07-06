@@ -92,13 +92,13 @@
                         </ng-container>
                     </ng-container>
                 </div>
-                <mat-paginator (page)="pageChanged($event)" [length]="pressings?.length" [pageSize]="pageSize">
+                <mat-paginator (page)="pageChanged($event)" [length]="pressings?.length" [pageSize]="pageSize" style="margin-bottom: 100px;">
                 </mat-paginator>
             </div>
         </div>
     </div>
     <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" value="50" *ngIf="isLoading"></mat-progress-spinner>
-    <footer>
+    <footer class="d-none d-md-block">
         <app-footer></app-footer>
     </footer>
 </main>

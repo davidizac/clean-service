@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
@@ -9,13 +9,14 @@ import { CATEGORIES } from 'src/app/constant';
 import { of } from 'rxjs';
 import { MyEvent } from 'src/app/services/myevents.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-pressing-detail',
   templateUrl: './pressing-detail.component.html',
   styleUrls: ['./pressing-detail.component.scss'],
 })
-export class PressingDetailComponent implements OnInit {
+export class PressingDetailComponent implements OnInit, AfterViewInit {
   pressing: Pressing;
   products;
   categories = CATEGORIES;
@@ -25,14 +26,26 @@ export class PressingDetailComponent implements OnInit {
   isLoading = false;
   isNew;
   orderId = '';
-  lang:string
+  lang: string
   constructor(
     private route: ActivatedRoute,
+    public globalService: GlobalService,
     private router: Router,
     public pressingService: PressingService,
-    private myEvent:MyEvent,
+    private myEvent: MyEvent,
     private localize: LocalizeRouterService
-  ) {}
+  ) {
+    console.log(this.globalService.rtlSide);
+
+    this.myEvent.setLanguageData(this.localize.parser.currentLang);
+  }
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      document.getElementById('title').classList.add('borderName-active')
+    }, 500);
+    
+  }
+
   @ViewChild(MatAccordion) accordion: MatAccordion;
 
   get productsCategories() {
@@ -40,10 +53,12 @@ export class PressingDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(value => {
-      this.lang = value['lang']
-      this.myEvent.setLanguageData(this.lang);
-    })
+    // this.route.params.subscribe(value => {
+    //   this.lang = value['lang']
+    //   this.myEvent.setLanguageData(this.lang);
+    // })
+
+    this.myEvent.setLanguageData(this.localize.parser.currentLang);
     this.isLoading = true;
     this.route.params
       .pipe(
@@ -51,6 +66,8 @@ export class PressingDetailComponent implements OnInit {
           return this.pressingService.getPressing(params.id);
         }),
         switchMap((pressing: any) => {
+          console.log(pressing);
+
           if (
             this.route.snapshot.queryParamMap['params'] &&
             this.route.snapshot.queryParamMap['params'].isNew
@@ -60,7 +77,10 @@ export class PressingDetailComponent implements OnInit {
               this.route.snapshot.queryParamMap['params'].order
             );
             this.filteredProducts = _.uniqBy(this.order.products, '_id');
+
+
             this.orderId = this.route.snapshot.queryParamMap['params'].orderId;
+
           } else {
             this.isNew = 'true';
           }
@@ -94,6 +114,7 @@ export class PressingDetailComponent implements OnInit {
   add(product: IProduct) {
     this.order.products.push(product);
     this.filteredProducts = _.uniqBy(this.order.products, '_id');
+    console.log(this.filteredProducts);
   }
 
   remove(product: IProduct) {

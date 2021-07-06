@@ -66,6 +66,7 @@
 }
 
 .jeKoNK {
+    text-align: start;
     border-radius: 8px;
     border: none;
     font-family: Lato, sans-serif;
@@ -321,9 +322,11 @@ mat-progress-spinner {
     left: 6px
 }
 
-main {
-    position: relative;
-    height: calc(100vh - 110px);
+@media (min-width: 768px) {
+    main {
+        position: relative;
+        min-height: calc(100vh - 110px);
+    }
 }
 
 .hmLLON {

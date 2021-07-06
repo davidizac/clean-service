@@ -1,4 +1,4 @@
-<div class="nav-item dropdown d-block d-lg-none" style="position: absolute; z-index: 10;right: 27px;top: 22px; direction: ltr;">
+<div class="nav-item dropdown d-block d-lg-none" style="position: absolute; z-index: 10;right: 27px;top: 56px; direction: ltr;">
     <div ngbDropdown class="d-inline-block">
         <button class="btn dropdown-font btnLang" id="dropdownBasic1" style="box-shadow: none; color: white;" ngbDropdownToggle>{{ 'Lang' | translate }}</button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -22,13 +22,14 @@
 
 
                     <p style="font-size: 50px; line-height: 61px;" [ngClass]="globalService.rtlSide == 'ltr' ? 'text-left' : 'text-right'">{{ 'Le pressing de votre choix à porter de main.' | translate }}</p>
-                    <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary btn-white shadow btn-theme d-none d-md-block ml-3"><span style="font-weight: bold;">{{'Nos Pressings' | translate}}</span></a>
+                    <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary btn-white shadow btn-theme d-none d-md-block ml-3 btnOurPressing"><span style="font-weight: bold;">{{'Nos Pressings' | translate}}</span></a>
                 </div>
                 <div class="col-md-5 aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">
 
                     <div style="position: relative; width: 267px;" class="mx-auto">
                         <img src="assets/images/logoPhoneHome.png" class="img-fluid d-block mx-auto" style="max-width: 560px;" alt="">
-                        <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary btn-primaryMobile btn-white shadow btn-theme d-block d-md-none"><span style="font-weight: bold;">{{'Nos Pressings' | translate}}</span></a>
+                        <!-- <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary  btn-white shadow btn-theme d-block d-md-none btn-primaryMobile"><span  style="font-weight: bold;">{{'Nos Pressings' | translate}}</span></a> -->
+                        <span (click)="goToLinkOfPath('pressings')" class="btnNosPressingMobile">{{'Nos Pressings' | translate}}</span>
                     </div>
                 </div>
             </div>
@@ -158,7 +159,7 @@
 
 
             <div class="row mb-5 justify-content-center" data-aos="fade-up">
-                <div *ngFor="let pressing of fourPressingDisplayed" class="item text-center slick-center backgroundImg col-12 col-md-5 col-xl row align-items-center mx-2 mb-3 heightResponsive" data-slick-index="0" aria-hidden="true" tabindex="0" style="height: 255px;">
+                <div *ngFor="let pressing of fourPressingDisplayed" class="item text-center slick-center backgroundImg col-12 col-md-5 col-xl row align-items-center mx-2 mb-3 heightResponsive" data-slick-index="0" aria-hidden="true" tabindex="0" style="height: 215px;">
 
                     <div class="mx-auto col-12">
                         <h4 style="font-size: 25px;">{{pressing.name}}</h4>
@@ -166,7 +167,7 @@
 
                     </div>
                     <div class="col col-md-12 align-self-end">
-                        <a (click)="navigateToPressing(pressing._id)" class="mx-auto align-self-end btn btn-primary shadow d-block btn-colord btn-theme" style="height:45px ; padding: 12px 35px !important"><span>{{'Selectionner' | translate}}</span></a>
+                        <a (click)="navigateToPressing(pressing._id)" class="mx-auto align-self-end btn btn-primary shadow d-block btn-colord btn-theme " style="height:45px ; padding: 12px 35px !important"><span>{{'Selectionner' | translate}}</span></a>
                     </div>
                 </div>
 
@@ -214,10 +215,10 @@
 
             </div>
 
-            <div class="d-md-flex justify-content-center" data-aos="fade-up">
+            <div class="d-md-flex justify-content-center container" data-aos="fade-up">
 
 
-                <div class="testimonialContainer col-12 col-md-5 mx-4" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
+                <div class="testimonialContainer col-12 col-md-5 mx-md-4" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
 
                     <p style="margin: 0;" [ngClass]="globalService.rtlSide == 'ltr' ? 'text-left' : 'text-right'">
                         {{'J’ai testé les services de l’équipe Cleeser et j’ai adoré c’est un vrai gagne temps ! Depuis le temps que je devais le faire. ! Ils sont rapide efficace et surtout de confiance.' | translate}} <br> {{'Merci.' | translate}}
@@ -230,7 +231,7 @@
 
                     </div>
                 </div>
-                <div class="testimonialContainer col-12 col-md-5 mx-4" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
+                <div class="testimonialContainer col-12 col-md-5 mx-md-4" data-slick-index="1" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide21">
 
                     <p style="margin: 0;" [ngClass]="globalService.rtlSide == 'ltr' ? 'text-left' : 'text-right'">
                         {{'Service très professionnel, de confiance, jai pu meme choisir mon pressing habituel. Gagne temps de folie Service au top que je recommande a 100%.' | translate}} <br> {{'Merci a léquipe Cleeser.' | translate}}

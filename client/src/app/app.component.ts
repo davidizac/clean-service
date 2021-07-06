@@ -45,6 +45,7 @@ export class AppComponent {
     })
     this.globalService.languageObservable()
     this.myEvent.getLanguageObservable().subscribe((value) => {
+      console.log(value);
       
       
       // this.localize.changeLanguage(this.localize.parser.currentLang === 'fr' ? 'en' : 'fr');

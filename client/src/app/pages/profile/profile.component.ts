@@ -25,10 +25,11 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(value => {
-      this.lang = value['lang']
-      this.myEvent.setLanguageData(this.lang);
-    })
+    // this.route.params.subscribe(value => {
+    //   this.lang = value['lang']
+    //   this.myEvent.setLanguageData(this.lang);
+    // })
+    this.myEvent.setLanguageData(this.localize.parser.currentLang);
     this.userService.getMe().subscribe((user) => {
       this.user = user;
       try {

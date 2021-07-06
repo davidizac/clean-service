@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import * as Moment from 'moment';
 import { extendMoment } from 'moment-range';
+import { GlobalService } from 'src/app/services/global.service';
 
 let moment = extendMoment(Moment);
 
@@ -23,10 +24,18 @@ export class DateSelectorComponent implements OnInit {
   isPickup;
   endDate;
   startDate;
-  constructor(public bsModalRef: BsModalRef, public cd:ChangeDetectorRef) {}
+  constructor(public bsModalRef: BsModalRef, public cd: ChangeDetectorRef, public globalService: GlobalService) { }
 
-  ngOnInit() {
-    moment.locale('fr');
+  ngOnInit() {    
+    if (this.globalService.langGlobal == 'il') {
+      moment.locale('he');
+    }
+    else if (this.globalService.langGlobal == 'en') {
+      moment.locale('en');
+    }
+    else if (this.globalService.langGlobal == 'fr') {
+      moment.locale('fr');
+    }
     this.pickUpDate =
       typeof this.pickUpDate === 'string'
         ? moment(this.pickUpDate)
@@ -76,22 +85,22 @@ export class DateSelectorComponent implements OnInit {
 
   changedDate(moment2) {
     this.selectedMoment = moment2;
-    if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && !moment().add(2,'hours').isAfter(moment().hours(21))) {
-      const range2 = moment.range(moment().add(2,'hours'), moment().hours(22));
+    if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && !moment().add(2, 'hours').isAfter(moment().hours(21))) {
+      const range2 = moment.range(moment().add(2, 'hours'), moment().hours(22));
       const hours = Array.from(
         range2.by('hour', { excludeEnd: false, step: 1 })
       );
       this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
     }
     else if (moment2.day() === 5) {
-      if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && !moment().add(2,'hours').isAfter(moment().hours(12))) {
-        const range2 = moment.range(moment().add(2,'hours'), moment().hours(22));
+      if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && !moment().add(2, 'hours').isAfter(moment().hours(12))) {
+        const range2 = moment.range(moment().add(2, 'hours'), moment().hours(22));
         const hours = Array.from(
           range2.by('hour', { excludeEnd: false, step: 1 })
         );
         this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
       }
-      else{
+      else {
         const range2 = moment.range(moment().hours(10), moment().hours(13));
         const hours = Array.from(
           range2.by('hour', { excludeEnd: false, step: 1 })

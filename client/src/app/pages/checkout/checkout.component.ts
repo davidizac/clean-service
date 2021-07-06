@@ -10,6 +10,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { MyEvent } from 'src/app/services/myevents.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-checkout',
@@ -24,9 +25,10 @@ export class CheckoutComponent implements OnInit {
     private orderService: OrderService,
     public formBuilder: FormBuilder,
     public userService: UserService,
-    private myEvent:MyEvent,
+    private myEvent: MyEvent,
+    public globalService: GlobalService,
     private localize: LocalizeRouterService
-  ) {}
+  ) { }
   pickUpOptions = [];
   dropOffOptions = [];
   products: Array<IProduct> = [];
@@ -44,7 +46,7 @@ export class CheckoutComponent implements OnInit {
   isNew: string;
   orderId;
   phoneNumber: string;
-  lang:string
+  lang: string
 
   get isInvalidOrder() {
     if (this.order)
@@ -61,10 +63,14 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(value => {
-      this.lang = value['lang']
-      this.myEvent.setLanguageData(this.lang);
-    })
+
+    // this.route.params.subscribe(value => {
+    //   this.globalService.langGlobal = value['lang']
+
+    //   this.myEvent.setLanguageData(this.lang);
+    // })
+    this.myEvent.setLanguageData(this.localize.parser.currentLang);
+    
     this.pickUpAddress = this.formBuilder.control('');
     this.addressDetails = this.formBuilder.control('');
     this.addressDetails2 = this.formBuilder.control('');

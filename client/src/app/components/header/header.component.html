@@ -67,7 +67,7 @@
     </nav>
 </header>
 <div class="mobile-menu__MobileMenuContainer-sc-17s3h0k-0 GbnXQ">
-    <a (click)="changedTab('home')" routerLink="/" class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS">
+    <a (click)="changedTab('home')" [routerLink]="['/home' | localize ]" class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS">
         <svg width="24" height="24" *ngIf="selectedTab === 'home'">
       <path
         fill="#31aded"

@@ -5,6 +5,7 @@ import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ORDER_STATUS } from 'src/app/constant';
 import { Order } from 'src/app/models/order.model';
+import { GlobalService } from 'src/app/services/global.service';
 import { MyEvent } from 'src/app/services/myevents.service';
 import { OrderService } from 'src/app/services/order.service';
 
@@ -24,14 +25,17 @@ export class OrderConfirmationComponent implements OnInit {
     public route: ActivatedRoute,
     public orderService: OrderService,
     private myEvent:MyEvent,
+    public globalService: GlobalService,
     private localize: LocalizeRouterService
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(value => {
-      this.lang = value['lang']
-      this.myEvent.setLanguageData(this.lang);
-    })
+    // this.route.params.subscribe(value => {
+    //   this.lang = value['lang']
+    //   this.myEvent.setLanguageData(this.lang);
+    // })
+
+    this.myEvent.setLanguageData(this.localize.parser.currentLang);
     this.isLoading = true;
     this.route.params
       .pipe(
@@ -54,6 +58,8 @@ export class OrderConfirmationComponent implements OnInit {
       )
       .subscribe((order: Order) => {
         this.order = new Order(order);
+        console.log(this.order);
+        
         this.isLoading = false;
       });
   }

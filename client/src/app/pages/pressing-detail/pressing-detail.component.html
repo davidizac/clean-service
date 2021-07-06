@@ -1,20 +1,20 @@
 <div class="hmLLON">
+    <div class="namePressing">{{pressing?.name}}</div>
+    <div class="borderName" id="title"></div>
     <div class="dRZTuO">
         <div class="kqgbTY">
             <div *ngIf="products" class="style__Container-mh2zh9-3 cBXiBZ">
-                <div class="cart-widget__CartWidgetContainer-sc-1r5elwy-1 luaXC">
-                    <div class="cart-widget__ProductText-sc-1r5elwy-3 NaHOq">
-                        {{'Total' | translate}}<span class="cart-widget__TaxText-sc-1r5elwy-5 gzSXgN">{{'taxe inclus'}}</span
+                <div class="cart-widget__CartWidgetContainer-sc-1r5elwy-1 luaXC" [ngClass]="globalService.rtlSide == 'ltr' ? 'luaXCRight' : 'luaXCLeft'">
+                    <div class="cart-widget__ProductText-sc-1r5elwy-3 NaHOq" style="text-align: start;">
+                        {{'Total' | translate}}<span class="cart-widget__TaxText-sc-1r5elwy-5 gzSXgN">{{'(taxe inclus)' | translate}}</span
             >
           </div>
-          <div class="cart-widget__Price-sc-1r5elwy-2 kZbDjO">
+          <div class="cart-widget__Price-sc-1r5elwy-2 kZbDjO" style="text-align: end;">
             {{ getPrice() }} &#8362;
           </div>
-          <div class="cart-widget__LegalText-sc-1r5elwy-4 jKEdLc">
+          <div class="cart-widget__LegalText-sc-1r5elwy-4 jKEdLc" style="text-align: start">
             <span
-              >{{'*Nous vous rappelons que le comptage final de votre linge
-              seffectuera dans notre pressing. Le prix total peut varier en
-              conséquence.' | translate}}<br />Minimum de la commande 15 &#8362;.</span
+              >{{'*Nous vous rappelons que le comptage final de votre linge seffectuera dans notre pressing. Le prix total peut varier en conséquence' | translate}}<br />{{'Minimum de la commande 15' | translate}} &#8362;.</span
             >
           </div>
           <button
@@ -24,57 +24,43 @@
             {{ getMessageButton() | translate }}
           </button>
         </div>
-        <div class="cart-widget__ProductsContainer-sc-1r5elwy-0 gZpWwS">
+        <div class="cart-widget__ProductsContainer-sc-1r5elwy-0 gZpWwS" [ngClass]="globalService.rtlSide == 'ltr' ? 'gZpWwSRight' : 'gZpWwSLeft'">
           <div class="products-in-cart__ProductsContainer-mbbtn6-0 hbQyQL">
-            <div
-              *ngFor="let product of filteredProducts"
-              class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF"
-            >
-              <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
-                <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe">
-                  <span class="productList__Number-sc-1oz9rbz-8 jDEDaq"
-                    >x{{ getRecurrence(product) }}</span
-                  >
-                </div>
-                {{ product.name }}
-              </div>
+            <div *ngFor="let product of filteredProducts" class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF">
+              <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp row" style="width: 100%;">
+                <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe col-4"> 
+                  <span class="productList__Number-sc-1oz9rbz-8 jDEDaq">x{{ getRecurrence(product) }}</span> {{ product.name }}
+                    </div>
 
-              <div class="productList__RightContainer-sc-1oz9rbz-9 jcvsCz">
-                <button
-                  class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI"
-                  (click)="remove(product)"
-                >
-                  <img src="../../../assets/images/minus.png" /></button
-                ><button
-                  class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI"
-                  (click)="add(product)"
-                >
+                    <div class="col-4" style="display: flex;">
+                        <button class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI" (click)="remove(product)">
+                <img src="../../../assets/images/minus.png" /></button>
+                        <button class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI" (click)="add(product)">
                   <img src="../../../assets/images/plus.png" />
                 </button>
-                <span class="productList__Price-sc-1oz9rbz-4 cXZnLc"
-                  >{{ product.price }} &#8362;</span
-                >
-              </div>
+                    </div>
+
+                    <div class="productList__RightContainer-sc-1oz9rbz-9 jcvsCz col-4">
+                        <span class="productList__Price-sc-1oz9rbz-4 cXZnLc">{{ product.price }} &#8362;</span>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="style__CategoryTitleContainer-mh2zh9-5 lpvapn">
-          <div class="style__Text-mh2zh9-7 style__Title-mh2zh9-8 eTAyEB">
+    </div>
+    <div class="style__CategoryTitleContainer-mh2zh9-5 lpvapn">
+        <div class="style__Text-mh2zh9-7 style__Title-mh2zh9-8 eTAyEB">
             {{'Nettoyage à sec - Haute qualité' | translate}}
-          </div>
-          <div class="style__CategorySubTitle-mh2zh9-14 cYGEJF">
-            Stain removal and an ironing by hand or robot, in addition to
-            dry-cleaning.
-          </div>
         </div>
-        <ng-container *ngFor="let category of productsCategories">
-          <ng-container *ngIf="isCategoryOpened(category)">
-            <button
-              (click)="closeCategory(category)"
-              class="categoryList__CategoryLine-sc-1pzzo5j-0 fizWxZ"
-            >
+        <div class="style__CategorySubTitle-mh2zh9-14 cYGEJF" style="text-align: start;">
+            {{'Détachage et repassage manuel ou robotisé, en plus du nettoyage à sec' | translate}}
+
+        </div>
+    </div>
+    <ng-container *ngFor="let category of productsCategories">
+        <ng-container *ngIf="isCategoryOpened(category)">
+            <button (click)="closeCategory(category)" class="categoryList__CategoryLine-sc-1pzzo5j-0 fizWxZ">
               {{ category
-              }}<svg width="24" height="24">
+              }}<svg width="24" height="24" [ngClass]="globalService.rtlSide == 'ltr' ? 'arrowRight' : 'arrowleft'">
                 <path
                   fill="#112631"
                   fill-rule="evenodd"
@@ -83,21 +69,13 @@
               </svg>
             </button>
             <div class="productList__ProductListContainer-sc-1oz9rbz-5 hiKKKS">
-              <div
-                *ngFor="let product of products[category]"
-                class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF"
-              >
-                <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
-                  <div
-                    class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe"
-                  >
-                    <span
-                      *ngIf="getRecurrence(product) !== 0"
-                      class="productList__Number-sc-1oz9rbz-8 jDEDaq"
-                      >x{{ getRecurrence(product) }}</span
+                <div *ngFor="let product of products[category]" class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF">
+                    <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
+                        <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe">
+                            <span *ngIf="getRecurrence(product) !== 0" class="productList__Number-sc-1oz9rbz-8 jDEDaq">x{{ getRecurrence(product) }}</span
                     >
                   </div>
-                  {{ product.name }}
+                  {{product.name | translate}}
                 </div>
                 <div class="productList__RightContainer-sc-1oz9rbz-9 jcvsCz">
                   <button
@@ -126,7 +104,7 @@
               class="categoryList__CategoryLine-sc-1pzzo5j-0 liFQGu"
             >
               {{ category
-              }}<svg width="24" height="24">
+              }}<svg [style.transform]="globalService.rtlSide == 'ltr' ? 'scaleX(1)' : 'scaleX(-1)'"  width="24" height="24">
                 <path
                   fill="#112631"
                   fill-rule="evenodd"
@@ -146,4 +124,4 @@
     value="50"
     *ngIf="isLoading"
   ></mat-progress-spinner>
-</div>
+ </div>

@@ -1,6 +1,6 @@
 <div *ngIf="selectedMoment" class="style__Backdrop-sc-1z1ex6-0 fOnjFl">
-  <div class="style__ModalWrapper-sc-1z1ex6-2 fBzOYk">
-    <button class="style__Close-sc-1z1ex6-1 klldbS" (click)="closeModal()">
+    <div class="style__ModalWrapper-sc-1z1ex6-2 fBzOYk">
+        <button class="style__Close-sc-1z1ex6-1 klldbS" (click)="closeModal()">
       <svg width="24" height="24">
         <path
           fill="#112631"
@@ -9,10 +9,9 @@
         ></path>
       </svg>
     </button>
-    <div class="modal__ModalContentContainer-u1elfv-1 bllZgA">
-      <div class="modal__ModalTitle-u1elfv-0 hqGkov">
-        <span class="modal__InputSecondary-u1elfv-5 hjEQfh"
-          >Choisissez un creneau</span
+        <div class="modal__ModalContentContainer-u1elfv-1 bllZgA" [dir]="globalService.rtlSide">
+            <div class="modal__ModalTitle-u1elfv-0 hqGkov">
+                <span class="modal__InputSecondary-u1elfv-5 hjEQfh">{{'Choisissez un creneau' | translate}}</span
         >
       </div>
       <div class="modal__SelectorsContainer-u1elfv-4 fHcnff">
@@ -30,9 +29,9 @@
                     "
                     (click)="changedDate(moment)"
                     id="react-select-30-option-0"
-                    tabindex="-1"
+                    tabindex="-1" style="text-align: start;"
                   >
-                    {{ moment | date_format }}
+                    {{ moment | date_format}}
                   </div>
                 </div>
               </div>
@@ -54,7 +53,7 @@
                       (click)="changedHour(range)"
                       *ngIf="hourRanges.length >= i + 2"
                       id="react-select-31-option-0"
-                      tabindex="-1"
+                      tabindex="-1" style="text-align: start;"
                     >
                       {{ hourRanges[i] }} -
                       {{ hourRanges[i + 1] }}
@@ -73,7 +72,7 @@
         >
           <span
             class="modal__InputSecondary-u1elfv-5 modal__ValidateText-u1elfv-6 fEpNJu"
-            >Valider</span
+            >{{'Valider' | translate}}</span
           >
         </div>
       </div>

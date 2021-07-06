@@ -23,10 +23,12 @@ export class OrdersComponent implements OnInit {
   constructor(public orderService: OrderService, public router: Router, private route:ActivatedRoute, private myEvent:MyEvent, private localize: LocalizeRouterService) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(value => {
-      this.lang = value['lang']
-      this.myEvent.setLanguageData(this.lang);
-    })
+    // this.route.params.subscribe(value => {
+    //   this.lang = value['lang']
+    //   this.myEvent.setLanguageData(this.lang);
+    // })
+
+    this.myEvent.setLanguageData(this.localize.parser.currentLang);
     this.isLoading = true;
 
     this.orderService.getMyOrders().subscribe((orders: Array<Order>) => {
@@ -44,7 +46,7 @@ export class OrdersComponent implements OnInit {
       case 'CLEANING':
         return 'Votre linge est au pressing';
       case 'DROPOFF':
-        return 'Commande delivere';
+        return 'Commande délivré';
     }
   }
 
