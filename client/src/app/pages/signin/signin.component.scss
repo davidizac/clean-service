@@ -19,7 +19,7 @@ a {
 
 a {
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
     display: inline-block;
@@ -52,9 +52,15 @@ a {
     text-align: center;
 }
 
+@media (max-width: 400px) {
+    #formContent {
+        width: 100%;
+    }
+}
+
 #formFooter {
     border-top: 1px solid #dce8f1;
-    padding: 25px;
+    padding-top: 25px;
     text-align: center;
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
@@ -115,7 +121,7 @@ input[type="password"] {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     margin: 10px auto;
     width: 100%;
     max-width: 310px;

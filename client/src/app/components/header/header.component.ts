@@ -36,7 +36,7 @@ export class HeaderComponent implements OnChanges {
     this.selectedTab = pathName[pathName.length - 1]
 
     this.myEvent.getLanguageObservable().subscribe((value) => {
-      var pathName = window.location.pathname.split('/')[2]      
+      var pathName = window.location.pathname.split('/')[2]
       this.changedTab(pathName)
     });
   }
@@ -53,7 +53,9 @@ export class HeaderComponent implements OnChanges {
   }
 
   changedTab(tab) {
-
+    if (!tab) {
+      tab = 'home'
+    }
     this.selectedTab = tab;
     if (tab === 'signin') {
       document.getElementById('header').classList.add('undisplay')

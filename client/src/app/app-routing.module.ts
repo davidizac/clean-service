@@ -26,7 +26,7 @@ export function HttpLoaderFactory(translate: TranslateService, location: Locatio
 }
 
 const routes: Routes = [
-  { path: "", pathMatch: "full", redirectTo: "fr" },
+  { path: "", pathMatch: "full", redirectTo: "home" },
   {
     path: 'home',
     component: HomeComponent,
