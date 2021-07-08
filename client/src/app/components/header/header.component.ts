@@ -35,7 +35,7 @@ export class HeaderComponent implements OnChanges {
     var pathName = window.location.pathname.split('/')
     this.selectedTab = pathName[pathName.length - 1]
 
-    this.myEvent.getLanguageObservable().subscribe((value) => {
+    router.events.subscribe(() => {      
       var pathName = window.location.pathname.split('/')[2]
       this.changedTab(pathName)
     });

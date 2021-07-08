@@ -36,6 +36,8 @@ export class AppComponent {
   ) {
     var pathName
     router.events.subscribe(() => {
+      console.log('events');
+      
       pathName = window.location.pathname.split('/')
       if (pathName[pathName.length - 1] == 'signin') {
         document.getElementById('header').classList.add('undisplay')
