@@ -172,6 +172,17 @@
                   >{{ order.phoneNumber }}</span
                 >
               </div>
+              <div
+                class="order-detail__InformationContainer-sc-1q4n31i-7 kypZIM"
+              >
+                <span
+                  class="order-detail__Text-sc-1q4n31i-14 order-detail__NormalText-sc-1q4n31i-17 kKpHeb"
+                  >Payment:</span
+                ><span
+                  class="order-detail__Text-sc-1q4n31i-14 order-detail__BoldText-sc-1q4n31i-18 MkxYI"
+                  >{{ order.payment }}</span
+                >
+              </div>
               <div class="order-detail__ProductsContainer-sc-1q4n31i-9 ddhryE">
                 <div
                   *ngFor="let product of getProductFiltered(order.products)"

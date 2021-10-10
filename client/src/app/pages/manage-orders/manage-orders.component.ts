@@ -52,6 +52,8 @@ export class ManageOrdersComponent implements OnInit {
       }
     });
     this.orderService.getAllOrders().subscribe((orders: Array<Order>) => {
+      console.log(orders);
+      
       this.isLoading = false;
       this.orders = orders.map((p) => new Order(p));
       this.displayedOrders = this.orders;

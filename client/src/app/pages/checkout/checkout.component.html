@@ -195,11 +195,16 @@
                         </div>
                     </div>
                     <span class="errorMessage" *ngIf="errorMessage">{{ errorMessage | translate }}</span>
+                    <h1 style="text-align: center;"> {{ getMessageButton() | translate }}:</h1>
                     <div class="shopping-cart-page__ButtonContainer-arjt3o-4 jNHIgL">
                         <a [ngClass]="isInvalidOrder ? 'disabled' : ''" (click)="createOrder()" width="286px" class="style__ButtonStyle-zdp3iu-0 dsVNJt">
-        {{ getMessageButton() | translate }}
+        {{ 'Paiement en espece' | translate }}
       </a>
+                        <div #paypalRef style="z-index: 1;"></div>
+
                     </div>
+
+
                 </div>
                 <footer class="d-none d-lg-block">
                     <app-footer></app-footer>

@@ -22,8 +22,6 @@
             <div class="container">
                 <div class="row align-items-center paddingResponsive">
                     <div class="col-md-7 aos-init aos-animate" data-aos="fade-right">
-
-
                         <p style="font-size: 50px; line-height: 61px;" [ngClass]="globalService.rtlSide == 'ltr' ? 'text-left' : 'text-right'">{{ 'Le pressing de votre choix à porter de main.' | translate }}</p>
                         <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary btn-white shadow btn-theme d-none d-md-block ml-3 btnOurPressing"><span style="font-weight: bold;">{{'Nos Pressings' | translate}}</span></a>
                     </div>
@@ -32,7 +30,7 @@
                         <div style="position: relative; width: 267px;" class="mx-auto">
                             <img src="assets/images/logoPhoneHome.png" class="img-fluid d-block mx-auto" style="max-width: 560px;" alt="">
                             <!-- <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary  btn-white shadow btn-theme d-block d-md-none btn-primaryMobile"><span  style="font-weight: bold;">{{'Nos Pressings' | translate}}</span></a> -->
-                            <span (click)="goToLinkOfPath('pressings')" class="btnNosPressingMobile">{{'Nos Pressings' | translate}}</span>
+                            <span (click)="goToLinkOfPath('pressings')" class="btnNosPressingMobile d-flex d-md-none">{{'Nos Pressings' | translate}}</span>
                         </div>
                     </div>
                 </div>

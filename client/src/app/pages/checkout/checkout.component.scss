@@ -152,7 +152,9 @@
     background-color: rgb(49, 173, 237);
     font-family: Lato, sans-serif;
     display: flex;
+    padding: 8px;
     text-decoration: none;
+    margin-bottom: 15px;
     -webkit-box-pack: center;
     justify-content: center;
     -webkit-box-align: center;
@@ -218,10 +220,10 @@
 
 .jNHIgL {
     width: 100%;
-    display: flex;
+    display: inline-grid;
     -webkit-box-pack: center;
     justify-content: center;
-    margin: 20px 0px 110px;
+    margin: 20px 0px 145px;
     height: 40px;
 }
 

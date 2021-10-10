@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from 'src/app/models/pressing.model';
 import * as _ from 'lodash';
@@ -11,7 +11,9 @@ import { UserService } from 'src/app/services/user.service';
 import { MyEvent } from 'src/app/services/myevents.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { GlobalService } from 'src/app/services/global.service';
-
+declare global {
+  interface Window { paypal: any; }
+}
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -28,7 +30,9 @@ export class CheckoutComponent implements OnInit {
     private myEvent: MyEvent,
     public globalService: GlobalService,
     private localize: LocalizeRouterService
-  ) { }
+  ) {
+
+  }
   pickUpOptions = [];
   dropOffOptions = [];
   products: Array<IProduct> = [];
@@ -47,6 +51,7 @@ export class CheckoutComponent implements OnInit {
   orderId;
   phoneNumber: string;
   lang: string
+  @ViewChild('paypalRef', { static: true }) private paypalRef: ElementRef
 
   get isInvalidOrder() {
     if (this.order)
@@ -64,13 +69,53 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
 
+    window.paypal.Buttons({
+      
+      style: {
+        layout: 'horizontal',
+        color: 'blue',
+        shape: 'pill',
+        label: 'paypal',
+        tagline: 'false',
+        size: 'large'
+      },
+      createOrder: (data, actions) => {
+        if (this.isInvalidOrder) {
+         
+          this.createOrder()
+          return
+        }
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                value: this.getPrice().toString(),
+                currency_code: 'ILS'
+              }
+            }
+          ]
+        })
+      },
+      onApprouve: (data, actions) => {
+        return actions.order.capture().then(details => {
+          alert('transaction completed')
+          this.order.payment = 'paypal'
+          this.createOrder()
+        })
+      },
+      onError: error => {
+        console.log(error);
+        
+      }
+    }).render(this.paypalRef.nativeElement)
+
     // this.route.params.subscribe(value => {
     //   this.globalService.langGlobal = value['lang']
 
     //   this.myEvent.setLanguageData(this.lang);
     // })
     this.myEvent.setLanguageData(this.localize.parser.currentLang);
-    
+
     this.pickUpAddress = this.formBuilder.control('');
     this.addressDetails = this.formBuilder.control('');
     this.addressDetails2 = this.formBuilder.control('');
@@ -106,10 +151,10 @@ export class CheckoutComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     const displaySuggestions = function (this, options, status) {
-      this[isPickUp ? 'pickUpOptions' : 'dropOffOptions'] = options.map(
+      this[isPickUp ? 'pickUpOptions' : 'dropOffOptions'] = options?.map(
         (p) => p.description
       );
-      this[isPickUp ? 'pickUpOptions' : 'dropOffOptions'].pop();
+      this[isPickUp ? 'pickUpOptions' : 'dropOffOptions']?.pop();
     };
 
     const service = new google.maps.places.AutocompleteService();
@@ -204,6 +249,7 @@ export class CheckoutComponent implements OnInit {
     this.order.phoneNumber = this.phoneNumber;
     this.order.status = 'NEW';
     this.order.price = this.getPrice().toString();
+    this.order.payment = this.order.payment == 'paypal' ? 'paypal' : 'cash'
     this.orderService.createOrder(this.order).subscribe((order) => {
       const route = this.localize.translateRoute(`/order-confirmation/${order._id}`);
       this.router.navigate([route], {
