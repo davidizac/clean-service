@@ -20,6 +20,9 @@ declare global {
   styleUrls: ['./checkout.component.scss'],
 })
 export class CheckoutComponent implements OnInit {
+  payment: string;
+  offerFidelity: boolean;
+  priceWithouOffer: any;
   constructor(
     public route: ActivatedRoute,
     public router: Router,
@@ -55,6 +58,7 @@ export class CheckoutComponent implements OnInit {
 
   get isInvalidOrder() {
     if (this.order)
+
       return (
         !this.order.pickUpAddress ||
         !this.order.dropOffAddress ||
@@ -69,45 +73,10 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
 
-    window.paypal.Buttons({
-      
-      style: {
-        layout: 'horizontal',
-        color: 'blue',
-        shape: 'pill',
-        label: 'paypal',
-        tagline: 'false',
-        size: 'large'
-      },
-      createOrder: (data, actions) => {
-        if (this.isInvalidOrder) {
-         
-          this.createOrder()
-          return
-        }
-        return actions.order.create({
-          purchase_units: [
-            {
-              amount: {
-                value: this.getPrice().toString(),
-                currency_code: 'ILS'
-              }
-            }
-          ]
-        })
-      },
-      onApprouve: (data, actions) => {
-        return actions.order.capture().then(details => {
-          alert('transaction completed')
-          this.order.payment = 'paypal'
-          this.createOrder()
-        })
-      },
-      onError: error => {
-        console.log(error);
-        
-      }
-    }).render(this.paypalRef.nativeElement)
+   
+
+  
+
 
     // this.route.params.subscribe(value => {
     //   this.globalService.langGlobal = value['lang']
@@ -128,7 +97,11 @@ export class CheckoutComponent implements OnInit {
     });
 
     this.isNew = this.route.snapshot.queryParamMap['params'].isNew;
+    console.log(this.isNew);
+
+
     this.order = JSON.parse(this.route.snapshot.queryParamMap['params'].order);
+    this.payment = this.order.payment
     this.products = this.order.products as Array<IProduct>;
     this.addressDetails.setValue(this.order.addressDetails);
     this.addressDetails2.setValue(this.order.addressDetails2);
@@ -144,6 +117,58 @@ export class CheckoutComponent implements OnInit {
     });
     this.orderId = this.route.snapshot.queryParamMap['params'].orderId;
     this.filteredProducts = _.uniqBy(this.products, '_id');
+
+     this.orderService.getMyOrders().subscribe((orders: Array<Order>) => {
+      console.log(orders.length);
+      if (orders.length % 5 == 0 && this.isNew == 'true') {
+        this.offerFidelity = true
+      }
+    });
+
+    console.log(this.payment);
+    
+    if (this.isNew == 'true' || this.payment == 'cash') {
+      window.paypal.Buttons({
+
+        style: {
+          layout: 'horizontal',
+          color: 'blue',
+          shape: 'pill',
+          label: 'paypal',
+          tagline: 'false',
+          size: 'large'
+        },
+        createOrder: (data, actions) => {
+
+          if (this.isInvalidOrder) {
+
+            this.createOrder()
+            return
+          }
+          return actions.order.create({
+            purchase_units: [
+              {
+                amount: {
+                  value: this.getPrice().toString(),
+                  currency_code: 'ILS'
+                }
+              }
+            ]
+          })
+        },
+        onApprouve: (data, actions) => {
+          return actions.order.capture().then(details => {
+            alert('transaction completed')
+            this.order.payment = 'paypal'
+            this.createOrder()
+          })
+        },
+        onError: error => {
+          console.log(error);
+
+        }
+      }).render(this.paypalRef?.nativeElement)
+    }
   }
 
   triggerAutocomplete(value: string, isPickUp) {
@@ -209,8 +234,12 @@ export class CheckoutComponent implements OnInit {
   }
 
   getPrice() {
-    return this.products.reduce((acc, current, index, arr) => {
-      const price = acc + current.price;
+    return this.products.reduce((acc, current, index, arr) => {      
+      var price: any = acc + current.price;
+      if (this.offerFidelity) {
+        this.priceWithouOffer = price
+        price = price - (price*10)/100
+      }
       return parseInt(price);
     }, 10);
   }

@@ -160,7 +160,7 @@
                                 </div>
                                 {{ product.name }}
                             </div>
-                            <div class="col-4" style="display: flex;">
+                            <div class="col-4" style="display: flex;" *ngIf="isNew == 'true'">
                                 <button class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI" (click)="remove(product)">
                 <img src="../../../assets/images/minus.png" /></button>
                                 <button class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI" (click)="add(product)"><img src="../../../assets/images/plus.png" /></button>
@@ -181,32 +181,46 @@
               >10 &#8362;</span
             >
           </div>
-          <div class="order-summary__SummaryLineContainer-sc-2gc5ap-1 dDUVLw">
+          <div class="order-summary__SummaryLineContainer-sc-2gc5ap-1 dDUVLw" *ngIf="offerFidelity">
+            <span class="order-summary__InputDark-sc-2gc5ap-3 doxodF"
+              >{{'Mon offre de fidelite' | translate}}</span
+            ><span class="order-summary__H3Dark-sc-2gc5ap-4 kvqIDJ"
+              >-10%</span
+            >
+          </div>
+          
+          <div class="order-summary__SummaryLineContainer-sc-2gc5ap-1 dDUVLw" *ngIf="!offerFidelity">
             <span class="order-summary__InputDark-sc-2gc5ap-3 doxodF"
               >{{'Total' | translate}}</span
             ><span class="order-summary__H3Dark-sc-2gc5ap-4 kvqIDJ"
               >{{ getPrice() }} &#8362;</span
             >
           </div>
-          <span class="order-summary__MinimumPrice-sc-2gc5ap-2 kTfBpA"
-            >{{'Commande minimum: 100' | translate}}&#8362;
-          </span>
+
+          <div class="order-summary__SummaryLineContainer-sc-2gc5ap-1 dDUVLw" *ngIf="offerFidelity">
+            <span class="order-summary__InputDark-sc-2gc5ap-3 doxodF"
+              >{{'Total' | translate}}</span
+            ><span class="order-summary__H3Dark-sc-2gc5ap-4 kvqIDJ"
+              ><span style="text-decoration: line-through; font-size: 12px;">{{priceWithouOffer}} &#8362;</span> <br> {{ getPrice() }} &#8362; </span>
                             </div>
+                            <span class="order-summary__MinimumPrice-sc-2gc5ap-2 kTfBpA">{{'Commande minimum: 100' | translate}}&#8362;
+          </span>
                         </div>
                     </div>
-                    <span class="errorMessage" *ngIf="errorMessage">{{ errorMessage | translate }}</span>
-                    <h1 style="text-align: center;"> {{ getMessageButton() | translate }}:</h1>
-                    <div class="shopping-cart-page__ButtonContainer-arjt3o-4 jNHIgL">
-                        <a [ngClass]="isInvalidOrder ? 'disabled' : ''" (click)="createOrder()" width="286px" class="style__ButtonStyle-zdp3iu-0 dsVNJt">
-        {{ 'Paiement en espece' | translate }}
+                </div>
+                <span class="errorMessage" *ngIf="errorMessage">{{ errorMessage | translate }}</span>
+                <h1 style="text-align: center;"> {{ getMessageButton() | translate }}:</h1>
+                <div class="shopping-cart-page__ButtonContainer-arjt3o-4 jNHIgL">
+                    <a [ngClass]="isInvalidOrder ? 'disabled' : ''" (click)="createOrder()" width="286px" class="style__ButtonStyle-zdp3iu-0 dsVNJt">
+        {{ payment == 'paypal' ? 'Modifier la commande' : 'Paiement en espece' | translate }}
       </a>
-                        <div #paypalRef style="z-index: 1;"></div>
-
-                    </div>
-
+                    <div #paypalRef style="z-index: 1;" [ngClass]="!(isNew == 'true' || payment == 'cash') ? 'displayNone': ''"></div>
 
                 </div>
-                <footer class="d-none d-lg-block">
-                    <app-footer></app-footer>
-                </footer>
+
+
             </div>
+            <footer class="d-none d-lg-block">
+                <app-footer></app-footer>
+            </footer>
+        </div>

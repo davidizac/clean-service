@@ -89,7 +89,7 @@ export class OrdersComponent implements OnInit {
 
   changeOrder(order: Order) {
     var pressingId = order.products[0]['pressingId'];
-    const route = this.localize.translateRoute(`/pressings/${pressingId}`);
+    const route = this.localize.translateRoute(`/checkout`);
     return this.router.navigate([route], {
       queryParams: {
         order: JSON.stringify(order),
