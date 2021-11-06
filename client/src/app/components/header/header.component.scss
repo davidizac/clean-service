@@ -268,7 +268,12 @@ h6 {
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 0.5rem 1rem;
-    transition-duration: 5s;
+    transition: 0.6s all ease;
+}
+
+.opacityHeader0 {
+    opacity: 0;
+    transition: 0.6s all ease;
 }
 
 .navbar>.container {
@@ -863,7 +868,7 @@ section {
 
 .btnSignIn {
     object-fit: contain;
-    border-radius: 10px;
+    border-radius: 50px;
     font-size: 15px;
     height: 49px;
     color: #31aded;
@@ -874,7 +879,7 @@ section {
     justify-content: center;
     align-items: center;
     padding: 10px 25px;
-    border-radius: 17px;
+    border-radius: 50px;
     cursor: pointer;
 }
 
@@ -1197,7 +1202,7 @@ footer .copyright a:hover {
     background: #31aded;
     border-bottom: none;
     padding: 30px 0;
-    transition-duration: 0.6s;
+    transition: 0.6s all ease;
 }
 
 .navbar-default .navbar-brand,
@@ -1213,7 +1218,7 @@ footer .copyright a:hover {
     width: 100%;
     z-index: 100;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
-    transition-duration: 0.8s;
+    transition: 0.6s all ease;
 }
 
 .dropdown-menu {

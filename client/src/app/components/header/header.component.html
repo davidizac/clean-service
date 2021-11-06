@@ -2,69 +2,72 @@
     Admin mode
 </mat-slide-toggle>
 <header class="foxapp-header header-desktop" id="header">
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #31aded;" id="foxapp_menu">
-        <div class="container-fluid  navbar navbar-default navbar-fixed-top">
+    <div style="height: 90px;">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #31aded;" id="foxapp_menu">
+            <div class="container-fluid  navbar navbar-default navbar-fixed-top">
 
-            <div class="container" id="main_menu">
+                <div class="container" id="main_menu">
 
-                <div class="row justify-content-between w-100 align-items-center" style="height: 110px; direction: ltr;">
+                    <div class="row justify-content-between w-100 align-items-center" style="height: 90px; direction: ltr;">
 
-                    <div class="col-3 logo" [routerLink]="['/home'] | localize">
-                        <img src="assets/images/logo-blanc.png" class="mr-auto" id="logoMenuWhite" style="width: 150px" alt="">
-                        <img src="assets/images/logoBlue.png" id="logoMenuBlue" class="mr-auto d-none" style="width: 150px" alt="">
-                    </div>
-                    <div class="d-flex align-items-center justify-content-end col-lg-7 col-xl-8 ">
-                        <ul *ngIf="!adminMode" class="d-flex">
-                            <li class="nav-item">
-                                <a class="nav-link anchor" [routerLink]="['/home'] | localize" routerLinkActive="active"> {{'Accueil' | translate}}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link anchor" [routerLink]="['/pressings'] | localize" routerLinkActive="active"> {{ 'Nos pressings' | translate }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link anchor" [routerLink]="['/orders'] | localize" routerLinkActive="active">{{'Mes commandes' | translate}}</a>
-                            </li>
-                        </ul>
-                        <ul *ngIf="adminMode" class="d-flex">
-                            <li class="nav-item">
-                                <a class="nav-link anchor" [routerLink]="['/home'] | localize" routerLinkActive="active">Accueil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link anchor" [routerLink]="['/manage-orders'] | localize" routerLinkActive="active"> Gestion de commande</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link anchor" [routerLink]="['/pressing-creator'] | localize" routerLinkActive="active">Creer un pressing</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link anchor" [routerLink]="['/users'] | localize" routerLinkActive="active">Mes utilisateurs</a>
-                            </li>
-                        </ul>
-                        <a *ngIf="!isAuthenticated" [routerLink]="['/signin'] | localize" routerLinkActive="active" class="btnSignIn" (click)="changedTab('signin')">{{'Se connecter' | translate}}</a>
-                        <a *ngIf="isAuthenticated" [routerLink]="['/profile'] | localize" routerLinkActive="active" class="btnSignIn">{{user?.fullname}}</a>
+                        <div class="col-3 logo" [routerLink]="['/home'] | localize">
+                            <img src="assets/images/logo-blanc.png" class="mr-auto" id="logoMenuWhite" style="width: 150px" alt="">
+                            <img src="assets/images/logoBlue.png" id="logoMenuBlue" class="mr-auto d-none" style="width: 150px" alt="">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-end col-lg-7 col-xl-8 ">
+                            <ul *ngIf="!adminMode" class="d-flex">
+                                <li class="nav-item">
+                                    <a class="nav-link anchor" [routerLink]="['/home'] | localize" routerLinkActive="active"> {{'Accueil' | translate}}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link anchor" [routerLink]="['/pressings'] | localize" routerLinkActive="active"> {{ 'Nos pressings' | translate }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link anchor" [routerLink]="['/orders'] | localize" routerLinkActive="active">{{'Mes commandes' | translate}}</a>
+                                </li>
+                            </ul>
+                            <ul *ngIf="adminMode" class="d-flex">
+                                <li class="nav-item">
+                                    <a class="nav-link anchor" [routerLink]="['/home'] | localize" routerLinkActive="active">Accueil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link anchor" [routerLink]="['/manage-orders'] | localize" routerLinkActive="active"> Gestion de commande</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link anchor" [routerLink]="['/pressing-creator'] | localize" routerLinkActive="active">Creer un pressing</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link anchor" [routerLink]="['/users'] | localize" routerLinkActive="active">Mes utilisateurs</a>
+                                </li>
+                            </ul>
+                            <a *ngIf="!isAuthenticated" [routerLink]="['/signin'] | localize" routerLinkActive="active" class="btnSignIn" (click)="changedTab('signin')">{{'Se connecter' | translate}}</a>
+                            <a *ngIf="isAuthenticated" [routerLink]="['/profile'] | localize" routerLinkActive="active" class="btnSignIn">{{user?.fullname}}</a>
 
-                    </div>
-                    <div class="col-2 col-xl-1 nav-item dropdown">
-                        <div ngbDropdown class="d-inline-block">
-                            <button class="btn dropdown-font btnLang" id="dropdownBasic1" style="box-shadow: none;" ngbDropdownToggle>{{ 'Language' | translate }}</button>
-                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                                <button (click)="chooseLang('fr')" ngbDropdownItem>
-                                  <div class="row align-items-center"><img src="../../../assets/images/FR.png" alt="" style="width: 25px; margin-right: 10px;"> Francais </div>
-                                </button>
-                                <button (click)="chooseLang('en')" ngbDropdownItem>
-                                  <div class="row align-items-center"><img src="../../../assets/images/EN.png" alt="" style="width: 25px; margin-right: 10px;"> English</div>
-                                </button>
-                                <button (click)="chooseLang('il')" ngbDropdownItem>
-                                  <div class="row align-items-center"><img src="../../../assets/images/IL.png" alt="" style="width: 25px; margin-right: 10px;"> עברית</div>
-                                </button>
+                        </div>
+                        <div class="col-2 col-xl-1 nav-item dropdown">
+                            <div ngbDropdown class="d-inline-block">
+                                <button class="btn dropdown-font btnLang" id="dropdownBasic1" style="box-shadow: none;" ngbDropdownToggle>{{ 'Language' | translate }}</button>
+                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                    <button (click)="chooseLang('fr')" ngbDropdownItem>
+                                <div class="row align-items-center"><img src="../../../assets/images/FR.png" alt="" style="width: 25px; margin-right: 10px;"> Francais </div>
+                              </button>
+                                    <button (click)="chooseLang('en')" ngbDropdownItem>
+                                <div class="row align-items-center"><img src="../../../assets/images/EN.png" alt="" style="width: 25px; margin-right: 10px;"> English</div>
+                              </button>
+                                    <button (click)="chooseLang('il')" ngbDropdownItem>
+                                <div class="row align-items-center"><img src="../../../assets/images/IL.png" alt="" style="width: 25px; margin-right: 10px;"> עברית</div>
+                              </button>
+                                </div>
                             </div>
                         </div>
+
                     </div>
-
                 </div>
-            </div>
 
-        </div>
-    </nav>
+            </div>
+        </nav>
+    </div>
+
 </header>
 <div class="mobile-menu__MobileMenuContainer-sc-17s3h0k-0 GbnXQ">
     <a (click)="changedTab('home')" [routerLink]="['/home' | localize ]" class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS">

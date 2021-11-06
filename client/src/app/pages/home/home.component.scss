@@ -1,6 +1,4 @@
 .backgroundImg {
-    height: 200px;
-    width: 300px;
     border-radius: 50px;
     border: 1px solid rgb(173, 172, 172);
     position: relative;
@@ -259,7 +257,7 @@ h6 {
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 0.5rem 1rem;
-    transition-duration: 5s;
+    transition: 0.6s all ease;
 }
 
 .navbar>.container {
@@ -846,8 +844,7 @@ section {
 
 .other-features .other-features-slider .item {
     background: #fff;
-    padding: 2em 1em;
-    border-radius: 50px;
+    border-radius: 50%;
     opacity: 0.6;
     outline: none;
     cursor: pointer;
@@ -855,7 +852,6 @@ section {
 
 .btnSignIn {
     object-fit: contain;
-    border-radius: 10px;
     font-size: 15px;
     height: 49px;
     width: 120px;
@@ -867,7 +863,7 @@ section {
     justify-content: center;
     align-items: center;
     padding: 10px 25px;
-    border-radius: 17px;
+    border-radius: 50px;
     cursor: pointer;
 }
 
@@ -1200,7 +1196,7 @@ footer .copyright a:hover {
     background: #31aded;
     border-bottom: none;
     padding: 30px 0;
-    transition-duration: 0.6s;
+    transition: 0.6s all ease;
 }
 
 .navbar-default .navbar-brand,
@@ -1214,6 +1210,11 @@ footer .copyright a:hover {
     }
 }
 
+.opacityHeader0 {
+    opacity: 0;
+    transition: 0.6s all ease;
+}
+
 .navbar-scroll {
     background: #ffffff;
     position: fixed;
@@ -1222,7 +1223,7 @@ footer .copyright a:hover {
     width: 100%;
     z-index: 100;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
-    transition-duration: 0.8s;
+    transition: 0.6s all ease;
 }
 
 .nav-dropdown-scroll {

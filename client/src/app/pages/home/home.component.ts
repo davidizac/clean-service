@@ -61,16 +61,23 @@ export class HomeComponent implements OnInit {
     var btnSignIn = $('.btnSignIn')
 
 
+    
     $(window).scroll(function () {
-      if ($(window).scrollTop() <= 400) {
+   // if ($(window).scrollTop() > 100 && $(window).scrollTop() <= 120) {
+      //   navbar.addClass('opacityHeader0');
+      // }
+
+      if ($(window).scrollTop() <= 100) {
         navbar.removeClass('navbar-scroll');
+        // navbar.removeClass('opacityHeader0');
         navLink.removeClass('nav-link-scroll');
         imgLogoWhite.removeClass('d-none');
         imgLogoBlue.addClass('d-none')
         imgLogoBlue.removeClass('d-block');
         btnSignIn.removeClass('btnSignInScroll')
 
-      } else {
+      } else if($(window).scrollTop() > 120) {
+        // navbar.removeClass('opacityHeader0');
         navbar.addClass('navbar-scroll');
         navLink.addClass('nav-link-scroll');
         imgLogoWhite.addClass('d-none');

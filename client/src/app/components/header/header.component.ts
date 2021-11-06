@@ -35,7 +35,7 @@ export class HeaderComponent implements OnChanges {
     var pathName = window.location.pathname.split('/')
     this.selectedTab = pathName[pathName.length - 1]
 
-    router.events.subscribe(() => {      
+    router.events.subscribe(() => {
       var pathName = window.location.pathname.split('/')[2]
       this.changedTab(pathName)
     });
@@ -84,8 +84,13 @@ export class HeaderComponent implements OnChanges {
 
 
     $(window).scroll(function () {
-      if ($(window).scrollTop() <= 400) {
+      // if ($(window).scrollTop() > 100 && $(window).scrollTop() <= 120) {
+      //   navbar.addClass('opacityHeader0');
+      // }
+
+      if ($(window).scrollTop() <= 100) {
         navbar.removeClass('navbar-scroll');
+        // navbar.removeClass('opacityHeader0');
         navLink.removeClass('nav-link-scroll');
         btnLang.removeClass('btnLang-scroll');
         imgLogoWhite.removeClass('d-none');
@@ -93,7 +98,8 @@ export class HeaderComponent implements OnChanges {
         imgLogoBlue.removeClass('d-block');
         btnSignIn.removeClass('btnSignInScroll')
 
-      } else {
+      } else if($(window).scrollTop() > 120) {
+        // navbar.removeClass('opacityHeader0');
         navbar.addClass('navbar-scroll');
         navLink.addClass('nav-link-scroll');
         btnLang.addClass('btnLang-scroll');
