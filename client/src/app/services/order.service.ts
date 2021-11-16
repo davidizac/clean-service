@@ -6,21 +6,29 @@ import { environment } from 'src/environments/environment';
 import { Order } from '../models/order.model';
 import { Pressing } from '../models/pressing.model';
 import { AuthService } from './auth.service';
+import { GlobalService } from './global.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrderService {
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService, public globalService: GlobalService) { }
 
   createOrder(order: Order): Observable<Order> {
+    console.log('createOrder', order);
+    
     return this.authService.token.pipe(
       switchMap((token) => {
         return this.http.post<Order>(
           `${environment.serverUrl}api/orders/`,
-          order,
+          // {
+            order,
+            // lang: this.globalService.langGlobal},
           {
-            headers: { authorization: token },
+            headers: {
+              authorization: token,
+              
+            }
           }
         );
       })

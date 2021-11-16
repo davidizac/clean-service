@@ -160,7 +160,7 @@
 
 
                 <div class="row mb-5 justify-content-center" data-aos="fade-up">
-                    <div *ngFor="let pressing of fourPressingDisplayed" class="item text-center slick-center backgroundImg row align-items-center mx-2 mb-3" data-slick-index="0" aria-hidden="true" tabindex="0" style="width:130px; height: 130px">
+                    <div *ngFor="let pressing of fourPressingDisplayed" (click)="navigateToPressing(pressing._id)" class="item text-center slick-center backgroundImg row align-items-center mx-2 mb-3" data-slick-index="0" aria-hidden="true" tabindex="0" style="width:130px; height: 130px">
 
                         <div class="mx-auto col-12">
                             <h4 style="font-size: 15px;">{{pressing.name}}</h4>

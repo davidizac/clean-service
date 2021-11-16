@@ -110,4 +110,6 @@ export class HomeComponent implements OnInit {
     this.myEvent.setLanguageData(lang);
   }
 
+ 
+
 }
