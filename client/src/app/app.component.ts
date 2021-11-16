@@ -37,7 +37,7 @@ export class AppComponent {
     var pathName
     router.events.subscribe(() => {
       console.log('events');
-      
+
       pathName = window.location.pathname.split('/')
       if (pathName[pathName.length - 1] == 'signin') {
         document.getElementById('header').classList.add('undisplay')
@@ -48,8 +48,8 @@ export class AppComponent {
     this.globalService.languageObservable()
     this.myEvent.getLanguageObservable().subscribe((value) => {
       console.log(value);
-      
-      
+
+
       // this.localize.changeLanguage(this.localize.parser.currentLang === 'fr' ? 'en' : 'fr');
       // this.router.navigate(["/en/home"]);
       this.globalService.setDirectionAccordingly(value);
@@ -59,9 +59,17 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    console.log('OnINIT', this.localize.parser);
+    if (this.localize.parser.currentLang) {
+      this.myEvent.setLanguageData(this.localize.parser.currentLang)
+      this.localize.changeLanguage(this.localize.parser.currentLang);
+    } else {
+      this.myEvent.setLanguageData('en')
+      this.localize.changeLanguage('en');
+    }
+    // this.myEvent.setLanguageData(this.localize.parser.currentLang || 'en')
+    // this.localize.changeLanguage(this.localize.parser.currentLang || 'en');
 
-    this.myEvent.setLanguageData(this.localize.parser.currentLang || 'en')
-    this.localize.changeLanguage(this.localize.parser.currentLang || 'en');
     this.selectedTab = 'home';
     this.adminMode = localStorage.getItem('adminMode') === 'true';
     this.authService.userIsAuthenticated
