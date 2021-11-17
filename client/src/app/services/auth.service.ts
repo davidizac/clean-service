@@ -102,7 +102,7 @@ export class AuthService implements OnDestroy {
     );
   }
 
-  signup(email: string, password: string, fullname, phoneNumber) {
+  signup(email: string, password: string, fullname, phoneNumber) {    
     return this.http
       .post<AuthResponseData>(
         `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${environment.firebaseAPIkey}`,
