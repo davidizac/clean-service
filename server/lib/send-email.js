@@ -19,7 +19,7 @@ module.exports.sendWelcomeEmail = async email => {
         from: 'contact@cleeser.com',
         to: email,
         subject: 'Welcome to Cleeser !',
-        html: "ejs.render(template)"
+        html: ejs.render(template)
     })
 }
 
