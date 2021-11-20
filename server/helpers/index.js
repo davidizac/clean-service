@@ -74,7 +74,7 @@ module.exports = async function startcleeser() {
 
     // Angular dist output folder
     app.use(express.static(path.join(__dirname, '../dist')))
-    app.use(express.static("../assets"))
+    app.use(express.static("../../server/assets"))
 
     bootstrapApi(app)
 
