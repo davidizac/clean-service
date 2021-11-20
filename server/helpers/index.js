@@ -15,86 +15,87 @@ const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 const errorsHandler = require('../api/middlewares/error-handler.middleware')
 
 module.exports = async function startcleeser() {
-  const app = express()
+    const app = express()
 
-  const expressWinstonTranports = [
-    new winston.transports.Console({
-      json: false,
-      colorize: true
-    })
-  ]
+    const expressWinstonTranports = [
+        new winston.transports.Console({
+            json: false,
+            colorize: true
+        })
+    ]
 
-  if (process.env.NODE_ENV === 'production') {
-    app.use(redirectToHTTPS())
-  }
-
-  app.use(
-    expressWinston.logger({
-      winstonInstance: logger,
-      transports: expressWinstonTranports
-    })
-  )
-
-  const port = parseArgs.PORT || process.env.PORT
-  const server = http.createServer(app)
-  const io = socketService.init(server)
-
-  // enable cors
-  app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS, PATCH')
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
-    res.header('Access-Control-Allow-Credentials', true)
-    res.header('Access-Control-Expose-Headers', 'Authorization')
-    if (req.method === 'OPTIONS') {
-      return res.sendStatus(200)
+    if (process.env.NODE_ENV === 'production') {
+        app.use(redirectToHTTPS())
     }
-    next()
-  })
 
-  try {
-    await setupDB()
-  } catch (error) {
-    console.error('Error starting cleeser: error setting up the database.')
-    process.exit()
-  }
+    app.use(
+        expressWinston.logger({
+            winstonInstance: logger,
+            transports: expressWinstonTranports
+        })
+    )
 
-  app.use(
-    bodyParser.urlencoded({
-      extended: false
+    const port = parseArgs.PORT || process.env.PORT
+    const server = http.createServer(app)
+    const io = socketService.init(server)
+
+    // enable cors
+    app.use((req, res, next) => {
+        res.header('Access-Control-Allow-Origin', '*')
+        res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS, PATCH')
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
+        res.header('Access-Control-Allow-Credentials', true)
+        res.header('Access-Control-Expose-Headers', 'Authorization')
+        if (req.method === 'OPTIONS') {
+            return res.sendStatus(200)
+        }
+        next()
     })
-  )
-  app.use(bodyParser.json())
 
-  app.use((req, res, next) => {
-    req.io = io
-    req.app = app
-    next()
-  })
+    try {
+        await setupDB()
+    } catch (error) {
+        console.error('Error starting cleeser: error setting up the database.')
+        process.exit()
+    }
 
-  // Angular dist output folder
-  app.use(express.static(path.join(__dirname, '../dist')))
+    app.use(
+        bodyParser.urlencoded({
+            extended: false
+        })
+    )
+    app.use(bodyParser.json())
 
-  bootstrapApi(app)
+    app.use((req, res, next) => {
+        req.io = io
+        req.app = app
+        next()
+    })
 
-  app.set('port', port)
-  app.io = io
+    // Angular dist output folder
+    app.use(express.static(path.join(__dirname, '../dist')))
+    app.use(express.static("../../src/assets/images"))
 
-  // respond with 404 for unrecognized api routes
-  app.all('/api/*', (req, res) => {
-    res.status(404).send('Route not found.')
-  })
+    bootstrapApi(app)
 
-  // Send all other requests to the Angular app
-  app.all('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist', 'index.html'))
-  })
+    app.set('port', port)
+    app.io = io
 
-  app.use(errorsHandler(logger))
+    // respond with 404 for unrecognized api routes
+    app.all('/api/*', (req, res) => {
+        res.status(404).send('Route not found.')
+    })
 
-  server.listen(port, () => {
-    console.log(`Running on localhost:${port}`)
-  })
+    // Send all other requests to the Angular app
+    app.all('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../dist', 'index.html'))
+    })
 
-  return server
+    app.use(errorsHandler(logger))
+
+    server.listen(port, () => {
+        console.log(`Running on localhost:${port}`)
+    })
+
+    return server
 }
