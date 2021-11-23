@@ -4,11 +4,11 @@ const path = require('path')
 const fs = require('fs')
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    service: 'gmail',
+    service: 'Gmail',
     port: 465,
     secure: true,
     auth: {
-        user: 'Cleeser <contact@cleeser.com>',
+        user: 'contact@cleeser.com',
         pass: 'linoyezra24'
     }
 })
@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 module.exports.sendWelcomeEmail = async email => {
     const template = fs.readFileSync(path.join(__dirname, 'welcome.ejs'), 'utf-8')
     await transporter.sendMail({
-        from: 'Cleeser <contact@cleeser.com>',
+        from: 'contact@cleeser.com',
         to: email,
         subject: 'Welcome to Cleeser !',
         html: ejs.render(template)
