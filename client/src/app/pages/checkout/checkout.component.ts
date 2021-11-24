@@ -120,7 +120,7 @@ export class CheckoutComponent implements OnInit {
 
      this.orderService.getMyOrders().subscribe((orders: Array<Order>) => {
       console.log(orders.length);
-      if (orders.length % 5 == 0 && this.isNew == 'true') {
+      if (orders.length > 0 && orders.length % 5 == 0 && this.isNew == 'true') {
         this.offerFidelity = true
       }
     });
