@@ -116,14 +116,14 @@ export class DateSelectorComponent implements OnInit {
         this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
       }
       else {
-        const range2 = moment.range(moment().hours(9), moment().hours(11));
+        const range2 = moment.range(moment().hours(19), moment().hours(22));
         const hours = Array.from(
           range2.by('hour', { excludeEnd: false, step: 1 })
         );
         this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
       }
     } else {
-      const range2 = moment.range(moment().hours(19), moment().hours(22));
+      const range2 = moment.range(moment().hours(17), moment().hours(22));
       const hours = Array.from(
         range2.by('hour', { excludeEnd: false, step: 1 })
       );
