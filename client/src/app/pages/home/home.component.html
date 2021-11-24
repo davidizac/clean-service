@@ -20,12 +20,15 @@
     <section id="slide" class="slide background-withcolor" [ngClass]="globalService.rtlSide == 'rtl' ? 'slideRtl' : ''">
         <div class="content-bottom">
             <div class="container">
+
                 <div class="row align-items-center paddingResponsive">
-                    <div class="col-md-7 aos-init aos-animate" data-aos="fade-right">
-                        <p style="font-size: 50px; line-height: 61px;" [ngClass]="globalService.rtlSide == 'ltr' ? 'text-left' : 'text-right'">{{ 'Le pressing de votre choix à porter de main.' | translate }}</p>
+                    <div class="col-md-7 aos-init aos-animate" style="max-width: 510px; margin-top: -60px;" data-aos="fade-right">
+                        <p style="font-size: 50px; line-height: 61px; font-family: none;" [ngClass]="globalService.rtlSide == 'ltr' ? 'text-left' : 'text-right'">{{ 'Le pressing de votre choix à porter de main.' | translate }}</p>
+
                         <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary btn-white shadow btn-theme d-none d-md-block ml-3 btnOurPressing"><span style="font-weight: bold;">{{'Nos Pressings' | translate}}</span></a>
                     </div>
-                    <div class="col-md-5 aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">
+
+                    <div class="col-md-5 aos-init aos-animate" data-aos="fade-left" data-aos-delay="200" style="margin-inline-start: auto;">
 
                         <div style="position: relative; width: 267px;" class="mx-auto">
                             <img src="assets/images/logoPhoneHome.png" class="img-fluid d-block mx-auto" style="max-width: 560px;" alt="">
@@ -38,11 +41,9 @@
         </div>
     </section>
     <!-- End Header -->
-
-
-
-
-
+    <div data-aos="fade-up" class="offre">
+        Profitez de l'offre: Apres 4 livraisons cumulees, Cleeser vous offre -10% sur la 5eme commande!
+    </div>
     <!-- Start Boxes -->
     <section id="boxes" class="boxes padding-100">
         <div class="container">
