@@ -9,7 +9,7 @@
 
 .backgroundImg:hover {
     cursor: pointer;
-    background: linear-gradient(130deg, #31aded 0%, #8293ff 100%);
+    background: linear-gradient(130deg, #4DA4E0 0%, #8293ff 100%);
     box-shadow: 0px 0px 15px;
     h5,
     .adress {
@@ -871,7 +871,7 @@ section {
     border-radius: 50px;
     font-size: 15px;
     height: 49px;
-    color: #31aded;
+    color: #4DA4E0;
     background-color: white;
     font-family: Lato, sans-serif;
     display: flex;
@@ -885,7 +885,7 @@ section {
 
 .btnSignInScroll {
     color: white !important;
-    background-color: #31aded !important;
+    background-color: #4DA4E0 !important;
 }
 
 .other-features .other-features-slider .item.slick-center {
@@ -1147,12 +1147,12 @@ h6,
 .our-team .team-slider .slick-dots li.slick-active button,
 .recent-news .recent-news-slider .slick-dots li.slick-active button,
 .faq .accordion .card .card-header h5 .btn.collapsed {
-    background: #31aded;
+    background: #4DA4E0;
 }
 
 @media (max-width: 991px) {
     .foxapp-header {
-        background: #31aded;
+        background: #4DA4E0;
     }
 }
 
@@ -1199,7 +1199,7 @@ footer .copyright a:hover {
 }
 
 .navbar {
-    background: #31aded;
+    background: #4DA4E0;
     border-bottom: none;
     padding: 30px 0;
     transition: 0.6s all ease;
@@ -1597,7 +1597,7 @@ ngb-carousel .picsum-img-wrapper>img {
 }
 
 .svg2 path {
-    fill: #31aded;
+    fill: #4DA4E0;
 }
 
 .adminToggle {
