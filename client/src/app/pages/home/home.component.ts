@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   fourPressingDisplayed = []
   langs
 
+
   constructor(
     public router: Router,
     public pressingService: PressingService,
@@ -43,8 +44,6 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-
-
     this.pressingService
       .getAllPressings()
       .subscribe((pressings: Array<Pressing>) => {

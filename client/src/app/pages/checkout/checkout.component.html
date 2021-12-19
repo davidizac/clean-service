@@ -10,6 +10,7 @@
         <div class="address-button__Button-oifptd-0 kHzhHJ">
           <input
             [formControl]="pickUpAddress"
+            [(ngModel)]="order.pickUpAddress"
             placeholder="{{'Tapez laddresse de recuperation' | translate}}"
             matInput
             [matAutocomplete]="auto"
@@ -50,7 +51,7 @@
               for="another-address"
               class="style__CheckboxLabel-sc-18pyt5v-1 kbJGuN"
               ><span
-                >{{'Voulez vous choisir une differente addresse de recuperation?' | translate}}</span
+                >{{'Voulez vous choisir une differente addresse de restitution?' | translate}}</span
               ></label
             >
           </div>
@@ -62,6 +63,7 @@
           <div class="address-button__Button-oifptd-0 kHzhHJ">
             <input
               [formControl]="dropOffAddress"
+              [(ngModel)]="order.dropOffAddress"
               placeholder="{{'Tapez laddresse de restitution' | translate}}"
               matInput
               [matAutocomplete]="auto"

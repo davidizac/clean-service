@@ -223,3 +223,7 @@ input[type="password"]:placeholder {
     margin-bottom: 17px;
     color: #eb0949;
 }
+
+.errInput {
+    border-bottom: 1px solid red !important;
+}

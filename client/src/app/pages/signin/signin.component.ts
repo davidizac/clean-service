@@ -87,12 +87,55 @@ export class SigninComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    this.authenticate(
-      this.email,
-      this.password,
-      this.fullname,
-      this.phoneNumber
-    );
+  
+
+  onSubmit(action?) {
+    var checkBool
+    if (action == 'signup') {
+      checkBool = this.checkAllFieldsErr()
+    }
+
+    if (!action || (action == 'signup' && !checkBool)) {
+      this.authenticate(
+        this.email,
+        this.password,
+        this.fullname,
+        this.phoneNumber
+      );
+    }
+
+  }
+
+  checkAllFieldsErr() {
+    var check = false
+    if (!this.email || this.email.trim().length == 0) {
+      document.getElementById("email").classList.add('errInput')
+      check = true
+    }else{
+      document.getElementById("email").classList.remove('errInput')
+    }
+
+    if (!this.password || this.password.trim().length == 0) {
+      document.getElementById("password").classList.add('errInput')
+      check = true
+    }else{
+      document.getElementById("password").classList.remove('errInput')
+    }
+
+    if (!this.fullname || this.fullname.trim().length == 0) {
+      document.getElementById("fullName").classList.add('errInput')
+      check = true
+    }else{
+      document.getElementById("fullName").classList.remove('errInput')
+    }
+
+    if (!this.phoneNumber || this.phoneNumber.trim().length == 0) {
+      document.getElementById("number").classList.add('errInput')
+      check = true
+    }else{
+      document.getElementById("number").classList.remove('errInput')
+    }
+
+    return check
   }
 }

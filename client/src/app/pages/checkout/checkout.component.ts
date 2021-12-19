@@ -61,7 +61,7 @@ export class CheckoutComponent implements OnInit {
 
       return (
         !this.order.pickUpAddress ||
-        !this.order.dropOffAddress ||
+        (!this.order.dropOffAddress && this.anotherAddress) ||
         this.getPrice() < 100 ||
         !this.pickUpDate ||
         !this.dropOffDate ||
@@ -254,7 +254,7 @@ export class CheckoutComponent implements OnInit {
         this.errorMessage = 'Commande minimum 100₪';
       } else if (!this.order.pickUpAddress) {
         this.errorMessage = 'Addresse de recuperation obligatoire';
-      } else if (!this.order.dropOffAddress) {
+      } else if (!this.order.dropOffAddress && this.anotherAddress) {
         this.errorMessage = 'Addresse de restitution obligatoire';
       } else if (!this.pickUpDate) {
         this.errorMessage = 'Creneau de recuperation obligatoire';
@@ -269,6 +269,7 @@ export class CheckoutComponent implements OnInit {
       }
       return;
     }
+    this.order.dropOffAddress = this.anotherAddress ? this.order.dropOffAddress : this.order.pickUpAddress
     this.order.addressDetails = this.addressDetails.value;
     this.order.addressDetails2 = this.addressDetails2.value;
     this.order.pickUpDate = this.pickUpDate.format();
@@ -279,6 +280,8 @@ export class CheckoutComponent implements OnInit {
     this.order.status = 'NEW';
     this.order.price = this.getPrice().toString();
     this.order.payment = this.order.payment == 'paypal' ? 'paypal' : 'cash'
+    console.log(this.order);
+    
     this.orderService.createOrder(this.order).subscribe((order) => {
       const route = this.localize.translateRoute(`/order-confirmation/${order._id}`);
       this.router.navigate([route], {

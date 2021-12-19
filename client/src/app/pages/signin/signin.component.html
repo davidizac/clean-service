@@ -21,12 +21,12 @@
                         <a class="active">{{'S’inscrire' | translate}}</a>
 
                         <div>
-                            <input [(ngModel)]="fullname" autocomplete="off" type="text" name="fullname" placeholder="{{'Nom Complet' | translate}}" />
-                            <input [(ngModel)]="phoneNumber" autocomplete="off" type="text" name="phoneNumber" placeholder="{{'Telephone' | translate}}" />
-                            <input autocomplete="off" [(ngModel)]="email" type="text" name="email" placeholder="{{'Email' | translate}}" />
+                            <input [(ngModel)]="fullname" id="fullName" autocomplete="off" type="text" name="fullname" placeholder="{{'Nom Complet' | translate}}" />
+                            <input [(ngModel)]="phoneNumber" id="number" autocomplete="off" type="text" name="phoneNumber" placeholder="{{'Telephone' | translate}}" />
+                            <input autocomplete="off" id="email" [(ngModel)]="email" type="text" name="email" placeholder="{{'Email' | translate}}" />
 
-                            <input autocomplete="off" [(ngModel)]="password" type="password" name="login" placeholder="{{'Mot de passe' | translate}}" />
-                            <button (click)="onSubmit()" type="submit">{{'S’inscrire' | translate}}</button>
+                            <input autocomplete="off" id="password" [(ngModel)]="password" type="password" name="login" placeholder="{{'Mot de passe' | translate}}" />
+                            <button (click)="onSubmit('signup')" type="submit">{{'S’inscrire' | translate}}</button>
                         </div>
                         <div class="error" *ngIf="errorMessage">
                             <span>{{ errorMessage | translate }}</span>

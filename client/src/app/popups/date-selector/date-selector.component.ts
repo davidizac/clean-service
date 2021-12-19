@@ -77,16 +77,24 @@ export class DateSelectorComponent implements OnInit {
   }
 
   onConfirm() {
-    this.result.next(
-      this.selectedMoment.hours(parseInt(this.selectedHourRange)).minutes(0)
-    );
+    if (this.selectedHourRange) {
+      this.result.next(
+        this.selectedMoment.hours(parseInt(this.selectedHourRange)).minutes(0)
+      );
+    }
+    
     this.closeModal();
   }
 
   changedDate(moment2) {
+    console.log(moment().hours(21));
+    
     this.selectedMoment = moment2;
-    if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && !moment().add(2, 'hours').isAfter(moment().hours(21))) {
+    // if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && !moment().add(2, 'hours').isAfter(moment().hours(21))) {
+    if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && moment().add(2, 'hours').isAfter(moment().hours(21))) {
       const range2 = moment.range(moment().add(2, 'hours'), moment().hours(22));
+      console.log(range2);
+      
       const hours = Array.from(
         range2.by('hour', { excludeEnd: false, step: 1 })
       );

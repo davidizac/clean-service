@@ -38,8 +38,6 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { APP_CONFIG, BaseAppConfig } from './app.config';
 import { MatPaginatorIntlCro } from './custom-class/mat-paginator';
 import { MatPaginatorIntl } from '@angular/material/paginator';
-
-
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -79,15 +77,15 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     ModalModule.forRoot(),
     TranslateModule.forRoot({
-        loader: {
-            provide: TranslateLoader,
-            useFactory: (createTranslateLoader),
-            deps: [HttpClient]
-        }
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
     })
   ],
   entryComponents: [DateSelectorComponent],
-    providers: [
+  providers: [
     AuthService,
     BsModalService,
     BsModalRef,
@@ -101,4 +99,4 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
