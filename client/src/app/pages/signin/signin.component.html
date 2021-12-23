@@ -36,12 +36,15 @@
                         </div>
                     </ng-container>
                     <ng-container *ngIf="isSignin">
-                        <!-- <a style=" color:#56baed;" [routerLink]="['/home'] | localize" class="d-block d-md-none"> {{"Retourner a laccueil" | translate}}</a> -->
-
+                        <a style=" color:#56baed;" [routerLink]="['/home'] | localize" class="d-block d-md-none"> {{"Retourner a l'accueil" | translate}}</a>
                         <a (click)="toggle()" class="active mt-0 mt-md-5">{{'Se connecter' | translate}}</a>
 
 
-
+                        <div>
+                            <input autocomplete="off" [(ngModel)]="email" type="text" name="email" placeholder="{{'Email' | translate}}" (keypress)="keyFunc($event)" />
+                            <input autocomplete="off" [(ngModel)]="password" type="password" name="login" placeholder="{{'Mot de passe' | translate}}" (keypress)="keyFunc($event)" />
+                            <button (click)="onSubmit()" type="submit">{{'Se connecter' | translate}}</button>
+                        </div>
                         <div class="error" *ngIf="errorMessage">
                             <span>{{ errorMessage | translate}}</span>
                         </div>
