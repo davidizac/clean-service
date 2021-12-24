@@ -101,7 +101,7 @@ export class DateSelectorComponent implements OnInit {
       this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
     }
     else if (moment2.day() === 5) {
-      if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && !moment().add(2, 'hours').isAfter(moment().hours(12))) {
+      if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && moment().add(2, 'hours').isAfter(moment().hours(12))) {
         const range2 = moment.range(moment().add(2, 'hours'), moment().hours(22));
         const hours = Array.from(
           range2.by('hour', { excludeEnd: false, step: 1 })
@@ -116,7 +116,7 @@ export class DateSelectorComponent implements OnInit {
         this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
       }
     } else if (moment2.day() === 6) {
-      if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && !moment().add(2, 'hours').isAfter(moment().hours(12))) {
+      if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && moment().add(2, 'hours').isAfter(moment().hours(12))) {
         const range2 = moment.range(moment().add(2, 'hours'), moment().hours(22));
         const hours = Array.from(
           range2.by('hour', { excludeEnd: false, step: 1 })
