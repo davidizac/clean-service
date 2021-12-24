@@ -62,7 +62,7 @@ export class CheckoutComponent implements OnInit {
       return (
         !this.order.pickUpAddress ||
         (!this.order.dropOffAddress && this.anotherAddress) ||
-        this.getPrice() < 1 ||
+        this.getPrice() < 100 ||
         !this.pickUpDate ||
         !this.dropOffDate ||
         !this.pickUpDate ||
@@ -139,8 +139,7 @@ export class CheckoutComponent implements OnInit {
           size: 'large'
         },
         createOrder: (data, actions) => {
-          console.log("createOrder");
-          
+
           if (this.isInvalidOrder) {
 
             this.createOrder()
@@ -158,8 +157,6 @@ export class CheckoutComponent implements OnInit {
           })
         },
         onApprouve: (data, actions) => {
-          console.log("onApprouve");
-
           return actions.order.capture().then(details => {
             alert('transaction completed')
             this.order.payment = 'paypal'
@@ -167,7 +164,7 @@ export class CheckoutComponent implements OnInit {
           })
         },
         onError: error => {
-          console.log("error paypal", error);
+          console.log(error);
 
         }
       }).render(this.paypalRef?.nativeElement)
@@ -244,7 +241,7 @@ export class CheckoutComponent implements OnInit {
         price = price - (price*10)/100
       }
       return parseInt(price);
-    }, 1);
+    }, 10);
   }
 
   createOrder() {
@@ -253,7 +250,7 @@ export class CheckoutComponent implements OnInit {
       return;
     }
     if (this.isInvalidOrder) {
-      if (this.getPrice() < 1) {
+      if (this.getPrice() < 100) {
         this.errorMessage = 'Commande minimum 100₪';
       } else if (!this.order.pickUpAddress) {
         this.errorMessage = 'Addresse de recuperation obligatoire';
@@ -303,7 +300,7 @@ export class CheckoutComponent implements OnInit {
 
   updateOrder() {
     if (this.isInvalidOrder) {
-      if (this.getPrice() < 1) {
+      if (this.getPrice() < 100) {
         this.errorMessage = 'Commande minimum 100₪';
       } else if (!this.order.pickUpAddress) {
         this.errorMessage = 'Addresse de recuperation obligatoire';
