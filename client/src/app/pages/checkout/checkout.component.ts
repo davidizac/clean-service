@@ -73,9 +73,9 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
 
-   
 
-  
+
+
 
 
     // this.route.params.subscribe(value => {
@@ -118,7 +118,7 @@ export class CheckoutComponent implements OnInit {
     this.orderId = this.route.snapshot.queryParamMap['params'].orderId;
     this.filteredProducts = _.uniqBy(this.products, '_id');
 
-     this.orderService.getMyOrders().subscribe((orders: Array<Order>) => {
+    this.orderService.getMyOrders().subscribe((orders: Array<Order>) => {
       console.log(orders.length);
       if (orders.length > 0 && orders.length % 5 == 0 && this.isNew == 'true') {
         this.offerFidelity = true
@@ -126,7 +126,7 @@ export class CheckoutComponent implements OnInit {
     });
 
     console.log(this.payment);
-    
+
     if (this.isNew == 'true' || this.payment == 'cash') {
       window.paypal.Buttons({
 
@@ -139,7 +139,8 @@ export class CheckoutComponent implements OnInit {
           size: 'large'
         },
         createOrder: (data, actions) => {
-
+          console.log(this.isInvalidOrder);
+          
           if (this.isInvalidOrder) {
 
             this.createOrder()
@@ -156,7 +157,9 @@ export class CheckoutComponent implements OnInit {
             ]
           })
         },
-        onApprouve: (data, actions) => {
+        onApprove: (data, actions) => {
+          console.log('onAPPROUVE');
+          
           return actions.order.capture().then(details => {
             alert('transaction completed')
             this.order.payment = 'paypal'
@@ -234,11 +237,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   getPrice() {
-    return this.products.reduce((acc, current, index, arr) => {      
+    return this.products.reduce((acc, current, index, arr) => {
       var price: any = acc + current.price;
       if (this.offerFidelity) {
         this.priceWithouOffer = price
-        price = price - (price*10)/100
+        price = price - (price * 10) / 100
       }
       return parseInt(price);
     }, 10);
@@ -281,7 +284,7 @@ export class CheckoutComponent implements OnInit {
     this.order.price = this.getPrice().toString();
     this.order.payment = this.order.payment == 'paypal' ? 'paypal' : 'cash'
     console.log(this.order);
-    
+
     this.orderService.createOrder(this.order).subscribe((order) => {
       const route = this.localize.translateRoute(`/order-confirmation/${order._id}`);
       this.router.navigate([route], {
