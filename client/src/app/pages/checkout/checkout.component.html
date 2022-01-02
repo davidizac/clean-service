@@ -218,7 +218,6 @@
         {{ payment == 'paypal' ? 'Modifier la commande' : 'Paiement en espece' | translate }}
       </a>
                     <div #paypalRef style="z-index: 1;" [ngClass]="!(isNew == 'true' || payment == 'cash') ? 'displayNone': ''"></div>
-
                 </div>
 
 

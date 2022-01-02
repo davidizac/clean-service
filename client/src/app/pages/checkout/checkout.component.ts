@@ -150,7 +150,7 @@ export class CheckoutComponent implements OnInit {
             purchase_units: [
               {
                 amount: {
-                  value: "10",
+                  value: 10,
                   currency_code: 'ILS'
                 }
               }
