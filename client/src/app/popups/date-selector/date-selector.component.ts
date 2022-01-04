@@ -61,7 +61,7 @@ export class DateSelectorComponent implements OnInit {
         this.endDate.add(19, 'days');
       } else {
         this.startDate = moment();
-        this.startDate.add(3, 'days');
+        this.startDate.add(2, 'days');
         this.endDate = moment().add(17, 'day');
       }
     }
