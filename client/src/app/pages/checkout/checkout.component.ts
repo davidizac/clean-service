@@ -62,7 +62,7 @@ export class CheckoutComponent implements OnInit {
       return (
         !this.order.pickUpAddress ||
         (!this.order.dropOffAddress && this.anotherAddress) ||
-        this.getPrice() < 10 ||
+        this.getPrice() < 100 ||
         !this.pickUpDate ||
         !this.dropOffDate ||
         !this.pickUpDate ||
@@ -150,7 +150,7 @@ export class CheckoutComponent implements OnInit {
             purchase_units: [
               {
                 amount: {
-                  value: 10,
+                  value: this.getPrice().toString(),
                   currency_code: 'ILS'
                 }
               }
@@ -253,7 +253,7 @@ export class CheckoutComponent implements OnInit {
       return;
     }
     if (this.isInvalidOrder) {
-      if (this.getPrice() < 10) {
+      if (this.getPrice() < 100) {
         this.errorMessage = 'Commande minimum 100₪';
       } else if (!this.order.pickUpAddress) {
         this.errorMessage = 'Addresse de recuperation obligatoire';
@@ -303,7 +303,7 @@ export class CheckoutComponent implements OnInit {
 
   updateOrder() {
     if (this.isInvalidOrder) {
-      if (this.getPrice() < 10) {
+      if (this.getPrice() < 100) {
         this.errorMessage = 'Commande minimum 100₪';
       } else if (!this.order.pickUpAddress) {
         this.errorMessage = 'Addresse de recuperation obligatoire';
