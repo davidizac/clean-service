@@ -29,7 +29,7 @@
                 <section class="container d-none d-lg-block">
                     <div class="row mb-5 justify-content-between ">
                         <div *ngFor="let pressing of pressingDisplayed" class="item text-center slick-center col-10 col-md-8 col-lg-7 justify-content-between row align-items-center mx-auto mb-3 bg-white py-3" data-slick-index="0" aria-hidden="true" tabindex="0" style="border-radius: 6px;">
-                            <div class="col-12" style="text-align: start;">
+                            <div class="col-9" style="text-align: start;">
                                 <p style="font-size: 21px; font-weight: bold;">{{pressing.name}} </p>
                                 <p style="font-weight: bold; font-size: 16px;">{{pressing.address}}</p>
                             </div>
@@ -44,6 +44,7 @@
                                     </button>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </section>
@@ -97,7 +98,7 @@
             </div>
         </div>
     </div>
-    <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" value="50" *ngIf="isLoading"></mat-progress-spinner>
+    <div class="loader" *ngIf="isLoading"></div>
     <footer class="d-none d-lg-block">
         <app-footer></app-footer>
     </footer>

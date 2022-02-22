@@ -38,6 +38,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { APP_CONFIG, BaseAppConfig } from './app.config';
 import { MatPaginatorIntlCro } from './custom-class/mat-paginator';
 import { MatPaginatorIntl } from '@angular/material/paginator';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -74,6 +75,7 @@ export function createTranslateLoader(http: HttpClient) {
     JwtModule,
     DemoMaterialModule,
     NgbModule,
+    NgxPayPalModule,
     PipeModule,
     AppRoutingModule,
     ModalModule.forRoot(),

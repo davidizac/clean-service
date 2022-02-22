@@ -11,6 +11,8 @@ import { UserService } from 'src/app/services/user.service';
 import { MyEvent } from 'src/app/services/myevents.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { GlobalService } from 'src/app/services/global.service';
+import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
+import { render } from 'creditcardpayments/creditCardPayments'
 declare global {
   interface Window { paypal: any; }
 }
@@ -23,6 +25,7 @@ export class CheckoutComponent implements OnInit {
   payment: string;
   offerFidelity: boolean;
   priceWithouOffer: any;
+  public payPalConfig?: IPayPalConfig;
   constructor(
     public route: ActivatedRoute,
     public router: Router,
@@ -32,7 +35,7 @@ export class CheckoutComponent implements OnInit {
     public userService: UserService,
     private myEvent: MyEvent,
     public globalService: GlobalService,
-    private localize: LocalizeRouterService
+    private localize: LocalizeRouterService,
   ) {
 
   }
@@ -57,6 +60,7 @@ export class CheckoutComponent implements OnInit {
   @ViewChild('paypalRef', { static: true }) private paypalRef: ElementRef
 
   get isInvalidOrder() {
+    
     if (this.order)
 
       return (
@@ -70,6 +74,63 @@ export class CheckoutComponent implements OnInit {
         !this.phoneNumber
       );
   }
+
+  initConfig(): void {
+
+    this.payPalConfig = {
+      currency: 'ILS',
+      clientId: 'sb',
+      onClick: (data, actions) => {
+        if (this.isInvalidOrder) {
+          this.createOrder()
+          return
+        }
+      },
+      createOrderOnClient: (data) => <ICreateOrderRequest>{
+
+        intent: 'CAPTURE',
+        purchase_units: [
+          {
+            amount: {
+              value: this.getPrice().toString(),
+              currency_code: 'ILS'
+            }
+          }
+        ]
+      },
+      advanced: {
+        commit: 'true'
+      },
+      style: {
+        layout: 'vertical',
+        color: 'blue',
+        shape: 'pill',
+        label: 'paypal',
+        size: 'large'
+      },
+      onApprove: (data, actions) => {
+        console.log('onApprove - transaction was approved, but not authorized', data, actions);
+        actions.order.get().then(details => {
+          alert('transaction completed')
+          this.order.payment = 'paypal'
+          this.createOrder()
+        });
+
+      },
+      onClientAuthorization: (data) => {
+        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+      },
+      onCancel: (data, actions) => {
+        console.log('OnCancel', data, actions);
+
+      },
+      onError: err => {
+        console.log('OnError', err);
+      },
+
+    };
+  }
+
 
   ngOnInit() {
 
@@ -126,51 +187,81 @@ export class CheckoutComponent implements OnInit {
     });
 
     console.log(this.payment);
-
     if (this.isNew == 'true' || this.payment == 'cash') {
-      window.paypal.Buttons({
+      this.initConfig();
+    }
 
-        style: {
-          layout: 'horizontal',
-          color: 'blue',
-          shape: 'pill',
-          label: 'paypal',
-          tagline: 'false',
-          size: 'large'
-        },
-        createOrder: (data, actions) => {
-          console.log(this.isInvalidOrder);
-          
-          if (this.isInvalidOrder) {
+    // if (this.isNew == 'true' || this.payment == 'cash') {
+    //   window.paypal.Buttons({
 
-            this.createOrder()
-            return
-          }
-          return actions.order.create({
-            purchase_units: [
-              {
-                amount: {
-                  value: this.getPrice().toString(),
-                  currency_code: 'ILS'
-                }
-              }
-            ]
-          })
-        },
-        onApprove: (data, actions) => {
-          console.log('onAPPROUVE');
-          
-          return actions.order.capture().then(details => {
-            alert('transaction completed')
-            this.order.payment = 'paypal'
-            this.createOrder()
-          })
-        },
-        onError: error => {
-          console.log(error);
+    //     style: {
+    //       layout: 'horizontal',
+    //       color: 'blue',
+    //       shape: 'pill',
+    //       label: 'paypal',
+    //       tagline: 'false',
+    //       size: 'large'
+    //     },
+    //     createOrder: (data, actions) => {
+    //       console.log(this.isInvalidOrder);
 
-        }
-      }).render(this.paypalRef?.nativeElement)
+    //       if (this.isInvalidOrder) {
+
+    //         this.createOrder()
+    //         return
+    //       }
+    //       return actions.order.create({
+    //         purchase_units: [
+    //           {
+    //             amount: {
+    //               value: this.getPrice().toString(),
+    //               currency_code: 'ILS'
+    //             }
+    //           }
+    //         ]
+    //       })
+    //     },
+    //     onApprove: (data, actions) => {
+    //       console.log('onAPPROUVE');
+
+    //       return actions.order.capture().then(details => {
+    //         alert('transaction completed')
+    //         this.order.payment = 'paypal'
+    //         this.createOrder()
+    //       })
+    //     },
+    //     onError: error => {
+    //       console.log(error);
+
+    //     }
+    //   }).render(this.paypalRef?.nativeElement)
+    // }
+
+    // render({
+    //   id: '#myPaypalButtons',
+    //   currency: 'ILS',
+    //   value: '100',
+
+    //   onApprove: (details) => {
+    //     alert('transaction successfull')
+    //   }
+    // })
+  }
+
+  onKeydown(){
+    if (this.isInvalidOrder) {
+      document.getElementById("unclickable").classList.add('paymentButtonsUnclickable')
+    } else {
+      document.getElementById("unclickable").classList.remove('paymentButtonsUnclickable')
+      this.errorMessage = ''
+    }
+  }
+
+  checkForm() {
+    if (this.isInvalidOrder) {
+      this.createOrder()
+    } else {
+      this.errorMessage = ''
     }
   }
 
@@ -233,6 +324,7 @@ export class CheckoutComponent implements OnInit {
 
     return modal.content.result.subscribe((date) => {
       this[isPickup ? 'pickUpDate' : 'dropOffDate'] = date;
+      this.onKeydown()
     });
   }
 

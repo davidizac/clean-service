@@ -117,11 +117,6 @@
       </div>
     </div>
   </div>
-  <mat-progress-spinner
-    class="example-margin"
-    color="primary"
-    mode="indeterminate"
-    value="50"
-    *ngIf="isLoading"
-  ></mat-progress-spinner>
+  
+  <div class="loader" *ngIf="isLoading"></div>
  </div>

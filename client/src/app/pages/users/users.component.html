@@ -1,57 +1,43 @@
 <main>
-  <div class="hmLLON">
-    <div class="dRZTuO">
-      <div class="kqgbTY">
-        <div class="style__TitleContainer-mh2zh9-4 URAtw">
-          <div class="style__Text-mh2zh9-7 style__Title-mh2zh9-8 eTAyEB">
-            Mes utilisateurs
-          </div>
-        </div>
-        <div class="style__SearchInputContainer-mh2zh9-11 bJdKoS">
-          <input
-            [formControl]="filter"
-            placeholder="Type a name, email or a phone number "
-            matInput
-            class="style__SearchInput-mh2zh9-10 jeKoNK"
-          />
-          <span class="style__LabelInputContainer-mh2zh9-12 gofRfd"
-            ><svg width="24" height="24">
+    <div class="hmLLON">
+        <div class="dRZTuO">
+            <div class="kqgbTY">
+                <div class="style__TitleContainer-mh2zh9-4 URAtw">
+                    <div class="style__Text-mh2zh9-7 style__Title-mh2zh9-8 eTAyEB">
+                        Mes utilisateurs
+                    </div>
+                </div>
+                <div class="style__SearchInputContainer-mh2zh9-11 bJdKoS">
+                    <input [formControl]="filter" placeholder="Type a name, email or a phone number " matInput class="style__SearchInput-mh2zh9-10 jeKoNK" />
+                    <span class="style__LabelInputContainer-mh2zh9-12 gofRfd"><svg width="24" height="24">
               <path
                 fill="#252C32"
                 fill-rule="evenodd"
                 d="M13.007 3L21 10.993 10.993 21H5.402A2.402 2.402 0 013 18.598v-5.591L13.007 3zm0 1.77L4.25 13.526v5.072A1.157 1.157 0 005.4 19.75h5.104l8.756-8.756-6.254-6.223zm0 3.721a2.502 2.502 0 110 5.004 2.502 2.502 0 010-5.004zm0 1.251a1.25 1.25 0 100 2.502 1.25 1.25 0 000-2.502z"
               ></path></svg
           ></span>
-        </div>
-        <div class="pressings-list">
-          <ng-container *ngFor="let user of usersDisplayed">
-            <ng-container *ngIf="isUserOpened(user)">
-              <button (click)="closeUser(user)" class="liFQGu">
+                </div>
+                <div class="pressings-list">
+                    <ng-container *ngFor="let user of usersDisplayed">
+                        <ng-container *ngIf="isUserOpened(user)">
+                            <button (click)="closeUser(user)" class="liFQGu">
                 {{ user.fullname }}
               </button>
-              <div
-                class="productList__ProductListContainer-sc-1oz9rbz-5 hiKKKS"
-              >
-                <div
-                  class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF"
-                >
-                  <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
-                    <div
-                      class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe"
-                    ></div>
-                    <strong>Email:</strong> {{ user.email }}
-                  </div>
-                  <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
-                    <div
-                      class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe"
-                    ></div>
-                    <strong>Telephone:</strong> {{ user.phoneNumber }}
-                  </div>
-                </div>
-              </div>
-            </ng-container>
-            <ng-container *ngIf="!isUserOpened(user)">
-              <button (click)="openUser(user)" class="liFQGu">
+                            <div class="productList__ProductListContainer-sc-1oz9rbz-5 hiKKKS">
+                                <div class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF">
+                                    <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
+                                        <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe"></div>
+                                        <strong>Email:</strong> {{ user.email }}
+                                    </div>
+                                    <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
+                                        <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe"></div>
+                                        <strong>Telephone:</strong> {{ user.phoneNumber }}
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="!isUserOpened(user)">
+                            <button (click)="openUser(user)" class="liFQGu">
                 {{ user.fullname
                 }}<svg width="24" height="24">
                   <path
@@ -61,23 +47,14 @@
                   ></path>
                 </svg>
               </button>
-            </ng-container>
-          </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </div>
+                <mat-paginator (page)="pageChanged($event)" [length]="users?.length" [pageSize]="pageSize">
+                </mat-paginator>
+            </div>
         </div>
-        <mat-paginator
-          (page)="pageChanged($event)"
-          [length]="users?.length"
-          [pageSize]="pageSize"
-        >
-        </mat-paginator>
-      </div>
     </div>
-  </div>
-  <mat-progress-spinner
-    class="example-margin"
-    color="primary"
-    mode="indeterminate"
-    value="50"
-    *ngIf="isLoading"
-  ></mat-progress-spinner>
+
+    <div class="loader" *ngIf="isLoading"></div>
 </main>

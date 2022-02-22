@@ -1,115 +1,68 @@
 <div class="form" *ngIf="isNew || (!isNew && pressing)">
-  <h2 class="mt-3">Pressing Form</h2>
-  <form class="d-flex flex-column w-50 p-3" [formGroup]="pressingForm">
-    <mat-form-field class="example-full-width">
-      <mat-label>Name</mat-label>
-      <input matInput placeholder="Name" formControlName="name" />
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <mat-label>Phone Number</mat-label>
-      <input
-        matInput
-        placeholder="Phone number"
-        formControlName="phoneNumber"
-      />
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <mat-label>Address</mat-label>
-      <input
-        type="text"
-        placeholder="Address"
-        formControlName="address"
-        matInput
-        [matAutocomplete]="auto"
-      />
-      <mat-autocomplete
-        autoActiveFirstOption
-        #auto="matAutocomplete"
-        (optionSelected)="onSelectionChange($event)"
-      >
-        <mat-option *ngFor="let option of options" [value]="option">
-          {{ option }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Add products</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <ng-container formArrayName="products">
-          <div *ngFor="let _ of products.controls; index as i">
-            <ng-container class="w-10" [formGroupName]="i">
-              <div
-                class="d-flex flex-row justify-content-center align-items-center"
-              >
-                <mat-form-field class="p-3 w-25" appearance="fill">
-                  <mat-label>Category</mat-label>
-                  <input
-                    placeholder="Category"
-                    matInput
-                    formControlName="category"
-                    [matAutocomplete]="auto"
-                  />
-                  <mat-autocomplete
-                    autoActiveFirstOption
-                    #auto="matAutocomplete"
-                  >
-                    <mat-option
-                      *ngFor="let category of categories"
-                      [value]="category"
-                    >
-                      {{ category }}
-                    </mat-option>
-                  </mat-autocomplete>
-                </mat-form-field>
-                <mat-form-field class="p-3 w-25" appearance="fill">
-                  <mat-label>Product Name</mat-label>
-                  <input
-                    placeholder="Product name"
-                    matInput
-                    formControlName="name"
-                  />
-                </mat-form-field>
-                <mat-form-field class="p-3 w-25" appearance="fill">
-                  <mat-label>Price</mat-label>
-                  <input placeholder="Price" matInput formControlName="price" />
-                </mat-form-field>
-                <button
-                  (click)="removeProduct(i)"
-                  mat-icon-button
-                  aria-label="Example icon button with a vertical three dot icon"
-                >
+    <h2 class="mt-3">Pressing Form</h2>
+    <form class="d-flex flex-column w-50 p-3" [formGroup]="pressingForm">
+        <mat-form-field class="example-full-width">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" formControlName="name" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Phone Number</mat-label>
+            <input matInput placeholder="Phone number" formControlName="phoneNumber" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Address</mat-label>
+            <input type="text" placeholder="Address" formControlName="address" matInput [matAutocomplete]="auto" />
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onSelectionChange($event)">
+                <mat-option *ngFor="let option of options" [value]="option">
+                    {{ option }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>Add products</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <ng-container formArrayName="products">
+                    <div *ngFor="let _ of products.controls; index as i">
+                        <ng-container class="w-10" [formGroupName]="i">
+                            <div class="d-flex flex-row justify-content-center align-items-center">
+                                <mat-form-field class="p-3 w-25" appearance="fill">
+                                    <mat-label>Category</mat-label>
+                                    <input placeholder="Category" matInput formControlName="category" [matAutocomplete]="auto" />
+                                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                        <mat-option *ngFor="let category of categories" [value]="category">
+                                            {{ category }}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
+                                <mat-form-field class="p-3 w-25" appearance="fill">
+                                    <mat-label>Product Name</mat-label>
+                                    <input placeholder="Product name" matInput formControlName="name" />
+                                </mat-form-field>
+                                <mat-form-field class="p-3 w-25" appearance="fill">
+                                    <mat-label>Price</mat-label>
+                                    <input placeholder="Price" matInput formControlName="price" />
+                                </mat-form-field>
+                                <button (click)="removeProduct(i)" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
                   <mat-icon color="warn">remove_circle</mat-icon>
                 </button>
-              </div>
-            </ng-container>
-          </div>
-        </ng-container>
-      </mat-card-content>
-      <mat-card-actions>
-        <button (click)="addProduct()" mat-raised-button color="primary">
+                            </div>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </mat-card-content>
+            <mat-card-actions>
+                <button (click)="addProduct()" mat-raised-button color="primary">
           Add Product
           <mat-icon>add_circle</mat-icon>
         </button>
-      </mat-card-actions>
-    </mat-card>
-  </form>
-  <button
-    class="create-pressing"
-    (click)="isNew ? createPressing() : updatePressing()"
-    type="submit"
-    mat-raised-button
-    color="primary"
-  >
+            </mat-card-actions>
+        </mat-card>
+    </form>
+    <button class="create-pressing" (click)="isNew ? createPressing() : updatePressing()" type="submit" mat-raised-button color="primary">
     {{ getMessageButton() }}
   </button>
-  <mat-progress-spinner
-    class="example-margin"
-    color="primary"
-    mode="indeterminate"
-    value="50"
-    *ngIf="isLoading"
-  ></mat-progress-spinner>
+    <div class="loader" *ngIf="isLoading"></div>
 </div>
