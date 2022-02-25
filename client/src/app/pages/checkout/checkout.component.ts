@@ -92,7 +92,8 @@ export class CheckoutComponent implements OnInit {
         purchase_units: [
           {
             amount: {
-              value: this.getPrice().toString(),
+              // value: this.getPrice().toString(),
+              value: "10",
               currency_code: 'ILS'
             }
           }
