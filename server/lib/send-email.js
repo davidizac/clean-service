@@ -24,6 +24,7 @@ module.exports.sendWelcomeEmail = async email => {
 }
 
 module.exports.sendOrderConfirmation = async email => {
+    console.log('sendOrderConfirmation', email);
     const template = fs.readFileSync(path.join(__dirname, 'order-confirmation.ejs'), 'utf-8')
 
     await transporter.sendMail({
