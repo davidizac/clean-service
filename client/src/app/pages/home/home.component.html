@@ -14,10 +14,20 @@
         </div>
     </div>
 </div>
-<main style="overflow: hidden;">
+<div class="containerBannerOffer" id="containerBannerOffer">
+    <!-- <div class="cordeBanner"></div> -->
+    <div class="bannerOffer">
+        <div class="offre">
+            <!-- {{"OFFRE DE FIDÉLITÉ: Après 4 livraisons cumulées, Cleeser vous offre -10% sur la 5ème commande !" | translate}} -->
+            {{"OFFRE DE FIDÉLITÉ:" | translate}} <br> {{"-10% sur la 5ème commande !" | translate}}
+        </div>
+        <img style="width: 100%; height: 100%; position: absolute; top: 0; z-index: -1; border-radius: 50%;" src="../../../assets/images/banner.png" alt="">
+    </div>
+</div>
+<main>
 
 
-    <section id="slide" class="slide background-withcolor" [ngClass]="globalService.rtlSide == 'rtl' ? 'slideRtl' : ''">
+    <section id="slide" style="z-index: 2;" class="slide background-withcolor" [ngClass]="globalService.rtlSide == 'rtl' ? 'slideRtl' : ''">
         <div class="content-bottom">
             <div class="container">
 
@@ -30,16 +40,19 @@
 
                     <div class="col-md-5 aos-init aos-animate" data-aos="fade-left" data-aos-delay="200" style="margin-inline-start: auto;">
 
+
                         <div style="position: relative; width: 267px;" class="mx-auto">
                             <img src="assets/images/logoPhoneHome2.png" class="img-fluid d-block mx-auto" style="max-width: 560px;" alt="">
                             <!-- <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary  btn-white shadow btn-theme d-block d-md-none btn-primaryMobile"><span  style="font-weight: bold;">{{'Nos Pressings' | translate}}</span></a> -->
                             <span (click)="goToLinkOfPath('pressings')" class="btnNosPressingMobile d-flex d-md-none">{{'Nos Pressings' | translate}}</span>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- End Header -->
 
     <!-- <div class="specialOffer" style="height: 229px ;width: 100%;">
@@ -48,12 +61,8 @@
         </div>
     </div> -->
 
-    <div class="bannerOffer">
-        <div class="offre" data-aos="fade-right" data-aos-duration="1000">
-            {{"OFFRE DE FIDÉLITÉ: Après 4 livraisons cumulées, Cleeser vous offre -10% sur la 5ème commande !" | translate}}
-        </div>
-        <img style="width: 100%; height: 100%; position: absolute; top: 0; z-index: -1;" src="../../../assets/images/banner.png" alt="">
-    </div>
+
+
 
     <!-- Start Boxes -->
     <section id="boxes" class="boxes padding-100">

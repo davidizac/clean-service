@@ -16,7 +16,7 @@ declare let $: any;
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  
+
 })
 
 // 
@@ -34,14 +34,15 @@ export class HomeComponent implements OnInit {
     private localize: LocalizeRouterService,
     public globalService: GlobalService,
     private myEvent: MyEvent
-  ) { AOS.init();
+  ) {
+    AOS.init();
     this.langs = [
-      {name: 'Francais', code: 'FR'},
-      {name: 'Anglais', code: 'EN'},
-      {name: 'Israelien', code: 'IL'},
-    ]; 
+      { name: 'Francais', code: 'FR' },
+      { name: 'Anglais', code: 'EN' },
+      { name: 'Israelien', code: 'IL' },
+    ];
 
-   }
+  }
 
 
   ngOnInit() {
@@ -49,8 +50,8 @@ export class HomeComponent implements OnInit {
       .getAllPressings()
       .subscribe((pressings: Array<Pressing>) => {
         console.log(pressings);
-        
-        this.fourPressingDisplayed.push(...pressings.slice(0,4))
+
+        this.fourPressingDisplayed.push(...pressings.slice(0, 4))
       })
 
 
@@ -61,9 +62,9 @@ export class HomeComponent implements OnInit {
     var btnSignIn = $('.btnSignIn')
 
 
-    
+
     $(window).scroll(function () {
-   // if ($(window).scrollTop() > 100 && $(window).scrollTop() <= 120) {
+      // if ($(window).scrollTop() > 100 && $(window).scrollTop() <= 120) {
       //   navbar.addClass('opacityHeader0');
       // }
 
@@ -75,8 +76,9 @@ export class HomeComponent implements OnInit {
         imgLogoBlue.addClass('d-none')
         imgLogoBlue.removeClass('d-block');
         btnSignIn.removeClass('btnSignInScroll')
+        document.getElementById("containerBannerOffer").classList.remove('effectDownBanner')
 
-      } else if($(window).scrollTop() > 120) {
+      } else if ($(window).scrollTop() > 120) {
         // navbar.removeClass('opacityHeader0');
         navbar.addClass('navbar-scroll');
         navLink.addClass('nav-link-scroll');
@@ -84,6 +86,7 @@ export class HomeComponent implements OnInit {
         imgLogoBlue.removeClass('d-none')
         imgLogoBlue.addClass('d-block')
         btnSignIn.addClass('btnSignInScroll')
+        document.getElementById("containerBannerOffer").classList.add('effectDownBanner')
       }
     });
   }
@@ -105,11 +108,11 @@ export class HomeComponent implements OnInit {
     this.router.navigate([route])
   }
 
-  chooseLang(lang){
+  chooseLang(lang) {
     this.localize.changeLanguage(lang);
     this.myEvent.setLanguageData(lang);
   }
 
- 
+
 
 }

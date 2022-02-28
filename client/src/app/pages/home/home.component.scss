@@ -1274,10 +1274,12 @@ footer .copyright a:hover {
 // }
 .offre {
     color: white;
-    font-size: 25px;
+    font-size: 13px;
     max-width: 465px;
     text-align: center;
-    line-height: 40px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
     // position: absolute;
     // top: 50%;
     // left: 50%;
@@ -1295,10 +1297,35 @@ footer .copyright a:hover {
 }
 
 .bannerOffer {
-    height: 229px;
-    margin-bottom: 8%;
+    height: 145px;
+    width: 145px;
+    margin: 0 auto 8%;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.containerBannerOffer {
+    margin-inline-start: auto;
+    position: fixed;
+    top: -255px;
+    z-index: 4;
+    max-width: 434px;
+    transition: 0.8s all ease;
+    left: 50px;
+}
+
+.cordeBanner {
+    width: 5px;
+    height: 80px;
+    background-color: #dddd66;
+    margin: auto;
+}
+
+.effectDownBanner {
+    top: 13vw;
 }
