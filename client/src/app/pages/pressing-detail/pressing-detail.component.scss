@@ -448,9 +448,12 @@ mat-progress-spinner {
 
 @keyframes textPriceEffect {
     50% {
-        font-size: 25px;
+        font-size: 22px;
+        color: red;
+        font-weight: bold;
     }
     100% {
         font-size: 12px;
+        font-weight: bold;
     }
 }
