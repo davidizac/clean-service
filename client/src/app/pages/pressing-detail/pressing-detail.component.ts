@@ -96,6 +96,9 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
   createCheckout() {
     if (this.getPrice() < 100) {
       document.getElementById("minPriceText").classList.add("effectErrorMinPrice")
+      setTimeout(() => {
+        document.getElementById("minPriceText").classList.add("errorMessage")
+      }, 1000);
       return
     }
     const route = this.localize.translateRoute(`/checkout`);

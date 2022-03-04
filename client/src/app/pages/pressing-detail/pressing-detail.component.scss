@@ -443,17 +443,23 @@ mat-progress-spinner {
 }
 
 .effectErrorMinPrice {
-    animation: textPriceEffect 2s linear;
+    animation: textPriceEffect 1s linear;
 }
 
 @keyframes textPriceEffect {
     50% {
-        font-size: 22px;
+        font-size: 19px;
         color: red;
         font-weight: bold;
     }
     100% {
         font-size: 12px;
         font-weight: bold;
+        color: red
     }
+}
+
+.errorMessage {
+    color: red;
+    font-weight: bold;
 }
