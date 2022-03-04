@@ -58,7 +58,6 @@ export class OrderConfirmationComponent implements OnInit {
       )
       .subscribe((order: Order) => {
         this.order = new Order(order);
-        console.log(this.order);
         
         this.isLoading = false;
       });

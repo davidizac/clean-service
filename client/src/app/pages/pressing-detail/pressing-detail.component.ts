@@ -41,7 +41,7 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit(): void {
     setTimeout(() => {
-      document.getElementById('title').classList.add('borderName-active')
+      document.getElementById('title')?.classList.add('borderName-active')
     }, 500);
     
   }
@@ -66,7 +66,6 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
           return this.pressingService.getPressing(params.id);
         }),
         switchMap((pressing: any) => {
-          console.log(pressing);
 
           if (
             this.route.snapshot.queryParamMap['params'] &&

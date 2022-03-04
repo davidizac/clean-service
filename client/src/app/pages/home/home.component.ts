@@ -49,8 +49,6 @@ export class HomeComponent implements OnInit {
     this.pressingService
       .getAllPressings()
       .subscribe((pressings: Array<Pressing>) => {
-        console.log(pressings);
-
         this.fourPressingDisplayed.push(...pressings.slice(0, 4))
       })
 
@@ -76,7 +74,7 @@ export class HomeComponent implements OnInit {
         imgLogoBlue.addClass('d-none')
         imgLogoBlue.removeClass('d-block');
         btnSignIn.removeClass('btnSignInScroll')
-        document.getElementById("containerBannerOffer").classList.remove('effectDownBanner')
+        document.getElementById("containerBannerOffer")?.classList.remove('effectDownBanner')
 
       } else if ($(window).scrollTop() > 120) {
         // navbar.removeClass('opacityHeader0');
@@ -86,7 +84,7 @@ export class HomeComponent implements OnInit {
         imgLogoBlue.removeClass('d-none')
         imgLogoBlue.addClass('d-block')
         btnSignIn.addClass('btnSignInScroll')
-        document.getElementById("containerBannerOffer").classList.add('effectDownBanner')
+        document.getElementById("containerBannerOffer")?.classList.add('effectDownBanner')
       }
     });
   }

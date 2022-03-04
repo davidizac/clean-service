@@ -36,30 +36,24 @@ export class AppComponent {
   ) {
     var pathName
     router.events.subscribe(() => {
-      console.log('events');
-
       pathName = window.location.pathname.split('/')
       if (pathName[pathName.length - 1] == 'signin') {
-        document.getElementById('header').classList.add('undisplay')
+        document.getElementById('header')?.classList.add('undisplay')
       } else {
-        document.getElementById('header').classList.remove('undisplay')
+        document.getElementById('header')?.classList.remove('undisplay')
       }
     })
     this.globalService.languageObservable()
     this.myEvent.getLanguageObservable().subscribe((value) => {
-      console.log(value);
-
 
       // this.localize.changeLanguage(this.localize.parser.currentLang === 'fr' ? 'en' : 'fr');
       // this.router.navigate(["/en/home"]);
       this.globalService.setDirectionAccordingly(value);
-      console.log(window.location.pathname);
     });
 
   }
 
   ngOnInit() {
-    console.log('OnINIT', this.localize.parser);
     if (this.localize.parser.currentLang) {
       this.myEvent.setLanguageData(this.localize.parser.currentLang)
       this.localize.changeLanguage(this.localize.parser.currentLang);

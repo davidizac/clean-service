@@ -16,7 +16,8 @@ import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 export class OrdersComponent implements OnInit {
   selectedOrders = [];
   isLoading = false;
-  orders: Array<Order> = [];
+  // orders: Array<Order> = [];
+  orders: any
   statusMessage = '';
   lang:string
 

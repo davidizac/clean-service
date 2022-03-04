@@ -109,31 +109,31 @@ export class SigninComponent implements OnInit {
   checkAllFieldsErr() {
     var check = false
     if (!this.email || this.email.trim().length == 0) {
-      document.getElementById("email").classList.add('errInput')
+      document.getElementById("email")?.classList.add('errInput')
       check = true
     }else{
-      document.getElementById("email").classList.remove('errInput')
+      document.getElementById("email")?.classList.remove('errInput')
     }
 
     if (!this.password || this.password.trim().length == 0) {
-      document.getElementById("password").classList.add('errInput')
+      document.getElementById("password")?.classList.add('errInput')
       check = true
     }else{
-      document.getElementById("password").classList.remove('errInput')
+      document.getElementById("password")?.classList.remove('errInput')
     }
 
     if (!this.fullname || this.fullname.trim().length == 0) {
-      document.getElementById("fullName").classList.add('errInput')
+      document.getElementById("fullName")?.classList.add('errInput')
       check = true
     }else{
-      document.getElementById("fullName").classList.remove('errInput')
+      document.getElementById("fullName")?.classList.remove('errInput')
     }
 
     if (!this.phoneNumber || this.phoneNumber.trim().length == 0) {
-      document.getElementById("number").classList.add('errInput')
+      document.getElementById("number")?.classList.add('errInput')
       check = true
     }else{
-      document.getElementById("number").classList.remove('errInput')
+      document.getElementById("number")?.classList.remove('errInput')
     }
 
     return check

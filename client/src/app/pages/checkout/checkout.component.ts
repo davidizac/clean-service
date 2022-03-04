@@ -26,6 +26,7 @@ export class CheckoutComponent implements OnInit {
   offerFidelity: boolean;
   priceWithouOffer: any;
   public payPalConfig?: IPayPalConfig;
+  isLoading: boolean = false;
   constructor(
     public route: ActivatedRoute,
     public router: Router,
@@ -92,8 +93,7 @@ export class CheckoutComponent implements OnInit {
         purchase_units: [
           {
             amount: {
-              // value: this.getPrice().toString(),
-              value: "10",
+              value: this.getPrice().toString(),
               currency_code: 'ILS'
             }
           }
@@ -110,7 +110,7 @@ export class CheckoutComponent implements OnInit {
         size: 'large'
       },
       onApprove: (data, actions) => {
-        console.log('onApprove - transaction was approved, but not authorized', data, actions);
+        this.isLoading = true
         actions.order.get().then(details => {
           alert('transaction completed')
           this.order.payment = 'paypal'
@@ -159,8 +159,6 @@ export class CheckoutComponent implements OnInit {
     });
 
     this.isNew = this.route.snapshot.queryParamMap['params'].isNew;
-    console.log(this.isNew);
-
 
     this.order = JSON.parse(this.route.snapshot.queryParamMap['params'].order);
     this.payment = this.order.payment
@@ -181,13 +179,11 @@ export class CheckoutComponent implements OnInit {
     this.filteredProducts = _.uniqBy(this.products, '_id');
 
     this.orderService.getMyOrders().subscribe((orders: Array<Order>) => {
-      console.log(orders.length);
-      if (orders.length > 0 && orders.length % 5 == 0 && this.isNew == 'true') {
+      if (orders.length > 0 && (((orders.length+1) % 5) == 0) && this.isNew == 'true') {
         this.offerFidelity = true
       }
     });
 
-    console.log(this.payment);
     if (this.isNew == 'true' || this.payment == 'cash') {
       this.initConfig();
     }
@@ -251,9 +247,9 @@ export class CheckoutComponent implements OnInit {
 
   onKeydown(){
     if (this.isInvalidOrder) {
-      document.getElementById("unclickable").classList.add('paymentButtonsUnclickable')
+      document.getElementById("unclickable")?.classList.add('paymentButtonsUnclickable')
     } else {
-      document.getElementById("unclickable").classList.remove('paymentButtonsUnclickable')
+      document.getElementById("unclickable")?.classList.remove('paymentButtonsUnclickable')
       this.errorMessage = ''
     }
   }
@@ -376,10 +372,10 @@ export class CheckoutComponent implements OnInit {
     this.order.status = 'NEW';
     this.order.price = this.getPrice().toString();
     this.order.payment = this.order.payment == 'paypal' ? 'paypal' : 'cash'
-    console.log(this.order);
 
     this.orderService.createOrder(this.order).subscribe((order) => {
       const route = this.localize.translateRoute(`/order-confirmation/${order._id}`);
+      this.isLoading = false
       this.router.navigate([route], {
         queryParams: { isNew: true },
       });
