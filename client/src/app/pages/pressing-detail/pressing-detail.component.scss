@@ -441,3 +441,16 @@ mat-progress-spinner {
     top: 238px;
     left: 50%;
 }
+
+.effectErrorMinPrice {
+    animation: textPriceEffect 2s linear;
+}
+
+@keyframes textPriceEffect {
+    50% {
+        font-size: 25px;
+    }
+    100% {
+        font-size: 12px;
+    }
+}

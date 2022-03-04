@@ -43,7 +43,7 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       document.getElementById('title')?.classList.add('borderName-active')
     }, 500);
-    
+
   }
 
   @ViewChild(MatAccordion) accordion: MatAccordion;
@@ -94,6 +94,10 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
   }
 
   createCheckout() {
+    if (this.getPrice() < 100) {
+      document.getElementById("minPriceText").classList.add("effectErrorMinPrice")
+      return
+    }
     const route = this.localize.translateRoute(`/checkout`);
     this.router.navigate([route], {
       queryParams: {
