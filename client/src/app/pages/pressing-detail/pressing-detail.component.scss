@@ -449,17 +449,20 @@ mat-progress-spinner {
 @keyframes textPriceEffect {
     50% {
         font-size: 19px;
-        color: red;
+        color: #c28c8c;
         font-weight: bold;
     }
     100% {
         font-size: 12px;
         font-weight: bold;
-        color: red
+        color: #c28c8c
     }
 }
 
 .errorMessage {
-    color: red;
+    color: #c28c8c;
     font-weight: bold;
+    transition: 0.5s all ease;
+    margin-top: 10px;
+    display: block;
 }
