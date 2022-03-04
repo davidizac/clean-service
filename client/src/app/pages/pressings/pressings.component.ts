@@ -57,7 +57,7 @@ export class PressingsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.isLoading = true
     // this.route.params.subscribe(value => {
     //   this.lang = value['lang']
     //   this.myEvent.setLanguageData(this.lang);
@@ -76,6 +76,7 @@ export class PressingsComponent implements OnInit {
             0,
             this.pageSize
           );
+          this.isLoading = false
           return this.userService.isAdmin();
         })
       )

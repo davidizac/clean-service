@@ -26,7 +26,6 @@ export class CheckoutComponent implements OnInit {
   offerFidelity: boolean;
   priceWithouOffer: any;
   public payPalConfig?: IPayPalConfig;
-  isLoading: boolean = false;
   constructor(
     public route: ActivatedRoute,
     public router: Router,
@@ -110,7 +109,6 @@ export class CheckoutComponent implements OnInit {
         size: 'large'
       },
       onApprove: (data, actions) => {
-        this.isLoading = true
         actions.order.get().then(details => {
           alert('transaction completed')
           this.order.payment = 'paypal'
@@ -375,7 +373,6 @@ export class CheckoutComponent implements OnInit {
 
     this.orderService.createOrder(this.order).subscribe((order) => {
       const route = this.localize.translateRoute(`/order-confirmation/${order._id}`);
-      this.isLoading = false
       this.router.navigate([route], {
         queryParams: { isNew: true },
       });
