@@ -55,20 +55,26 @@
                     <ng-container *ngFor="let pressing of pressingDisplayed">
                         <ng-container *ngIf="isPressingOpened(pressing)">
                             <button (click)="closePressing(pressing)" class="liFQGu">{{ pressing.name }}</button>
-                            <div class="productList__ProductListContainer-sc-1oz9rbz-5 hiKKKS">
+                            <div class="productList__ProductListContainer-sc-1oz9rbz-5 hiKKKS" (click)="navigateToPressing(pressing._id)">
                                 <div class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF">
                                     <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
                                         <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe"></div>
-                                        <strong>Address:</strong> {{ pressing.address }}
+                                        <strong style="display: inline-block;">{{'Address' | translate}}:</strong> {{ pressing.address }}
                                     </div>
                                 </div>
-                                <div class="wrapper-icon">
-                                    <button mat-button (click)="navigateToPressing(pressing._id)">
-                      <mat-icon
+                                <div class="wrapper-icon" style="margin-top: -13px;">
+                                    <button mat-button>
+                      <mat-icon *ngIf="globalService.rtlSide == 'ltr'"
                         class="example-icon"
                         mat-button
                         style="color: black"
                         >chevron_right</mat-icon
+                      >
+                      <mat-icon *ngIf="globalService.rtlSide != 'ltr'"
+                        class="example-icon"
+                        mat-button
+                        style="color: black"
+                        >chevron_left</mat-icon
                       >
                     </button>
                                     <button *ngIf="isAdmin" mat-button (click)="updatePressing(pressing._id)">
@@ -82,7 +88,7 @@
                         </ng-container>
                         <ng-container *ngIf="!isPressingOpened(pressing)">
                             <button (click)="openPressing(pressing)" class="liFQGu">
-                  {{ pressing.name }}<svg width="24" height="24">
+                  {{ pressing.name }}<svg width="24" height="24" [style.transform]="globalService.rtlSide == 'ltr' ? 'scaleX(1)' : 'scaleX(-1)'">
                     <path
                       fill="#112631"
                       fill-rule="evenodd"
