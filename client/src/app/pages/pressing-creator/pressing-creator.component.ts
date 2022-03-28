@@ -65,6 +65,7 @@ export class PressingCreatorComponent implements OnInit {
       name: '',
       address: '',
       phoneNumber: '',
+      area: '',
       products: this.formBuilder.array(
         [this.formBuilder.group(this.product)],
         validateSize
@@ -80,6 +81,7 @@ export class PressingCreatorComponent implements OnInit {
         name: this.pressing.name || '',
         address: this.pressing.address || '',
         phoneNumber: this.pressing.phoneNumber || '',
+        area: this.pressing.area || '',
         products: ((this.pressing.products.length > 0
           ? this.pressing.products
           : new Array(1).fill(this.product)) as Array<IProduct>).map((p) => {

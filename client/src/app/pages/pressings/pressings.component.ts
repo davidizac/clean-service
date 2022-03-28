@@ -72,6 +72,8 @@ export class PressingsComponent implements OnInit {
       .pipe(
         switchMap((pressings: Array<Pressing>) => {
           this.pressings = pressings.map((p) => new Pressing(p));
+          console.log(this.pressings);
+          
           this.pressingDisplayed = _.cloneDeep(this.pressings).splice(
             0,
             this.pageSize

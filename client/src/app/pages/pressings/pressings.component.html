@@ -10,7 +10,7 @@
                         {{'Recevez votre linge du pressing en moins de 48 heures' | translate}}
                     </div>
                 </div>
-                <div class="style__SearchInputContainer-mh2zh9-11 bJdKoS mb-5">
+                <div class="style__SearchInputContainer-mh2zh9-11 bJdKoS">
                     <input [formControl]="location" placeholder="{{'Taper votre localisation' | translate}}" matInput [matAutocomplete]="auto" class="style__SearchInput-mh2zh9-10 jeKoNK" />
                     <mat-autocomplete (optionSelected)="onSelectionChange($event)" autoActiveFirstOption #auto="matAutocomplete">
                         <mat-option *ngFor="let option of options" [value]="option">
@@ -28,7 +28,8 @@
 
                 <section class="container d-none d-lg-block">
                     <div class="row mb-5 justify-content-between ">
-                        <div *ngFor="let pressing of pressingDisplayed" class="item text-center slick-center col-10 col-md-8 col-lg-7 justify-content-between row align-items-center mx-auto mb-3 bg-white py-3" data-slick-index="0" aria-hidden="true" tabindex="0" style="border-radius: 6px;">
+                        <div *ngFor="let pressing of pressingDisplayed" class="item text-center slick-center col-10 col-md-8 col-lg-7 justify-content-between row align-items-center mx-auto bg-white py-3" data-slick-index="0" aria-hidden="true" tabindex="0" style="border-radius: 0 6px 6px 6px; transition: 1s all ease; margin-bottom: 65px;">
+                            <div class="badgeArea">{{pressing.area}}</div>
                             <div class="col-9" style="text-align: start;">
                                 <p style="font-size: 21px; font-weight: bold;">{{pressing.name}} </p>
                                 <p style="font-weight: bold; font-size: 16px;">{{pressing.address}}</p>
@@ -54,11 +55,12 @@
                 <div class="pressings-list d-block d-lg-none">
                     <ng-container *ngFor="let pressing of pressingDisplayed">
                         <ng-container *ngIf="isPressingOpened(pressing)">
-                            <button (click)="closePressing(pressing)" class="liFQGu">{{ pressing.name }}</button>
+                            <button (click)="closePressing(pressing)" class="liFQGu">{{ pressing.area }}</button>
                             <div class="productList__ProductListContainer-sc-1oz9rbz-5 hiKKKS" (click)="navigateToPressing(pressing._id)">
                                 <div class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF">
                                     <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp">
                                         <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe"></div>
+                                        <strong style="display: inline-block;">{{'Name' | translate}}:</strong> {{ pressing.name }} <br>
                                         <strong style="display: inline-block;">{{'Address' | translate}}:</strong> {{ pressing.address }}
                                     </div>
                                 </div>
@@ -88,7 +90,7 @@
                         </ng-container>
                         <ng-container *ngIf="!isPressingOpened(pressing)">
                             <button (click)="openPressing(pressing)" class="liFQGu">
-                  {{ pressing.name }}<svg width="24" height="24" [style.transform]="globalService.rtlSide == 'ltr' ? 'scaleX(1)' : 'scaleX(-1)'">
+                  {{ pressing.area }}<svg width="24" height="24" [style.transform]="globalService.rtlSide == 'ltr' ? 'scaleX(1)' : 'scaleX(-1)'">
                     <path
                       fill="#112631"
                       fill-rule="evenodd"

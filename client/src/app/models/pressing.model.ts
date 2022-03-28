@@ -4,6 +4,7 @@ export class Pressing {
   _id: string;
   name: string;
   address: string;
+  area: string;
   phoneNumber: string;
   latitude: string;
   longitude: string;
@@ -13,6 +14,7 @@ export class Pressing {
     const {
       name,
       address,
+      area,
       phoneNumber,
       products,
       latitude,
@@ -21,6 +23,7 @@ export class Pressing {
     } = pressingData;
     this.name = name;
     this.address = address;
+    this.area = area;
     this.phoneNumber = phoneNumber;
     this.products = products;
     this.latitude = latitude;

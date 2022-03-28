@@ -47,12 +47,13 @@
     margin-top: 15px;
     padding: 0px 5%;
     width: 100%;
+    margin-bottom: 65px;
 }
 
 @media (min-width: 1200px) {
     .bJdKoS {
         padding: 0px;
-        margin: 20px auto auto;
+        margin: 20px auto 65px;
         width: 470px;
     }
 }
@@ -325,7 +326,7 @@ mat-progress-spinner {
 @media (min-width: 768px) {
     main {
         position: relative;
-        min-height: calc(100vh - 110px);
+        min-height: calc(100vh - 90px);
     }
 }
 
@@ -343,4 +344,21 @@ footer {
 .item:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transition: box-shadow 0.4s ease-in-out;
+}
+
+.badgeArea {
+    position: absolute;
+    background: #4DA4E0;
+    left: 0;
+    min-width: 110px;
+    border-radius: 14px 14px 0 0;
+    height: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    top: -38px;
+    padding: 0 16px;
 }
