@@ -139,6 +139,7 @@
     "Mon profile": "My profile",
     "Prenom": "First name",
     "Nom": "Last name",
+
     "Telephone": "Phone",
     "Mes commandes": "My orders",
     "Pour voir vos commandes,": "To see your orders",
@@ -153,8 +154,8 @@
     "Mot de passe incorrect.": "Incorrect password.",
     "Deja inscrit ?": "Already registered ?",
     "Se connecter": "log in",
-    "Mot de passe oublié ?": "Forgot your password ?",
-    "Pas encore inscrit ?": "Not registered ?",
+    "Mot de passe oublié": "Forgot your password",
+    "Pas encore inscrit": "Not registered",
     "Accueil": "Home",
     "Pressings": "Dry cleaners",
     "Commandes": "Orders",
