@@ -161,7 +161,7 @@
                                 <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe">
                                     <span class="productList__Number-sc-1oz9rbz-8 jDEDaq">x{{ getRecurrence(product) }}</span>
                                 </div>
-                                {{ product.name }}
+                                {{ product.name | translate}}
                             </div>
                             <div class="col-4" style="display: flex;" *ngIf="isNew == 'true'">
                                 <button class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI" (click)="remove(product)">

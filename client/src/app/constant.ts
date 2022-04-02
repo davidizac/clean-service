@@ -4,7 +4,9 @@ export const CATEGORIES = [
   'Manteaux',
   'Pantalons',
   'Robes',
-  'Tappiseries',
+  'Linge de maison',
+  'Lavage au kilos',
+  'Autres',
 ];
 
 export type CATEGORIES = [
@@ -13,7 +15,9 @@ export type CATEGORIES = [
   'Manteaux',
   'Pantalons',
   'Robes',
-  'Tappiseries'
+  'Linge de maison',
+  'Lavage au kilos',
+  'Autres',
 ];
 
 export enum ORDER_STATUS {

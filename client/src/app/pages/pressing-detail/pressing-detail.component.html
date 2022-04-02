@@ -25,7 +25,7 @@
                         <div *ngFor="let product of filteredProducts" class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF">
                             <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp row" style="width: 100%;">
                                 <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe col-4">
-                                    <span class="productList__Number-sc-1oz9rbz-8 jDEDaq">x{{ getRecurrence(product) }}</span> {{ product.name }}
+                                    <span class="productList__Number-sc-1oz9rbz-8 jDEDaq">x{{ getRecurrence(product) }}</span> {{ product.name | translate}}
                                 </div>
 
                                 <div class="col-4" style="display: flex;">
