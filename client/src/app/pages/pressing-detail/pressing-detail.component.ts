@@ -67,6 +67,14 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
         }),
         switchMap((pressing: any) => {
 
+          pressing.products.forEach(element => {
+            if (element.price.toString().includes('-')) {
+              element.specialProduct = true
+            }
+          });
+
+          console.log(pressing);
+          
           if (
             this.route.snapshot.queryParamMap['params'] &&
             this.route.snapshot.queryParamMap['params'].isNew
@@ -76,6 +84,7 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
               this.route.snapshot.queryParamMap['params'].order
             );
             this.filteredProducts = _.uniqBy(this.order.products, '_id');
+
 
 
             this.orderId = this.route.snapshot.queryParamMap['params'].orderId;

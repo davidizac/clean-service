@@ -21,11 +21,14 @@ footer {
     font-family: Lato, sans-serif;
     font-size: 35px;
     font-weight: 600;
-    margin: 0 auto;
+    margin: 0 auto 10px;
     letter-spacing: 0.7px;
     width: 300px;
     height: 45px;
     text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .borderName {
@@ -465,4 +468,19 @@ mat-progress-spinner {
     transition: 0.5s all ease;
     margin-top: 10px;
     display: block;
+}
+
+.imgTitle {
+    animation: rot 4s infinite linear;
+    width: 50px;
+    margin: 10px;
+}
+
+@keyframes rot {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
