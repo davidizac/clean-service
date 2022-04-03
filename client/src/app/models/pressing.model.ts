@@ -37,4 +37,5 @@ export interface IProduct {
   name: string;
   price: string;
   category: CATEGORIES;
+  specialProduct: boolean
 }

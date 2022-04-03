@@ -13,6 +13,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   exports: [
@@ -27,6 +28,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatButtonModule,
     MatSelectModule,
     MatSlideToggleModule,
+    MatDialogModule
   ],
 })
 export class DemoMaterialModule {}

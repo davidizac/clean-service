@@ -10,6 +10,8 @@ import { of } from 'rxjs';
 import { MyEvent } from 'src/app/services/myevents.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { GlobalService } from 'src/app/services/global.service';
+import { PopUpWhatsappComponent } from '../pop-up-whatsapp/pop-up-whatsapp.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-pressing-detail',
@@ -33,7 +35,8 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
     private router: Router,
     public pressingService: PressingService,
     private myEvent: MyEvent,
-    private localize: LocalizeRouterService
+    private localize: LocalizeRouterService,
+    public dialog: MatDialog
   ) {
     console.log(this.globalService.rtlSide);
 
@@ -74,7 +77,7 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
           });
 
           console.log(pressing);
-          
+
           if (
             this.route.snapshot.queryParamMap['params'] &&
             this.route.snapshot.queryParamMap['params'].isNew
@@ -126,13 +129,25 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
       .includes(product._id);
   }
 
+  openDialog() {
+    this.dialog.open(PopUpWhatsappComponent);
+  }
+
   add(product: IProduct) {
+    if (product.specialProduct) {
+      this.openDialog()
+      return
+    }
     this.order.products.push(product);
     this.filteredProducts = _.uniqBy(this.order.products, '_id');
     console.log(this.filteredProducts);
   }
 
   remove(product: IProduct) {
+    if (product.specialProduct) {
+      this.openDialog()
+      return
+    }
     this.order.products.splice(
       (this.order.products as Array<IProduct>).findIndex(
         (p) => p._id === product._id
