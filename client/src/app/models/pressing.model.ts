@@ -35,7 +35,7 @@ export class Pressing {
 export interface IProduct {
   _id: string;
   name: string;
-  price: string;
+  price: any;
   category: CATEGORIES;
   specialProduct: boolean
 }

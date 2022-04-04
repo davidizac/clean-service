@@ -102,7 +102,7 @@
     "Modifié": "Modifié",
     "Ramassé": "Ramassé",
     "Déposé": "Déposé",
-    "Adresse": "Adresse",
+    "Adresse": "Addresse",
     "Dimanche-jeudi": "Dim-jeu",
     "17h-22h": "17h-22h",
     "Vendredi": "Ven",
@@ -120,7 +120,7 @@
     "Votre linge est au pressing": "Votre linge est au pressing",
     "Commande délivré": "Commande délivrée",
     "Numéro de commande": "Numéro de commande",
-    "Adresse de livraison": "Adresse de livraison",
+    "Adresse de livraison": "Addresse de livraison",
     "Total": "Total",
     "Modifier": "Modifier",
     "Voir plus de details": "Voir plus de détails",
@@ -204,6 +204,10 @@
     "Robe en soie": "Robe en soie",
     "Robe plisse": "Robe plissée",
     "Nape": "Nape",
-    "Manteau delicat (cuir, fourrure, etc..)": "Manteau délicat (cuir, fourrure, etc..)"
+    "Manteau delicat (cuir, fourrure, etc..)": "Manteau délicat (cuir, fourrure, etc..)",
+    "Les prix des articles délicats varient.": "Les prix des articles délicats varient.",
+    "Veuillez passer votre commande via": "Veuillez passer votre commande via",
+    "en envoyant votre article en photo": "en envoyant votre article en photo",
+    "et en indiquant le pressing choisi": "et en indiquant le pressing choisi"
 
 }

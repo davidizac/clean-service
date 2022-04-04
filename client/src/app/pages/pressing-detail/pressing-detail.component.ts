@@ -10,8 +10,8 @@ import { of } from 'rxjs';
 import { MyEvent } from 'src/app/services/myevents.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { GlobalService } from 'src/app/services/global.service';
-import { PopUpWhatsappComponent } from '../pop-up-whatsapp/pop-up-whatsapp.component';
 import {MatDialog} from '@angular/material/dialog';
+import { PopUpComponent } from '../pop-up/pop-up.component';
 
 @Component({
   selector: 'app-pressing-detail',
@@ -130,7 +130,11 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
   }
 
   openDialog() {
-    this.dialog.open(PopUpWhatsappComponent);
+    this.dialog.open(PopUpComponent, {
+      data: {
+        dataKey: this.pressing.name
+      }
+    });
   }
 
   add(product: IProduct) {
@@ -139,6 +143,8 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
       return
     }
     this.order.products.push(product);
+    product.price = Number(product.price)
+    
     this.filteredProducts = _.uniqBy(this.order.products, '_id');
     console.log(this.filteredProducts);
   }
