@@ -55,11 +55,11 @@
                     </div>
                 </div>
 
+
                 <ng-container *ngFor="let category of productsCategories">
                     <ng-container *ngIf="isCategoryOpened(category)">
                         <button (click)="closeCategory(category)" class="categoryList__CategoryLine-sc-1pzzo5j-0 fizWxZ">
-              {{ category
-              }}<svg width="24" height="24" [ngClass]="globalService.rtlSide == 'ltr' ? 'arrowRight' : 'arrowleft'">
+              {{ category | translate}}<svg width="24" height="24" [ngClass]="globalService.rtlSide == 'ltr' ? 'arrowRight' : 'arrowleft'">
                 <path
                   fill="#112631"
                   fill-rule="evenodd"
