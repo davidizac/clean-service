@@ -180,7 +180,8 @@
     "Lavage au kilos": "Washing by the kilo",
     "Autres": "Others",
     "Jupe plisse": "Pleated skirt",
-    "Chemise": "Shirt",
+    "Chemise (sans repassage)": "Shirt (with ironing)",
+    "Chemise (avec repassage)": "Shirt (with ironing)",
     "Gilet": "Vest",
     "Doudoune": "Puffy jacket",
     "Manteau long": "Long coat",
@@ -210,5 +211,7 @@
     "Veuillez passer votre commande via": "Please place your order via",
     "en envoyant votre article en photo": "by sending your article in photo",
     "et en indiquant le pressing choisi": "and indicating the dry cleaning chosen",
-    "Envoyer message": "Send message"
+    "Envoyer message": "Send message",
+    "1kg (sans repassage)": "1kg (without ironing)",
+    "1kg (avec repassage)": "1kg (with ironing)"
 }

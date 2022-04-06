@@ -180,7 +180,8 @@
     "Lavage au kilos": "כביסה לפי קילו",
     "Autres": "אחר",
     "Jupe plisse": "חצאית פליסה",
-    "Chemise": "חולצת גבר",
+    "Chemise (sans repassage)": "חולצת גבר (בלי גיהוץ)",
+    "Chemise (avec repassage)": "חולצת גבר (עם גיהוץ)",
     "Gilet": "ווסט",
     "Doudoune": "מעיל עבה",
     "Manteau long": "מעיל ערוך",
@@ -210,5 +211,7 @@
     "Veuillez passer votre commande via": "אנא בצע את ההזמנה שלך באמצעות",
     "en envoyant votre article en photo": "על ידי שליחת המאמר שלך בתמונה",
     "et en indiquant le pressing choisi": "וציון הכביסה שנבחרה",
-    "Envoyer message": "לשלוח הודעה"
+    "Envoyer message": "לשלוח הודעה",
+    "1kg (sans repassage)": "1 ק“ג (ללא גיהוץ)",
+    "1kg (avec repassage)": "1 ק“ג (עם גיהוץ)"
 }

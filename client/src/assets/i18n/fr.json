@@ -179,7 +179,8 @@
     "Lavage au kilos": "Lavage au kilos",
     "Autres": "Autres",
     "Jupe plisse": "Jupe plissée",
-    "Chemise": "Chemise",
+    "Chemise (avec repassage)": "Chemise (avec repassage)",
+    "Chemise (sans repassage)": "Chemise (sans repassage)",
     "Gilet": "Gilet",
     "Doudoune": "Doudoune",
     "Manteau long": "Manteau long",
@@ -209,5 +210,7 @@
     "Veuillez passer votre commande via": "Veuillez passer votre commande via",
     "en envoyant votre article en photo": "en envoyant votre article en photo",
     "et en indiquant le pressing choisi": "et en indiquant le pressing choisi",
-    "Envoyer message": "Envoyer message"
+    "Envoyer message": "Envoyer message",
+    "1kg (sans repassage)": "1kg (sans repassage)",
+    "1kg (avec repassage)": "1kg (avec repassage)"
 }
