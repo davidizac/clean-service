@@ -38,7 +38,6 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
     private localize: LocalizeRouterService,
     public dialog: MatDialog
   ) {
-    console.log(this.globalService.rtlSide);
 
     this.myEvent.setLanguageData(this.localize.parser.currentLang);
   }
@@ -75,8 +74,6 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
               element.specialProduct = true
             }
           });
-
-          console.log(pressing);
 
           if (
             this.route.snapshot.queryParamMap['params'] &&
@@ -146,7 +143,6 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
     product.price = Number(product.price)
     
     this.filteredProducts = _.uniqBy(this.order.products, '_id');
-    console.log(this.filteredProducts);
   }
 
   remove(product: IProduct) {
