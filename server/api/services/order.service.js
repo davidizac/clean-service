@@ -19,7 +19,7 @@ class OrderService {
         for (const order of orders) {
             if (order.products[0]) {
                 const pressing = await getPressingByProduct(order.products[0])
-                order.pressing = pressing.name
+                order.pressing = pressing?.name
             } else {
                 order.pressing = ''
             }
