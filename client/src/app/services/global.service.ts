@@ -8,7 +8,6 @@ export class GlobalService {
   rtlSide = "ltr";
   langGlobal: string;
 
-
   constructor(
     private myEvent: MyEvent,
   ) {

@@ -10,7 +10,7 @@ import { of } from 'rxjs';
 import { MyEvent } from 'src/app/services/myevents.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { GlobalService } from 'src/app/services/global.service';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 
 @Component({
@@ -29,6 +29,7 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
   isNew;
   orderId = '';
   lang: string
+  pressingId: string;
   constructor(
     private route: ActivatedRoute,
     public globalService: GlobalService,
@@ -59,47 +60,55 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
     //   this.lang = value['lang']
     //   this.myEvent.setLanguageData(this.lang);
     // })
+    this.pressingService
+      .getAllPressings()
+      .subscribe((pressings: Array<Pressing>) => {
+
+        this.pressingId = pressings[0]._id
+        this.route.params
+          .pipe(switchMap((params: any) => {
+
+            return this.pressingService.getPressing(this.pressingId);
+          }),
+            switchMap((pressing: any) => {
+
+              pressing.products.forEach(element => {
+                if (element.price.toString().includes('-')) {
+                  element.specialProduct = true
+                }
+              });
+
+              if (
+                this.route.snapshot.queryParamMap['params'] &&
+                this.route.snapshot.queryParamMap['params'].isNew
+              ) {
+                this.isNew = this.route.snapshot.queryParamMap['params'].isNew;
+                this.order = JSON.parse(
+                  this.route.snapshot.queryParamMap['params'].order
+                );
+                this.filteredProducts = _.uniqBy(this.order.products, '_id');
+
+
+
+                this.orderId = this.route.snapshot.queryParamMap['params'].orderId;
+
+              } else {
+                this.isNew = 'true';
+              }
+              return of(pressing);
+            })
+          )
+          .subscribe((pressing: Pressing) => {
+            this.pressing = new Pressing(pressing);
+            this.products = _.groupBy(this.pressing.products, 'category');
+            this.isLoading = false;
+          });
+      })
 
     this.myEvent.setLanguageData(this.localize.parser.currentLang);
     this.isLoading = true;
-    this.route.params
-      .pipe(
-        switchMap((params: any) => {
-          return this.pressingService.getPressing(params.id);
-        }),
-        switchMap((pressing: any) => {
-
-          pressing.products.forEach(element => {
-            if (element.price.toString().includes('-')) {
-              element.specialProduct = true
-            }
-          });
-
-          if (
-            this.route.snapshot.queryParamMap['params'] &&
-            this.route.snapshot.queryParamMap['params'].isNew
-          ) {
-            this.isNew = this.route.snapshot.queryParamMap['params'].isNew;
-            this.order = JSON.parse(
-              this.route.snapshot.queryParamMap['params'].order
-            );
-            this.filteredProducts = _.uniqBy(this.order.products, '_id');
 
 
-
-            this.orderId = this.route.snapshot.queryParamMap['params'].orderId;
-
-          } else {
-            this.isNew = 'true';
-          }
-          return of(pressing);
-        })
-      )
-      .subscribe((pressing: Pressing) => {
-        this.pressing = new Pressing(pressing);
-        this.products = _.groupBy(this.pressing.products, 'category');
-        this.isLoading = false;
-      });
   }
 
   createCheckout() {
@@ -141,7 +150,7 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
     }
     this.order.products.push(product);
     product.price = Number(product.price)
-    
+
     this.filteredProducts = _.uniqBy(this.order.products, '_id');
   }
 

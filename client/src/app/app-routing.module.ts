@@ -34,9 +34,10 @@ const routes: Routes = [
   {
     path: 'pressings',
     component: PressingsComponent,
+    canActivate: [AuthGuard, AdminGuard],
   },
   {
-    path: 'pressings/:id',
+    path: 'pressing',
     component: PressingDetailComponent,
   },
   {

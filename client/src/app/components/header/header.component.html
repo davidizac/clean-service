@@ -20,7 +20,7 @@
                                     <a class="nav-link anchor" [routerLink]="['/home'] | localize" routerLinkActive="active"> {{'Accueil' | translate}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link anchor" [routerLink]="['/pressings'] | localize" routerLinkActive="active"> {{ 'Nos pressings' | translate }}</a>
+                                    <a class="nav-link anchor" [routerLink]="['/pressing'] | localize" routerLinkActive="active"> {{ 'Nos tarifs' | translate }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link anchor" [routerLink]="['/orders'] | localize" routerLinkActive="active">{{'Mes commandes' | translate}}</a>
@@ -113,7 +113,7 @@
       class="mobile-menu__MobileMenuText-sc-17s3h0k-2"
       [ngClass]="selectedTab === 'pressings' ? 'gfhcyg' : 'kxwuOc'"
     >
-      {{'Pressings' | translate}}
+      {{'Tarifs' | translate}}
     </div></a
   ><a
     *ngIf="!adminMode"

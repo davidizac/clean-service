@@ -46,11 +46,11 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.pressingService
-      .getAllPressings()
-      .subscribe((pressings: Array<Pressing>) => {
-        this.fourPressingDisplayed.push(...pressings.slice(0, 4))
-      })
+    // this.pressingService
+    //   .getAllPressings()
+    //   .subscribe((pressings: Array<Pressing>) => {
+    //     this.fourPressingDisplayed.push(...pressings.slice(0, 4))
+    //   })
 
 
     var navbar = $('.navbar');
@@ -93,9 +93,13 @@ export class HomeComponent implements OnInit {
   }
 
 
-  navigateToPressing(pressingId) {
-    this.ngZone.run(() => {
-      const route = this.localize.translateRoute(`/pressings/${pressingId}`);
+  navigateToPressing() {
+    // this.ngZone.run(() => {
+    //   const route = this.localize.translateRoute(`/pressings/${pressingId}`);
+    //   this.router.navigate([route]);
+    // });
+      this.ngZone.run(() => {
+      const route = this.localize.translateRoute(`/pressing`);
       this.router.navigate([route]);
     });
   }
@@ -110,7 +114,6 @@ export class HomeComponent implements OnInit {
     this.localize.changeLanguage(lang);
     this.myEvent.setLanguageData(lang);
   }
-
 
 
 }

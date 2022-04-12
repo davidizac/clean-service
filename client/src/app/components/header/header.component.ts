@@ -25,7 +25,7 @@ export class HeaderComponent implements OnChanges {
   langs
 
 
-  constructor(public cd: ChangeDetectorRef, public router: Router, private localize: LocalizeRouterService, private myEvent: MyEvent) {
+  constructor( public cd: ChangeDetectorRef, public router: Router, private localize: LocalizeRouterService, private myEvent: MyEvent) {
     AOS.init();
     this.langs = [
       { name: 'Francais', code: 'FR' },
@@ -40,6 +40,7 @@ export class HeaderComponent implements OnChanges {
       this.changedTab(pathName)
     });
   }
+
 
   toggleAdminMode(e) {
     this.adminMode = e.checked;
@@ -71,7 +72,7 @@ export class HeaderComponent implements OnChanges {
   ngOnChanges() {
 
     this.adminMode = localStorage.getItem('adminMode') === 'true';
-    
+
 
     var navbar = $('.navbar');
     var navLink = $('.nav-link')
@@ -96,7 +97,7 @@ export class HeaderComponent implements OnChanges {
         imgLogoBlue.removeClass('d-block');
         btnSignIn.removeClass('btnSignInScroll')
 
-      } else if($(window).scrollTop() > 120) {
+      } else if ($(window).scrollTop() > 120) {
         // navbar.removeClass('opacityHeader0');
         navbar.addClass('navbar-scroll');
         navLink.addClass('nav-link-scroll');
@@ -108,8 +109,6 @@ export class HeaderComponent implements OnChanges {
       }
     });
   }
-
-
 
 
   goToLinkOfPath(path) {

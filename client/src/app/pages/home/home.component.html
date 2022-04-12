@@ -35,7 +35,7 @@
                     <div class="col-md-7 aos-init aos-animate" style="max-width: 510px; margin-top: -60px;" data-aos="fade-right">
                         <p style="font-size: 50px; line-height: 61px; font-family: 'Alata', sans-serif;" [ngClass]="globalService.rtlSide == 'ltr' ? 'text-left' : 'text-right'">{{ 'Le pressing de votre choix à porter de main.' | translate }}</p>
 
-                        <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary btn-white shadow btn-theme d-none d-md-block ml-3 btnOurPressing"><span style="font-weight: bold;">{{'Nos Pressings' | translate}}</span></a>
+                        <a (click)="navigateToPressing()" class="btn btn-primary btn-white shadow btn-theme d-none d-md-block ml-3 btnOurPressing"><span style="font-weight: bold;">{{'Nos tarifs' | translate}}</span></a>
                     </div>
 
                     <div class="col-md-5 aos-init aos-animate" data-aos="fade-left" data-aos-delay="200" style="margin-inline-start: auto;">
@@ -44,7 +44,7 @@
                         <div style="position: relative; width: 267px;" class="mx-auto">
                             <img src="assets/images/logoPhoneHome2.png" class="img-fluid d-block mx-auto" style="max-width: 560px;" alt="">
                             <!-- <a (click)="goToLinkOfPath('pressings')" class="btn btn-primary  btn-white shadow btn-theme d-block d-md-none btn-primaryMobile"><span  style="font-weight: bold;">{{'Nos Pressings' | translate}}</span></a> -->
-                            <span (click)="goToLinkOfPath('pressings')" class="btnNosPressingMobile d-flex d-md-none">{{'Nos Pressings' | translate}}</span>
+                            <span (click)="navigateToPressing()" class="btnNosPressingMobile d-flex d-md-none">{{'Nos tarifs' | translate}}</span>
 
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                         <div class="space-20"></div>
                         <h4>{{'Libre Choix' | translate}}</h4>
                         <div class="space-15"></div>
-                        <p>{{'Le choix des pressings et leurs tarifs soffrent à vous' | translate}} <br> {{'Comparer, Selectionner, Valider !' | translate}}</p>
+                        <p>{{'Nos tarifs soffrent à vous' | translate}} <br> {{'Selectionner, Valider !' | translate}}</p>
                     </div>
                 </div>
             </div>
@@ -123,8 +123,8 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-12 aos-init" data-aos="zoom-in" data-aos-delay="200">
                             <div class="why-us-icon">
                                 <span class="lnr lnr-map-marker"></span>
-                                <p style="font-size: 19px; font-weight: 600;">{{'Choix du pressing' | translate}}</p>
-                                <p>{{'Sélectionner le pressing parmi nos différents partenaires.' | translate}}
+                                <p style="font-size: 19px; font-weight: 600;">{{'Choix des articles' | translate}}</p>
+                                <p>{{'Sélectionner les articles souhaités.' | translate}}
                                 </p>
                             </div>
                             <div class="space-25"></div>
@@ -166,7 +166,7 @@
         </div>
     </section>
 
-    <section id="other_features" class="other-features padding-100 pt-5 pb-4 background-withcolor">
+    <!-- <section id="other_features" class="other-features padding-100 pt-5 pb-4 background-withcolor">
         <div class="container-fluid">
 
             <div class="text-center col-12 section-title aos-init" data-aos="fade-zoom-in">
@@ -187,9 +187,6 @@
                             <h4 style="font-size: 15px;">{{pressing.name}}</h4>
                             <p style="font-weight: bold; font-size: 11px; line-height: 17px;">{{pressing.address}}</p>
                         </div>
-                        <!-- <div class="col col-md-12 align-self-end">
-                            <a (click)="navigateToPressing(pressing._id)" class="mx-auto align-self-end btn btn-primary shadow d-block btn-colord btn-theme " style="height:45px ; padding: 12px 35px !important"><span>{{'Selectionner' | translate}}</span></a>
-                        </div> -->
                     </div>
 
                 </div>
@@ -203,7 +200,7 @@
             </div>
 
         </div>
-    </section>
+    </section> -->
 
 
     <section>
@@ -217,8 +214,8 @@
             <div>
                 <p class="text-center" style="font-size: 23px;line-height: 1.7;margin-bottom: 0px; font-style: italic; color: #303952;">
                     {{'Qui n’a jamais laisser traîner un costume, une robe de soirée, un manteau ou même des rideaux durant des mois chez soi pour les amener au pressing mais toujours reporter ca à plus tard par manque de temps ou par flemme ? Effectivement, on est tous
-                    d’accord. C’est pour cela que nous avons développer cette plateforme qui assure la livraison pour vous, grâce notre service et nos différent partenariat avec les pressings. De ce fait en quelque clique sans bouger de chez vous vos
-                    vêtements sont récupérés lavés repassés et livrés. Vous l’avez compris notre but et de vous facilité la vie.' | translate}} {{'Prenez les choses en main et faite nous confiance en faisant appel à Cleeser.' | translate}} <br>                    {{'A très vite !' | translate}}
+                    d’accord. C’est pour cela que nous avons développer cette plateforme qui assure la livraison pour vous, grâce notre service. De ce fait en quelque clique sans bouger de chez vous vos vêtements sont récupérés lavés repassés et livrés.
+                    Vous l’avez compris notre but et de vous facilité la vie.' | translate}} {{'Prenez les choses en main et faite nous confiance en faisant appel à Cleeser.' | translate}} <br> {{'A très vite !' | translate}}
                     <br> {{'L’équipe Cleeser' | translate}}
                 </p>
             </div>
