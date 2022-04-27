@@ -244,6 +244,8 @@ export class CheckoutComponent implements OnInit {
   }
 
   onKeydown(){
+    console.log('onKeydown', this.isInvalidOrder);
+    
     if (this.isInvalidOrder) {
       document.getElementById("unclickable")?.classList.add('paymentButtonsUnclickable')
     } else {

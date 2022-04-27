@@ -25,20 +25,21 @@
                 <div class="cart-widget__ProductsContainer-sc-1r5elwy-0 gZpWwS" [ngClass]="globalService.rtlSide == 'ltr' ? 'gZpWwSRight' : 'gZpWwSLeft'">
                     <div class="products-in-cart__ProductsContainer-mbbtn6-0 hbQyQL">
                         <div *ngFor="let product of filteredProducts" class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF" style="padding-inline-end: 0;">
-                            <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp row" style="width: 100%;">
-                                <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe col-4">
+                            <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp row" style="width: 100%; justify-content: space-between;">
+                                <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe" style="width: unset;">
                                     <span class="productList__Number-sc-1oz9rbz-8 jDEDaq">x{{ getRecurrence(product) }}</span> {{ product.name | translate}}
                                 </div>
 
-                                <div class="col-4" style="display: flex; align-items: center;">
-                                    <button class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI" (click)="remove(product)">
+
+
+                                <div class="productList__RightContainer-sc-1oz9rbz-9 jcvsCz" style="padding-inline-end: 0; display: flex; align-items: center; justify-content: end;">
+                                    <div style="display: flex; align-items: center;">
+                                        <button class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI" (click)="remove(product)">
                 <img src="../../../assets/images/minus.png" /></button>
-                                    <button class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI" (click)="add(product)">
+                                        <button class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI" (click)="add(product)">
                   <img src="../../../assets/images/plus.png" />
                 </button>
-                                </div>
-
-                                <div class="productList__RightContainer-sc-1oz9rbz-9 jcvsCz col-4" style="padding-inline-end: 0">
+                                    </div>
                                     <span class="productList__Price-sc-1oz9rbz-4 cXZnLc">{{ product.price }} &#8362;</span>
                                 </div>
                             </div>
@@ -77,22 +78,24 @@
                   {{product.name | translate}}
                 </div>
 
-                <div class="productList__RightContainer-sc-1oz9rbz-9 jcvsCz">
-                  <button
-                    class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI"
-                    (click)="remove(product)"
-                  >
-                    <img src="../../../assets/images/minus.png" />
-                  </button>
-                  <button
-                    (click)="add(product)"
-                    class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI"
-                  >
-                    <img src="../../../assets/images/plus.png" />
-                  </button>
-                  
-                </div>
-                <div><span class="productList__Price-sc-1oz9rbz-4 cXZnLc"
+             
+                <div style="display: flex; align-items: center;">
+                  <div class="productList__RightContainer-sc-1oz9rbz-9 jcvsCz">
+                    <button *ngIf="getRecurrence(product) !== 0"
+                      class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI"
+                      (click)="remove(product)"
+                    >
+                      <img src="../../../assets/images/minus.png" />
+                    </button>
+                    <button
+                      (click)="add(product)"
+                      class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI"
+                    >
+                      <img src="../../../assets/images/plus.png" />
+                    </button>
+                    
+                  </div>
+                  <span class="productList__Price-sc-1oz9rbz-4 cXZnLc"
                   >{{ product.price }} &#8362;</span
                 ></div>
               </div>
