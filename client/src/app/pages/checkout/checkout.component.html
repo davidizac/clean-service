@@ -207,6 +207,7 @@
                         <span class="order-summary__MinimumPrice-sc-2gc5ap-2 kTfBpA" style="text-align: start;">*{{"Dans le cas où un article est endommagé par le pressing partenaire, cleeser se decharge de tout responsabilités." | translate}}</span>
                     </div>
                     <h1 style="text-align: center; margin-bottom: 0;"> {{ getMessageButton() | translate }}:</h1>
+                    <span class="errorMessage" *ngIf="errorMessage">{{ errorMessage | translate }}</span>
                     <div class="shopping-cart-page__ButtonContainer-arjt3o-4 jNHIgL" style="position: relative;">
                         <a [ngClass]="isInvalidOrder ? 'disabled' : ''" (click)="createOrder()" width="286px" class="style__ButtonStyle-zdp3iu-0 dsVNJt">
 {{ payment == 'paypal' ? 'Modifier la commande' : 'Paiement en espece' | translate }}
@@ -218,7 +219,7 @@
                     </div>
                 </div>
             </div>
-            <span class="errorMessage" *ngIf="errorMessage">{{ errorMessage | translate }}</span>
+
 
 
 
