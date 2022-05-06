@@ -209,11 +209,11 @@
     display: flex;
     font-family: Lato, sans-serif;
     font-size: 14px;
-    height: 50px;
+    min-height: 50px;
     -webkit-box-pack: justify;
     justify-content: space-between;
     margin: 0.5em 0px;
-    padding: 0px;
+    padding: 0 15px 0 9px;
     width: 100%;
     border-radius: 10px;
 }
