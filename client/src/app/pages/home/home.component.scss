@@ -693,11 +693,11 @@ section {
     }
 }
 
-.slide {
+.slideSection {
     position: relative;
 }
 
-.slide:after {
+.slideSection:after {
     content: "";
     position: absolute;
     bottom: -1px;
@@ -737,12 +737,12 @@ section {
     font-weight: bold;
 }
 
-.slide .content-bottom {
+.slideSection .content-bottom {
     position: relative;
     z-index: 1;
 }
 
-.slide .content-bottom h2 {
+.slideSection .content-bottom h2 {
     font-size: 90px;
     font-weight: 700;
     color: #fff;
@@ -750,12 +750,12 @@ section {
     line-height: 90px;
 }
 
-.slide .content-bottom p {
+.slideSection .content-bottom p {
     color: #fff;
 }
 
 @media (min-width: 992px) {
-    .slide .content-bottom img {
+    .slideSection .content-bottom img {
         max-width: 520px;
     }
 }
@@ -766,7 +766,7 @@ section {
 }
 
 @media (max-width: 768px) {
-    .slide .content-bottom h2 {
+    .slideSection .content-bottom h2 {
         font-size: 60px;
         line-height: 60px;
     }
@@ -1330,4 +1330,10 @@ footer .copyright a:hover {
 
 .effectDownBanner {
     top: 13vw;
+}
+
+.messageTestimonial {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 200px;
+    height: 100px;
 }
