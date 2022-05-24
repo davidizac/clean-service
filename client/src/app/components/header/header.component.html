@@ -88,7 +88,7 @@
             {{'Accueil' | translate}}
         </div>
     </a>
-    <a *ngIf="!adminMode" (click)="changedTab('pressings')" [routerLink]="['/pressing' | localize ]" class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS">
+    <a *ngIf="!adminMode" (click)="changedTab('pressings')" [routerLink]="['/pressing'] | localize" class="mobile-menu__MobileMenuLink-sc-17s3h0k-1 gZpUAS">
         <svg width="24" height="24" *ngIf="selectedTab === 'pressings' || selectedTab === 'pressing'">
       <path
         d="M13.022 1.5c.292.001.573.1.799.278l.108.095 2.192 2.155H21v16.576c0 .997-.783 1.815-1.778 1.89l-.15.006H4.928c-1.015 0-1.846-.77-1.923-1.748L3 20.604V4.028h4.88l2.191-2.155c.206-.204.475-.331.762-.364l.145-.009h2.044zm6.692 3.793H4.286v15.31c0 .318.238.58.548.626l.095.007H19.07a.64.64 0 00.636-.539l.007-.093V5.293zM12 8.35a5.65 5.65 0 110 11.3 5.65 5.65 0 010-11.3zm0 1.3a4.35 4.35 0 100 8.7 4.35 4.35 0 000-8.7zm0 .518a3.832 3.832 0 110 7.664 3.832 3.832 0 010-7.664zm0 1.3a2.532 2.532 0 100 5.064 2.532 2.532 0 000-5.064zM18 6.5v1h-2v-1h2zm-4.978-3.736h-2.044L9.692 4.028h4.616l-1.286-1.264z"

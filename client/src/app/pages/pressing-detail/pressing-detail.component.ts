@@ -64,7 +64,8 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
       .getAllPressings()
       .subscribe((pressings: Array<Pressing>) => {
 
-        this.pressingId = pressings[0]._id
+        // this.pressingId = pressings[0]._id
+        this.pressingId = "619793bc8dc0146dcc44edff"
         this.route.params
           .pipe(switchMap((params: any) => {
 
