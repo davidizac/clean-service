@@ -26,13 +26,13 @@
                     <div class="products-in-cart__ProductsContainer-mbbtn6-0 hbQyQL">
                         <div *ngFor="let product of filteredProducts" class="productList__ProductLineContainer-sc-1oz9rbz-6 khTIXF" style="padding-inline-end: 0;">
                             <div class="productList__ProductName-sc-1oz9rbz-2 ixmeHp row" style="width: 100%; justify-content: space-between;">
-                                <div class="productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe">
+                                <div class="col-5 productList__QuantityContainer-sc-1oz9rbz-7 gIbwLe">
                                     <span class="productList__Number-sc-1oz9rbz-8 jDEDaq">x{{ getRecurrence(product) }}</span> {{ product.name | translate}}
                                 </div>
 
 
 
-                                <div class="productList__RightContainer-sc-1oz9rbz-9 jcvsCz" style="padding-inline-end: 0; display: flex; align-items: center; justify-content: end;">
+                                <div class=" col-7 productList__RightContainer-sc-1oz9rbz-9 jcvsCz" style="padding-inline-end: 0; display: flex; align-items: center; justify-content: end;">
                                     <div style="display: flex; align-items: center;">
                                         <button class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI" (click)="remove(product)">
                                           <mat-icon  style="color: #55bbf0;">remove</mat-icon>
