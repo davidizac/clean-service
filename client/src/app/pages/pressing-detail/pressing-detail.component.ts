@@ -60,12 +60,11 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
     //   this.lang = value['lang']
     //   this.myEvent.setLanguageData(this.lang);
     // })
-    // this.pressingService
-    //   .getAllPressings()
-    //   .subscribe((pressings: Array<Pressing>) => {
+    this.pressingService
+      .getAllPressings()
+      .subscribe((pressings: Array<Pressing>) => {
 
-        // this.pressingId = pressings[0]._id
-        this.pressingId = "619793bc8dc0146dcc44edff"
+        this.pressingId = pressings[0]._id
         this.route.params
           .pipe(switchMap((params: any) => {
 
@@ -104,7 +103,7 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
             this.products = _.groupBy(this.pressing.products, 'category');
             this.isLoading = false;
           });
-      // })
+      })
 
     this.myEvent.setLanguageData(this.localize.parser.currentLang);
     this.isLoading = true;
