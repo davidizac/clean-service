@@ -20,6 +20,7 @@ export class SigninComponent implements OnInit {
   phoneNumber: string;
   errorMessage;
   lang: string
+  isLoading: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -60,6 +61,7 @@ export class SigninComponent implements OnInit {
     }
     authObs.subscribe(
       (resData) => {
+        this.isLoading = false
         if (this.returnUrl == '/') {
           const route = this.localize.translateRoute('/home');
           this.router.navigate([route]);
@@ -68,6 +70,7 @@ export class SigninComponent implements OnInit {
         }
       },
       (errRes) => {
+        this.isLoading = false
         const code = errRes.error.error.message;
         this.errorMessage = `Impossible de s'inscrire pour le moment, ressayez plus tard.`;
         if (code === 'EMAIL_EXISTS') {
@@ -90,9 +93,13 @@ export class SigninComponent implements OnInit {
   
 
   onSubmit(action?) {
+    this.isLoading = true
     var checkBool
     if (action == 'signup') {
       checkBool = this.checkAllFieldsErr()
+      if (checkBool) {
+        this.isLoading = false
+      }
     }
 
     if (!action || (action == 'signup' && !checkBool)) {

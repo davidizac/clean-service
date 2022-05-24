@@ -26,7 +26,12 @@
                             <input autocomplete="off" id="email" [(ngModel)]="email" type="text" name="email" placeholder="{{'Email' | translate}}" />
 
                             <input autocomplete="off" id="password" [(ngModel)]="password" type="password" name="login" placeholder="{{'Mot de passe' | translate}}" />
-                            <button (click)="onSubmit('signup')" type="submit">{{'S’inscrire' | translate}}</button>
+                            <button (click)="onSubmit('signup')" type="submit">
+                                {{'S’inscrire' | translate}}
+                                <div *ngIf="isLoading" class="spinner-border text-light" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                  </div>
+                            </button>
                         </div>
                         <div class="error" *ngIf="errorMessage">
                             <span>{{ errorMessage | translate }}</span>
@@ -43,7 +48,11 @@
                         <div>
                             <input autocomplete="off" [(ngModel)]="email" type="text" name="email" placeholder="{{'Email' | translate}}" (keypress)="keyFunc($event)" />
                             <input autocomplete="off" [(ngModel)]="password" type="password" name="login" placeholder="{{'Mot de passe' | translate}}" (keypress)="keyFunc($event)" />
-                            <button (click)="onSubmit()" type="submit">{{'Se connecter' | translate}}</button>
+                            <button (click)="onSubmit()" type="submit">{{'Se connecter' | translate}}
+                                <div *ngIf="isLoading" class="spinner-border text-light" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                  </div>
+                            </button>
                         </div>
                         <div class="error" *ngIf="errorMessage">
                             <span>{{ errorMessage | translate}}</span>
