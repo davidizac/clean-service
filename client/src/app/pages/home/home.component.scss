@@ -1337,3 +1337,16 @@ footer .copyright a:hover {
     width: 200px;
     height: 100px;
 }
+
+.imgBanner {
+    animation: rot 15s infinite linear;
+}
+
+@keyframes rot {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
