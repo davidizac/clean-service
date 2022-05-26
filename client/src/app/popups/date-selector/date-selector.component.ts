@@ -44,32 +44,53 @@ export class DateSelectorComponent implements OnInit {
       typeof this.dropOffDate === 'string'
         ? moment(this.dropOffDate)
         : this.dropOffDate;
+        
     if (this.isPickup) {
       if (this.dropOffDate) {
         this.startDate = moment();
+        console.log(this.startDate);
+        
         this.endDate = this.dropOffDate.clone();
-        this.endDate.subtract(2, 'days');
+
+        if (moment(this.dropOffDate).day() == 0 || moment(this.dropOffDate).day() == 6) {
+          console.log('123');
+          
+          this.endDate.subtract(2, 'days');
+        }else{
+          this.endDate.subtract(1, 'days');
+        }
+        
       } else {
         this.startDate = moment();
-        this.endDate = moment().add(18, 'day');
+        this.endDate = moment().add(17, 'day');
       }
     } else {
       if (this.pickUpDate) {
         this.startDate = this.pickUpDate.clone();
         this.endDate = this.pickUpDate.clone();
-        this.startDate.add(2, 'days');
-        this.endDate.add(19, 'days');
+        if (moment(this.pickUpDate).day() == 4 || moment(this.pickUpDate).day() == 5) {
+      
+          this.startDate = this.startDate.add(2, 'days');
+        }else{
+          this.startDate = this.startDate.add(1, 'days');
+        }
+        this.endDate = this.endDate.add(19, 'days');
       } else {
         this.startDate = moment();
-        this.startDate.add(2, 'days');
-        this.endDate = moment().add(18, 'day');
+        if (moment(this.startDate).day() == 4 || moment(this.startDate).day() == 5) {
+      
+          this.startDate = this.startDate.add(2, 'days');
+        }else{
+          this.startDate = this.startDate.add(1, 'days');
+        }
+        this.endDate = moment().add(17, 'day');
       }
     }
     const range = moment.range(this.startDate, this.endDate);
+    
     this.moments = Array.from(
       range.by('day', { excludeEnd: true, step: 1 })
     )
-    console.log(this.moments[0]);
 
     this.changedDate(this.moments[0], true)
   }
@@ -89,7 +110,6 @@ export class DateSelectorComponent implements OnInit {
   }
 
   changedDate(moment2, notFromUserclick?) {
-    console.log(moment().hours(21));
 
     this.selectedMoment = moment2;
     // if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && !moment().add(2, 'hours').isAfter(moment().hours(21))) {
