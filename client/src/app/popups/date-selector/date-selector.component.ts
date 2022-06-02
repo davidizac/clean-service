@@ -44,22 +44,22 @@ export class DateSelectorComponent implements OnInit {
       typeof this.dropOffDate === 'string'
         ? moment(this.dropOffDate)
         : this.dropOffDate;
-        
+
     if (this.isPickup) {
       if (this.dropOffDate) {
         this.startDate = moment();
         console.log(this.startDate);
-        
+
         this.endDate = this.dropOffDate.clone();
 
-        if (moment(this.dropOffDate).day() == 0 || moment(this.dropOffDate).day() == 6) {
-          console.log('123');
-          
+        if (moment(this.dropOffDate).day() == 0) {
+          this.endDate.subtract(3, 'days');
+        } else if (moment(this.dropOffDate).day() == 6) {
           this.endDate.subtract(2, 'days');
-        }else{
+        } else {
           this.endDate.subtract(1, 'days');
         }
-        
+
       } else {
         this.startDate = moment();
         this.endDate = moment().add(17, 'day');
@@ -68,26 +68,28 @@ export class DateSelectorComponent implements OnInit {
       if (this.pickUpDate) {
         this.startDate = this.pickUpDate.clone();
         this.endDate = this.pickUpDate.clone();
-        if (moment(this.pickUpDate).day() == 4 || moment(this.pickUpDate).day() == 5) {
-      
+        if (moment(this.pickUpDate).day() == 4) {
+          this.startDate = this.startDate.add(3, 'days');
+        } else if (moment(this.pickUpDate).day() == 5) {
           this.startDate = this.startDate.add(2, 'days');
-        }else{
+        } else {
           this.startDate = this.startDate.add(1, 'days');
         }
         this.endDate = this.endDate.add(19, 'days');
       } else {
         this.startDate = moment();
-        if (moment(this.startDate).day() == 4 || moment(this.startDate).day() == 5) {
-      
+        if (moment(this.startDate).day() == 4) {
+          this.startDate = this.startDate.add(3, 'days');
+        } else if (moment(this.startDate).day() == 5) {
           this.startDate = this.startDate.add(2, 'days');
-        }else{
+        } else {
           this.startDate = this.startDate.add(1, 'days');
         }
         this.endDate = moment().add(17, 'day');
       }
     }
     const range = moment.range(this.startDate, this.endDate);
-    
+
     this.moments = Array.from(
       range.by('day', { excludeEnd: true, step: 1 })
     )
@@ -116,11 +118,11 @@ export class DateSelectorComponent implements OnInit {
 
     if (moment2.day() === 5) {
       if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && !moment().add(2, 'hours').isAfter(moment().hours(12))) {
-        
+
         let range2
         if (moment().add(2, 'hours').isBefore(moment().hours(18))) {
           range2 = moment.range(moment().hours(18), moment().hours(22));
-        }else{
+        } else {
           range2 = moment.range(moment().add(2, 'hours'), moment().hours(22));
         }
         const hours = Array.from(
@@ -131,7 +133,7 @@ export class DateSelectorComponent implements OnInit {
       else {
         let range2 = moment.range(moment().hours(9), moment().hours(11));
         const hours = Array.from(
-          range2.by('hour', { excludeEnd: false, step: 1 })
+          range2.by('hour', { excludeEnd: false, step: 2 })
         );
         this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
         if (notFromUserclick) {
@@ -140,22 +142,22 @@ export class DateSelectorComponent implements OnInit {
       }
     } else if (moment2.day() === 6) {
       if (moment().format('YYYY-MM-DD') === moment2.format('YYYY-MM-DD') && !moment().add(2, 'hours').isAfter(moment().hours(12))) {
-       let range2
+        let range2
         if (moment().add(2, 'hours').isBefore(moment().hours(18))) {
           range2 = moment.range(moment().hours(18), moment().hours(22));
-        }else{
+        } else {
           range2 = moment.range(moment().add(2, 'hours'), moment().hours(22));
         }
-        
+
         const hours = Array.from(
-          range2.by('hour', { excludeEnd: false, step: 1 })
+          range2.by('hour', { excludeEnd: false, step: 2 })
         );
         this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
       }
       else {
         let range2 = moment.range(moment().hours(21), moment().hours(22));
         const hours = Array.from(
-          range2.by('hour', { excludeEnd: false, step: 1 })
+          range2.by('hour', { excludeEnd: false, step: 2 })
         );
         this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
         if (notFromUserclick) {
@@ -168,14 +170,14 @@ export class DateSelectorComponent implements OnInit {
         let range2
         if (moment().add(2, 'hours').isBefore(moment().hours(18))) {
           range2 = moment.range(moment().hours(18), moment().hours(22));
-        }else{
+        } else {
           range2 = moment.range(moment().add(2, 'hours'), moment().hours(22));
         }
-         
+
         console.log(range2);
 
         const hours = Array.from(
-          range2.by('hour', { excludeEnd: false, step: 1 })
+          range2.by('hour', { excludeEnd: false, step: 2 })
         );
         this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
         console.log(this.hourRanges);
@@ -184,7 +186,7 @@ export class DateSelectorComponent implements OnInit {
         console.log(range2);
 
         const hours = Array.from(
-          range2.by('hour', { excludeEnd: false, step: 1 })
+          range2.by('hour', { excludeEnd: false, step: 2 })
         );
         console.log(hours);
 
