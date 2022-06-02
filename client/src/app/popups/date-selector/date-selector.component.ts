@@ -126,7 +126,7 @@ export class DateSelectorComponent implements OnInit {
           range2 = moment.range(moment().add(2, 'hours'), moment().hours(22));
         }
         const hours = Array.from(
-          range2.by('hour', { excludeEnd: false, step: 1 })
+          range2.by('hour', { excludeEnd: false, step: 2 })
         );
         this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
       }
