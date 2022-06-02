@@ -102,6 +102,7 @@ export class DateSelectorComponent implements OnInit {
   }
 
   onConfirm() {
+
     if (this.selectedHourRange) {
       this.result.next(
         this.selectedMoment.hours(parseInt(this.selectedHourRange)).minutes(0)
@@ -174,21 +175,16 @@ export class DateSelectorComponent implements OnInit {
           range2 = moment.range(moment().add(2, 'hours'), moment().hours(22));
         }
 
-        console.log(range2);
-
         const hours = Array.from(
           range2.by('hour', { excludeEnd: false, step: 2 })
         );
         this.hourRanges = hours.map((m: any) => m.format('HH') + ':00');
-        console.log(this.hourRanges);
       } else {
         let range2 = moment.range(moment().hours(18), moment().hours(22));
-        console.log(range2);
 
         const hours = Array.from(
           range2.by('hour', { excludeEnd: false, step: 2 })
         );
-        console.log(hours);
 
         this.hourRanges = hours.map((m) => m.format('HH') + ':00');
         if (notFromUserclick) {

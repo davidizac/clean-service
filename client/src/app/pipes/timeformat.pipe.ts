@@ -10,7 +10,7 @@ export class TimeFormat implements PipeTransform {
     return (
       date.format('HH:00') +
       ' - ' +
-      date.clone().add(1, 'hours').format('HH:00')
+      date.clone().add(2, 'hours').format('HH:00')
     );
   }
 }

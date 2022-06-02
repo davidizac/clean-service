@@ -60,7 +60,7 @@ export class CheckoutComponent implements OnInit {
   @ViewChild('paypalRef', { static: true }) private paypalRef: ElementRef
 
   get isInvalidOrder() {
-    
+
     if (this.order)
 
       return (
@@ -165,8 +165,7 @@ export class CheckoutComponent implements OnInit {
     this.addressDetails2.setValue(this.order.addressDetails2);
     this.pickUpAddress.setValue(this.order.pickUpAddress);
     this.dropOffAddress.setValue(this.order.dropOffAddress);
-    this.anotherAddress =
-      this.order.pickUpAddress !== this.order.dropOffAddress;
+    this.order.pickUpAddress !== this.order.dropOffAddress;
     this.pickUpDate = this.order.pickUpDate;
     this.dropOffDate = this.order.dropOffDate;
     this.comment = this.order.comment;
@@ -177,7 +176,7 @@ export class CheckoutComponent implements OnInit {
     this.filteredProducts = _.uniqBy(this.products, '_id');
 
     this.orderService.getMyOrders().subscribe((orders: Array<Order>) => {
-      if (orders.length > 0 && (((orders.length+1) % 5) == 0) && this.isNew == 'true') {
+      if (orders.length > 0 && (((orders.length + 1) % 5) == 0) && this.isNew == 'true') {
         this.offerFidelity = true
       }
     });
@@ -243,9 +242,7 @@ export class CheckoutComponent implements OnInit {
     // })
   }
 
-  onKeydown(){
-    console.log('onKeydown', this.isInvalidOrder);
-    
+  onKeydown() {
     if (this.isInvalidOrder) {
       document.getElementById("unclickable")?.classList.add('paymentButtonsUnclickable')
     } else {
@@ -320,6 +317,7 @@ export class CheckoutComponent implements OnInit {
     );
 
     return modal.content.result.subscribe((date) => {
+
       this[isPickup ? 'pickUpDate' : 'dropOffDate'] = date;
       this.onKeydown()
     });
