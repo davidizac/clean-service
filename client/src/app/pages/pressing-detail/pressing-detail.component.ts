@@ -12,6 +12,7 @@ import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { GlobalService } from 'src/app/services/global.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PopUpComponent } from '../pop-up/pop-up.component';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 @Component({
   selector: 'app-pressing-detail',
@@ -37,7 +38,8 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
     public pressingService: PressingService,
     private myEvent: MyEvent,
     private localize: LocalizeRouterService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public googleAnalyticsService: GoogleAnalyticsService
   ) {
 
     this.myEvent.setLanguageData(this.localize.parser.currentLang);
@@ -56,6 +58,7 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.googleAnalyticsService.eventEmitter("pressingArticlesView");
     // this.route.params.subscribe(value => {
     //   this.lang = value['lang']
     //   this.myEvent.setLanguageData(this.lang);
@@ -112,6 +115,8 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
   }
 
   createCheckout() {
+
+    this.googleAnalyticsService.eventEmitter("pressingArticlesCreateOrder");
     if (this.getPrice() < 100) {
       document.getElementById("minPriceText").classList.add("effectErrorMinPrice")
       setTimeout(() => {

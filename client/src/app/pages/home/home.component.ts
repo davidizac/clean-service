@@ -7,6 +7,7 @@ import * as _ from 'lodash';
 import { switchMap } from 'rxjs/operators';
 import { Pressing } from 'src/app/models/pressing.model';
 import { GlobalService } from 'src/app/services/global.service';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 import { MyEvent } from 'src/app/services/myevents.service';
 import { PressingService } from 'src/app/services/pressing.service';
 import { UserService } from 'src/app/services/user.service';
@@ -33,7 +34,8 @@ export class HomeComponent implements OnInit {
     public ngZone: NgZone,
     private localize: LocalizeRouterService,
     public globalService: GlobalService,
-    private myEvent: MyEvent
+    private myEvent: MyEvent,
+    public googleAnalyticsService: GoogleAnalyticsService
   ) {
     AOS.init();
     this.langs = [
@@ -52,6 +54,7 @@ export class HomeComponent implements OnInit {
     //     this.fourPressingDisplayed.push(...pressings.slice(0, 4))
     //   })
 
+    this.googleAnalyticsService.eventEmitter("homePageView");
 
     var navbar = $('.navbar');
     var navLink = $('.nav-link')

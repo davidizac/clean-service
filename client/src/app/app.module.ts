@@ -40,6 +40,7 @@ import { MatPaginatorIntlCro } from './custom-class/mat-paginator';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { PopUpComponent } from './pages/pop-up/pop-up.component';
+import { GoogleAnalyticsService } from './services/google-analytics.service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -93,6 +94,7 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     AuthService,
     BsModalService,
+    GoogleAnalyticsService,
     BsModalRef,
     { provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
