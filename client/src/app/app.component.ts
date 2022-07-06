@@ -57,7 +57,7 @@ export class AppComponent {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd))
         .subscribe((event: NavigationEnd) => {
           
-            gtag('config', 'G-75QV73HRSL',
+            gtag('config', 'G-79660VH882',
                 {
                     page_path: event.urlAfterRedirects
                 }
