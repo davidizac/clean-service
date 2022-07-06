@@ -54,15 +54,11 @@ export class AppComponent {
   }
 
   setUpAnalytics() {
-    this.router.events.pipe(filter(event => event instanceof NavigationEnd))
-        .subscribe((event: NavigationEnd) => {
-          
-            gtag('config', 'G-75QV73HRSL',
-                {
-                    page_path: event.urlAfterRedirects
-                }
-            );
-        });
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        gtag('config', 'G-75QV73HRSL', { 'page_path': event.urlAfterRedirects });
+      }      
+    })
 }
 
   ngOnInit() {
