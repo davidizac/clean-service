@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, Inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { of } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { filter, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { APP_CONFIG, AppConfig } from "./app.config";
@@ -10,7 +10,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { GlobalService } from './services/global.service';
 
-
+declare let gtag: Function;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -53,7 +53,20 @@ export class AppComponent {
 
   }
 
+  setUpAnalytics() {
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd))
+        .subscribe((event: NavigationEnd) => {
+          
+            gtag('config', 'G-75QV73HRSL',
+                {
+                    page_path: event.urlAfterRedirects
+                }
+            );
+        });
+}
+
   ngOnInit() {
+    this.setUpAnalytics();
     if (this.localize.parser.currentLang) {
       this.myEvent.setLanguageData(this.localize.parser.currentLang)
       this.localize.changeLanguage(this.localize.parser.currentLang);
