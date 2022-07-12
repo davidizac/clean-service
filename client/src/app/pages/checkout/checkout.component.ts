@@ -109,15 +109,19 @@ export class CheckoutComponent implements OnInit {
         size: 'large'
       },
       onApprove: (data, actions) => {
-        actions.order.get().then(details => {
+        actions.order.capture().then(details => {
           alert('transaction completed')
+          console.log('ONAPPROVE2', data, details);
           this.order.payment = 'paypal'
           this.createOrder()
         });
-
       },
       onClientAuthorization: (data) => {
-        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        // console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        // alert('transaction completed')
+        // console.log('ONAPPROVE2', data);
+        // this.order.payment = 'paypal'
+        // this.createOrder()
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
