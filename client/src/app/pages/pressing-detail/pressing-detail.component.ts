@@ -143,7 +143,7 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
   openDialog() {
     this.dialog.open(PopUpComponent, {
       data: {
-        dataKey: this.pressing.name
+        dataKey: 'whatsapp'
       }
     });
   }

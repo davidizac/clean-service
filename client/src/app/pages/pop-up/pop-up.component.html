@@ -1,10 +1,18 @@
-<div [dir]="globalService.rtlSide" style="display: flex; align-items: center;">
-    <img width="100px" src="../../../assets/images/whatsapp-logo-png.png" alt="">
-    <p style="text-align: start;"><span style="font-weight: bold; font-size: 16px;">{{"Les prix des articles délicats varient" | translate}}.</span> <br> {{"Veuillez passer votre commande via" | translate}} Whatsapp,
-        <br> {{"en envoyant votre article en photo" | translate}}.
-    </p>
-</div>
+<section *ngIf="data.dataKey == 'whatsapp'">
+    <div [dir]="globalService.rtlSide" style="display: flex; align-items: center;">
+        <img width="100px" src="../../../assets/images/whatsapp-logo-png.png" alt="">
+        <p style="text-align: start;"><span style="font-weight: bold; font-size: 16px;">{{"Les prix des articles délicats varient" | translate}}.</span> <br> {{"Veuillez passer votre commande via" | translate}} Whatsapp,
+            <br> {{"en envoyant votre article en photo" | translate}}.
+        </p>
+    </div>
 
-<div class="btnSend">
-    <a href="https://api.whatsapp.com/send?phone=+972535318799">{{"Envoyer message" | translate}}</a>
-</div>
+    <div class="btnSend">
+        <a href="https://api.whatsapp.com/send?phone=+972535318799">{{"Envoyer message" | translate}}</a>
+    </div>
+</section>
+
+
+<section *ngIf="data.dataKey == 'errorPaiement'">
+    <p style="margin: 15px 0;">{{"Une erreur s'est produite, votre commande n'a pas pu etre validée" | translate}}</p>
+    <mat-icon (click)="close()">close</mat-icon>
+</section>

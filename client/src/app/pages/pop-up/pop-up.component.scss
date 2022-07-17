@@ -21,3 +21,17 @@ a {
 a:hover {
     text-decoration: none;
 }
+
+mat-icon {
+    position: absolute;
+    top: -32px;
+    right: -15px;
+}
+
+section {
+    position: relative;
+}
+
+mat-icon:hover {
+    cursor: pointer;
+}

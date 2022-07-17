@@ -13,6 +13,9 @@ import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { GlobalService } from 'src/app/services/global.service';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { render } from 'creditcardpayments/creditCardPayments'
+import { MatDialog } from '@angular/material/dialog';
+import { PopUpComponent } from '../pop-up/pop-up.component';
+
 declare global {
   interface Window { paypal: any; }
 }
@@ -36,6 +39,7 @@ export class CheckoutComponent implements OnInit {
     private myEvent: MyEvent,
     public globalService: GlobalService,
     private localize: LocalizeRouterService,
+    public dialog: MatDialog,
   ) {
 
   }
@@ -114,7 +118,10 @@ export class CheckoutComponent implements OnInit {
           console.log('ONAPPROVE2', data, details);
           this.order.payment = 'paypal'
           this.createOrder()
-        });
+        }).catch(err => {
+          this.openDialog()
+          // alert("Une erreur s'est produite, votre commande n'a pas pu etre validée")
+        })
       },
       onClientAuthorization: (data) => {
         // console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
@@ -261,6 +268,14 @@ export class CheckoutComponent implements OnInit {
     } else {
       this.errorMessage = ''
     }
+  }
+
+  openDialog() {
+    this.dialog.open(PopUpComponent, {
+      data: {
+        dataKey: 'errorPaiement'
+      }
+    });
   }
 
   triggerAutocomplete(value: string, isPickUp) {
@@ -441,3 +456,9 @@ export class CheckoutComponent implements OnInit {
       : 'Modifier une commande';
   }
 }
+
+
+
+
+
+

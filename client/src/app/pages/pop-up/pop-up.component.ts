@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
@@ -11,10 +11,16 @@ export class PopUpComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public globalService: GlobalService
+    public globalService: GlobalService,
+    public dialogRef: MatDialogRef<PopUpComponent>,
+
   ) { }
 
   ngOnInit(): void {
+  }
+
+  close(): void {
+    this.dialogRef.close();
   }
 
 }
