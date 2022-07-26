@@ -19,7 +19,6 @@ export class OrderConfirmationComponent implements OnInit {
   order: Order;
   isNew;
   lang:string
-
   constructor(
     public router: Router,
     public route: ActivatedRoute,

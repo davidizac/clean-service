@@ -203,13 +203,16 @@
               ><span style="text-decoration: line-through; font-size: 12px;">{{priceWithouOffer}} &#8362;</span> <br> {{ getPrice() }} &#8362; </span>
                         </div>
                         <span class="order-summary__MinimumPrice-sc-2gc5ap-2 kTfBpA">{{'Commande minimum: 100' | translate}}&#8362;</span>
-                        <span class="order-summary__MinimumPrice-sc-2gc5ap-2 kTfBpA" style="text-align: start;">*{{"Dans le cas où un article est endommagé par le pressing partenaire, cleeser se decharge de tout responsabilités." | translate}}</span>
+                        <!-- <span class="order-summary__MinimumPrice-sc-2gc5ap-2 kTfBpA" style="text-align: start;">*{{"Dans le cas où un article est endommagé par le pressing partenaire, cleeser se decharge de tout responsabilités." | translate}}</span> -->
                     </div>
                     <h1 style="text-align: center; margin-bottom: 0; font-size: 21px;"> {{ getMessageButton() | translate }}:</h1>
                     <span class="errorMessage" *ngIf="errorMessage">{{ errorMessage | translate }}</span>
                     <div class="shopping-cart-page__ButtonContainer-arjt3o-4 jNHIgL" style="position: relative;">
-                        <a [ngClass]="isInvalidOrder ? 'disabled' : ''" (click)="createOrder()" width="286px" class="style__ButtonStyle-zdp3iu-0 dsVNJt">
+                        <a [ngClass]="isInvalidOrder ? 'disabled' : ''" (click)="createOrder(true)" width="286px" class="style__ButtonStyle-zdp3iu-0 dsVNJt">
 {{ payment == 'paypal' ? 'Modifier la commande' : 'Paiement en espece' | translate }}
+<div *ngIf="isLoading" class="spinner-border text-light" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
 </a>
                         <!-- <div #paypalRef style="z-index: 1;" [ngClass]="!(isNew == 'true' || payment == 'cash') ? 'displayNone': ''"></div> -->
                         <ngx-paypal style="z-index: 1; padding-bottom: 85px;" [ngClass]="!(isNew == 'true' || payment == 'cash') ? 'displayNone': ''" [config]="payPalConfig"></ngx-paypal>

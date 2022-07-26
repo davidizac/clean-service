@@ -29,6 +29,7 @@ export class CheckoutComponent implements OnInit {
   offerFidelity: boolean;
   priceWithouOffer: any;
   public payPalConfig?: IPayPalConfig;
+  isLoading: boolean = false;
   constructor(
     public route: ActivatedRoute,
     public router: Router,
@@ -343,8 +344,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   getPrice() {
+    
     return this.products.reduce((acc, current, index, arr) => {
-      var price: any = acc + current.price;
+      
+      var price: any = Number(acc) + Number(current.price);
       if (this.offerFidelity) {
         this.priceWithouOffer = price
         price = price - (price * 10) / 100
@@ -353,49 +356,56 @@ export class CheckoutComponent implements OnInit {
     }, 10);
   }
 
-  createOrder() {
-    if (this.isNew === 'false') {
-      this.updateOrder();
-      return;
-    }
-    if (this.isInvalidOrder) {
-      if (this.getPrice() < 100) {
-        this.errorMessage = 'Commande minimum 100₪';
-      } else if (!this.order.pickUpAddress) {
-        this.errorMessage = 'Addresse de recuperation obligatoire';
-      } else if (!this.order.dropOffAddress && this.anotherAddress) {
-        this.errorMessage = 'Addresse de restitution obligatoire';
-      } else if (!this.pickUpDate) {
-        this.errorMessage = 'Creneau de recuperation obligatoire';
-      } else if (!this.dropOffDate) {
-        this.errorMessage = 'Creneau de restitution obligatoire';
-      } else if (!this.pickUpDate.format()) {
-        this.errorMessage = 'Creneau de recuperation obligatoire';
-      } else if (!this.dropOffDate.format()) {
-        this.errorMessage = 'Creneau de restitution obligatoire';
-      } else if (!this.phoneNumber) {
-        this.errorMessage = 'Numero de telephone obligatoire';
-      }
-      return;
-    }
-    this.order.dropOffAddress = this.anotherAddress ? this.order.dropOffAddress : this.order.pickUpAddress
-    this.order.addressDetails = this.addressDetails.value;
-    this.order.addressDetails2 = this.addressDetails2.value;
-    this.order.pickUpDate = this.pickUpDate.format();
-    this.order.dropOffDate = this.dropOffDate.format();
-    this.order.products = this.products.map((p) => p._id);
-    this.order.comment = this.comment;
-    this.order.phoneNumber = this.phoneNumber;
-    this.order.status = 'NEW';
-    this.order.price = this.getPrice().toString();
-    this.order.payment = this.order.payment == 'paypal' ? 'paypal' : 'cash'
+  createOrder(fromCashBtn?) {
+    if (!fromCashBtn || (fromCashBtn && !this.isLoading)) {
 
-    this.orderService.createOrder(this.order).subscribe((order) => {
-      const route = this.localize.translateRoute(`/order-confirmation/${order._id}`);
-      this.router.navigate([route], {
-        queryParams: { isNew: true },
+      this.isLoading = fromCashBtn ? true : false
+      if (this.isNew === 'false') {
+        this.updateOrder();
+        this.isLoading = false
+        return;
+      }
+      if (this.isInvalidOrder) {
+        if (this.getPrice() < 100) {
+          this.errorMessage = 'Commande minimum 100₪';
+        } else if (!this.order.pickUpAddress) {
+          this.errorMessage = 'Addresse de recuperation obligatoire';
+        } else if (!this.order.dropOffAddress && this.anotherAddress) {
+          this.errorMessage = 'Addresse de restitution obligatoire';
+        } else if (!this.pickUpDate) {
+          this.errorMessage = 'Creneau de recuperation obligatoire';
+        } else if (!this.dropOffDate) {
+          this.errorMessage = 'Creneau de restitution obligatoire';
+        } else if (!this.pickUpDate.format()) {
+          this.errorMessage = 'Creneau de recuperation obligatoire';
+        } else if (!this.dropOffDate.format()) {
+          this.errorMessage = 'Creneau de restitution obligatoire';
+        } else if (!this.phoneNumber) {
+          this.errorMessage = 'Numero de telephone obligatoire';
+        }
+        this.isLoading = false
+        return;
+      }
+      this.order.dropOffAddress = this.anotherAddress ? this.order.dropOffAddress : this.order.pickUpAddress
+      this.order.addressDetails = this.addressDetails.value;
+      this.order.addressDetails2 = this.addressDetails2.value;
+      this.order.pickUpDate = this.pickUpDate.format();
+      this.order.dropOffDate = this.dropOffDate.format();
+      this.order.products = this.products.map((p) => p._id);
+      this.order.comment = this.comment;
+      this.order.phoneNumber = this.phoneNumber;
+      this.order.status = 'NEW';
+      this.order.price = this.getPrice().toString();
+      this.order.payment = this.order.payment == 'paypal' ? 'paypal' : 'cash'
+
+      this.orderService.createOrder(this.order).subscribe((order) => {
+        const route = this.localize.translateRoute(`/order-confirmation/${order._id}`);
+        this.isLoading = false
+        this.router.navigate([route], {
+          queryParams: { isNew: true },
+        });
       });
-    });
+    }
   }
 
   getMessageButton() {
@@ -407,6 +417,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   updateOrder() {
+    
     if (this.isInvalidOrder) {
       if (this.getPrice() < 100) {
         this.errorMessage = 'Commande minimum 100₪';

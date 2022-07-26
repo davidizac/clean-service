@@ -417,3 +417,10 @@ footer {
     opacity: 0.5;
     background: whitesmoke;
 }
+
+.spinner-border {
+    width: 17px;
+    height: 17px;
+    margin-inline-start: 15px;
+    transition: 0.5s all ease;
+}

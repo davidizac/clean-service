@@ -91,8 +91,6 @@ export class PressingDetailComponent implements OnInit, AfterViewInit {
                 );
                 this.filteredProducts = _.uniqBy(this.order.products, '_id');
 
-
-
                 this.orderId = this.route.snapshot.queryParamMap['params'].orderId;
 
               } else {
