@@ -163,7 +163,7 @@
                                 </div>
                                 {{ product.name | translate}}
                             </div>
-                            <div class="col-4" style="display: flex;" *ngIf="isNew == 'true'">
+                            <div class="col-4" style="display: flex;" [style.opacity]="startPaiementIsOpen ? '0.4' : '1'" *ngIf="isNew == 'true'">
                                 <button class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI" (click)="remove(product)"><mat-icon  style="color: #55bbf0;">remove</mat-icon></button>
                                 <button class="productList__PlusContainer-sc-1oz9rbz-0 bKymBI" (click)="add(product)"><mat-icon  style="color: #55bbf0;">add</mat-icon></button>
                             </div>

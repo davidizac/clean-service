@@ -1,5 +1,7 @@
 export const CATEGORIES = [
   'Costume',
+  'Homme',
+  'Femme',
   'Jupe',
   'Manteau',
   'Pantalon',
@@ -11,6 +13,8 @@ export const CATEGORIES = [
 
 export type CATEGORIES = [
   'Costume',
+  'Homme',
+  'Femme',
   'Jupe',
   'Manteau',
   'Pantalon',

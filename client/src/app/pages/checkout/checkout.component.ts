@@ -30,6 +30,7 @@ export class CheckoutComponent implements OnInit {
   priceWithouOffer: any;
   public payPalConfig?: IPayPalConfig;
   isLoading: boolean = false;
+  startPaiementIsOpen: boolean = false;
   constructor(
     public route: ActivatedRoute,
     public router: Router,
@@ -86,6 +87,8 @@ export class CheckoutComponent implements OnInit {
       currency: 'ILS',
       clientId: 'sb',
       onClick: (data, actions) => {
+        console.log("ONCLICK", this.getPrice().toString());
+        this.startPaiementIsOpen = true
         if (this.isInvalidOrder) {
           this.createOrder()
           return
@@ -133,6 +136,7 @@ export class CheckoutComponent implements OnInit {
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
+        this.startPaiementIsOpen = false
 
       },
       onError: err => {
@@ -300,8 +304,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   add(product: IProduct) {
-    this.products.push(product);
-    this.filteredProducts = _.uniqBy(this.products, '_id');
+    if (!this.startPaiementIsOpen) {
+      this.products.push(product);
+      this.filteredProducts = _.uniqBy(this.products, '_id');
+    }
   }
 
   onSelectionChange(e, isPickUp) {
@@ -312,11 +318,13 @@ export class CheckoutComponent implements OnInit {
   }
 
   remove(product: IProduct) {
-    this.products.splice(
-      this.products.findIndex((p) => p._id === product._id),
-      1
-    );
-    this.filteredProducts = _.uniqBy(this.products, '_id');
+    if (!this.startPaiementIsOpen) {
+      this.products.splice(
+        this.products.findIndex((p) => p._id === product._id),
+        1
+      );
+      this.filteredProducts = _.uniqBy(this.products, '_id');
+    }
   }
 
   getRecurrence(product: IProduct) {
@@ -344,9 +352,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   getPrice() {
-    
+
     return this.products.reduce((acc, current, index, arr) => {
-      
+
       var price: any = Number(acc) + Number(current.price);
       if (this.offerFidelity) {
         this.priceWithouOffer = price
@@ -417,7 +425,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   updateOrder() {
-    
+
     if (this.isInvalidOrder) {
       if (this.getPrice() < 100) {
         this.errorMessage = 'Commande minimum 100₪';
